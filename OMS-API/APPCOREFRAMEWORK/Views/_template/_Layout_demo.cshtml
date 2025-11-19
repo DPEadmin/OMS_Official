@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Contents/Css/app-core-fm.css" rel="stylesheet" />
+    <link href="~/Contents/Plugins/w3.css" rel="stylesheet" />
+    <link href="~/Contents/Plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/scripts/angular.min.js"></script>
+    <script src="~/scripts/angular-route.min.js"></script>
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/scripts/_Libs/base6421-api.js"></script>
+    <script type="text/javascript" language="javascript">
+        var $root = '@Url.Content("~")';
+    </script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

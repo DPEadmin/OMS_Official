@@ -1,0 +1,94 @@
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\LhardwareAPI\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\LhardwareAPI\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\LhardwareAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\TMS_API\TMS_API_Ver02\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\git\oms-api\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\git\oms-api\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\git\oms-api\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+D:\git\oms-api\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\git\oms-api\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\git\oms-api\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.csprojAssemblyReference.cache
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+C:\Users\User\Documents\OMS\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.pdb
+D:\oms khmar\OMS-API\APPHELPPERS\bin\Debug\APPHELPPERS.dll
+D:\oms khmar\OMS-API\APPHELPPERS\bin\Debug\APPHELPPERS.pdb
+D:\oms khmar\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.AssemblyReference.cache
+D:\oms khmar\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\oms khmar\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.dll
+D:\oms khmar\OMS-API\APPHELPPERS\obj\Debug\APPHELPPERS.pdb

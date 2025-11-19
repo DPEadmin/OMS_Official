@@ -1,0 +1,46 @@
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\bin\Release\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Release\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\bin\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\bin\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\bin\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\bin\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\bin\Release\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Release\APPHELPPERS.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Release\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\bin\Release\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Release\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPHELPPERS\obj\Release\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\bin\Release\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\bin\Release\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Release\APPHELPPERS.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Release\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPHELPPERS\obj\Release\APPHELPPERS.pdb

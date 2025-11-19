@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{231DB2E9-7061-4645-A1EA-14FE9A360760}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APPCOREMODEL</RootNamespace>
+    <AssemblyName>APPCOREMODEL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\Facebook\FacebookClient.cs" />
+    <Compile Include="Client\Line\LineClient.cs" />
+    <Compile Include="DAO\JobAssignDAO.cs" />
+    <Compile Include="DAO\GroupItemMobileDAO.cs" />
+    <Compile Include="DAO\ConfigMasterDAO.cs" />
+    <Compile Include="DAO\LookUpMobileDAO.cs" />
+    <Compile Include="DAO\LogoMobileDAO.cs" />
+    <Compile Include="DAO\MenuMobileDAO.cs" />
+    <Compile Include="Datas\Authens\AuthenResult.cs" />
+    <Compile Include="Datas\Facebook\FacebookPostOnPageWall.cs" />
+    <Compile Include="Datas\Line\LineMessage.cs" />
+    <Compile Include="Datas\ModelJobadssign.cs" />
+    <Compile Include="Datas\ModelDemo4.cs" />
+    <Compile Include="Datas\OMSDTO\AddressInfo.cs" />
+    <Compile Include="Datas\OMSDTO\AllergyInfo.cs" />
+    <Compile Include="Datas\OMSDTO\AreaInfo.cs" />
+    <Compile Include="Datas\OMSDTO\BankInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerOrderSlipInfo.cs" />
+    <Compile Include="Datas\OMSDTO\IntegrationEmpInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LazadaPromotionInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PosAmountManagementInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PosTerminalInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PosopensellInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductCommentInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PromotionCombosetInfo.cs" />
+    <Compile Include="Datas\OMSDTO\TemplateInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PointInfo.cs" />
+    <Compile Include="Datas\OMSDTO\BaseInfo.cs" />
+    <Compile Include="Datas\OMSDTO\BookOrderCarInfo.cs" />
+    <Compile Include="Datas\OMSDTO\BranchMapProductInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CallInformationInfo.cs" />
+    <Compile Include="Datas\OMSDTO\EmpMapBuInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LCCInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LeadmanagementInfo.cs" />
+    <Compile Include="Datas\OMSDTO\DashBoardInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CombosetInfo.cs" />
+    <Compile Include="Datas\OMSDTO\BranchInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CallInInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CampaignCategoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CampaignInfo.cs" />
+    <Compile Include="Datas\OMSDTO\FullfillmentManagementInfo.cs" />
+    <Compile Include="Datas\OMSDTO\MediaPlanInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ReportInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PlannerInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ReportSaleAstonInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SaleChannelInfo.cs" />
+    <Compile Include="Datas\OMSDTO\MediaOnAirInfo.cs" />
+    <Compile Include="Datas\OMSDTO\EmpBranchInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderActivityInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderChangestatusInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderOLInfo.cs" />
+    <Compile Include="Datas\OMSDTO\DiscountBillInfo.cs" />
+    <Compile Include="Datas\OMSDTO\DiscountBillDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\StatusInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SubExchangePromotionDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SubMainPromotionDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ChannelInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CompanyInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ComplementaryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ConfirmNo_DateModel.cs" />
+    <Compile Include="Datas\OMSDTO\ContactHistoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerAddressInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerOrderInfo.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerOrder_StatusPageModel.cs" />
+    <Compile Include="Datas\OMSDTO\CustomerPhoneInfo.cs" />
+    <Compile Include="Datas\OMSDTO\Customer_CompanyModel.cs" />
+    <Compile Include="Datas\OMSDTO\DepartmentInfo.cs" />
+    <Compile Include="Datas\OMSDTO\DistrictInfo.cs" />
+    <Compile Include="Datas\OMSDTO\DriverInfo.cs" />
+    <Compile Include="Datas\OMSDTO\EmpInfo.cs" />
+    <Compile Include="Datas\OMSDTO\EmpInventoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\EmpRole.cs" />
+    <Compile Include="Datas\OMSDTO\EmpRole_EmpIdModel.cs" />
+    <Compile Include="Datas\OMSDTO\GenderInfo.cs" />
+    <Compile Include="Datas\OMSDTO\InventoryBalanceInfo.cs" />
+    <Compile Include="Datas\OMSDTO\InventoryData.cs" />
+    <Compile Include="Datas\OMSDTO\InventoryDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\InventoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\InventoryMovementInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LandmarkInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LogisticInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LookupInfo.cs" />
+    <Compile Include="Datas\OMSDTO\L_inventorydata.cs" />
+    <Compile Include="Datas\OMSDTO\L_orderdata.cs" />
+    <Compile Include="Datas\OMSDTO\L_paymentdata.cs" />
+    <Compile Include="Datas\OMSDTO\L_transportdata.cs" />
+    <Compile Include="Datas\OMSDTO\ManageOrderModel.cs" />
+    <Compile Include="Datas\OMSDTO\MenuInfo.cs" />
+    <Compile Include="Datas\OMSDTO\MerchantInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ModuleInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OccupationInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderData.cs" />
+    <Compile Include="Datas\OMSDTO\OrderDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderHistoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderInfoActivity.cs" />
+    <Compile Include="Datas\OMSDTO\OrderInfo_StatusPageModel.cs" />
+    <Compile Include="Datas\OMSDTO\OrderPaymentInfo.cs" />
+    <Compile Include="Datas\OMSDTO\OrderTransportInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PaymentData.cs" />
+    <Compile Include="Datas\OMSDTO\PaymentTypeInfo.cs" />
+    <Compile Include="Datas\OMSDTO\POInfo.cs" />
+    <Compile Include="Datas\OMSDTO\POItemInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductBOMInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductBrandInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductCategoryInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductImageInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductMapRecipeInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProductStockInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PromotionDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PromotionImageInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PromotionInfo.cs" />
+    <Compile Include="Datas\OMSDTO\PromotionTypeInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ProvinceInfo.cs" />
+    <Compile Include="Datas\OMSDTO\ReceiptReturnOrderInfo.cs" />
+    <Compile Include="Datas\OMSDTO\RecipeInfo.cs" />
+    <Compile Include="Datas\OMSDTO\RoleInfo.cs" />
+    <Compile Include="Datas\OMSDTO\RoutingDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\RoutingInfo.cs" />
+    <Compile Include="Datas\OMSDTO\RoutingMappingInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SubDistrictInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SubPromotionDetailInfo.cs" />
+    <Compile Include="Datas\OMSDTO\SupplierInfo.cs" />
+    <Compile Include="Datas\OMSDTO\LazadaProductInfo.cs" />
+    <Compile Include="Datas\OMSDTO\TokenInfo.cs" />
+    <Compile Include="Datas\OMSDTO\TransportData.cs" />
+    <Compile Include="Datas\OMSDTO\UserLoginInfo.cs" />
+    <Compile Include="Datas\OMSDTO\Transport3PartyInfo.cs" />
+    <Compile Include="Datas\OMSDTO\VatInfo.cs" />
+    <Compile Include="Datas\OMSDTO\VechicleInfo.cs" />
+    <Compile Include="Datas\OMSDTO\VoucherInfo.cs" />
+    <Compile Include="Datas\OMSDTO\WfInfo_OMSidModel.cs" />
+    <Compile Include="Datas\OMSDTO\WorkflowInfo.cs" />
+    <Compile Include="Datas\OMSDTO\YearMonthModel.cs" />
+    <Compile Include="OMSDAO\AddressDAO.cs" />
+    <Compile Include="OMSDAO\BankInfoDAO.cs" />
+    <Compile Include="OMSDAO\CustomerOrderSlipDAO.cs" />
+    <Compile Include="OMSDAO\IntegrationEmpDAO.cs" />
+    <Compile Include="OMSDAO\OrderPaymentFIleInfo.cs" />
+    <Compile Include="OMSDAO\PosDAO.cs" />
+    <Compile Include="OMSDAO\ProductCommentDAO.cs" />
+    <Compile Include="OMSDAO\PromotionCombosetDAO.cs" />
+    <Compile Include="OMSDAO\TemplateDAO.cs" />
+    <Compile Include="OMSDAO\BaseDAO.cs" />
+    <Compile Include="OMSDAO\BookOrderCarDAO.cs" />
+    <Compile Include="OMSDAO\BranchMapProductDAO.cs" />
+    <Compile Include="OMSDAO\EmpMapBUDAO.cs" />
+    <Compile Include="OMSDAO\LCCDAO.cs" />
+    <Compile Include="OMSDAO\OutBoundDAO.cs" />
+    <Compile Include="OMSDAO\LeadManagementDAO.cs" />
+    <Compile Include="OMSDAO\DashBoardDAO.cs" />
+    <Compile Include="OMSDAO\CallInformationDAO.cs" />
+    <Compile Include="OMSDAO\CombosetDAO.cs" />
+    <Compile Include="OMSDAO\BranchDAO.cs" />
+    <Compile Include="OMSDAO\CallInDAO.cs" />
+    <Compile Include="OMSDAO\CampaignCategoryDAO.cs" />
+    <Compile Include="OMSDAO\CampaignDAO.cs" />
+    <Compile Include="OMSDAO\CampaignPromotionDAO.cs" />
+    <Compile Include="OMSDAO\ChannelDAO.cs" />
+    <Compile Include="OMSDAO\CompanyDAO.cs" />
+    <Compile Include="OMSDAO\ComplementaryDAO.cs" />
+    <Compile Include="OMSDAO\ContactHistoryDAO.cs" />
+    <Compile Include="OMSDAO\CustomerAddressDAO.cs" />
+    <Compile Include="OMSDAO\CustomerDAO.cs" />
+    <Compile Include="OMSDAO\CustomerOrderDAO.cs" />
+    <Compile Include="OMSDAO\CustomerPhoneDAO.cs" />
+    <Compile Include="OMSDAO\DepartmentDAO.cs" />
+    <Compile Include="OMSDAO\MediaPlanDAO.cs" />
+    <Compile Include="OMSDAO\PlannerDAO.cs" />
+    <Compile Include="OMSDAO\PointDAO.cs" />
+    <Compile Include="OMSDAO\SaleChannelDAO.cs" />
+    <Compile Include="OMSDAO\MediaOnAirDAO.cs" />
+    <Compile Include="OMSDAO\DistrictDAO.cs" />
+    <Compile Include="OMSDAO\DriverDAO.cs" />
+    <Compile Include="OMSDAO\EmployeeDAO.cs" />
+    <Compile Include="OMSDAO\FullFillOrderDAO.cs" />
+    <Compile Include="OMSDAO\GenderDAO.cs" />
+    <Compile Include="OMSDAO\InventoryBalanceDAO.cs" />
+    <Compile Include="OMSDAO\InventoryDAO.cs" />
+    <Compile Include="OMSDAO\InventoryDetailDAO.cs" />
+    <Compile Include="OMSDAO\InventoryMovementDAO.cs" />
+    <Compile Include="OMSDAO\LandmarkDAO.cs" />
+    <Compile Include="OMSDAO\LogisticDAO.cs" />
+    <Compile Include="OMSDAO\LookupDAO.cs" />
+    <Compile Include="OMSDAO\MenuDAO.cs" />
+    <Compile Include="OMSDAO\MerchantDAO.cs" />
+    <Compile Include="OMSDAO\ModuleDAO.cs" />
+    <Compile Include="OMSDAO\OccupationDAO.cs" />
+    <Compile Include="OMSDAO\OrderActivityDAO.cs" />
+    <Compile Include="OMSDAO\OrderChangestatusDAO .cs" />
+    <Compile Include="OMSDAO\OrderDAO.cs" />
+    <Compile Include="OMSDAO\OrderdataDAO.cs" />
+    <Compile Include="OMSDAO\OrderDetailDAO.cs" />
+    <Compile Include="OMSDAO\OrderHistoryDAO.cs" />
+    <Compile Include="OMSDAO\PaymentTypeDAO.cs" />
+    <Compile Include="OMSDAO\PODAO.cs" />
+    <Compile Include="OMSDAO\ProductCategoryDAO.cs" />
+    <Compile Include="OMSDAO\ProductDAO.cs" />
+    <Compile Include="OMSDAO\ProductStockDAO.cs" />
+    <Compile Include="OMSDAO\DiscountBillDAO.cs" />
+    <Compile Include="OMSDAO\PromotionDAO.cs" />
+    <Compile Include="OMSDAO\DiscountBillDetailDAO.cs" />
+    <Compile Include="OMSDAO\PromotionDetailDAO.cs" />
+    <Compile Include="OMSDAO\PromotionImageDAO.cs" />
+    <Compile Include="OMSDAO\ProvinceDAO.cs" />
+    <Compile Include="OMSDAO\RecipeDAO.cs" />
+    <Compile Include="OMSDAO\ReportDAO.cs" />
+    <Compile Include="OMSDAO\RoleDAO.cs" />
+    <Compile Include="OMSDAO\RoutingDAO.cs" />
+    <Compile Include="OMSDAO\RoutingMappingDAO.cs" />
+    <Compile Include="OMSDAO\SubDistrictDAO.cs" />
+    <Compile Include="OMSDAO\SubExchangePromotionDetailDAO.cs" />
+    <Compile Include="OMSDAO\SubMainPromotonDetailIDAO.cs" />
+    <Compile Include="OMSDAO\SubPromotonDetailInfoDAO.cs" />
+    <Compile Include="OMSDAO\SupplierDAO.cs" />
+    <Compile Include="OMSDAO\Transport3PartyDAO.cs" />
+    <Compile Include="OMSDAO\VatDAO.cs" />
+    <Compile Include="OMSDAO\VechicleDAO.cs" />
+    <Compile Include="OMSDAO\VoucherDAO.cs" />
+    <Compile Include="OMSDAO\WorkflowDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Authens\AuthenicatedServices.cs" />
+    <Compile Include="Services\Facebook\FacebookService.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\dynamic.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\Formatter.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\Getters.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\JSON.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\JsonParser.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\JsonSerializer.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\Reflection.cs" />
+    <Compile Include="Services\LazadaOpe\FastJson\SafeDictionary.cs" />
+    <Compile Include="Services\LazadaOpe\ILazopClient.cs" />
+    <Compile Include="Services\LazadaOpe\ILazopLogger.cs" />
+    <Compile Include="Services\LazadaOpe\LazopClient.cs" />
+    <Compile Include="Services\LazadaOpe\LazopDictionary.cs" />
+    <Compile Include="Services\LazadaOpe\LazopException.cs" />
+    <Compile Include="Services\LazadaOpe\LazopLogger.cs" />
+    <Compile Include="Services\LazadaOpe\LazopRequest.cs" />
+    <Compile Include="Services\LazadaOpe\LazopResponse.cs" />
+    <Compile Include="Services\LazadaOpe\Util\Constants.cs" />
+    <Compile Include="Services\LazadaOpe\Util\FileItem.cs" />
+    <Compile Include="Services\LazadaOpe\Util\LazopUtils.cs" />
+    <Compile Include="Services\LazadaOpe\Util\UrlConstants.cs" />
+    <Compile Include="Services\LazadaOpe\Util\WebUtils.cs" />
+    <Compile Include="Services\Line\LineService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APPHELPPERS\APPHELPPERS.csproj">
+      <Project>{f8e2c1a1-5c32-4b86-8a80-e852b16e7f32}</Project>
+      <Name>APPHELPPERS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

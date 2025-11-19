@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--DB Local-->
+<!--<connection id="connectionString_Contractor">Server=doublep.dlinkddns.com;Database=OMS_ASTON;User Id=sa;Password=s@H@ppybirthd@y;</connection>-->
+
+<connection id="connectionString_Contractor">Server=doublep-cloud.servehttp.com;Database=OMS_ENTERPRISE_Retail_Dev;User Id=Joinsdb;Password=J01nSP0pD0ub!EP@P;</connection>
+
+
+<!--<connection id="connectionString_Contractor">Server=doublep.dlinkddns.com;Database=OMS_NET_DEV_PRO;User Id=sa;Password=s@H@ppybirthd@y;</connection>-->
+
+  <!--connectionString = String.Format("server={0};port={1};user id={2}; password={3}; database={4}; SslMode={5}", server, port, user, password, database, sslM);-->
+
+<!--DBCenter-->
+<!--<connection id="connectionString_Contractor">Server=172.20.8.2;Database=LH2;User Id=sa;Password=s@123;</connection>-->
+
+
+<!--ConnectDB Yuth-->
+<!--<connection id="connectionString_Contractor">Server=HOLTVL10105055;Database=TKI_SOLUTION_DB;Trusted_Connection=True</connection>-->

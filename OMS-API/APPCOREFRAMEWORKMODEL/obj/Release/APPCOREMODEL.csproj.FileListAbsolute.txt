@@ -1,0 +1,79 @@
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPCOREMODEL.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\bin\Release\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.csproj.CopyComplete
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORKMODEL\obj\Release\APPCOREMODEL.pdb

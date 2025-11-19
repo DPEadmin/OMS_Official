@@ -1,0 +1,1478 @@
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Owin.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+F:\Loxbit\Api\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Owin.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\LhardwareAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Owin.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Owin.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\TMS_API\TMS_API_Ver02\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\OMS_API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\Owin.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Owin.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+C:\Users\DoubleP\Documents\works\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\OMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMSAPI\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\DOMS_API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Owin.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\DOMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Owin.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\Angular_Source\OMS_ProJect_V0.1\DOMS_API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Owin.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+F:\Document_TSR\Code\API_TSR20100318_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Owin.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+F:\Document_MK\Code_MK\MK_API_20190401_v1\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Owin.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+F:\Document_MK\Code_MK\SaleOrderSystem_API_V2\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Owin.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+E:\Document_OMSOneApp\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Owin.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+E:\Document_OMSOneApp\Code_app\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Owin.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\PP_Project\Document_OneOrder\Code\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Owin.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\Double P\Main Project\OMS\Api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\git\oms-api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+D:\git\oms-api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\git\oms-api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\git\oms-api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+D:\git\oms-api\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\git\oms-api\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Owin.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\git\oms-api\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\git\oms-api\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\git\oms-api\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csprojAssemblyReference.cache
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Owin.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+C:\Users\User\Documents\OMS\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\ApplicationInsights.config
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\csc.exe
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\System.Collections.Immutable.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\System.Reflection.Metadata.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\vbc.exe
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\roslyn\VBCSCompiler.exe.config
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll.config
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPCOREVIEW.pdb
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPCOREMODEL.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPHELPPERS.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Agent.Intercept.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Web.Infrastructure.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Owin.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Cors.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Helpers.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Mvc.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Razor.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPCOREMODEL.pdb
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\APPHELPPERS.pdb
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.DependencyCollector.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.Web.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.AI.WindowsServer.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.ApplicationInsights.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Cors.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.Cookies.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Microsoft.Owin.Security.OAuth.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\Newtonsoft.Json.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Razor.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Deployment.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Webpages.Razor.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Helpers.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Mvc.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Net.Http.Formatting.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\bin\System.Web.Http.WebHost.xml
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.AssemblyReference.cache
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CoreCompileInputs.cache
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.csproj.CopyComplete
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.dll
+D:\oms khmar\OMS-API\APPCOREFRAMEWORK\obj\Debug\APPCOREVIEW.pdb
