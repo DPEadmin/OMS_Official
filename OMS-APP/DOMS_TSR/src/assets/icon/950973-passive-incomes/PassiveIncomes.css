@@ -1,0 +1,66 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/06/2018 09:08
+  	*/
+
+@font-face {
+  font-family: "PassiveIncomes";
+  src: url("./PassiveIncomes.eot");
+  src: url("./PassiveIncomes.eot?#iefix") format("embedded-opentype"),
+       url("./PassiveIncomes.woff") format("woff"),
+       url("./PassiveIncomes.ttf") format("truetype"),
+       url("./PassiveIncomes.svg#PassiveIncomes") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "PassiveIncomes";
+    src: url("./PassiveIncomes.svg#PassiveIncomes") format("svg");
+  }
+}
+
+[class^="passiveicomes-"]:before, [class*=" passiveicomes-"]:before,
+[class^="passiveicomes-"]:after, [class*=" passiveicomes-"]:after {   
+  font-family: PassiveIncomes;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   font-size: inherit;
+}
+
+.passiveicomes-001-video-player:before { content: "\f100"; }
+.passiveicomes-002-vending-machine:before { content: "\f101"; }
+.passiveicomes-003-teacher:before { content: "\f102"; }
+.passiveicomes-004-sponsor:before { content: "\f103"; }
+.passiveicomes-005-weather:before { content: "\f104"; }
+.passiveicomes-006-slot-machine:before { content: "\f105"; }
+.passiveicomes-007-publicity:before { content: "\f106"; }
+.passiveicomes-008-sell:before { content: "\f107"; }
+.passiveicomes-009-review:before { content: "\f108"; }
+.passiveicomes-010-rental:before { content: "\f109"; }
+.passiveicomes-011-graphics:before { content: "\f10a"; }
+.passiveicomes-012-organizer:before { content: "\f10b"; }
+.passiveicomes-013-online-shop:before { content: "\f10c"; }
+.passiveicomes-014-elearning:before { content: "\f10d"; }
+.passiveicomes-015-marketing:before { content: "\f10e"; }
+.passiveicomes-016-mobile-app:before { content: "\f10f"; }
+.passiveicomes-017-investment:before { content: "\f110"; }
+.passiveicomes-018-banking:before { content: "\f111"; }
+.passiveicomes-019-intellectual-property:before { content: "\f112"; }
+.passiveicomes-020-income:before { content: "\f113"; }
+.passiveicomes-021-conection:before { content: "\f114"; }
+.passiveicomes-022-incomes:before { content: "\f115"; }
+.passiveicomes-023-license:before { content: "\f116"; }
+.passiveicomes-024-content:before { content: "\f117"; }
+.passiveicomes-025-callcenter:before { content: "\f118"; }
+.passiveicomes-026-networking:before { content: "\f119"; }
+.passiveicomes-027-bond:before { content: "\f11a"; }
+.passiveicomes-028-blogger:before { content: "\f11b"; }
+.passiveicomes-029-calendar:before { content: "\f11c"; }
+.passiveicomes-030-affiliate:before { content: "\f11d"; }

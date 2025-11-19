@@ -1,0 +1,56 @@
+pipeline {
+    agent { label 'WindowsAgent' }
+    
+stages {
+	stage ('Checkout'){
+		steps{
+                echo 'Checkout ...'	
+		checkout scm
+	    }
+	}
+	stage('Build') {
+            steps {
+                echo 'Building..'
+		        bat "\"${tool 'msbuild'}\" DOMS_TSR.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing....'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                bat "\"${tool 'msbuild'}\" DOMS_TSR.sln /p:DeployOnBuild=True /p:PublishProfile=CustomProfile"
+            }
+        }
+	stage ('Archive'){
+		steps{
+		archive 'DOMS_TSR/assets/**'
+		archive 'DOMS_TSR/bin/**'
+		archive 'DOMS_TSR/Content/**'
+		archive 'DOMS_TSR/fonts/**'
+		archive 'DOMS_TSR/Image/**'
+		archive 'DOMS_TSR/Scripts/**'
+		archive 'DOMS_TSR/src/**'
+		archive 'DOMS_TSR/Styles/**'
+		archive 'DOMS_TSR/Uploadfile/**'
+		archive 'DOMS_TSR/About.aspx'
+		archive 'DOMS_TSR/Bundle.config'
+		archive 'DOMS_TSR/Contact.aspx'
+		archive 'DOMS_TSR/Default.aspx'
+		archive 'DOMS_TSR/DefaultAston.aspx'
+		archive 'DOMS_TSR/favicon.ico'
+		archive 'DOMS_TSR/Global.asax'
+		archive 'DOMS_TSR/homePin.png'
+		archive 'DOMS_TSR/Site.Master'
+		archive 'DOMS_TSR/Site.Mobile.Master'
+		archive 'DOMS_TSR/testmail.aspx'
+		archive 'DOMS_TSR/ViewSwitcher.ascx'
+		archive 'DOMS_TSR/Web.config'
+		archive 'DOMS_TSR/doc/**'
+	        }
+        }
+  }
+}

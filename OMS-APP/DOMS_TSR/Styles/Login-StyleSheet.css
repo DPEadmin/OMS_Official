@@ -1,0 +1,154 @@
+﻿body {
+    background: url(../Image/banner_bg.jpg) no-repeat fixed center center;
+    background-size: cover;
+    font-family: Tahoma;
+    
+
+}
+
+
+.header {
+    width: auto;
+    height: 80px;
+    background: #227DA2;
+    display: block;
+}
+
+/*.logo {
+    width: auto;
+    height: 80px;
+    background: url(../Image/logo1.png) no-repeat;
+    margin: 30px auto;
+}*/
+
+.login-block {
+    background-position: 0% 0%;
+    width: 465px;
+    height: 320px;
+    padding: 20px;
+    background-color: rgba(256, 256, 256, 0.9);
+    border-radius: 5px;
+    border-top: 5px solid #71C1B3;
+    margin: 100px auto;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Tahoma;
+    padding: 0 20px 0 10px;
+    outline: none;
+}
+
+/*.login-block input#username {
+    background: #fff url(../Image/user.png) 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+    background: #fff url(../Image/user.png) 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url(../Image/pass.png) 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url(../Image/pass.png) 20px bottom no-repeat;
+    background-size: 16px 80px;
+}*/
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #85b200;
+}
+
+.Button-login {
+    width: 100%;
+    height: 40px;
+    background: #71C1B3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #cbd572;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Tahoma;
+    outline: none;
+    cursor: pointer;
+}
+
+    .Button-login:hover {
+        background: #B3DCC0;
+    }
+
+.textbox-username  {
+    background: #fff url(../Image/user.png) 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.textbox-username:focus {
+    background: #fff url(../Image/user.png) 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.textbox-password  {
+    background: #fff url(../Image/pass.png) 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.textbox-password:focus {
+    background: #fff url(../Image/pass.png) 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #85b200;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #cbd572;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Tahoma;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #cbd572;
+}
+
+.footer-login {
+    font-size: 12px;
+    color: #fff;
+    background: #227DA2;
+    padding: 8px 0;
+    font-weight: bold;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}

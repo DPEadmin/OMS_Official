@@ -1,0 +1,498 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/src/MasterPage/Web.master" AutoEventWireup="true" CodeBehind="PO.aspx.cs" Inherits="DOMS_TSR.src.Purchasing.PO" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<asp:Content ID="head" ContentPlaceHolderID="HeaderContent" runat="server">
+<script type="text/javascript">
+    function DeleteConfirm() {
+        var grid = document.getElementById("<%= gvPO.ClientID %>");
+
+        var cell;
+        var sum = 0;
+        if (grid.rows.length > 0) {
+            //alert("length=" + grid.rows.length);
+            //loop starts from 1. rows[0] points to the header.
+            for (i = 1; i < grid.rows.length; i++) {
+                //get the reference of first column
+                cell = grid.rows[i].cells[0];
+                // alert("cell=" + cell);
+                //alert("cell childNodes.length=" + cell.childNodes.length);
+                //loop according to the number of childNodes in the cell
+                for (j = 0; j < cell.childNodes.length; j++) {
+                    //alert("type=" + cell.childNodes[j].type);
+                    //alert("checked=" + cell.childNodes[j].checked);
+                    //if childNode type is CheckBox
+                    if (cell.childNodes[j].type == "checkbox") {
+                        if (cell.childNodes[j].checked == true) {
+                            //assign the status of the Select All checkbox to the cell checkbox within the grid
+                            //cell.childNodes[j].checked = document.getElementById(id).checked;
+                            sum++;
+                            //alert("checked=" + cell.childNodes[j].checked);
+                        }
+                    }
+                }
+            }
+        }
+
+        //  alert("sum=" + sum);
+
+        if (sum == 0) {
+
+            alert("กรุณาเลือกรายการที่จะลบ");
+
+            return false;
+
+        } else {
+
+                //var MsgDelete = document.getElementById("<%=hidMsgDel.ClientID%>").value;
+                var MsgDelete = "คุณแน่ใจที่จะลบข้อมูลนี้ ?";
+
+                if (confirm(MsgDelete)) {
+                    //alert("c");
+                    document.getElementById("<%=hidFlagDel.ClientID%>").value = "TRUE";
+
+                    return true;
+
+                } else {
+
+                    document.getElementById("<%=hidFlagDel.ClientID%>").value = "FALSE";
+
+                return false;
+            }
+        }
+    }
+</script>
+</asp:Content>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
+     </asp:ScriptManager>
+
+<div class="page-body">
+  <div class="col-sm-12">
+      <!-- Basic Form Inputs card start -->
+      <div class="card">
+          <div class="card-header">
+            <div class="sub-title" >ค้นหาข้อมูลใบสั่งซื้อ</div>
+            </div>
+            <div class="card-block">
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+               <ContentTemplate>
+
+                 
+            <div class="form-group row">
+            <input type="hidden" id="hidIdList" runat="server" />
+            <input type="hidden" id="hidFlagInsert" runat="server" />
+            <asp:HiddenField ID="hidFlagDel" runat="server" />
+            <input type="hidden" id="hidaction" runat="server" />
+            <asp:HiddenField ID="hidMsgDel" runat="server" />   
+            <asp:HiddenField ID="hidSupplierIdIns" runat="server" />
+            <asp:HiddenField ID="hidEmpCode" runat="server" />
+            <asp:HiddenField ID="hidEmpRole" runat="server" /> 
+              <label class="col-sm-2 col-form-label">เลขที่ใบสั่งซื้อ</label>
+              <div class="col-sm-3">
+                  <asp:TextBox  ID="txtSearchPOCode" class="form-control" runat="server"></asp:TextBox>
+                  </div>
+              <label class="col-sm-1 col-form-label"></label>
+              <label class="col-sm-2 col-form-label">ผู้ขาย</label>
+              <div class="col-sm-3">
+                  <asp:DropDownList ID="ddlSearchSupplier" runat="server" class="form-control"></asp:DropDownList> 
+              </div>
+
+                <label class="col-sm-2 col-form-label">วันที่สร้าง</label>
+                 <div class="col-sm-3">
+                    <div class="input-group mb-0">
+
+                        <asp:TextBox ID="txtSearchPODateFrom" class="form-control" placeholder="ตั้งแต่" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+                        <ajaxToolkit:CalendarExtender ID="carSearchStartDateFrom" runat="server" TargetControlID="txtSearchPODateFrom" PopupButtonID="Image1" Format="dd/MM/yyyy"></ajaxToolkit:CalendarExtender>
+
+                        <asp:TextBox ID="txtSearchPODateTo" class="form-control" placeholder="ถึง" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+                        <ajaxToolkit:CalendarExtender ID="carSearchStartDateTo" runat="server" TargetControlID="txtSearchPODateTo" PopupButtonID="Image1" Format="dd/MM/yyyy"></ajaxToolkit:CalendarExtender>
+
+                    </div>
+
+                 </div>
+
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-2 col-form-label">คลังสินค้า</label>
+                <div class="col-sm-3">
+                     <asp:DropDownList ID="ddlSearchInventory" runat="server" class="form-control"></asp:DropDownList>
+                </div>
+
+                <label class="col-sm-2 col-form-label">สถานะ</label>
+                <div class="col-sm-3">
+                     <asp:DropDownList ID="ddlSearchWorkflowStatus" runat="server" class="form-control"></asp:DropDownList>
+                    </div>
+
+              <label class="col-sm-1 col-form-label"></label>
+              <label class="col-sm-2 col-form-label">สร้างโดย</label>
+              <div class="col-sm-3">
+                  <asp:TextBox  ID="txtSearchCreateByNameTH" class="form-control" runat="server"></asp:TextBox>
+    
+               </div>
+             </div>
+
+
+
+              <div class="text-center m-t-20 col-sm-12">
+                  <asp:Button ID="btnSearch" Text="ค้นหา" CssClass="button-pri button-accept m-r-10" OnClick="btnSearch_Click" runat="server"/>
+                  <asp:Button ID="btnClearSearch" Text="ล้าง" CssClass="button-pri button-cancel" OnClick="btnClearSearch_Click" runat="server" />   
+              </div>        
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            </div>
+      </div>
+
+      <div class="card">
+         <div class="card-block">
+             <div class="m-b-10">
+                    <!--Start modal Add Product-->
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+               <ContentTemplate>
+
+                 <asp:LinkButton id="btnAddEmployee" class="button-action button-add m-r-5" 
+                       OnClick="btnAddSupplier_Click" runat ="server"><i class="fa fa-plus m-r-5 "></i>เพิ่มใบสั่งซื้อ</asp:LinkButton>
+
+                 <asp:LinkButton ID="btnDelete"  OnClick="btnDelete_Click" OnClientClick="return DeleteConfirm();"    
+                      class="button-action button-delete m-r-5"    runat="server" ><i class="fa fa-minus m-r-5"></i>ลบ</asp:LinkButton>
+
+                 <asp:LinkButton ID="btnShowPODetail" runat="server" class="button-action button-add m-r-5"><i class="fa fa-minus m-r-5"></i>รายละเอียดสินค้า PO</asp:LinkButton>
+                
+               </ContentTemplate>
+            </asp:UpdatePanel>
+             </div>
+
+             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                  <div class="dt-responsive table-responsive">
+                      <asp:GridView ID="gvPO" runat="server" AutoGenerateColumns="False" CssClass="table-p-stand" OnRowCommand="gvPO_RowCommand"
+                            TabIndex="0" Width="100%" CellSpacing="0" OnRowDataBound="gvPO_RowDataBound"
+                            ShowHeaderWhenEmpty="true">
+
+                            <Columns>
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="5%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <center>
+                                            <asp:CheckBox ID="chPOAll" OnCheckedChanged="chkPOAll_Change" AutoPostBack="true" runat="server"  />
+                                        </center>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="chkPO" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                 <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">วันที่สร้าง</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblPODateDate" Text='<%# Eval("PODate", "{0:D}")%>'  runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+
+                                  <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="250px" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">เลขที่ใบสั่งซื้อ</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <%# GetLink(DataBinder.Eval(Container.DataItem, "POCode")) %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>                               
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">ชื่อผู้ขาย</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblSupplierName" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierName")%>' runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">คลังสินค้า</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblInventoryName" Text='<%# DataBinder.Eval(Container.DataItem, "InventoryName")%>' runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="right" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">จำนวนเงิน</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblPrice" Text='<%# DataBinder.Eval(Container.DataItem, "Price", "{0:n}")%>' runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">สถานะใบสั่งซื้อ</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblStatus" Text='<%# DataBinder.Eval(Container.DataItem, "StatusName")%>' runat="server" />                          
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">สร้างโดย</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblCreateBy" Text='<%# DataBinder.Eval(Container.DataItem, "CreateByNameTH")%>' runat="server" />                          
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">วันที่แก้ไขล่าสุด</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblUpdateDate" Text='<%# DataBinder.Eval(Container.DataItem, "UpdateDate", "{0:D}")%>' runat="server" />                          
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="15%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail">
+                                    <HeaderTemplate>
+                                        <div align="center">แก้ไขโดย</div>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                       <asp:Label ID="lblUpdateBy" Text='<%# DataBinder.Eval(Container.DataItem, "UpdateByNameTH")%>' runat="server" />                          
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="5%" HeaderStyle-CssClass="TDHead" ItemStyle-CssClass="TDDetail btn-action" >
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate  >
+                                          <asp:LinkButton ID="btnEdit" runat="Server" CommandName="ShowSupplier"
+                                          class="button-active button-submit m-r-10  " style="float: none; border-radius: 5px;     padding: 3px 10px;     padding-top: 5px;"
+                                          CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"> <span class="icofont icofont-ui-edit f-16"></span></asp:LinkButton>
+                                        
+
+                                        <asp:HiddenField runat="server" ID="hidPOId" Value='<%# DataBinder.Eval(Container.DataItem, "POId")%>' />
+                                        <asp:HiddenField runat="server" ID="hidPOCode" Value='<%# DataBinder.Eval(Container.DataItem, "POCode")%>' />
+                                        <asp:HiddenField runat="server" ID="hidWFStatusCode" Value='<%# DataBinder.Eval(Container.DataItem, "WFStatusCode")%>' />
+                                  
+                                        <br />
+                                        <asp:Label ID="lblmsg" runat="server" CssClass="font12Red"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+
+                            <EmptyDataTemplate>
+                                <center>
+                                    <asp:Label ID="lblDataEmpty" class="fontBlack" runat="server" Text="Data not Found"></asp:Label>
+                                </center>
+                            </EmptyDataTemplate>
+                        </asp:GridView>
+
+                        <br />
+                        <br />
+                        <%-- PAGING CAMPAIGN --%>
+                        <table width="99%" cellpadding="1" cellspacing="1" bgcolor="#ffffff">
+                            <tr height="30" bgcolor="#ffffff">
+                                <td width="100%" align="right" valign="top">
+                                    <table border="0" cellpadding="0" cellspacing="0" style="vertical-align: middle;">
+                                        <tr>
+                                            <td style="font-size: 8.5pt;">
+                                                <%--Rows per page 
+                                                            <asp:DropDownList ID="ddlRows" runat="server" AutoPostBack="True" 
+                                                                    onselectedindexchanged="ddlRows_SelectedIndexChanged">
+                                                                <asp:ListItem Selected="True">10</asp:ListItem>
+                                                                <asp:ListItem>20</asp:ListItem>
+                                                                <asp:ListItem>30</asp:ListItem>
+                                                                <asp:ListItem>40</asp:ListItem>
+                                                                <asp:ListItem>50</asp:ListItem>
+                                                            </asp:DropDownList>--%>
+                                            </td>
+                                            <td style="width: 12px"></td>
+                                            <td>
+                                                <asp:Button ID="lnkbtnFirst" CssClass="Button" ToolTip="First" CommandName="First"
+                                                    Text="<<" runat="server" OnCommand="GetPageIndex"></asp:Button>
+                                            </td>
+                                            <td style="width: 6px"></td>
+                                            <td>
+                                                <asp:Button ID="lnkbtnPre" CssClass="Button" ToolTip="Previous" CommandName="Previous"
+                                                    Text="<" runat="server" OnCommand="GetPageIndex"></asp:Button>
+                                            </td>
+                                            <td style="width: 6px"></td>
+                                            <td style="font-size: 8.5pt;">Page
+                                                                                    <asp:DropDownList ID="ddlPage" CssClass="textbox" runat="server" AutoPostBack="True"
+                                                                                      OnSelectedIndexChanged="ddlPage_SelectedIndexChanged" >
+                                                                                    </asp:DropDownList>
+                                                of
+                                                                                    <asp:Label ID="lblTotalPages" CssClass="fontBlack" runat="server"></asp:Label>
+                                            </td>
+                                            <td style="width: 6px"></td>
+                                            <td>
+                                                <asp:Button ID="lnkbtnNext" CssClass="Button" ToolTip="Next" runat="server" CommandName="Next" Text=">" OnCommand="GetPageIndex"></asp:Button>
+                                            </td>
+                                            <td style="width: 6px"></td>
+                                            <td>
+                                                <asp:Button ID="lnkbtnLast" CssClass="Button" ToolTip="Last" runat="server" CommandName="Last"
+                                                    Text=">>" OnCommand="GetPageIndex"></asp:Button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                  </div>
+            </div>
+          </div>
+          <!-- Basic Form Inputs card end -->
+        </div>
+      </div>
+      <!-- Basic Form Inputs card end -->
+    </div>
+  </div>
+</div>
+          
+    </ContentTemplate>
+</asp:UpdatePanel>
+
+             <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true" id="modal-addsupplier">
+                    <div class="modal-dialog modal-lg" style="max-width:1300px;">
+        
+                      <div class="modal-content">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="modal-header modal-header2 ">
+                              <div class="col-sm-11">
+                                <div id="exampleModalLongTitle">เพิ่มผู้ผลิต
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="card-block">
+
+                                  <asp:UpdatePanel ID="UpModal" runat="server">
+                        <ContentTemplate>
+               
+                                <div class="form-group row">
+      
+                                  <label class="col-sm-2 col-form-label">รหัสผู้ผลิต</label>
+                                  <div class="col-sm-3">
+                                      <asp:TextBox ID="txtSupplierCodeIns" runat="server" class="form-control"></asp:TextBox>                                   
+                                      <asp:Label ID="lblSupplierCodeIns" runat="server" CssClass="validation"></asp:Label>                              
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label">ชื่อผู้ผลิต</label>
+                                  <div class="col-sm-3">
+                                           <asp:TextBox ID="txtSupplierNameIns" runat="server" class="form-control"></asp:TextBox> 
+                                      <asp:Label ID="lblSupplierNameIns" runat="server" CssClass="validation"></asp:Label>                   
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-2 col-form-label">เลขประจำตัวผู้เสียภาษี</label>
+                                  <div class="col-sm-3">                                                                     
+                                        <asp:TextBox ID="txtTaxIdNoIns" runat="server" class="form-control"></asp:TextBox> 
+                                        <asp:Label ID="lblTaxIdNoIns" runat="server" CssClass="validation"></asp:Label>     
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label">ที่อยู่</label>
+                                  <div class="col-sm-3">
+                                  <asp:TextBox ID="txtAddressIns" runat="server" class="form-control"></asp:TextBox>
+                                  <asp:Label ID="lblAddressIns" runat="server" CssClass="validation"></asp:Label>                                
+                                  </div>
+                                  </div> 
+                                <div class="form-group row">      
+                                  <label class="col-sm-2 col-form-label">จังหวัด</label>
+                                  <div class="col-sm-3">
+                                      <asp:DropDownList ID="ddlProvinceIns" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged" AutoPostBack="true" runat="server" class="form-control"></asp:DropDownList>                                   
+                                      <asp:Label ID="lblProvinceIns" runat="server" CssClass="validation"></asp:Label>                              
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label">เขต/อำเภอ</label>
+                                  <div class="col-sm-3">
+                                      <asp:DropDownList ID="ddlDistrictIns" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" AutoPostBack="true" runat="server" class="form-control"></asp:DropDownList>
+                                      <asp:Label ID="lblDistrictIns" runat="server" CssClass="validation"></asp:Label>                   
+                                  </div>
+                                </div>
+                            <div class="form-group row">      
+                                  <label class="col-sm-2 col-form-label">แขวง/ตำบล</label>
+                                  <div class="col-sm-3">
+                                      <asp:DropDownList ID="ddlSubDistrictIns" runat="server" cssclass="form-control"></asp:DropDownList>                                   
+                                      <asp:Label ID="lblSubDistrictIns" runat="server" CssClass="validation"></asp:Label>                              
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label">รหัสไปรษณีย์</label>
+                                  <div class="col-sm-3">
+                                      <asp:TextBox id="txtZipNoIns" class="form-control" runat="server"></asp:TextBox>
+                                      <asp:Label ID="lblZipNoIns" runat="server" CssClass="validation"></asp:Label>                   
+                                  </div>
+                                </div>
+                            <div class="form-group row">      
+                                  <label class="col-sm-2 col-form-label">แฟกซ์</label>
+                                  <div class="col-sm-3">
+                                      <asp:TextBox id="txtFaxNoIns" class="form-control" runat="server"></asp:TextBox>                                   
+                                      <asp:Label ID="lblFaxNoIns" runat="server" CssClass="validation"></asp:Label>                              
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label">อีเมล์</label>
+                                  <div class="col-sm-3">
+                                      <asp:TextBox id="txtEmailIns" class="form-control" runat="server"></asp:TextBox>
+                                      <asp:Label ID="lblEmailIns" runat="server" CssClass="validation"></asp:Label>                   
+                                  </div>
+                                </div>
+                            <div class="form-group row">      
+                                  <label class="col-sm-2 col-form-label">สถานะ</label>
+                                  <div class="col-sm-3">
+                                      <asp:DropDownList ID="ddlStatusIns" class="form-control" runat="server">
+                                        <asp:ListItem Enabled="true" Text="Please select status" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="Active" Value="Y"></asp:ListItem>
+                                        <asp:ListItem Text="Inactive" Value="N"></asp:ListItem>
+                                      </asp:DropDownList>                                   
+                                      <asp:Label ID="lblStatusIns" runat="server" CssClass="validation"></asp:Label>                              
+                                  </div>
+                                  <label class="col-sm-1 col-form-label"></label>
+                                  <label class="col-sm-2 col-form-label"></label>
+                                  <div class="col-sm-3">
+                                      <asp:Label ID="Label2" runat="server" CssClass="validation"></asp:Label>                   
+                                  </div>
+                                </div>
+                                  </ContentTemplate>
+                                  </asp:UpdatePanel>
+                                  
+                                
+                                  <label class="col-sm-2 col-form-label"></label>
+
+                        <div class="text-center m-t-20 center">
+                          
+                                      <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click"
+                                      class="btn btn-round  btn-sm btn-primary waves-effect waves-light m-r-10 btn-colorprimary"
+                                      runat="server" />
+                                     <asp:Button ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" 
+                                      class="btn btn-round  btn-sm btn-primary waves-effect waves-light m-r-10 btn-colorprimary"
+                                      runat="server" />
+
+                                </div>
+
+                                  
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        </div>
+      </div>
+        </div>
+         </div>
+      </div>
+
+  </div>
+</div>
+
+</asp:Content>

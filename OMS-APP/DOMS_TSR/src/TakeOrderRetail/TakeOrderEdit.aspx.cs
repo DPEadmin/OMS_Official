@@ -1,0 +1,18428 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Data;
+using System.Text;
+using System.Collections.Specialized;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using SALEORDER.DTO;
+using Newtonsoft.Json;
+using SALEORDER.Common;
+using System.Threading;
+using System.IO;
+using System.Web.Services;
+using System.Text.RegularExpressions;
+using System.Web.UI.HtmlControls;
+using Microsoft.AspNet.SignalR;
+using System.Net.Http;
+using System.Web.Http;
+using System.Threading.Tasks;
+using System.Globalization;
+using DOMS_TSR.Classes.DTO;
+
+namespace DOMS_TSR.src.TakeOrderRetail
+{
+    
+    public partial class TakeOrderEdit : System.Web.UI.Page
+    {
+        string Codelist = "";
+        string EditFlag = "";
+        protected static int currentPageNumber;
+        protected static int currentPageNumberProduct;
+
+        protected static int PAGE_SIZE = Convert.ToInt32(ConfigurationManager.AppSettings["PAGE_SIZE"]);
+        protected static string APIUrl = ConfigurationManager.AppSettings["APIUrl"];
+        decimal? total = 0;
+        string CustomerCode = "";
+        string OrderCode = "";
+        string RefCode = "";
+        string CustomerPhone = "";
+        string APIpath = "";
+        string EmpCode = "";
+        string ChannelCode = "";
+        string CallinDate = "";
+        string CallinTime = "";
+        string TimeStartmedia = "";
+        string TimeEndmedia = "";
+        string MediaplandateStart = "";
+        string MediaplandateEnd = "";
+        string MediaPhone = "";
+        string MerchantMapCode = "";
+        string MerchantMapName = "";
+
+        protected List<OrderData> L_orderdata1
+        {
+            get
+            {
+                if (Session["l_orderdata1"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdata1"];
+                }
+            }
+            set
+            {
+                Session["l_orderdata1"] = value;
+            }
+        }
+        protected List<OrderData> L_orderdataforDelete
+        {
+            get
+            {
+                if (Session["l_orderdatafordelete"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdatafordelete"];
+                }
+            }
+            set
+            {
+                Session["l_orderdatafordelete"] = value;
+            }
+        }
+        protected List<OrderData> L_orderdata2
+        {
+            get
+            {
+                if (Session["l_orderdata2"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdata2"];
+                }
+            }
+            set
+            {
+                Session["l_orderdata2"] = value;
+            }
+        }
+
+        protected List<OrderData> L_orderdata3
+        {
+            get
+            {
+                if (Session["l_orderdata3"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdata3"];
+                }
+            }
+            set
+            {
+                Session["l_orderdata3"] = value;
+            }
+        }
+        protected List<OrderData> L_orderdataView
+        {
+            get
+            {
+                if (Session["l_orderdataview"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdataview"];
+                }
+            }
+            set
+            {
+                Session["l_orderdataview"] = value;
+            }
+        }
+        protected List<OrderData> L_orderdataViewMedia
+        {
+            get
+            {
+                if (Session["l_orderdataviewmedia"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdataviewmedia"];
+                }
+            }
+            set
+            {
+                Session["l_orderdataviewmedia"] = value;
+            }
+        }
+        protected List<OrderData> L_orderdataT
+        {
+            get
+            {
+                if (Session["l_orderdatat"] == null)
+                {
+                    return new List<OrderData>();
+                }
+                else
+                {
+                    return (List<OrderData>)Session["l_orderdatat"];
+                }
+            }
+            set
+            {
+                Session["l_orderdatat"] = value;
+            }
+        }
+        protected List<transportdataInfo> L_transportdata1
+        {
+            get
+            {
+                if (Session["L_transportdata1"] == null)
+                {
+                    return new List<transportdataInfo>();
+                }
+                else
+                {
+                    return (List<transportdataInfo>)Session["L_transportdata1"];
+                }
+            }
+            set
+            {
+                Session["L_transportdata1"] = value;
+            }
+        }
+        protected List<transportdataInfo> L_transportdata2
+        {
+            get
+            {
+                if (Session["L_transportdata2"] == null)
+                {
+                    return new List<transportdataInfo>();
+                }
+                else
+                {
+                    return (List<transportdataInfo>)Session["L_transportdata2"];
+                }
+            }
+            set
+            {
+                Session["L_transportdata2"] = value;
+            }
+        }
+        protected List<transportdataInfo> L_transportdata3
+        {
+            get
+            {
+                if (Session["L_transportdata3"] == null)
+                {
+                    return new List<transportdataInfo>();
+                }
+                else
+                {
+                    return (List<transportdataInfo>)Session["L_transportdata3"];
+                }
+            }
+            set
+            {
+                Session["L_transportdata3"] = value;
+            }
+        }
+        protected List<paymentdataInfo> L_paymentdata1
+        {
+            get
+            {
+                if (Session["L_paymentdata1"] == null)
+                {
+                    return new List<paymentdataInfo>();
+                }
+                else
+                {
+                    return (List<paymentdataInfo>)Session["L_paymentdata1"];
+                }
+            }
+            set
+            {
+                Session["L_paymentdata1"] = value;
+            }
+        }
+
+
+
+        protected List<paymentdataInfo> L_paymentdata2
+        {
+            get
+            {
+                if (Session["L_paymentdata2"] == null)
+                {
+                    return new List<paymentdataInfo>();
+                }
+                else
+                {
+                    return (List<paymentdataInfo>)Session["L_paymentdata2"];
+                }
+            }
+            set
+            {
+                Session["L_paymentdata2"] = value;
+            }
+        }
+
+        protected List<paymentdataInfo> L_paymentdata3
+        {
+            get
+            {
+                if (Session["L_paymentdata3"] == null)
+                {
+                    return new List<paymentdataInfo>();
+                }
+                else
+                {
+                    return (List<paymentdataInfo>)Session["L_paymentdata3"];
+                }
+            }
+            set
+            {
+                Session["L_paymentdata3"] = value;
+            }
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            CustomerCode = (Request.QueryString["CustomerCode"] != null) ? Request.QueryString["CustomerCode"].ToString() : "";
+            OrderCode = (Request.QueryString["OrderCode"] != null) ? Request.QueryString["OrderCode"].ToString() : "";
+            CustomerPhone = (Request.QueryString["CustomerPhone"] != null) ? Request.QueryString["CustomerPhone"].ToString() : "";
+            ChannelCode = (Request.QueryString["ChannelCode"] != null) ? Request.QueryString["ChannelCode"].ToString() : "";
+            CallinDate = (Request.QueryString["CallinDate"] != null) ? Request.QueryString["CallinDate"].ToString() : "";
+            CallinTime = (Request.QueryString["CallinTime"] != null) ? Request.QueryString["CallinTime"].ToString() : "";
+            MerchantMapCode = (Request.QueryString["MerchantSession"] != null) ? Request.QueryString["MerchantSession"].ToString() : "";
+            MerchantMapName = (Request.QueryString["MerchantSessionName"] != null) ? Request.QueryString["MerchantSessionName"].ToString() : "";
+            Session["CustomerCode"] = CustomerCode;
+
+            if (!Page.IsPostBack)
+            {
+                currentPageNumber = 1;
+                currentPageNumberProduct = 1;
+
+                
+
+                EmpInfo empInfo = new EmpInfo();
+
+                empInfo = (EmpInfo)Session["EmpInfo"];
+
+                if (empInfo != null)
+                {
+                    
+                    hidEmpCode.Value = empInfo.EmpCode;
+                }
+                else
+                {
+                    Response.Redirect("..\\..\\Default.aspx?flaglogin=_EMPCODENULL");
+                }
+                String flaginvvisible = empInfo.CompanyCode;
+                btntab2.Visible = false;
+                btntab3.Visible = false;
+                
+
+                btnSelectSet.Visible = false;
+                btnSelectSetMedia.Visible = false;
+                BindDdlInventory();
+                BindgvProductInventoryFromLoad();
+                BindDdlContactStatus();
+                BindDdlContactResult();
+
+                BindDDLYear_Expire();
+                BindDDLMonth_Expire();
+                BindDDLCardType_Credit();
+                BindDDLBank_Credit();
+                BinkDDLInstallment_Credit();
+                BindDDLBank_Transfer();
+                BindDDLBankBranch();
+                BindDDLBankOwener();
+                BindDDLAccountType();
+
+                btntab1_Click(null, null);
+
+                bindDDlTitle_Ins();
+                bindDdlSearchGender();
+                bindDdlSearchMaritalStatus();
+                bindDdlSearchOccupation();
+                
+
+                L_orderdata1 = new List<OrderData>();
+                L_orderdata2 = new List<OrderData>();
+                L_orderdata3 = new List<OrderData>();
+
+                L_transportdata1 = new List<transportdataInfo>();
+                L_transportdata2 = new List<transportdataInfo>();
+                L_transportdata3 = new List<transportdataInfo>();
+
+
+                BindgvCampaign();
+                BindgvTransport();
+                BindgvOrderPayment();
+                BindgvChannel();
+                LoadCustomerNoteProfile();
+                LoadPaymentCredit();
+                
+
+                CheckMediaOnAir();
+                BindgvCampaignMedia();
+
+                InitialVatandTransportPriceValue();
+                lblTransportPrice.Visible = true;
+                txtTransportPrice.Visible = false;
+
+                hidcampaigncategorycode.Value = "01";
+                BindTop5Product(hidcampaigncategorycode.Value);
+                LoadOrderEdit(CustomerCode, OrderCode);
+                lblordercode.Text = OrderCode;
+
+                combosetPart.Visible = false;
+                combosetPartMedia.Visible = false;
+
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+                VoucherDefault.Visible = true;
+
+                SaveContactHistory.Visible = false;
+
+                if (flaginvvisible == "ASTON")
+                {
+                    inventorypart.Visible = false;
+                }
+                else
+                {
+                    inventorypart.Visible = true;
+                }
+
+                
+            }
+        }
+        protected OrderData bindorderdata(OrderData item)
+        {
+            OrderData odata = new OrderData();
+            
+            odata.CampaignCode = item.CampaignCode;
+            odata.PromotionCode = item.PromotionCode;
+            odata.PromotionName = item.PromotionName;
+            odata.ColorCode = item.ColorCode;
+            odata.PromotionDetailId = item.PromotionDetailId;
+            odata.ProductCode = item.ProductCode;
+            odata.ProductName = item.ProductName;
+            odata.Unit = item.Unit;
+            odata.UnitName = item.UnitName;
+            odata.DiscountAmount = item.DiscountAmount;
+            odata.DiscountPercent = item.DiscountPercent;
+            odata.Price = item.Price;
+            odata.ProductPrice = item.ProductPrice;
+            odata.SumPrice = item.SumPrice;
+            odata.FlagCombo = item.FlagCombo;
+            odata.ParentProductCode = item.ParentProductCode;
+            odata.CustomerCode = item.CustomerCode;
+            odata.ComboCode = item.ComboCode;
+            odata.ComboName = item.ComboName;
+            odata.runningNo = item.runningNo;
+            odata.MerchantCode = item.MerchantCode;
+            odata.MerchantName = item.MerchantName;
+            odata.ParentPromotionCode = item.ParentPromotionCode;
+            odata.MOQFlag = item.MOQFlag;
+            odata.Amount = item.Amount;
+            odata.DefaultAmount = item.DefaultAmount;
+            odata.LockCheckbox = item.LockCheckbox;
+            odata.LockAmountFlag = item.LockAmountFlag;
+            odata.FreeShipping = item.FreeShipping;
+            odata.FlagProSetHeader = item.FlagProSetHeader;
+            odata.ParentPromotionCode = item.ParentPromotionCode;
+            odata.ParentProductCode = item.ParentProductCode;
+            odata.MinimumQty = item.MinimumQty;
+            odata.ProductDiscountPercent = item.ProductDiscountPercent;
+            odata.ProductDiscountAmount = item.ProductDiscountAmount;
+            odata.ProhMinQtyHeaderFlag = item.ProhMinQtyHeaderFlag;
+            odata.PromotionTypeCode = item.PromotionTypeCode;
+            odata.PromotionTypeName = item.PromotionTypeName;
+            odata.GroupPrice = item.GroupPrice;
+            odata.ParentProductCode = item.ParentProductCode;
+            odata.OrderDetailID = item.OrderDetailID;
+            odata.InventoryCode = item.InventoryCode;
+            odata.ChannelCode = item.ChannelCode;
+            odata.ChannelName = item.ChannelName;
+            odata.CamcatCode = item.CamcatCode;
+            odata.MediaplanFlag = item.MediaplanFlag;
+
+            return odata;
+        }
+
+        #region Function
+        public List<EmpInfo> GetLogin()
+        {
+            RefCode = (Request.QueryString["RefCode"] != null) ? Request.QueryString["RefCode"].ToString() : "";
+
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/GetLoginTakeOrder";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["EmpCode"] = RefCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<EmpInfo> emp_list = JsonConvert.DeserializeObject<List<EmpInfo>>(respstr);
+
+            
+
+            return emp_list;
+        }
+
+        
+
+        public void LoadgvSubMainPromotionDetail(List<SubMainPromotionDetailInfo> lorderdata)
+        {
+            gvSubMainPromotionDetail.DataSource = lorderdata;
+            gvSubMainPromotionDetail.DataBind();
+
+        }
+
+        public void LoadgvSubMainPromotionDetailMedia(List<SubMainPromotionDetailInfo> lorderdata)
+        {
+            gvSubMainPromotionDetailMedia.DataSource = lorderdata;
+            gvSubMainPromotionDetailMedia.DataBind();
+        }
+
+        public void LoadgvOrder(List<OrderData> lorderdata)
+        {
+            Session.Remove("L_orderdataView");
+            LoadgvProductView(L_orderdataView);
+
+            Session.Remove("L_orderdataViewMedia");
+            LoadgvProductViewMedia(L_orderdataViewMedia);
+
+            Loadtotal(lorderdata);
+            gvOrder.DataSource = lorderdata;
+            gvOrder.DataBind();
+
+            gvOrder.Columns[4].Visible = false;
+        }
+        public void LoadgvProductView(List<OrderData> lorderdata)
+        {
+            
+            gvProductView.DataSource = lorderdata;
+            gvProductView.DataBind();
+        }
+        public void LoadgvProductViewMedia(List<OrderData> lorderdata)
+        {
+            
+            gvProductViewMedia.DataSource = lorderdata;
+            gvProductViewMedia.DataBind();
+        }
+        public void LoadgvOrderFinished(List<OrderData> lorderdata)
+        {
+            if (hidtab.Value == "1")
+            {
+                if (hidtab1orderstatus.Value != "")
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = false; // btnclose
+                    gvOrder.Columns[4].Visible = false; // Amount Textmode
+                    gvOrder.Columns[5].Visible = true; // Amount View
+
+                    
+
+
+                }
+                else
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = true; // btnclose
+                    gvOrder.Columns[4].Visible = true; // Amount Textmode
+                    gvOrder.Columns[5].Visible = false; // Amount View
+
+
+                }
+
+
+            }
+            else if (hidtab.Value == "2")
+            {
+                if (hidtab2orderstatus.Value != "")
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = false; // btnclose
+                    gvOrder.Columns[4].Visible = false; // Amount Textmode
+                    gvOrder.Columns[5].Visible = true; // Amount View
+                }
+                else
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = true; // btnclose
+                    gvOrder.Columns[4].Visible = true; // Amount Textmode
+                    gvOrder.Columns[5].Visible = false; // Amount View
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                if (hidtab3orderstatus.Value != "")
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = false; // btnclose
+                    gvOrder.Columns[4].Visible = false; // Amount Textmode
+                    gvOrder.Columns[5].Visible = true; // Amount View
+                }
+                else
+                {
+                    Loadtotal(lorderdata);
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+
+                    gvOrder.Columns[7].Visible = true; // btnclose
+                    gvOrder.Columns[4].Visible = true; // Amount Textmode
+                    gvOrder.Columns[5].Visible = false; // Amount View
+                }
+            }
+
+            for (int i = 0; i < gvOrder.Rows.Count; i++)
+            {
+                GridViewRow row = gvOrder.Rows[i];
+                TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+                TextBox txtAmount_gvOrderView = (TextBox)row.FindControl("txtAmount_gvOrderView");
+
+                txtAmount_gvOrderView.ReadOnly = true;
+                txtAmount_gvOrder.ReadOnly = true;
+                txtAmount_gvOrderView.Enabled = false;
+
+            }
+        }
+        protected void InitialVatandTransportPriceValue()
+        {
+            int? initialvat = 0;
+            string initialtransportprice = "0.00";
+
+            txtVat.Text = initialvat.ToString();
+            hidtab1Vat.Value = initialvat.ToString();
+            hidtab2Vat.Value = initialvat.ToString();
+            hidtab3Vat.Value = initialvat.ToString();
+
+            txtTransportPrice.Text = initialtransportprice.ToString();
+            hidtab1transportprice.Value = initialtransportprice;
+            hidtab2transportprice.Value = initialtransportprice;
+            hidtab3transportprice.Value = initialtransportprice;
+        }
+
+        protected void BindgvCampaign()
+        {
+            List<CampaignInfo> lcampaignInfo = new List<CampaignInfo>();
+            lcampaignInfo = GetCampaignMasterByCriteria();
+            gvCampaign.DataSource = lcampaignInfo;
+            gvCampaign.DataBind();
+        }
+        protected List<CampaignInfo> GetCampaignMasterByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCampaignNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CampaignCode"] = "";
+                data["CampaignName"] = "";
+                data["MerchantMapCode"] = MerchantMapCode;
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CampaignInfo> lCampaignInfo = JsonConvert.DeserializeObject<List<CampaignInfo>>(respstr);
+            return lCampaignInfo;
+        }
+
+        protected void gvCampaign_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvCampaign.Rows[index];
+
+            Label lblmsg = (Label)row.FindControl("lblmsg");
+
+            HiddenField hidCampaignId = (HiddenField)row.FindControl("hidCampaignId");
+            HiddenField hidCampaignCode = (HiddenField)row.FindControl("hidCampaignCode");
+            HiddenField HidCamcatcode = (HiddenField)row.FindControl("HidCamcatcode");
+            HiddenField hidCampaignName = (HiddenField)row.FindControl("hidCampaignName");
+            HiddenField hidFlagComboSet = (HiddenField)row.FindControl("hidFlagComboSet");
+            HiddenField hidNotifyDate = (HiddenField)row.FindControl("hidNotifyDate");
+            HiddenField hidExpireDate = (HiddenField)row.FindControl("hidExpireDate");
+
+            hidCampaignCode_Selected.Value = hidCampaignCode.Value;
+
+            if (e.CommandName == "SelectCampaign")
+            {
+
+                for (int i = 0; i < gvCampaign.Rows.Count; i++)
+                {
+                    HiddenField hidActive = (HiddenField)gvCampaign.Rows[i].FindControl("hidActive");
+
+                    if (row == gvCampaign.Rows[i])
+                    {
+                        if (hidActive.Value == "N")
+                        {
+                            hidActive.Value = "Y";
+                            gvCampaign.Rows[i].BackColor = System.Drawing.Color.LightCyan;
+                        }
+                    }
+                    else
+                    {
+                        hidActive.Value = "N";
+                        gvCampaign.Rows[i].BackColor = System.Drawing.Color.White;
+                    }
+                }
+
+
+
+                gvCampaign.SelectedIndex = index;
+
+                hidFlagComboset_Selected.Value = hidFlagComboSet.Value;
+
+                CampaignInfo cInfo = new CampaignInfo();
+                cInfo.CampaignCode = hidCampaignCode.Value;
+                hidCatagorycode_ins.Value = HidCamcatcode.Value;
+                hidmediaflag_detail.Value = "N";
+                if (hidFlagComboSet.Value == "Y")
+                {
+
+                    PromotiondetailbyProduct.Visible = false;
+                    combosetPart.Visible = true;
+                    BindgvPromotion(cInfo.CampaignCode);
+                    gvPromotion_Section.Attributes.Add("class", "my-custom-scrollbar");
+                }
+                else
+                {
+                    PromotiondetailbyProduct.Visible = true;
+                    combosetPart.Visible = false;
+                    BindgvPromotion(cInfo.CampaignCode);
+                    gvPromotion_Section.Attributes.Add("class", "my-custom-scrollbar");
+                }
+            }
+        }
+        protected void gvPromotion_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvPromotion.Rows[index];
+
+
+            Label lblDataEmpty1 = (Label)row.FindControl("lblDataEmpty1");
+
+            HiddenField hidPromotionId = (HiddenField)row.FindControl("hidPromotionId");
+            HiddenField hidPromotionCode = (HiddenField)row.FindControl("hidPromotionCode");
+            HiddenField hidPromotionName = (HiddenField)row.FindControl("hidPromotionName");
+            HiddenField hidPromotionTypeCode = (HiddenField)row.FindControl("hidPromotionTypeCode");
+            HiddenField hidFreeShippingCode = (HiddenField)row.FindControl("hidFreeShippingCode");
+            HiddenField hidLockAmountFlag = (HiddenField)row.FindControl("hidLockAmountFlag");
+            HiddenField hidLockCheckbox = (HiddenField)row.FindControl("hidLockCheckbox");
+            HiddenField hidMOQFlag = (HiddenField)row.FindControl("hidMOQFlag");
+            HiddenField hidGroupPrice = (HiddenField)row.FindControl("hidGroupPrice");
+
+            hidPromotionCode_Selected.Value = hidPromotionCode.Value;
+
+            if (e.CommandName == "SelectPromotion")
+            {
+                for (int i = 0; i < gvPromotion.Rows.Count; i++)
+                {
+                    HiddenField hidActive = (HiddenField)gvPromotion.Rows[i].FindControl("hidActive");
+
+                    if (row == gvPromotion.Rows[i])
+                    {
+                        if (hidActive.Value == "N")
+                        {
+                            hidActive.Value = "Y";
+                            gvPromotion.Rows[i].BackColor = System.Drawing.Color.LightCyan;
+                            gvProduct_Section.Attributes.Add("class", "my-custom-scrollbar");
+                        }
+                    }
+                    else
+                    {
+                        hidActive.Value = "N";
+                        gvPromotion.Rows[i].BackColor = System.Drawing.Color.White;
+                        gvProduct_Section.Attributes.Add("class", "my-custom-scrollbar");
+                    }
+                }
+
+
+                gvPromotion.SelectedIndex = index;
+
+                PromotionInfo pInfo = new PromotionInfo();
+                pInfo.PromotionCode = hidPromotionCode.Value;
+
+                if (hidFlagComboset_Selected.Value == "Y") // Promotion for Combo Set
+                {
+                    BindgvComboset(pInfo.PromotionCode);
+                    
+                    combosetPart.Visible = true;
+                    
+                }
+                else // Promotion for Product
+                {
+                    
+                    combosetPart.Visible = false;
+
+                    hidPromotionTypeSelected.Value = hidPromotionTypeCode.Value;
+                    hidProLockAmountFlag.Value = hidLockAmountFlag.Value; // แก้ไขจำนวนสินค้า
+                    hidProLockCheckbox.Value = hidLockCheckbox.Value; // จับกลุ่ม
+                    hidProFreeShippingCode.Value = hidFreeShippingCode.Value; // Free ค่าขนส่ง
+
+                    BindgvProduct(pInfo.PromotionCode);
+                    
+                }
+            }
+        }
+        protected void gvComboset_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvComboset.Rows[index];
+
+
+            Label lblDataEmpty3 = (Label)row.FindControl("lblDataEmpty3");
+
+            HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+            HiddenField hidCombosetCode = (HiddenField)row.FindControl("hidCombosetCode");
+            HiddenField hidPromotionDetailName = (HiddenField)row.FindControl("hidPromotionDetailName");
+            HiddenField hidAmount = (HiddenField)row.FindControl("hidAmount");
+            HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+
+            hidPromotiondetailId_Selected.Value = hidPromotionDeailInfoId.Value;
+            hidCombosetCode_Selected.Value = hidCombosetCode.Value;
+            if (e.CommandName == "SelectComboSet")
+            {
+                gvComboset.SelectedIndex = index;
+
+                PromotionDetailInfo pInfo = new PromotionDetailInfo();
+                pInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                pInfo.CombosetCode = hidCombosetCode.Value;
+
+                BindSubMainPromotionDetailInfo(pInfo.PromotionDetailInfoId, pInfo.CombosetCode);
+                
+            }
+        }
+        protected void gvCombosetMedia_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvCombosetMedia.Rows[index];
+
+
+            Label lblDataEmpty3 = (Label)row.FindControl("lblDataEmpty3");
+
+            HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+            HiddenField hidCombosetCode = (HiddenField)row.FindControl("hidCombosetCode");
+            HiddenField hidPromotionDetailName = (HiddenField)row.FindControl("hidPromotionDetailName");
+            HiddenField hidAmount = (HiddenField)row.FindControl("hidAmount");
+            HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+
+            hidPromotiondetailId_Selected.Value = hidPromotionDeailInfoId.Value;
+            hidCombosetCode_Selected.Value = hidCombosetCode.Value;
+            if (e.CommandName == "SelectComboSetMedia")
+            {
+                gvCombosetMedia.SelectedIndex = index;
+
+                PromotionDetailInfo pInfo = new PromotionDetailInfo();
+                pInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                pInfo.CombosetCode = hidCombosetCode.Value;
+
+                BindSubMainPromotionDetailInfoMedia(pInfo.PromotionDetailInfoId, pInfo.CombosetCode);
+                
+            }
+        }
+        protected void BindgvPromotion(String campaigncode)
+        {
+            List<PromotionInfo> lpromotionInfo = new List<PromotionInfo>();
+            lpromotionInfo = GetCampaignPromotionMasterByCriteria(campaigncode);
+            gvPromotion.DataSource = lpromotionInfo;
+            gvPromotion.DataBind();
+
+        }
+        protected void BindgvComboset(String promotioncode)
+        {
+            List<PromotionDetailInfo> lpromotioncombosetInfo = new List<PromotionDetailInfo>();
+            lpromotioncombosetInfo = GetPromotionComboSetMasterByCriteria(promotioncode);
+            gvComboset.DataSource = lpromotioncombosetInfo;
+            gvComboset.DataBind();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+        }
+        protected void BindgvCombosetMedia(String promotioncode)
+        {
+            List<PromotionDetailInfo> lpromotioncombosetInfo = new List<PromotionDetailInfo>();
+            lpromotioncombosetInfo = GetPromotionComboSetMasterByCriteria(promotioncode);
+            gvCombosetMedia.DataSource = lpromotioncombosetInfo;
+            gvCombosetMedia.DataBind();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+        }
+        protected void BindgvProduct(String promotioncode)
+        {
+            List<PromotionDetailInfo> lpromotiondetailInfo = new List<PromotionDetailInfo>();
+            lpromotiondetailInfo = GetPromotiondetailMasterByCriteria(promotioncode);
+
+            if (lpromotiondetailInfo.Count > 0)
+            {
+                if (hidPromotionTypeSelected.Value == "13" || hidPromotionTypeSelected.Value == "03" || hidPromotionTypeSelected.Value == "02" || hidPromotionTypeSelected.Value == "01" || hidPromotionTypeSelected.Value == "07" || hidPromotionTypeSelected.Value == "08" || hidPromotionTypeSelected.Value == "09" || hidPromotionTypeSelected.Value == "00") // ราคาปกติ + ส่วนลดสินค้า
+                {
+                    foreach (var productV in lpromotiondetailInfo)
+                    {
+                        if (productV.ProductDiscountAmount == 0 && productV.ProductDiscountPercent == 0 && productV.PromotionTypeCode != "02")
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+                        else if (productV.PromotionTypeCode == "08") // Have PromotionDiscountAmount and PromotionDiscountPercent But still No Sket through Price
+                        {
+                            if (productV.DiscountPercent != 0 || productV.DiscountAmount != 0)
+                            {
+                                productV.Price = (productV.Price + productV.DiscountAmount) / (1 - (productV.DiscountPercent * 0.01));
+                                productV.SumPrice = (productV.Price - ((productV.Price * productV.DiscountPercent) / 100) - productV.DiscountAmount) * productV.Amount;
+                            }
+
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+                        else if (productV.PromotionTypeCode == "02") // Promotion by Product show old Price from Product and use Price form Promotiondetail
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.PriceB4ofPrdDisc = productV.ProductPrice;
+                            productV.Price = productV.Price;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                            productV.ParentProductCode = "-PromotionNewPrice";
+                        }
+                        else // Promotion Product have ProductDiscountAmount and ProductDiscountPercent
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.PriceB4ofPrdDisc = productV.Price;
+                            productV.Price = productV.Price - productV.ProductDiscountAmount - ((productV.Price * productV.ProductDiscountPercent) / 100);
+
+                            if (productV.Price <= 0)
+                            {
+                                productV.Price = 0;
+                            }
+
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+
+                    }
+
+                    gvProduct.DataSource = lpromotiondetailInfo;
+                    gvProduct.DataBind();
+                }
+                else if (lpromotiondetailInfo[0].LockCheckbox == "Y") // Promotion Set (จับกลุ่มกำหนดราคา)
+                {
+                    PromotionDetailInfo pdInfo = new PromotionDetailInfo();
+                    List<PromotionDetailInfo> lpdInfo = new List<PromotionDetailInfo>();
+
+                    
+
+                    // Add PromotionSet Head
+                    pdInfo.CampaignCode = lpromotiondetailInfo[0].CampaignCode;
+                    pdInfo.PromotionCode = lpromotiondetailInfo[0].PromotionCode;
+                    pdInfo.PromotionName = lpromotiondetailInfo[0].PromotionName;
+                    pdInfo.ProductCode = "Pro Set : " + lpromotiondetailInfo[0].PromotionCode;
+                    pdInfo.ProductName = lpromotiondetailInfo[0].PromotionName;
+                    pdInfo.GroupPrice = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0;
+                    pdInfo.Unit = "10";
+                    pdInfo.UnitName = "ชุด";
+                    pdInfo.MerchantCode = lpromotiondetailInfo[0].MerchantCode;
+                    pdInfo.MerchantName = lpromotiondetailInfo[0].MerchantName;
+                    pdInfo.FlagProSetHeader = "Y";
+                    pdInfo.PromotionDetailInfoId = 0;
+
+                    pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                    pdInfo.LockAmountFlag = lpromotiondetailInfo[0].LockAmountFlag;
+                    pdInfo.FreeShippingCode = lpromotiondetailInfo[0].FreeShippingCode;
+
+                    pdInfo.PromotionDiscountAmount = lpromotiondetailInfo[0].PromotionDiscountAmount;
+                    pdInfo.PromotionDiscountPercent = lpromotiondetailInfo[0].PromotionDiscountPercent;
+
+                    if (lpromotiondetailInfo[0].GroupPrice != 0)
+                    {
+                        pdInfo.DiscountAmount = 0;
+                        pdInfo.DiscountPercent = 0;
+                        pdInfo.Price = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0; // Promotion use GroupPrice replace than Normal SumPrice
+                        pdInfo.Amount = 1;
+                        pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                        pdInfo.ParentProductCode = "-x9"; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                    }
+                    else if (lpromotiondetailInfo[0].GroupPrice == 0)
+                    {
+                        if (lpromotiondetailInfo[0].PromotionDiscountAmount != 0 || lpromotiondetailInfo[0].PromotionDiscountPercent != 0)
+                        {
+                            Double? sumprice = 0;
+                            Double? totalproprice = 0;
+
+                            foreach (var lprodetV in lpromotiondetailInfo.ToList())
+                            {
+                                sumprice += lprodetV.Price * lprodetV.DefaultAmount;
+                            }
+
+                            totalproprice = sumprice - lpromotiondetailInfo[0].PromotionDiscountAmount - ((sumprice * lpromotiondetailInfo[0].PromotionDiscountPercent) / 100);
+                            pdInfo.PriceB4ofPrdDisc = sumprice;
+                            pdInfo.Price = totalproprice;
+                            pdInfo.Amount = 1;
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                            pdInfo.ParentProductCode = "-y9";
+                        }
+                        else
+                        {
+                            Double? sumprice = 0;
+                            Double? totalproprice = 0;
+
+                            foreach (var lprodetV in lpromotiondetailInfo.ToList())
+                            {
+                                sumprice += lprodetV.Price * lprodetV.DefaultAmount;
+                            }
+
+                            totalproprice = sumprice - lpromotiondetailInfo[0].PromotionDiscountAmount - ((sumprice * lpromotiondetailInfo[0].PromotionDiscountPercent) / 100);
+                            pdInfo.Price = totalproprice;
+                            pdInfo.Amount = 1;
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                        }
+                    }
+
+                    lpdInfo.Add(pdInfo);
+
+                    // Add PromotionSet Child
+                    foreach (var lprodetailV in lpromotiondetailInfo.ToList())
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.FlagCombo = lprodetailV.FlagCombo;
+                        pdInfo.ProductCode = lprodetailV.ProductCode;
+                        pdInfo.ProductName = lprodetailV.ProductName;
+                        pdInfo.Unit = lprodetailV.Unit;
+                        pdInfo.UnitName = lprodetailV.UnitName;
+                        pdInfo.GroupPrice = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0;
+                        pdInfo.Price = lprodetailV.Price;
+                        pdInfo.DefaultAmount = lprodetailV.DefaultAmount;
+
+                        if (lpromotiondetailInfo[0].GroupPrice != 0)
+                        {
+                            pdInfo.SumPrice = 0;
+                            pdInfo.ParentProductCode = "-x99"; // Hard Value of Set Child for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice)
+                        }
+                        else if (lpromotiondetailInfo[0].GroupPrice == 0)
+                        {
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.DefaultAmount;
+                            pdInfo.ParentProductCode = "-y99";
+                        }
+
+                        pdInfo.DiscountAmount = lprodetailV.DiscountAmount;
+                        pdInfo.DiscountPercent = lprodetailV.DiscountPercent;
+                        pdInfo.PromotionCode = lprodetailV.PromotionCode;
+                        pdInfo.PromotionName = lprodetailV.PromotionName;
+                        pdInfo.PromotionDetailInfoId = lprodetailV.PromotionDetailInfoId;
+                        pdInfo.CampaignCode = lprodetailV.CampaignCode;
+                        pdInfo.FreeShippingCode = lprodetailV.FreeShippingCode;
+                        pdInfo.Amount = lprodetailV.DefaultAmount;
+                        pdInfo.MerchantCode = lprodetailV.MerchantCode;
+                        pdInfo.MerchantName = lprodetailV.MerchantName;
+                        pdInfo.FlagProSetHeader = "N";
+                        pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                        pdInfo.LockAmountFlag = lprodetailV.LockAmountFlag;
+                        pdInfo.FreeShippingCode = lprodetailV.FreeShippingCode;
+
+
+                        lpdInfo.Add(pdInfo);
+                    }
+
+                    gvProduct.DataSource = lpdInfo;
+                    gvProduct.DataBind();
+                }
+            }
+
+            if (promotioncode == "-999")
+            {
+                List<PromotionDetailInfo> lpromotiondetailInfoinitial = new List<PromotionDetailInfo>();
+                lpromotiondetailInfoinitial = GetPromotiondetailMasterByCriteria(promotioncode);
+                gvProduct.DataSource = lpromotiondetailInfoinitial;
+                gvProduct.DataBind();
+            }
+        }
+        protected void BindgvProductMedia(String promotioncode, String campaigncode)
+        {
+            List<PromotionDetailInfo> lpromotiondetailInfo = new List<PromotionDetailInfo>();
+            lpromotiondetailInfo = GetPromotiondetailMediaMasterByCriteria(promotioncode, campaigncode);
+
+            if (lpromotiondetailInfo.Count > 0)
+            {
+                if (hidPromotionTypeSelectedMedia.Value == "13" || hidPromotionTypeSelectedMedia.Value == "03" || hidPromotionTypeSelectedMedia.Value == "02" || hidPromotionTypeSelectedMedia.Value == "01" || hidPromotionTypeSelectedMedia.Value == "07" || hidPromotionTypeSelectedMedia.Value == "08" || hidPromotionTypeSelectedMedia.Value == "09" || hidPromotionTypeSelectedMedia.Value == "00") // ราคาปกติ + ส่วนลดสินค้า
+                {
+                    foreach (var productV in lpromotiondetailInfo)
+                    {
+                        if (productV.ProductDiscountAmount == 0 && productV.ProductDiscountPercent == 0 && productV.PromotionTypeCode != "02")
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+                        else if (productV.PromotionTypeCode == "08") // Have PromotionDiscountAmount and PromotionDiscountPercent But still No Sket through Price
+                        {
+                            if (productV.DiscountPercent != 0 || productV.DiscountAmount != 0)
+                            {
+                                productV.Price = (productV.Price + productV.DiscountAmount) / (1 - (productV.DiscountPercent * 0.01));
+                                productV.SumPrice = (productV.Price - ((productV.Price * productV.DiscountPercent) / 100) - productV.DiscountAmount) * productV.Amount;
+                            }
+
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+                        else if (productV.PromotionTypeCode == "02") // Promotion by Product show old Price from Product and use Price form Promotiondetail
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.PriceB4ofPrdDisc = productV.ProductPrice;
+                            productV.Price = productV.Price;
+                            productV.SumPrice = productV.Price * productV.Amount;
+                            productV.ParentProductCode = "-PromotionNewPrice";
+                        }
+                        else // Promotion Product have ProductDiscountAmount and ProductDiscountPercent
+                        {
+                            productV.Amount = (productV.DefaultAmount != null) ? productV.DefaultAmount : 1;
+                            productV.PriceB4ofPrdDisc = productV.Price;
+                            productV.Price = productV.Price - productV.ProductDiscountAmount - ((productV.Price * productV.ProductDiscountPercent) / 100);
+
+                            if (productV.Price <= 0)
+                            {
+                                productV.Price = 0;
+                            }
+
+                            productV.SumPrice = productV.Price * productV.Amount;
+                        }
+
+                    }
+
+                    gvProductMedia.DataSource = lpromotiondetailInfo;
+                    gvProductMedia.DataBind();
+                }
+                else if (lpromotiondetailInfo[0].LockCheckbox == "Y") // Promotion Set (จับกลุ่มกำหนดราคา)
+                {
+                    PromotionDetailInfo pdInfo = new PromotionDetailInfo();
+                    List<PromotionDetailInfo> lpdInfo = new List<PromotionDetailInfo>();
+
+                    
+
+                    // Add PromotionSet Head
+                    pdInfo.CampaignCode = lpromotiondetailInfo[0].CampaignCode;
+                    pdInfo.PromotionCode = lpromotiondetailInfo[0].PromotionCode;
+                    pdInfo.PromotionName = lpromotiondetailInfo[0].PromotionName;
+                    pdInfo.ProductCode = "Pro Set : " + lpromotiondetailInfo[0].PromotionCode;
+                    pdInfo.ProductName = lpromotiondetailInfo[0].PromotionName;
+                    pdInfo.GroupPrice = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0;
+                    pdInfo.Unit = "10";
+                    pdInfo.UnitName = "ชุด";
+                    pdInfo.MerchantCode = lpromotiondetailInfo[0].MerchantCode;
+                    pdInfo.MerchantName = lpromotiondetailInfo[0].MerchantName;
+                    pdInfo.FlagProSetHeader = "Y";
+                    pdInfo.PromotionDetailInfoId = 0;
+
+                    pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                    pdInfo.LockAmountFlag = lpromotiondetailInfo[0].LockAmountFlag;
+                    pdInfo.FreeShippingCode = lpromotiondetailInfo[0].FreeShippingCode;
+
+                    pdInfo.PromotionDiscountAmount = lpromotiondetailInfo[0].PromotionDiscountAmount;
+                    pdInfo.PromotionDiscountPercent = lpromotiondetailInfo[0].PromotionDiscountPercent;
+
+                    if (lpromotiondetailInfo[0].GroupPrice != 0)
+                    {
+                        pdInfo.DiscountAmount = 0;
+                        pdInfo.DiscountPercent = 0;
+                        pdInfo.Price = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0; // Promotion use GroupPrice replace than Normal SumPrice
+                        pdInfo.Amount = 1;
+                        pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                        pdInfo.ParentProductCode = "-x9"; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                    }
+                    else if (lpromotiondetailInfo[0].GroupPrice == 0)
+                    {
+                        if (lpromotiondetailInfo[0].PromotionDiscountAmount != 0 || lpromotiondetailInfo[0].PromotionDiscountPercent != 0)
+                        {
+                            Double? sumprice = 0;
+                            Double? totalproprice = 0;
+
+                            foreach (var lprodetV in lpromotiondetailInfo.ToList())
+                            {
+                                sumprice += lprodetV.Price * lprodetV.DefaultAmount;
+                            }
+
+                            totalproprice = sumprice - lpromotiondetailInfo[0].PromotionDiscountAmount - ((sumprice * lpromotiondetailInfo[0].PromotionDiscountPercent) / 100);
+                            pdInfo.PriceB4ofPrdDisc = sumprice;
+                            pdInfo.Price = totalproprice;
+                            pdInfo.Amount = 1;
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                            pdInfo.ParentProductCode = "-y9";
+                        }
+                        else
+                        {
+                            Double? sumprice = 0;
+                            Double? totalproprice = 0;
+
+                            foreach (var lprodetV in lpromotiondetailInfo.ToList())
+                            {
+                                sumprice += lprodetV.Price * lprodetV.DefaultAmount;
+                            }
+
+                            totalproprice = sumprice - lpromotiondetailInfo[0].PromotionDiscountAmount - ((sumprice * lpromotiondetailInfo[0].PromotionDiscountPercent) / 100);
+                            pdInfo.Price = totalproprice;
+                            pdInfo.Amount = 1;
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.Amount;
+                        }
+                    }
+
+                    lpdInfo.Add(pdInfo);
+
+                    // Add PromotionSet Child
+                    foreach (var lprodetailV in lpromotiondetailInfo.ToList())
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.FlagCombo = lprodetailV.FlagCombo;
+                        pdInfo.ProductCode = lprodetailV.ProductCode;
+                        pdInfo.ProductName = lprodetailV.ProductName;
+                        pdInfo.Unit = lprodetailV.Unit;
+                        pdInfo.UnitName = lprodetailV.UnitName;
+                        pdInfo.GroupPrice = (lpromotiondetailInfo[0].GroupPrice != null) ? lpromotiondetailInfo[0].GroupPrice : 0;
+                        pdInfo.Price = lprodetailV.Price;
+                        pdInfo.DefaultAmount = lprodetailV.DefaultAmount;
+
+                        if (lpromotiondetailInfo[0].GroupPrice != 0)
+                        {
+                            pdInfo.SumPrice = 0;
+                            pdInfo.ParentProductCode = "-x99"; // Hard Value of Set Child for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice)
+                        }
+                        else if (lpromotiondetailInfo[0].GroupPrice == 0)
+                        {
+                            pdInfo.SumPrice = pdInfo.Price * pdInfo.DefaultAmount;
+                            pdInfo.ParentProductCode = "-y99";
+                        }
+
+                        pdInfo.DiscountAmount = lprodetailV.DiscountAmount;
+                        pdInfo.DiscountPercent = lprodetailV.DiscountPercent;
+                        pdInfo.PromotionCode = lprodetailV.PromotionCode;
+                        pdInfo.PromotionName = lprodetailV.PromotionName;
+                        pdInfo.PromotionDetailInfoId = lprodetailV.PromotionDetailInfoId;
+                        pdInfo.CampaignCode = lprodetailV.CampaignCode;
+                        pdInfo.FreeShippingCode = lprodetailV.FreeShippingCode;
+                        pdInfo.Amount = lprodetailV.DefaultAmount;
+                        pdInfo.MerchantCode = lprodetailV.MerchantCode;
+                        pdInfo.MerchantName = lprodetailV.MerchantName;
+                        pdInfo.FlagProSetHeader = "N";
+                        pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                        pdInfo.LockAmountFlag = lprodetailV.LockAmountFlag;
+                        pdInfo.FreeShippingCode = lprodetailV.FreeShippingCode;
+
+
+                        lpdInfo.Add(pdInfo);
+                    }
+
+                    gvProductMedia.DataSource = lpdInfo;
+                    gvProductMedia.DataBind();
+                }
+            }
+
+            if (promotioncode == "-999")
+            {
+                List<PromotionDetailInfo> lpromotiondetailInfoinitial = new List<PromotionDetailInfo>();
+                lpromotiondetailInfoinitial = GetPromotiondetailMasterByCriteria(promotioncode);
+                gvProductMedia.DataSource = lpromotiondetailInfoinitial;
+                gvProductMedia.DataBind();
+            }
+        }
+        protected List<SubPromotionDetailInfo> CheckComboProductExchange(int? promotiondetailId, string SubMainPromotionDetailInfoId)
+        {
+            List<SubPromotionDetailInfo> lsubexchangepromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubexchangepromotionInfo = GetSubExchangePromotionDetailMasterByCriteria(promotiondetailId, SubMainPromotionDetailInfoId);
+            return lsubexchangepromotionInfo;
+
+        }
+        protected void BindSubMainPromotionDetailInfo(int? promotiondetailId, string CombosetCode)
+        {
+            List<SubPromotionDetailInfo> lsubmainpromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubmainpromotionInfo = GetSubMainPromotionDetailMasterByCriteria(promotiondetailId, CombosetCode);
+            gvSubMainPromotionDetail.DataSource = lsubmainpromotionInfo;
+            gvSubMainPromotionDetail.DataBind();
+            
+        }
+        protected void BindSubMainPromotionDetailInfoMedia(int? promotiondetailId, string CombosetCode)
+        {
+            List<SubPromotionDetailInfo> lsubmainpromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubmainpromotionInfo = GetSubMainPromotionDetailMasterByCriteria(promotiondetailId, CombosetCode);
+            gvSubMainPromotionDetailMedia.DataSource = lsubmainpromotionInfo;
+            gvSubMainPromotionDetailMedia.DataBind();
+            
+        }
+        protected void BindSubExchangePromotionDetailInfo(int? promotiondetailId, string SubMainPromotionDetailInfoId)
+        {
+            List<SubPromotionDetailInfo> lsubexchangepromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubexchangepromotionInfo = GetSubExchangePromotionDetailMasterByCriteria(promotiondetailId, SubMainPromotionDetailInfoId);
+            gvSubExchangePromotiondetailInfo.DataSource = lsubexchangepromotionInfo;
+            gvSubExchangePromotiondetailInfo.DataBind();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+        }
+        protected void BindSubExchangePromotionDetailInfoMedia(int? promotiondetailId, string SubMainPromotionDetailInfoId)
+        {
+            List<SubPromotionDetailInfo> lsubexchangepromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubexchangepromotionInfo = GetSubExchangePromotionDetailMasterByCriteria(promotiondetailId, SubMainPromotionDetailInfoId);
+            gvSubExchangePromotiondetailInfoMedia.DataSource = lsubexchangepromotionInfo;
+            gvSubExchangePromotiondetailInfoMedia.DataBind();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+        }
+        protected void BindSubMainandExchangePromotionDetailInfo(int? promotiondetailId, string CombosetCode)
+        {
+            List<SubPromotionDetailInfo> lsubmainpromotionInfo = new List<SubPromotionDetailInfo>();
+            lsubmainpromotionInfo = GetSubMainPromotionDetailMasterByCriteria(promotiondetailId, CombosetCode);
+
+            
+
+            List<SubPromotionDetailInfo> lsubpromotiondetailInfo = new List<SubPromotionDetailInfo>();
+            lsubpromotiondetailInfo.AddRange(lsubmainpromotionInfo);
+            
+
+            foreach (var subV in lsubpromotiondetailInfo)
+            {
+                if (subV.FlagSubPromotionDetailMain == "MainProduct")
+                {
+                    subV.FlagSubProduct = subV.FlagSubPromotionDetailMain;
+                    subV.ProductCode = subV.MainProductCode;
+                    subV.ProductName = subV.MainProductName;
+
+                }
+                else if (subV.FlagSubPromotionDetailExchange == "ExchangeProduct")
+                {
+                    subV.FlagSubProduct = subV.FlagSubPromotionDetailExchange;
+                    subV.ProductCode = subV.ExchangeProductCode;
+                    subV.ProductName = subV.ExchangeProductName;
+                }
+            }
+            
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+        }
+
+        // Media Plan Command Section //
+        protected void gvCampaignMedia_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvCampaignMedia.Rows[index];
+
+            Label lblmsg = (Label)row.FindControl("lblmsg");
+
+            HiddenField hidCampaignId = (HiddenField)row.FindControl("hidCampaignId");
+            HiddenField hidCampaignCode = (HiddenField)row.FindControl("hidCampaignCode");
+            HiddenField hidCampaignCatCode = (HiddenField)row.FindControl("hidCampaignCatCode");
+            HiddenField hidCampaignName = (HiddenField)row.FindControl("hidCampaignName");
+            HiddenField hidFlagComboSet = (HiddenField)row.FindControl("hidFlagComboSet");
+            HiddenField hidNotifyDate = (HiddenField)row.FindControl("hidNotifyDate");
+            HiddenField hidExpireDate = (HiddenField)row.FindControl("hidExpireDate");
+            HiddenField hidCam_SaleChannel = (HiddenField)row.FindControl("hidCam_SaleChannel");
+            Label lblCam_ChannelName = (Label)row.FindControl("lblCampaignSalechannel");
+
+            hidCampaignMediaCode_Selected.Value = hidCampaignCode.Value;
+
+            if (e.CommandName == "SelectCampaignMedia")
+            {
+
+                for (int i = 0; i < gvCampaignMedia.Rows.Count; i++)
+                {
+                    HiddenField hidActive = (HiddenField)gvCampaignMedia.Rows[i].FindControl("hidActive");
+
+                    if (row == gvCampaignMedia.Rows[i])
+                    {
+                        if (hidActive.Value == "N")
+                        {
+                            hidActive.Value = "Y";
+                            gvCampaignMedia.Rows[i].BackColor = System.Drawing.Color.LightCyan;
+                        }
+                    }
+                    else
+                    {
+                        hidActive.Value = "N";
+                        gvCampaignMedia.Rows[i].BackColor = System.Drawing.Color.White;
+                    }
+                }
+
+                gvCampaignMedia.SelectedIndex = index;
+
+                hidFlagCombosetMedia_Selected.Value = hidFlagComboSet.Value;
+
+                CampaignInfo cInfo = new CampaignInfo();
+                cInfo.CampaignCode = hidCampaignCode.Value;
+                hidCatagorycode_ins.Value = hidCampaignCatCode.Value;
+                hidCam_MediaSaleChannel.Value = hidCam_SaleChannel.Value;
+                hidtab1ChannelNameMedia_Selected.Value = lblCam_ChannelName.Text;
+                hidmediaflag_detail.Value = "Y";
+
+                if (hidFlagComboSet.Value == "Y")
+                {
+                    PromotiondetailbyProductMedia.Visible = false;
+                    combosetPartMedia.Visible = true;
+                    BindgvPromotionMedia(cInfo.CampaignCode);
+                }
+                else
+                {
+                    PromotiondetailbyProductMedia.Visible = true;
+                    combosetPartMedia.Visible = false;
+                    BindgvPromotionMedia(cInfo.CampaignCode);
+                }
+            }
+        }
+        protected void gvPromotionMedia_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvPromotionMedia.Rows[index];
+
+
+            Label lblDataEmpty1 = (Label)row.FindControl("lblDataEmpty1");
+
+            HiddenField hidPromotionId = (HiddenField)row.FindControl("hidPromotionId");
+            HiddenField hidPromotionCode = (HiddenField)row.FindControl("hidPromotionCode");
+            HiddenField hidPromotionName = (HiddenField)row.FindControl("hidPromotionName");
+            HiddenField hidPromotionTypeCode = (HiddenField)row.FindControl("hidPromotionTypeCode");
+            HiddenField hidFreeShippingCode = (HiddenField)row.FindControl("hidFreeShippingCode");
+            HiddenField hidLockAmountFlag = (HiddenField)row.FindControl("hidLockAmountFlag");
+            HiddenField hidLockCheckbox = (HiddenField)row.FindControl("hidLockCheckbox");
+            HiddenField hidMOQFlag = (HiddenField)row.FindControl("hidMOQFlag");
+            HiddenField hidGroupPrice = (HiddenField)row.FindControl("hidGroupPrice");
+
+            hidPromotionCodeMedia_Selected.Value = hidPromotionCode.Value;
+
+            if (e.CommandName == "SelectPromotionMedia")
+            {
+                for (int i = 0; i < gvPromotionMedia.Rows.Count; i++)
+                {
+                    HiddenField hidActive = (HiddenField)gvPromotionMedia.Rows[i].FindControl("hidActive");
+
+                    if (row == gvPromotionMedia.Rows[i])
+                    {
+                        if (hidActive.Value == "N")
+                        {
+                            hidActive.Value = "Y";
+                            gvPromotionMedia.Rows[i].BackColor = System.Drawing.Color.LightCyan;
+                        }
+                    }
+                    else
+                    {
+                        hidActive.Value = "N";
+                        gvPromotionMedia.Rows[i].BackColor = System.Drawing.Color.White;
+                    }
+                }
+
+
+                gvPromotionMedia.SelectedIndex = index;
+
+                PromotionInfo pInfo = new PromotionInfo();
+                pInfo.PromotionCode = hidPromotionCode.Value;
+
+                if (hidFlagCombosetMedia_Selected.Value == "Y") // Promotion for Combo Set
+                {
+                    BindgvCombosetMedia(pInfo.PromotionCode);
+                    
+                    combosetPartMedia.Visible = true;
+                    
+                }
+                else // Promotion for Product
+                {
+                    
+                    combosetPartMedia.Visible = false;
+
+                    hidPromotionTypeSelectedMedia.Value = hidPromotionTypeCode.Value;
+                    hidProLockAmountFlagMedia.Value = hidLockAmountFlag.Value; // แก้ไขจำนวนสินค้า
+                    hidProLockCheckboxMedia.Value = hidLockCheckbox.Value; // จับกลุ่ม
+                    hidProFreeShippingCodeMedia.Value = hidFreeShippingCode.Value; // Free ค่าขนส่ง
+
+                    BindgvProductMedia(pInfo.PromotionCode, hidCampaignMediaCode_Selected.Value);
+                    
+                }
+            }
+        }
+        // End Media Command Section //
+
+        public List<ProductInfo> GetProductMasterByCriteria(string pCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListProductMasterNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["ProductCode"] = pCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<ProductInfo> lProductInfo = JsonConvert.DeserializeObject<List<ProductInfo>>(respstr);
+
+
+            return lProductInfo;
+
+        }
+
+        protected List<PromotionInfo> GetCampaignPromotionMasterByCriteria(String campaignCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCampaignPromotionNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CampaignCode"] = campaignCode;
+                data["PromotionCode"] = "";
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<PromotionInfo> lPromotionInfo = JsonConvert.DeserializeObject<List<PromotionInfo>>(respstr);
+            return lPromotionInfo;
+        }
+
+        protected List<PromotionDetailInfo> GetPromotionComboSetMasterByCriteria(String promotionCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListProducttionDetailNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CampaignCode"] = "";
+                data["PromotionCode"] = promotionCode;
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<PromotionDetailInfo> lPromotiondetailInfo = JsonConvert.DeserializeObject<List<PromotionDetailInfo>>(respstr);
+            return lPromotiondetailInfo;
+        }
+
+        protected List<PromotionDetailInfo> GetPromotiondetailMasterByCriteria(String promotionCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListProducttionDetailNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["ProductName"] = txtSearchProduct.Text;
+                data["CampaignCode"] = hidCampaignCode_Selected.Value;
+                data["PromotionCode"] = promotionCode;
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<PromotionDetailInfo> lPromotiondetailInfo = JsonConvert.DeserializeObject<List<PromotionDetailInfo>>(respstr);
+            return lPromotiondetailInfo;
+        }
+        protected List<PromotionDetailInfo> GetPromotiondetailMasterforitem_typeByCriteria(String promotionCode, String productcode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListProducttionDetailNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["ProductCode"] = productcode;
+                data["PromotionCode"] = promotionCode;
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<PromotionDetailInfo> lPromotiondetailInfo = JsonConvert.DeserializeObject<List<PromotionDetailInfo>>(respstr);
+            return lPromotiondetailInfo;
+        }
+        protected List<PromotionDetailInfo> GetPromotiondetailMediaMasterByCriteria(String promotionCode, String campaigncode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListProducttionDetailNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["ProductName"] = txtSearchProduct.Text;
+                data["CampaignCode"] = campaigncode;
+                data["PromotionCode"] = promotionCode;
+                data["Active"] = "Y";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<PromotionDetailInfo> lPromotiondetailInfo = JsonConvert.DeserializeObject<List<PromotionDetailInfo>>(respstr);
+            return lPromotiondetailInfo;
+        }
+        protected List<SubPromotionDetailInfo> GetSubMainPromotionDetailMasterByCriteria(int? promotiondetailId, string CombosetCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListSubMainPromotionDetailbyCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                
+
+                data["CombosetCode"] = CombosetCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<SubPromotionDetailInfo> lSubMainPromotiondetailInfo = JsonConvert.DeserializeObject<List<SubPromotionDetailInfo>>(respstr);
+            return lSubMainPromotiondetailInfo;
+        }
+
+        protected List<SubPromotionDetailInfo> GetSubExchangePromotionDetailMasterByCriteria(int? promotiondetailId, string SubMainPromotionDetailInfoId)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListSubExchangePromotionDetailbyCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                
+                data["SubMainExchangeID"] = (SubMainPromotionDetailInfoId != "" || SubMainPromotionDetailInfoId != null) ? SubMainPromotionDetailInfoId : "";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<SubPromotionDetailInfo> lSubExchangePromotiondetailInfo = JsonConvert.DeserializeObject<List<SubPromotionDetailInfo>>(respstr);
+            return lSubExchangePromotiondetailInfo;
+        }
+
+        protected List<DiscountBillInfo> GetDiscountBillMasterNoPaggingByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListDiscountBillNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["DiscountBillCode"] = "";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<DiscountBillInfo> lDiscountBillInfo = JsonConvert.DeserializeObject<List<DiscountBillInfo>>(respstr);
+            return lDiscountBillInfo;
+        }
+
+        public List<DiscountBillDetailInfo> GetDiscountBillDetailMasterNoPagingByCriteria(string DiscountBillCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListDiscountBillProducttionDetailNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["DiscountBillCode"] = DiscountBillCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<DiscountBillDetailInfo> lDiscountBillDetailInfo = JsonConvert.DeserializeObject<List<DiscountBillDetailInfo>>(respstr);
+
+
+            return lDiscountBillDetailInfo;
+
+        }
+
+        public void LoadOrderdata(OrderData odata)
+        {
+
+            List<OrderData> lorderdata = new List<OrderData>();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                
+                if (L_orderdata1.Count > 0) //ถ้ามีข้อมูลที่แทป 1 อยู่แล้ว
+                {
+                    lorderdata = L_orderdata1;
+                }
+
+
+                odata.runningNo = lorderdata.Count + 1;
+                lorderdata.Add(odata);
+
+                L_orderdata1 = lorderdata;
+
+                btntab1.BackColor = System.Drawing.Color.DeepSkyBlue;
+                btntab2.BackColor = System.Drawing.Color.Gray;
+                btntab3.BackColor = System.Drawing.Color.Gray;
+
+                
+
+                hidtab.Value = "1";
+                
+
+                LoadgvOrder(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                
+                if (L_orderdata2.Count > 0) //ถ้ามีข้อมูลที่แทป 2 อยู่แล้ว
+                {
+                    lorderdata = L_orderdata2;
+                }
+
+
+                odata.runningNo = lorderdata.Count + 1;
+                lorderdata.Add(odata);
+
+
+                L_orderdata2 = lorderdata;
+
+                btntab1.BackColor = System.Drawing.Color.Gray;
+                btntab2.BackColor = System.Drawing.Color.DeepSkyBlue;
+                btntab3.BackColor = System.Drawing.Color.Gray;
+
+                LoadgvOrder(L_orderdata2);
+
+            }
+            else if (hidtab.Value == "3")
+            {
+                
+                if (L_orderdata3.Count > 0) //ถ้ามีข้อมูลที่แทป 3 อยู่แล้ว
+                {
+                    lorderdata = L_orderdata3;
+                }
+
+
+                odata.runningNo = lorderdata.Count + 1;
+                lorderdata.Add(odata);
+
+
+                L_orderdata3 = lorderdata;
+
+                btntab1.BackColor = System.Drawing.Color.Gray;
+                btntab2.BackColor = System.Drawing.Color.Gray;
+                btntab3.BackColor = System.Drawing.Color.DeepSkyBlue;
+
+                LoadgvOrder(L_orderdata3);
+
+            }
+
+
+        }
+
+        public void LoadCustomerDeliveryAddress()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/GetLatestUpdatedCustomerAddress";
+
+            Label lblFullAddress = (Label)SelectBranch.FindControl("lblFullAddress");
+
+            HiddenField currentDeliveryAddressId = (HiddenField)SelectBranch.FindControl("currentDeliveryAddressId");
+            HiddenField currentDeliveryAddress = (HiddenField)SelectBranch.FindControl("currentDeliveryAddress");
+            HiddenField currentDeliverySubDistrict = (HiddenField)SelectBranch.FindControl("currentDeliverySubDistrict");
+            HiddenField currentDeliverySubDistrictName = (HiddenField)SelectBranch.FindControl("currentDeliverySubDistrictName");
+            HiddenField currentDeliveryDistrict = (HiddenField)SelectBranch.FindControl("currentDeliveryDistrict");
+            HiddenField currentDeliveryDistrictName = (HiddenField)SelectBranch.FindControl("currentDeliveryDistrictName");
+            HiddenField currentDeliveryProvince = (HiddenField)SelectBranch.FindControl("currentDeliveryProvince");
+            HiddenField currentDeliveryProvinceName = (HiddenField)SelectBranch.FindControl("currentDeliveryProvinceName");
+            HiddenField currentDeliveryZipCode = (HiddenField)SelectBranch.FindControl("currentDeliveryZipCode");
+
+            HiddenField currentReceiptAddressId = (HiddenField)SelectBranch.FindControl("currentReceiptAddressId");
+            HiddenField currentReceiptAddress = (HiddenField)SelectBranch.FindControl("currentReceiptAddress");
+            HiddenField currentReceiptSubDistrict = (HiddenField)SelectBranch.FindControl("currentReceiptSubDistrict");
+            HiddenField currentReceiptSubDistrictName = (HiddenField)SelectBranch.FindControl("currentReceiptSubDistrictName");
+            HiddenField currentReceiptDistrict = (HiddenField)SelectBranch.FindControl("currentReceiptDistrict");
+            HiddenField currentReceiptDistrictName = (HiddenField)SelectBranch.FindControl("currentReceiptDistrictName");
+            HiddenField currentReceiptProvince = (HiddenField)SelectBranch.FindControl("currentReceiptProvince");
+            HiddenField currentReceiptProvinceName = (HiddenField)SelectBranch.FindControl("currentReceiptProvinceName");
+            HiddenField currentReceiptZipCode = (HiddenField)SelectBranch.FindControl("currentReceiptZipCode");
+
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                if (currentDeliveryAddressId.Value != "")
+                {
+                    data["CustomerCode"] = (Request.QueryString["CustomerCode"] != null) ? Request.QueryString["CustomerCode"].ToString() : "";
+                    data["AddressType"] = "01";
+                    data["CustomerAddressId"] = currentDeliveryAddressId.Value;
+
+                }
+                else
+                {
+                    data["CustomerCode"] = (Request.QueryString["CustomerCode"] != null) ? Request.QueryString["CustomerCode"].ToString() : "";
+                    data["AddressType"] = "01";
+                }
+
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CustomerAddressInfo> lCustomerDeliveryAddress = JsonConvert.DeserializeObject<List<CustomerAddressInfo>>(respstr);
+
+            if (lCustomerDeliveryAddress.Count > 0)
+            {
+                currentDeliveryAddress.Value = (lCustomerDeliveryAddress[0].Address != null) ? lCustomerDeliveryAddress[0].Address : "";
+                currentDeliverySubDistrict.Value = lCustomerDeliveryAddress[0].Subdistrict;
+                currentDeliverySubDistrictName.Value = lCustomerDeliveryAddress[0].SubdistrictName;
+                currentDeliveryDistrict.Value = lCustomerDeliveryAddress[0].District;
+                currentDeliveryDistrictName.Value = lCustomerDeliveryAddress[0].DistrictName;
+                currentDeliveryProvince.Value = lCustomerDeliveryAddress[0].Province;
+                currentDeliveryProvinceName.Value = lCustomerDeliveryAddress[0].ProvinceName;
+                currentDeliveryZipCode.Value = lCustomerDeliveryAddress[0].ZipCode;
+
+                lblFullAddress.Text = lCustomerDeliveryAddress[0].Address + " " + lCustomerDeliveryAddress[0].SubdistrictName + " " + lCustomerDeliveryAddress[0].DistrictName +
+                " " + lCustomerDeliveryAddress[0].ProvinceName + " " + lCustomerDeliveryAddress[0].ZipCode;
+
+                currentDeliveryAddressId.Value = lCustomerDeliveryAddress[0].CustomerAddressId.ToString();
+
+            }
+        }
+
+
+        public void UpdateCustomerAddressLatLng(CustomerAddressInfo cInfo)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            if (empInfo == null)
+            {
+                Response.Redirect("..\\..\\Default.aspx?flaglogin=_EMPCODENULL");
+
+            }
+            else
+            {
+                string respstr = "";
+
+                APIpath = APIUrl + "/api/support/UpdateCustomerAddressLatLng";
+
+                using (var wb = new WebClient())
+                {
+                    var data = new NameValueCollection();
+
+                    data["CustomerAddressId"] = cInfo.CustomerAddressId.ToString();
+                    data["Lat"] = cInfo.Lat;
+                    data["Long"] = cInfo.Long;
+                    data["AreaCode"] = cInfo.AreaCode;
+                    data["UpdateBy"] = empInfo.EmpCode;
+
+                    var response = wb.UploadValues(APIpath, "POST", data);
+
+                    respstr = Encoding.UTF8.GetString(response);
+                }
+
+                int? cou = JsonConvert.DeserializeObject<int?>(respstr);
+
+            }
+
+
+        }
+
+        protected List<LogisticInfo> GetLogisticMasterByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLogisticNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LogisticCode"] = "";
+                data["LogisticName"] = "";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LogisticInfo> llogisticInfo = JsonConvert.DeserializeObject<List<LogisticInfo>>(respstr);
+            return llogisticInfo;
+        }
+        protected List<LookupInfo> GetPaymenyTypeMasterByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupCode"] = "";
+                data["LookupType"] = "PAYMENTMETHOD";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> llookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return llookupInfo;
+        }
+        protected List<ChannelInfo> GetChannelMasterByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListChannelNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["ChannelCode"] = "";
+                data["MerchantCode"] = MerchantMapCode;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<ChannelInfo> lchannelInfo = JsonConvert.DeserializeObject<List<ChannelInfo>>(respstr);
+            return lchannelInfo;
+        }
+        protected List<InventoryInfo> GetListMasterInventoryByCriteria()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryCode"] = "";
+                data["MerchantCode"] = MerchantMapCode;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryInfo> linventoryInfo = JsonConvert.DeserializeObject<List<InventoryInfo>>(respstr);
+            return linventoryInfo;
+        }
+        protected List<LookupInfo> GetContactHistoryDropdownListMaster()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "CONTACTSTATUS";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetContactResultDropdownListMaster()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "CONTACTRESULT";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<InventoryDetailInfo> GetInventoryBalance(InventoryInfo invInfo)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryDetailInfoNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryCode"] = invInfo.InventoryCode;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryDetailInfo> linventorydetailInfo = JsonConvert.DeserializeObject<List<InventoryDetailInfo>>(respstr);
+            return linventorydetailInfo;
+        }
+        protected List<InventoryInfo> GetInventoryDetailInfo(String inventorycode, String productcode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryDetailGetFromTakeOrderRetail";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryCode"] = inventorycode;
+                data["ProductCode"] = productcode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryInfo> linventoryInfo = JsonConvert.DeserializeObject<List<InventoryInfo>>(respstr);
+            return linventoryInfo;
+        }
+        protected List<InventoryMovementInfo> GetInvMovementforMoveOutTakeOrderRetail(int? inventorydetailID, String ordercode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryMovementNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryDetailId"] = inventorydetailID.ToString();
+                data["OrderNo"] = ordercode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryMovementInfo> linventorymvmInfo = JsonConvert.DeserializeObject<List<InventoryMovementInfo>>(respstr);
+            return linventorymvmInfo;
+        }
+        protected List<InventoryDetailInfo> GetInventoryDetailIDMaster(string inventorycode, string productcode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryDetailInfoNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryCode"] = inventorycode;
+                data["ProductCode"] = productcode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryDetailInfo> lInventoryDetailInfo = JsonConvert.DeserializeObject<List<InventoryDetailInfo>>(respstr);
+
+            return lInventoryDetailInfo;
+        }
+        protected List<InventoryMovementInfo> GetInventoryMovementIDForInsUpd(int? inventorydetailId, int? amount)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListInventoryMovementNoPagingSelectedFormTakeOrderRetail";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["InventoryDetailId"] = inventorydetailId.ToString();
+                data["CountTop"] = amount.ToString();
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<InventoryMovementInfo> lInventoryMovementInfo = JsonConvert.DeserializeObject<List<InventoryMovementInfo>>(respstr);
+
+            return lInventoryMovementInfo;
+        }
+        protected List<paymentdataInfo> GetOrerPaymentFromOrderCode(paymentdataInfo pdata)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/LoadOrderPaymentRetail";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["OrderCode"] = pdata.OrderCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<paymentdataInfo> lpaymentInfo = JsonConvert.DeserializeObject<List<paymentdataInfo>>(respstr);
+            return lpaymentInfo;
+        }
+        protected List<transportdataInfo> GetTransportTypeFromOrderCode(transportdataInfo tInfo)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/LoadOrderTransportRetail";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["OrderCode"] = tInfo.OrderCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<transportdataInfo> ltransportInfo = JsonConvert.DeserializeObject<List<transportdataInfo>>(respstr);
+            return ltransportInfo;
+        }
+        protected List<CustomerAddressInfo> GetCustomerAddressID(transportdataInfo ltInfo)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListAddressValidate";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = ltInfo.CustomerCode;
+                data["Address"] = ltInfo.Address;
+                data["Subdistrict"] = ltInfo.SubDistrictCode;
+                data["District"] = ltInfo.DistrictCode;
+                data["Province"] = ltInfo.ProvinceCode;
+                data["ZipCode"] = ltInfo.Zipcode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CustomerAddressInfo> lcustomeraddressInfo = JsonConvert.DeserializeObject<List<CustomerAddressInfo>>(respstr);
+            return lcustomeraddressInfo;
+        }
+        protected List<ContactHistoryInfo> GetContactHistorybyOrderCode(ContactHistoryInfo cInfo)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListContactByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["OrderCode"] = cInfo.OrderCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<ContactHistoryInfo> lcontacthistoryInfo = JsonConvert.DeserializeObject<List<ContactHistoryInfo>>(respstr);
+            return lcontacthistoryInfo;
+        }
+        protected void Loadtotal(List<OrderData> lorderdata)
+        {
+
+            double? totalsumprice = 0;
+            int? totalamount = 0;
+            int? totalcou_discount = 0;
+            double? totalsumdiscount = 0;
+            double? totalbefore = 0;
+            double? totalafter = 0;
+            double? vatprice = 0;
+            double? pointprice = 0;
+            double? voucherprice = 0;
+            double? billprice = 0;
+            if (hidtab.Value == "1")
+            {
+                voucherprice = (hidtab1VoucherPrice.Value != "") ? Convert.ToDouble(hidtab1VoucherPrice.Value) : 0;
+                billprice = (hidtab1BillDiscountPrice.Value != "") ? Convert.ToDouble(hidtab1BillDiscountPrice.Value) : 0;
+                pointprice = (hidtab1PointDiscountPrice.Value != "") ? Convert.ToDouble(hidtab1PointDiscountPrice.Value) : 0;
+            }
+            else if (hidtab.Value == "2")
+            {
+                voucherprice = (hidtab2VoucherPrice.Value != "") ? Convert.ToDouble(hidtab2VoucherPrice.Value) : 0;
+                billprice = (hidtab2BillDiscountPrice.Value != "") ? Convert.ToDouble(hidtab2BillDiscountPrice.Value) : 0;
+                pointprice = (hidtab2PointDiscountPrice.Value != "") ? Convert.ToDouble(hidtab2PointDiscountPrice.Value) : 0;
+            }
+            else if (hidtab.Value == "3")
+            {
+                voucherprice = (hidtab3VoucherPrice.Value != "") ? Convert.ToDouble(hidtab3VoucherPrice.Value) : 0;
+                billprice = (hidtab3BillDiscountPrice.Value != "") ? Convert.ToDouble(hidtab3BillDiscountPrice.Value) : 0;
+                pointprice = (hidtab3PointDiscountPrice.Value != "") ? Convert.ToDouble(hidtab3PointDiscountPrice.Value) : 0;
+            }
+
+            double? transportprice = (lblTransportPrice.Text != "") ? Convert.ToDouble(lblTransportPrice.Text) : 0;
+            foreach (var item in lorderdata)
+            {
+                if (item.LockCheckbox == "N")
+                {
+                    item.Price = (item.Price != null) ? item.Price : 0;
+                    item.DiscountPercent = (item.DiscountPercent != null) ? item.DiscountPercent : 0;
+                    item.DiscountAmount = (item.DiscountAmount != null) ? item.DiscountAmount : 0;
+
+                    totalsumprice += ((item.Price - ((item.Price * item.DiscountPercent) / 100)) - item.DiscountAmount) * item.Amount;
+                    totalamount += item.Amount;
+
+                    /* if ((item.DiscountAmount > 0) || (item.DiscountPercent > 0))
+                     {
+                         if (item.DiscountAmount > 0)
+                         {
+                             totalsumdiscount += item.DiscountAmount * item.Amount;
+                         }
+                         if (item.DiscountPercent > 0)
+                         {
+                             totalsumdiscount += ((item.Price * item.DiscountPercent) / 100) * item.Amount;
+                         }
+
+                         totalcou_discount += item.Amount;
+                     }
+                   */
+                }
+                else
+                {
+                    if (item.FlagProSetHeader == "Y")
+                    {
+                        item.Price = (item.Price != null) ? item.Price : 0;
+                        item.DiscountPercent = (item.DiscountPercent != null) ? item.DiscountPercent : 0;
+                        item.DiscountAmount = (item.DiscountAmount != null) ? item.DiscountAmount : 0;
+
+                        totalsumprice += ((item.Price - ((item.Price * item.DiscountPercent) / 100)) - item.DiscountAmount) * item.Amount;
+                    }
+                    else if (item.MOQNewHeaderFlag == "Y")
+                    {
+                        item.Price = (item.Price != null) ? item.Price : 0;
+                        item.DiscountPercent = (item.DiscountPercent != null) ? item.DiscountPercent : 0;
+                        item.DiscountAmount = (item.DiscountAmount != null) ? item.DiscountAmount : 0;
+
+                        totalsumprice += ((item.Price - ((item.Price * item.DiscountPercent) / 100)) - item.DiscountAmount) * item.Amount;
+                    }
+                    else
+                    {
+                        item.Price = (item.Price != null) ? item.Price : 0;
+                        item.DiscountPercent = (item.DiscountPercent != null) ? item.DiscountPercent : 0;
+                        item.DiscountAmount = (item.DiscountAmount != null) ? item.DiscountAmount : 0;
+
+                        totalsumprice += 0;
+                    }
+                }
+            }
+
+            // กรณี OrderData ไม่มีรายการสินค้า
+            if (lorderdata.Count == 0)
+            {
+                billprice = 0.00;
+                pointprice = 0.00;
+                
+            }
+
+            totalbefore = totalsumprice - voucherprice - pointprice - billprice;
+            if (totalbefore <= 0)
+            {
+                totalbefore = 0;
+            }
+
+            int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+            vatprice = (totalbefore * vat) / 100;
+
+            
+
+            totalafter = totalbefore + vatprice + transportprice;
+            hidTotalPriceBefore.Value = totalsumprice.ToString();
+             
+            lblTotalPricebefore.Text = string.Format("{0:n}", (totalsumprice)); // รวมก่อน VAT
+            
+            lblVatPrice.Text = string.Format("{0:n}", (vatprice));
+            lblTransportPrice.Text = string.Format("{0:n}", (transportprice));
+            lblTotalPriceAfter.Text = string.Format("{0:n}", (totalafter));
+            
+            lblBillDiscountPrice.Text = string.Format("{0:n}", (billprice));
+            
+        }
+
+        protected void CheckMOQ(List<OrderData> lorderdata)
+        {
+            if (lorderdata.Count > 0)
+            {
+                var CountMOQ = lorderdata.Where(s => s.MOQFlag == "Y")
+                   .GroupBy(b => new { b.PromotionCode, b.CampaignCode })
+                   .Select(a => new { Amount = a.Sum(b => b.Amount), Name = a.Key })
+                   .OrderByDescending(a => a.Amount)
+                   .ToList();
+
+                foreach (var item in lorderdata)
+                {
+                    if (item.PromotionTypeCode == "07")
+                    {
+                        if (item.MOQFlag == "Y")
+                        {
+                            foreach (var items in CountMOQ)
+                            {
+                                if (items.Name.PromotionCode == item.PromotionCode && items.Name.CampaignCode == item.CampaignCode)
+                                {
+                                    if (items.Amount >= item.MinimumQty)
+                                    {
+                                        item.FreeShipping = "Y";
+                                    }
+                                    else
+                                    {
+                                        item.FreeShipping = "N";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (item.PromotionTypeCode == "08")
+                    {
+                        if (item.MOQFlag == "Y")
+                        {
+                            foreach (var items in CountMOQ)
+                            {
+                                if (items.Name.PromotionCode == item.PromotionCode && items.Name.CampaignCode == item.CampaignCode)
+                                {
+                                    if (items.Amount >= item.MinimumQty)
+                                    {
+                                        item.DiscountAmount = item.ProductDiscountAmount;
+                                        item.DiscountPercent = item.ProductDiscountPercent;
+                                        item.SumPrice = ((item.Price - ((item.Price * item.DiscountPercent) / 100)) - item.DiscountAmount) * item.Amount;
+                                        if (item.SumPrice <= 0)
+                                        {
+                                            item.SumPrice = 0;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        item.DiscountAmount = 0;
+                                        item.DiscountPercent = 0;
+                                        item.SumPrice = ((item.Price - ((item.Price * item.DiscountPercent) / 100)) - item.DiscountAmount) * item.Amount;
+                                        if (item.SumPrice <= 0)
+                                        {
+                                            item.SumPrice = 0;
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+
+        }
+        protected void CheckMOQforAddNew(List<OrderData> lorderdata, String productcode, String productprice, String campaigncode, String promotioncode)
+        {
+            List<OrderData> lcheck = new List<OrderData>();
+
+            if (lorderdata.Count > 0)
+            {
+                foreach (var item in lorderdata.ToList())
+                {
+                    lcheck.Add(bindorderdata(item));
+                }
+            }
+
+            lcheck.RemoveAll(s => s.MOQFlag == "Y" && s.ProhMinQtyHeaderFlag == "Y");
+            lcheck.RemoveAll(s => s.CampaignCode != campaigncode || s.PromotionCode != promotioncode);
+
+
+            if (lcheck.Count > 0)
+            {
+                OrderData od = new OrderData();
+                List<OrderData> lMOQHeadIns = new List<OrderData>();
+                List<OrderData> lMOQIns = new List<OrderData>();
+                List<OrderData> lMOQLastIns = new List<OrderData>();
+
+                var CountMOQ = lcheck.Where(s => s.MOQFlag == "Y")
+                   .GroupBy(b => new { b.CampaignCode, b.PromotionCode })
+                   .Select(a => new { Amount = a.Sum(b => b.Amount), Name = a.Key })
+                   .OrderByDescending(a => a.Amount)
+                   .ToList();
+
+                int? amount = 0;
+                int? amountoth = 0;
+                decimal? amounthead = 0;
+                decimal? amountleft = 0;
+                decimal? amountchild = 0;
+                decimal? amountlastchild = 0;
+
+                // Check SumAmount of Product in Promotion not select when MOQ trigger
+                foreach (var amountother in lcheck.ToList())
+                {
+                    if (amountother.ProductCode != productcode)
+                    {
+                        amountoth += amountother.Amount;
+                    }
+                }
+
+                String parentpromotioncode = "";
+
+                foreach (var item in lcheck.ToList())
+                {
+                    int cou = 0;
+                    
+                    if (item.MOQFlag == "Y")
+                    {
+                        foreach (var items in CountMOQ)
+                        {
+                            if (items.Name.CampaignCode == item.CampaignCode && items.Name.PromotionCode == item.PromotionCode && item.ProhMinQtyHeaderFlag == "N")
+                            {
+                                if (items.Amount >= item.MinimumQty)
+                                {
+                                    amount = items.Amount;
+                                    amounthead = Math.Floor(Convert.ToDecimal(amount) / Convert.ToDecimal(item.MinimumQty));
+                                    amountleft = amount % item.MinimumQty;
+                                    amountchild = amounthead * item.MinimumQty;
+                                    amountlastchild = amount - amountchild;
+
+                                    hidCampaignCodeMOQ.Value = items.Name.CampaignCode;
+                                    hidPromotionCodeMOQ.Value = items.Name.PromotionCode;
+                                    hidPromotionTypeCodeMOQ.Value = item.PromotionTypeCode;
+                                    hidPromotionNameMOQ.Value = item.PromotionName;
+                                    hidMOQAmount.Value = amounthead.ToString();
+                                    hidPromotionMOQPrice.Value = item.GroupPrice.ToString();
+                                    hidUnitMOQ.Value = item.Unit;
+                                    hidUnitNameMOQ.Value = item.UnitName;
+                                    hidFreeShppingMOQ.Value = item.FreeShipping;
+                                    hidLockCheckboxMOQ.Value = item.LockCheckbox;
+                                    hidFlagProSetHeaderMOQ.Value = item.FlagProSetHeader;
+                                    hidParentProductCodeMOQ.Value = item.ParentProductCode;
+                                    hidMOQFlagMOQ.Value = item.MOQFlag;
+                                    hidMinimumQtyMOQ.Value = item.MinimumQty.ToString();
+                                    hidRunningNoMOQ.Value = item.runningNo.ToString();
+
+                                    hidParentPromotionCodeMOQ.Value = parentpromotioncode; // Flag for use when delete group of Promotion MOQ
+
+                                    // Bind MOQ child change price value
+                                    od = new OrderData();
+
+                                    od.PromotionTypeCode = item.PromotionTypeCode;
+
+                                    if (item.ProductCode == productcode)
+                                    {
+                                        od.Amount = Convert.ToInt32(amountchild) - amountoth;
+                                    }
+                                    else
+                                    {
+                                        od.Amount = item.Amount;
+                                    }
+
+                                    od.SumPrice = 0;
+                                    od.FlagCombo = item.FlagCombo;
+                                    od.ProductCode = item.ProductCode;
+                                    od.ProductName = item.ProductName;
+                                    od.Unit = item.Unit;
+                                    od.UnitName = item.UnitName;
+                                    od.Price = item.Price;
+                                    od.DefaultAmount = item.DefaultAmount;
+                                    od.DiscountAmount = item.DiscountAmount;
+                                    od.DiscountPercent = item.DiscountPercent;
+                                    od.PromotionCode = item.PromotionCode;
+                                    od.PromotionName = item.PromotionName;
+                                    od.PromotionDetailId = item.PromotionDetailId;
+                                    od.CampaignCode = item.CampaignCode;
+                                    od.ComboCode = "";
+                                    od.ComboName = "";
+                                    od.runningNo = Convert.ToInt32(hidRunningNoMOQ.Value);
+                                    
+                                    od.LockCheckbox = "Y";
+                                    od.LockAmountFlag = "Y";
+                                    od.CampaignCategory = "";
+                                    od.FreeShipping = item.FreeShipping;
+                                    od.MerchantCode = item.MerchantCode;
+                                    od.MerchantName = item.MerchantName;
+                                    od.FlagProSetHeader = item.FlagProSetHeader;
+                                    od.ParentPromotionCode = parentpromotioncode; // Flag for use when delete group of Promotion MOQ
+                                    od.ParentProductCode = "-99MOQ"; // Hard Value of Promotion MOQ Head for use in function GetTextPrice in gvProductView(aspx) (Hide show Price and SumPrice)
+                                    od.MOQFlag = item.MOQFlag;
+                                    od.MinimumQty = item.MinimumQty;
+                                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                                    od.ComboCode = "";
+                                    od.ProhMinQtyHeaderFlag = "Y"; // Flag identify for Promotion MOQ after Change New Price already (Head + Child)
+                                    od.GroupPrice = item.GroupPrice;
+                                    lMOQIns.Add(od);
+                                }
+                                else
+                                {
+                                    // Nothing and return same lorderdata
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+
+                if (hidCampaignCodeMOQ.Value != "" && hidPromotionCodeMOQ.Value != "" && lMOQIns.Count > 0)
+                {
+                    int cou = 0;
+
+                    lorderdata.RemoveAll(s => s.CampaignCode == hidCampaignCodeMOQ.Value && s.PromotionCode == hidPromotionCodeMOQ.Value && s.MOQFlag == "Y" && s.ProhMinQtyHeaderFlag == "N");
+
+                    //Bind MOQ head change price value
+                    od = new OrderData();
+
+                    od.Amount = Convert.ToInt32(hidMOQAmount.Value);
+                    od.SumPrice = Convert.ToDouble(hidPromotionMOQPrice.Value) * od.Amount;
+
+                    od.DiscountAmount = 0;
+                    od.DiscountPercent = 0;
+                    od.FlagCombo = "N";
+                    od.ProductCode = hidPromotionCodeMOQ.Value;
+                    od.ProductName = hidPromotionNameMOQ.Value;
+                    od.Unit = "10";
+                    od.UnitName = "ชุด";
+                    od.Price = Convert.ToDouble(hidPromotionMOQPrice.Value);
+                    od.PromotionCode = hidPromotionCodeMOQ.Value;
+                    od.PromotionName = hidPromotionNameMOQ.Value;
+                    od.PromotionDetailId = -1;
+                    od.CampaignCode = hidCampaignCodeMOQ.Value;
+                    od.ComboCode = "";
+                    od.ComboName = "";
+                    
+                    od.LockCheckbox = "Y";
+                    od.LockAmountFlag = "Y";
+                    od.CampaignCategory = "";
+                    od.FreeShipping = hidFreeShppingMOQ.Value;
+                    od.MerchantCode = hidMerchantCodeMOQ.Value;
+                    od.MerchantName = hidMerchantNameMOQ.Value;
+                    od.FlagProSetHeader = hidFlagProSetHeaderMOQ.Value;
+
+                    //Get ParentCode
+                    if (hidtab.Value == "1")
+                    {
+                        cou = (hidtab1countproset.Value != "") ? Convert.ToInt32(hidtab1countproset.Value) + 1 : 1;
+                        hidtab1countproset.Value = cou.ToString();
+                        parentpromotioncode = cou.ToString() + hidPromotionCodeMOQ.Value;
+                    }
+                    else if (hidtab.Value == "2")
+                    {
+                        cou = (hidtab2countproset.Value != "") ? Convert.ToInt32(hidtab2countproset.Value) + 1 : 1;
+                        hidtab2countproset.Value = cou.ToString();
+                        parentpromotioncode = cou.ToString() + hidPromotionCodeMOQ.Value;
+                    }
+                    else if (hidtab.Value == "3")
+                    {
+                        cou = (hidtab3countproset.Value != "") ? Convert.ToInt32(hidtab3countproset.Value) + 1 : 1;
+                        hidtab3countproset.Value = cou.ToString();
+                        parentpromotioncode = cou.ToString() + hidPromotionCodeMOQ.Value;
+                    }
+
+                    od.ParentPromotionCode = parentpromotioncode;
+                    od.ParentProductCode = "-9MOQ"; // Hard Value of Promotion MOQ Child for use in function GetTextPrice in gvProductView(aspx) (Hide show Price and SumPrice)
+                    od.ComboCode = "";
+                    od.MOQFlag = hidMOQFlagMOQ.Value;
+                    od.MinimumQty = Convert.ToInt32(hidMinimumQtyMOQ.Value);
+                    od.ProhMinQtyHeaderFlag = "Y"; // Flag identify for Promotion MOQ after Change New Price already (Head + Child)
+                    od.MOQNewHeaderFlag = "Y"; // Identify for head only of Promotion MOQ New Price (Use for show icon X at header record only)
+                    od.runningNo = Convert.ToInt32(hidRunningNoMOQ.Value);
+
+                    lMOQHeadIns.Add(od);
+                }
+
+                if (lMOQHeadIns.Count > 0)
+                {
+                    foreach (var lmoqchild in lMOQIns)
+                    {
+                        lmoqchild.ParentPromotionCode = parentpromotioncode;
+                    }
+
+                    lMOQHeadIns.AddRange(lMOQIns);
+
+                    for (int i = 0; i < lMOQHeadIns.Count; i++)
+                    {
+                        hidRunningNoMOQ.Value = lMOQHeadIns[0].runningNo.ToString();
+
+                        lMOQHeadIns[i].ParentPromotionCode = parentpromotioncode;
+                    }
+                    lorderdata.AddRange(lMOQHeadIns);
+                }
+
+                // Add Last Child
+                if (amountlastchild != 0)
+                {
+                    foreach (var item in lMOQIns.ToList())
+                    {
+                        if (item.ProductCode == productcode)
+                        {
+                            od = new OrderData();
+
+                            od.FlagCombo = item.FlagCombo;
+                            od.ProductCode = item.ProductCode;
+                            od.ProductName = item.ProductName;
+                            od.Unit = item.Unit;
+                            od.UnitName = item.UnitName;
+                            od.Price = (productprice != "") ? Convert.ToDouble(productprice) : -99;
+                            od.ProductPrice = (item.ProductPrice != null) ? Convert.ToDouble(item.ProductPrice) : 0;
+                            od.Amount = Convert.ToInt32(amountlastchild);
+                            od.DefaultAmount = item.DefaultAmount;
+                            od.DiscountAmount = item.DiscountAmount;
+                            od.DiscountPercent = item.DiscountPercent;
+                            od.PromotionCode = item.PromotionCode;
+                            od.MerchantName = item.MerchantName;
+                            od.FreeShipping = item.FreeShipping;
+                            od.LockAmountFlag = "N";
+                            od.LockCheckbox = "N";
+                            od.SumPrice = (item.Price - ((item.Price * item.DiscountPercent) / 100) - item.DiscountAmount) * od.Amount;
+
+                            od.PromotionDetailId = item.PromotionDetailId;
+                            od.CampaignCode = item.CampaignCode;
+                            od.PromotionTypeCode = item.PromotionTypeCode;
+                            od.PromotionTypeName = item.PromotionTypeName;
+                            od.MOQFlag = item.MOQFlag; // Flag of Promotion MOQ Type 
+                            od.MinimumQty = item.MinimumQty; // Quantity minimum for trigger MOQ Set
+                            od.ProductDiscountPercent = item.ProductDiscountPercent;
+                            od.ProductDiscountAmount = item.ProductDiscountAmount;
+                            od.DiscountPercent = item.DiscountPercent;
+                            od.DiscountAmount = item.DiscountAmount;
+                            od.CheckMinQty = 0;
+                            od.ProhMinQtyHeaderFlag = "N"; // Flag Put all Group of Promotion MOQ (Head + Child)
+                            od.MOQNewHeaderFlag = "";
+                            od.GroupPrice = item.GroupPrice; // New Price of Promotion MOQ after MOQ trigger
+                            od.ProductPrice = item.ProductPrice;
+                            od.ParentProductCode = "";
+                            od.runningNo = lorderdata.Count + 1;
+
+                            lMOQLastIns.Add(od);
+                        }
+                    }
+                }
+
+                lorderdata.AddRange(lMOQLastIns);
+            }
+        }
+        protected void CheckFreeShipping(List<OrderData> lorderdata)
+        {
+            bool FreeShippingFlag = false;
+
+            if (lorderdata.Count > 0)
+            {
+                var CountFreeShipping = lorderdata.Count(a => a.FreeShipping == "Y");
+                var CountFreeShippingBill = lorderdata.Count(a => a.FreeShippingBill == "Y");
+
+                //เช็คตระกร้า
+                if (CountFreeShipping == lorderdata.Count)
+                {
+                    FreeShippingFlag = true;
+                }
+                else
+                {
+                    FreeShippingFlag = false;
+                }
+
+                //เช็คท้ายบิล
+                if (CountFreeShippingBill == lorderdata.Count)
+                {
+                    FreeShippingFlag = true;
+                }
+            }
+
+            if (FreeShippingFlag == true)
+            {
+
+                foreach (GridViewRow row in gvTransport.Rows)
+                {
+                    Label lblFee = (Label)row.FindControl("lblFee");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    HiddenField hidDefaultFee = (HiddenField)row.FindControl("hidDefaultFee");
+                    RadioButton r = (RadioButton)row.FindControl("radTransportType01");
+
+                    string strret = "<span style = \"text-decoration: line-through;color:black \" >" + string.Format("{0:n}", hidDefaultFee.Value) + "</span>  " +
+                                "&nbsp;<span style = \"color:black \" >" + string.Format("{0:n}", 0) + "  </span> ";
+                    lblFee.Text = strret;
+
+                    hidFee.Value = "0";
+
+                    if (r.Checked == true)
+                    {
+                        if (hidtab.Value == "1")
+                        {
+                            if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab1transportprice.Value;
+                                hidFee.Value = hidtab1transportprice.Value;
+                                lblTransportPrice.Text = hidtab1transportprice.Value;
+                                txtTransportPrice.Text = hidtab1transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab1transportprice.Value = "0";
+                                lblTransportPrice.Text = hidtab1transportprice.Value;
+                            }
+                        }
+                        else if (hidtab.Value == "2")
+                        {
+                            if (hidtab2TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab2transportprice.Value;
+                                hidFee.Value = hidtab2transportprice.Value;
+                                lblTransportPrice.Text = hidtab2transportprice.Value;
+                                txtTransportPrice.Text = hidtab2transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab2transportprice.Value = "0";
+                                lblTransportPrice.Text = hidtab2transportprice.Value;
+                            }
+                        }
+                        else if (hidtab.Value == "3")
+                        {
+                            if (hidtab3TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab3transportprice.Value;
+                                hidFee.Value = hidtab3transportprice.Value;
+                                lblTransportPrice.Text = hidtab3transportprice.Value;
+                                txtTransportPrice.Text = hidtab3transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab3transportprice.Value = "0";
+                                lblTransportPrice.Text = hidtab3transportprice.Value;
+                            }
+                        }
+
+                    }
+                }
+
+
+
+            }
+            else
+            {
+                foreach (GridViewRow row in gvTransport.Rows)
+                {
+                    Label lblFee = (Label)row.FindControl("lblFee");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    HiddenField hidDefaultFee = (HiddenField)row.FindControl("hidDefaultFee");
+                    RadioButton r = (RadioButton)row.FindControl("radTransportType01");
+
+                    lblFee.Text = hidDefaultFee.Value;
+                    hidFee.Value = hidDefaultFee.Value;
+                    if (r.Checked == true)
+                    {
+                        if (hidtab.Value == "1")
+                        {
+                            if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab1transportprice.Value;
+                                hidFee.Value = hidtab1transportprice.Value;
+                                lblTransportPrice.Text = hidtab1transportprice.Value;
+                                txtTransportPrice.Text = hidtab1transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab1transportprice.Value = hidFee.Value;
+                                lblTransportPrice.Text = hidtab1transportprice.Value;
+                            }
+                        }
+                        else if (hidtab.Value == "2")
+                        {
+                            if (hidtab2TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab2transportprice.Value;
+                                hidFee.Value = hidtab2transportprice.Value;
+                                lblTransportPrice.Text = hidtab2transportprice.Value;
+                                txtTransportPrice.Text = hidtab2transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab2transportprice.Value = hidFee.Value;
+                                lblTransportPrice.Text = hidtab2transportprice.Value;
+                            }
+                        }
+                        else if (hidtab.Value == "3")
+                        {
+                            if (hidtab3TransportTypeCode_Selected.Value == "LOGIS01")
+                            {
+                                lblFee.Text = hidtab3transportprice.Value;
+                                hidFee.Value = hidtab3transportprice.Value;
+                                lblTransportPrice.Text = hidtab3transportprice.Value;
+                                txtTransportPrice.Text = hidtab3transportprice.Value;
+                            }
+                            else
+                            {
+                                hidtab3transportprice.Value = hidFee.Value;
+                                lblTransportPrice.Text = hidtab3transportprice.Value;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+            Loadtotal(lorderdata);
+
+        }
+
+        protected void CheckDiscountBill(List<OrderData> lorderdata)
+        {
+            Loadtotal(lorderdata);
+            List<DiscountBillInfo> lDiscountBill = GetDiscountBillMasterNoPaggingByCriteria();
+            Double TotalPriceBefore = hidTotalPriceBefore.Value != "" ? Convert.ToDouble(hidTotalPriceBefore.Value) : 0;
+
+
+            var lDiscountbill = lorderdata.Where(s => s.TradeFlag == "Y");
+            var sumTrade = lDiscountbill.Sum(x => x.SumPrice);
+            Double? SumTotalPriceBefore = TotalPriceBefore - sumTrade;
+
+            foreach (var item in lDiscountBill)
+            {
+
+                if (SumTotalPriceBefore >= item.MinimumTotPrice)
+                {
+                    if (item.DiscountBillTypeCode == "01")//ส่วนลดท้ายบิล
+                    {
+                        double? BillDiscountPricePercent = (TotalPriceBefore * item.DiscountPercent) / 100;
+                        double? BillDiscountPriceAmount = item.DiscountAmount;
+
+                        if (BillDiscountPricePercent != 0)//ลดแบบเปอเซน
+                        {
+                            if (hidtab.Value == "1")
+                            {
+                                hidtab1BillDiscountPrice.Value = BillDiscountPricePercent.ToString();
+                            }
+                            else if (hidtab.Value == "2")
+                            {
+                                hidtab2BillDiscountPrice.Value = BillDiscountPricePercent.ToString();
+
+                            }
+                            else if (hidtab.Value == "3")
+                            {
+                                hidtab3BillDiscountPrice.Value = BillDiscountPricePercent.ToString();
+                            }
+                        }
+                        else if (BillDiscountPriceAmount != 0)//ลดแบบราคา
+                        {
+                            if (hidtab.Value == "1")
+                            {
+                                hidtab1BillDiscountPrice.Value = BillDiscountPriceAmount.ToString();
+                            }
+                            else if (hidtab.Value == "2")
+                            {
+                                hidtab2BillDiscountPrice.Value = BillDiscountPriceAmount.ToString();
+
+                            }
+                            else if (hidtab.Value == "3")
+                            {
+                                hidtab3BillDiscountPrice.Value = BillDiscountPriceAmount.ToString();
+                            }
+                        }
+
+
+                    }
+                    else if (item.DiscountBillTypeCode == "02" || item.DiscountBillTypeCode == "03")//แลกซื้อ + ของแถม
+                    {
+                        List<DiscountBillDetailInfo> LDiscountBillDetail = GetDiscountBillDetailMasterNoPagingByCriteria(item.DiscountBillCode);
+                        lorderdata.RemoveAll(s => s.PromotionCode == item.DiscountBillCode && s.CampaignCode == item.DiscountBillCode);
+                        foreach (var dItem in LDiscountBillDetail)
+                        {
+                            OrderData od = new OrderData();
+
+                            od.CampaignCode = dItem.DiscountBillCode;
+                            od.PromotionCode = dItem.DiscountBillCode;
+                            od.ParentProductCode = "";
+                            od.ProductCode = dItem.ProductCode;
+                            od.ProductName = dItem.ProductName;
+                            od.Unit = dItem.Unit;
+                            od.UnitName = dItem.UnitName;
+                            od.Price = dItem.Price;
+                            od.Amount = dItem.DefaultAmount;
+                            od.DefaultAmount = dItem.DefaultAmount;
+                            od.DiscountAmount = 0;
+                            od.DiscountPercent = 0;
+                            od.TradeFlag = "Y";
+                            od.FreeShipping = "Y";
+                            od.FreeShippingBill = "Y";
+
+                            od.SumPrice = (dItem.Price - (dItem.Price * (dItem.DiscountPercent / 100)) - dItem.DiscountAmount) * od.Amount;
+                            od.runningNo = lorderdata.Count + 1;
+                            lorderdata.Add(od);
+                        }
+
+                    }
+                    else if (item.DiscountBillTypeCode == "04")//ฟรีค่าขนส่ง
+                    {
+                        foreach (var items in lorderdata)
+                        {
+                            items.FreeShippingBill = "Y";
+                        }
+                    }
+
+
+                }
+                else//ไม่เข้าเงื่อนไขเคลียค่า
+                {
+                    if (item.DiscountBillTypeCode == "01")//ส่วนลดท้ายบิล
+                    {
+                        if (hidtab.Value == "1")
+                        {
+                            hidtab1BillDiscountPrice.Value = "";
+                        }
+                        else if (hidtab.Value == "2")
+                        {
+                            hidtab2BillDiscountPrice.Value = "";
+
+                        }
+                        else if (hidtab.Value == "3")
+                        {
+                            hidtab3BillDiscountPrice.Value = "";
+                        }
+                    }
+                    else if (item.DiscountBillTypeCode == "02" || item.DiscountBillTypeCode == "03")//แลกซื้อ + ของแถม
+                    {
+                        lorderdata.RemoveAll(s => s.PromotionCode == item.DiscountBillCode && s.CampaignCode == item.DiscountBillCode);
+                    }
+                    else if (item.DiscountBillTypeCode == "04")//ฟรีค่าขนส่ง
+                    {
+                        foreach (var items in lorderdata)
+                        {
+                            items.FreeShippingBill = "N";
+                        }
+                    }
+                }
+            }
+
+        }
+
+        protected void UpdateCustomerNoteProfile(String customerCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/UpdateCustomerNoteProfile";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = customerCode;
+                data["Note"] = txtNoteProfile.Text;
+                data["UpdateBy"] = hidEmpCode.Value;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            int? sum = JsonConvert.DeserializeObject<int?>(respstr);
+        }
+        protected void UpdateCustomerTaxId(String customerCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/UpdateCustomerTaxId";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = customerCode;
+                data["TaxId"] = txtCustomerTaxID.Text;
+                data["UpdateBy"] = hidEmpCode.Value;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            int? sum = JsonConvert.DeserializeObject<int?>(respstr);
+        }
+        protected List<OrderData> LoadOrderbyList(List<OrderData> Lorderdata, Label lblSumPrice)
+        {
+            List<OrderData> lorderdata = new List<OrderData>();
+
+            int i = 1;
+            foreach (var item in Lorderdata)
+            {
+                OrderData odata = new OrderData();
+
+                odata.runningNo = i;
+                i++;
+
+                odata.Amount = item.Amount;
+                odata.DefaultAmount = item.DefaultAmount;
+                odata.CampaignCategory = item.CampaignCategory;
+                odata.CampaignCategoryName = item.CampaignCategoryName;
+                odata.CampaignCode = item.CampaignCode;
+                odata.MerchantCode = item.MerchantCode;
+                odata.MerchantName = item.MerchantName;
+                odata.PromotionCode = item.PromotionCode;
+                odata.PromotionName = item.PromotionName;
+                odata.ProductCode = item.ProductCode;
+                odata.PromotionDetailId = item.PromotionDetailId;
+                odata.ProductName = item.ProductName;
+                odata.FlagCombo = item.FlagCombo;
+                odata.ColorCode = item.ColorCode;
+                odata.ParentProductCode = item.ParentProductCode;
+                odata.ComboCode = item.ComboCode;
+                odata.ComboName = item.ComboName;
+                odata.Unit = item.Unit;
+                odata.UnitName = item.UnitName;
+                odata.DiscountAmount = (item.DiscountAmount != null) ? Convert.ToInt32(item.DiscountAmount) : 0;
+                odata.DiscountPercent = (item.DiscountPercent != null) ? Convert.ToInt32(item.DiscountPercent) : 0;
+                odata.Price = (item.Price != null) ? Convert.ToDouble(item.Price) : -99;
+                odata.ProductPrice = (item.ProductPrice != null) ? Convert.ToDouble(item.ProductPrice) : -99;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                odata.FreeShipping = item.FreeShipping;
+                odata.ParentPromotionCode = item.ParentPromotionCode;
+                odata.LockAmountFlag = item.LockAmountFlag;
+                odata.LockCheckbox = item.LockCheckbox;
+                odata.GroupPrice = item.GroupPrice;
+                odata.NetPrice = item.NetPrice;
+                odata.FlagProSetHeader = item.FlagProSetHeader;
+                odata.PromotionTypeCode = item.PromotionTypeCode;
+                odata.PromotionTypeName = item.PromotionTypeName;
+                odata.MOQFlag = item.MOQFlag;
+                odata.MinimumQty = item.MinimumQty;
+                odata.ProductDiscountPercent = item.ProductDiscountPercent;
+                odata.ProductDiscountAmount = item.ProductDiscountAmount;
+                odata.ParentProductCode = item.ParentProductCode;
+                odata.ParentPromotionCode = item.ParentPromotionCode;
+                odata.MOQNewHeaderFlag = item.MOQNewHeaderFlag;
+                odata.ProhMinQtyHeaderFlag = item.ProhMinQtyHeaderFlag;
+                odata.TradeFlag = item.TradeFlag;
+                odata.FreeShippingBill = item.FreeShippingBill;
+                odata.FreeShipping = item.FreeShipping;
+                odata.ChannelCode = item.ChannelCode;
+                odata.ChannelName = item.ChannelName;
+                odata.CamcatCode = item.CamcatCode;
+                odata.MediaplanFlag = item.MediaplanFlag;
+
+                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDecimal(odata.SumPrice) * odata.Amount));
+                lorderdata.Add(odata);
+            }
+
+            return lorderdata;
+        }
+
+
+        //UpdatedataCustomer
+        protected void UpdatedataCustomer(object sender, EventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            if (empInfo == null)
+            {
+                Response.Redirect("..\\..\\Default.aspx?flaglogin=_EMPCODENULL");
+            }
+            else
+            {
+                //Update
+                string respstr = "";
+                APIpath = APIUrl + "/api/support/UpdateCustomer";
+                using (var wb = new WebClient())
+                {
+                    var data = new NameValueCollection();
+
+                    data["CustomerCode"] = hidCustomer_Ins.Value;
+                    data["CustomerFName"] = HiddenFieldFName.Value;
+                    data["CustomerLName"] = HiddenFieldLName.Value;
+                    data["TitleCode"] = ddlTitle_Ins.SelectedValue;
+                    data["Gender"] = ddlGender_Ins.SelectedValue;
+                    data["BirthDate"] = txtBirthDate_Ins.Text;
+                    data["Identification"] = txtIdentificationNo_Ins.Text;
+                    data["MaritalStatusCode"] = ddlMaritalStatus_Ins.SelectedValue;
+                    data["OccupationCode"] = ddlOccupation_Ins.SelectedValue;
+                    data["Income"] = txtIncome_Ins.Text;
+                    data["HomePhone"] = txtHomePhone_Ins.Text;
+                    data["Mail"] = txtEmail_Ins.Text;
+                    data["ContactTel"] = txtContactTel_Ins.Text;
+                    data["FlagDelete"] = "N";
+                    data["CreateBy"] = hidEmpCode.Value;
+                    data["UpdateBy"] = hidEmpCode.Value;
+
+                    var response = wb.UploadValues(APIpath, "POST", data);
+
+                    respstr = Encoding.UTF8.GetString(response);
+                }
+
+                int? sum = JsonConvert.DeserializeObject<int?>(respstr);
+
+                if (sum > 0)
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('" + MessageConst._UPDATE_SUCCESS + "');$('#modal-inventory').modal('hide');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('" + MessageConst._UPDATE_ERROR + "');", true);
+                }
+            }
+        }
+
+        public void BindCustomerLabel(String cuscode)
+        {
+            List<CustomerInfo> lcustomerInfo = new List<CustomerInfo>();
+            lcustomerInfo = GetCustomerNoPaging(cuscode);
+
+
+            string birthdate = "";
+            double age = 0;
+
+            if (lcustomerInfo.Count > 0)
+            {
+
+                if (lcustomerInfo[0].BirthDate != "")
+                {
+                    var dt = DateTime.Parse(lcustomerInfo[0].BirthDate, CultureInfo.CreateSpecificCulture("fr-FR"));
+                    birthdate = dt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                    DateTime PresentDay = DateTime.Now;
+                    double months = (PresentDay.Month - dt.Month + (12 * (PresentDay.Year - dt.Year)));
+                    age = Math.Round(months / 12);
+                }
+                
+
+                lblCustomerPhone01.Text = lcustomerInfo[0].ContactTel;
+                
+
+                lblCustomerCode.Text = lcustomerInfo[0].CustomerCode;
+                lblCustomerName.Text = lcustomerInfo[0].CustomerName;
+
+                
+
+                ddlTitle_Ins.SelectedValue = lcustomerInfo[0].Title;
+                txtCustomerCode_Ins.Text = lcustomerInfo[0].CustomerCode;
+                hidCustomer_Ins.Value = lcustomerInfo[0].CustomerCode;
+                txtCustomerFName_Edit.Text = lcustomerInfo[0].CustomerFName;
+                txtCustomerLName_Edit.Text = lcustomerInfo[0].CustomerLName;
+                HiddenFieldFName.Value = lcustomerInfo[0].CustomerFName;
+                HiddenFieldLName.Value = lcustomerInfo[0].CustomerLName;
+                ddlGender_Ins.SelectedValue = lcustomerInfo[0].Gender;
+                ddlMaritalStatus_Ins.SelectedValue = lcustomerInfo[0].MaritalStatusCode;
+                txtBirthDate_Ins.Text = birthdate;
+                txtIdentificationNo_Ins.Text = lcustomerInfo[0].Identification;
+                ddlOccupation_Ins.SelectedValue = lcustomerInfo[0].OccupationCode;
+                txtIncome_Ins.Text = lcustomerInfo[0].Income.ToString();
+                txtContactTel_Ins.Text = lcustomerInfo[0].ContactTel;
+                txtHomePhone_Ins.Text = lcustomerInfo[0].HomePhone;
+                txtEmail_Ins.Text = lcustomerInfo[0].Mail;
+                txtAge_Ins.Text = age.ToString();
+
+
+
+            }
+
+            List<CustomerPhoneInfo> lcusphoneInfo = new List<CustomerPhoneInfo>();
+            lcusphoneInfo = GetCustomerPhone(cuscode);
+            
+            if (lcusphoneInfo.Count > 1)
+            {
+                if (lcusphoneInfo[1].PhoneNumber != null || lcusphoneInfo[1].PhoneNumber != "")
+                {
+
+                }
+                else
+                {
+                }
+            }
+        }
+        public List<CustomerInfo> GetCustomerNoPaging(String cuscode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCustomerNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = cuscode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<CustomerInfo> lCustomerInfo = JsonConvert.DeserializeObject<List<CustomerInfo>>(respstr);
+
+            return lCustomerInfo;
+        }
+        protected List<CustomerPhoneInfo> GetCustomerPhone(String cuscode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCustomerPhone";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = cuscode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<CustomerPhoneInfo> lCustomerPhoneInfo = JsonConvert.DeserializeObject<List<CustomerPhoneInfo>>(respstr);
+
+            return lCustomerPhoneInfo;
+        }
+        protected Boolean ValidateCustomerPhone(String phonenumber)
+        {
+            Boolean flag = true;
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ValidateCustomerPhone";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = CustomerCode;
+                data["PhoneNumber"] = phonenumber;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CustomerPhoneInfo> lCustomerPhoneInfo = JsonConvert.DeserializeObject<List<CustomerPhoneInfo>>(respstr);
+
+            if (lCustomerPhoneInfo.Count > 0)
+            {
+                flag = false;
+            }
+            else
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
+
+        protected int? UpdateCustomerPhone(CustomerPhoneInfo cInfo)
+        {
+            int? sum1 = 0;
+
+            string respstr = "";
+            APIpath = APIUrl + "/api/support/UpdateCustomer";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = CustomerCode;
+                data["ContactTel"] = cInfo.CustomerPhone;
+                data["UpdateBy"] = hidEmpCode.Value;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            sum1 = JsonConvert.DeserializeObject<int?>(respstr);
+
+            return sum1;
+        }
+
+        protected int? InsertUpdateCustomerPhone(CustomerPhoneInfo cInfo)
+        {
+            int? sum1 = 0;
+            if (ValidateCustomerPhone(cInfo.CustomerPhone)) // insert CustomerPhone
+            {
+                string respstr = "";
+                string respstr01 = "";
+                APIpath = APIUrl + "/api/support/InsertCustomerPhone";
+
+                using (var wb = new WebClient())
+                {
+                    var data = new NameValueCollection();
+
+                    data["CustomerCode"] = CustomerCode;
+                    data["CustomerPhone"] = cInfo.CustomerPhone;
+                    data["CustomerPhoneType"] = "01";
+                    data["CreateBy"] = hidEmpCode.Value;
+                    data["UpdateBy"] = hidEmpCode.Value;
+                    data["FlagDelete"] = "N";
+
+                    var response = wb.UploadValues(APIpath, "POST", data);
+
+                    respstr = Encoding.UTF8.GetString(response);
+                }
+                sum1 = JsonConvert.DeserializeObject<int?>(respstr);
+            }
+            else
+            {
+                string respstr01 = "";
+                APIpath = APIUrl + "/api/support/UpdateCustomerPhoneTakeOrderMK";
+
+                using (var wb = new WebClient())
+                {
+                    var data = new NameValueCollection();
+
+                    data["CustomerCode"] = CustomerCode;
+                    data["PhoneNumber"] = cInfo.CustomerPhone;
+                    data["UpdateBy"] = hidEmpCode.Value;
+
+                    var response = wb.UploadValues(APIpath, "POST", data);
+
+                    respstr01 = Encoding.UTF8.GetString(response);
+                }
+                sum1 = JsonConvert.DeserializeObject<int?>(respstr01);
+            }
+            return sum1;
+        }
+        protected void LoadOrderEdit(String customercode, String ordercode)
+        {
+            string respstr = "";
+
+            
+            APIpath = APIUrl + "/api/support/ListLatestOrderNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = customercode;
+                data["OrderCode"] = ordercode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<OrderInfo> lorderInfo = JsonConvert.DeserializeObject<List<OrderInfo>>(respstr);
+
+            string latestordercodebycustomercode = "";
+
+            if (lorderInfo.Count > 0)
+            {
+                latestordercodebycustomercode = lorderInfo[0].OrderCode;
+                hidbranchorderID.Value = lorderInfo[0].BranchOrderID;
+                hidmediaphone.Value = lorderInfo[0].MediaPhone;
+                hidtab1Vat.Value = lorderInfo[0].PercentVat.ToString();
+                txtVat.Text = hidtab1Vat.Value;
+                hidtab1OrderNote.Value = lorderInfo[0].OrderNote;
+                txtNoteOrder.Text = hidtab1OrderNote.Value;
+                hidCreateDate.Value = lorderInfo[0].CreateDate;
+
+                if (hidtab.Value == "1")
+                {
+                    string[] s = lorderInfo[0].DeliveryDate.Split(' ');
+
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            hidtab1deliverydate.Value = s[0];
+
+                            DateTime _date;
+
+                            _date = DateTime.Parse(hidtab1deliverydate.Value);
+                            hidtab1deliverydate.Value = _date.ToString("dd/MM/yyyy");
+                        }
+                        else if (i == 1)
+                        {
+                        }
+                    }
+
+                    txtDate.Text = hidtab1deliverydate.Value;
+                    hidtab1ChannelCode_Selected.Value = lorderInfo[0].ChannelCode;
+
+                    for (int i = 0; i < gvChannel.Rows.Count; i++)
+                    {
+                        GridViewRow row = gvChannel.Rows[i];
+                        RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                        HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                        if (hidChannelCode.Value == hidtab1ChannelCode_Selected.Value)
+                        {
+                            radChannelType.Checked = true;
+                        }
+                        else
+                        {
+                            radChannelType.Checked = false;
+                        }
+                    }
+                }
+
+                string respstr1 = "";
+
+                APIpath = APIUrl + "/api/support/ListOrderDetailNopagingbyOrderCode2";
+
+                using (var wb = new WebClient())
+                {
+                    var data = new NameValueCollection();
+
+                    data["OrderCode"] = latestordercodebycustomercode;
+
+                    var response = wb.UploadValues(APIpath, "POST", data);
+                    respstr1 = Encoding.UTF8.GetString(response);
+                }
+
+                List<OrderData> lorderdataInfo = JsonConvert.DeserializeObject<List<OrderData>>(respstr1);
+                List<OrderData> lorderdataLatestOrder = new List<OrderData>();
+                List<PromotionDetailInfo> lpdInfo = new List<PromotionDetailInfo>();
+
+                if (lorderdataInfo.Count > 0)
+                {
+                    foreach (var item in lorderdataInfo.ToList())
+                    {
+                        OrderData odata = new OrderData();
+                        odata = bindorderdata(item);
+
+                        odata.OrderCode = latestordercodebycustomercode;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        lorderdataLatestOrder.Add(odata);
+                    }
+                }
+
+                if (lorderdataLatestOrder.Count > 0)
+                {
+                    foreach (var  od in lorderdataLatestOrder.ToList())
+                    {
+                        lpdInfo = GetPromotiondetailMasterforitem_typeByCriteria(od.PromotionCode, od.ProductCode);
+
+                        if (lpdInfo.Count > 0)
+                        {
+                            od.GroupPrice = lpdInfo[0].GroupPrice;
+                        }
+                    }
+                }
+
+                L_orderdata1 = lorderdataLatestOrder;
+                L_orderdataforDelete = lorderdataLatestOrder;
+
+                if (L_orderdata1.Count > 0)
+                {
+                    LoadOrderPayment(L_orderdata1[0].OrderCode);
+                    LoadOrderTransport(L_orderdata1[0].OrderCode);                    
+                    LoadContactHistory(L_orderdata1[0].OrderCode);
+                    CheckMOQ(L_orderdata1);
+                    CheckFreeShipping(L_orderdata1);
+                    Loadtotal(L_orderdata1);
+                    LoadgvOrder(L_orderdata1);
+                }
+            }
+        }
+        protected void LoadOrderPayment(String ordercode)
+        {
+            paymentdataInfo pdata = new paymentdataInfo();
+            List<paymentdataInfo> lpdata = new List<paymentdataInfo>();
+
+            pdata.OrderCode = ordercode;
+            lpdata = GetOrerPaymentFromOrderCode(pdata);
+
+            if (lpdata.Count > 0)
+            {
+                hidtab1PaymentType_Selected.Value = lpdata[0].PaymentTypeCode;
+            }
+
+            for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+            {
+                GridViewRow row = gvOrderPayment.Rows[i];
+                RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                if (hidPaymentTypeCode.Value == hidtab1PaymentType_Selected.Value)
+                {
+                    radPaymentType.Checked = true;
+                }
+                else
+                {
+                    radPaymentType.Checked = false;
+                }
+            }
+        }
+        protected void LoadOrderTransport(String ordercode)
+        {
+            transportdataInfo tInfo = new transportdataInfo();
+            List<transportdataInfo> ltInfo = new List<transportdataInfo>();
+
+            tInfo.OrderCode = ordercode;
+            ltInfo = GetTransportTypeFromOrderCode(tInfo);
+
+            // Load gvTransport
+            if (ltInfo.Count > 0)
+            {
+                hidtab1InventorySelect.Value = ltInfo[0].InventoryCode;
+                hidtab1TransportTypeCode_Selected.Value = ltInfo[0].TransportType;
+                hidtab1transportprice.Value = ltInfo[0].TransportPrice;
+            }
+
+            for (int i = 0; i < gvTransport.Rows.Count; i++)
+            {
+                GridViewRow row = gvTransport.Rows[i];
+                RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+
+                if (hidLogisticCode.Value == hidtab1TransportTypeCode_Selected.Value)
+                {
+                    if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                    {
+                        radTransportType01.Checked = true;
+
+                        txtTransportPrice.Text = hidtab1transportprice.Value;
+                        lblTransportPrice.Text = hidtab1transportprice.Value;
+
+                        lblTransportPrice.Visible = false;
+                        txtTransportPrice.Visible = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = true;
+
+                        hidFee.Value = hidtab1transportprice.Value;
+                        lblTransportPrice.Text = hidtab1transportprice.Value;
+
+                        lblTransportPrice.Visible = true;
+                        txtTransportPrice.Visible = false;
+                    }
+                }
+                else
+                {
+                    radTransportType01.Checked = false;
+                }
+            }
+
+            // Load ddlInventory & gvProductInventory
+            ddlInventory.SelectedValue = hidtab1InventorySelect.Value;
+
+            if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+            {
+                ddlInventory.SelectedValue = "-99";
+
+                BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+            }
+            else
+            {
+                ddlInventory.SelectedValue = hidtab1InventorySelect.Value;
+                BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+            }
+
+            // Load L_transportdata1
+            List<transportdataInfo> transportlistfromlatesorder = new List<transportdataInfo>();
+
+            foreach (var ot in ltInfo.ToList())
+            {
+                if (ot.AddressType == "01")
+                {
+                    transportdataInfo tsInfo = new transportdataInfo();
+
+                    tsInfo.OrderTransportID = ot.OrderTransportID;
+                    tsInfo.OrderCode = ot.OrderCode;
+                    tsInfo.CustomerCode = ot.CustomerCode;
+                    tsInfo.Address = ot.Address;
+                    tsInfo.SubDistrictCode = ot.SubDistrictCode;
+                    tsInfo.SubDistrictName = ot.SubDistrictName;
+                    tsInfo.DistrictCode = ot.DistrictCode;
+                    tsInfo.DistrictName = ot.DistrictName;
+                    tsInfo.ProvinceCode = ot.ProvinceCode;
+                    tsInfo.ProvinceName = ot.ProvinceName;
+                    tsInfo.Zipcode = ot.Zipcode;
+                    tsInfo.TransportType = ot.TransportType;
+                    tsInfo.TransportPrice = ot.TransportPrice;
+                    tsInfo.AddressType = ot.AddressType;
+                    tsInfo.CreateBy = ot.CreateBy;
+                    tsInfo.UpdateBy = ot.UpdateBy;
+
+                    transportlistfromlatesorder.Add(tsInfo);
+                    hidtab1ordertransportadresstype01.Value = ot.OrderTransportID.ToString();
+                }
+                else if (ot.AddressType == "02")
+                {
+                    transportdataInfo tsInfo = new transportdataInfo();
+
+                    tsInfo.OrderTransportID = ot.OrderTransportID;
+                    tsInfo.OrderCode = ot.OrderCode;
+                    tsInfo.CustomerCode = ot.CustomerCode;
+                    tsInfo.Address = ot.Address;
+                    tsInfo.SubDistrictCode = ot.SubDistrictCode;
+                    tsInfo.SubDistrictName = ot.SubDistrictName;
+                    tsInfo.DistrictCode = ot.DistrictCode;
+                    tsInfo.DistrictName = ot.DistrictName;
+                    tsInfo.ProvinceCode = ot.ProvinceCode;
+                    tsInfo.ProvinceName = ot.ProvinceName;
+                    tsInfo.Zipcode = ot.Zipcode;
+                    tsInfo.TransportType = ot.TransportType;
+                    tsInfo.TransportPrice = ot.TransportPrice;
+                    tsInfo.AddressType = ot.AddressType;
+                    tsInfo.CreateBy = ot.CreateBy;
+                    tsInfo.UpdateBy = ot.UpdateBy;
+
+                    transportlistfromlatesorder.Add(tsInfo);
+                    hidtab1ordertransportadresstype02.Value = ot.OrderTransportID.ToString();
+                }
+            }
+
+            L_transportdata1 = transportlistfromlatesorder;
+
+            // Load Delivery Address
+            foreach (var od in L_transportdata1.ToList())
+            {
+                if (od.AddressType == "01") // Delivery AddressType
+                {
+                    lblCustomerAddress.Text = od.Address;
+                    lblSubDistrict.Text = od.SubDistrictName;
+                    lblDistrict.Text = od.DistrictName;
+                    lblProvince.Text = od.ProvinceName;
+                    lblZipcode.Text = od.Zipcode;
+                }
+            }
+
+            // Check CustomerAddressID match with L_transportData
+            CustomerAddressInfo caInfo = new CustomerAddressInfo();
+            List<CustomerAddressInfo> lcaInfo = new List<CustomerAddressInfo>();
+
+            foreach (var odt in L_transportdata1.ToList())
+            {
+                lcaInfo = GetCustomerAddressID(odt);
+
+                if (lcaInfo.Count > 0)
+                {
+                    odt.CustomerAddressId = lcaInfo[0].CustomerAddressId;
+                }
+            }
+        }
+        protected void LoadContactHistory(String ordercode)
+        {
+            ContactHistoryInfo cInfo = new ContactHistoryInfo();
+            List<ContactHistoryInfo> lcInfo = new List<ContactHistoryInfo>();
+
+            cInfo.OrderCode = ordercode;
+            lcInfo = GetContactHistorybyOrderCode(cInfo);
+
+            if (lcInfo.Count > 0)
+            {
+                hidtab1ContactStatusSelected.Value = lcInfo[0].ContactStatus;
+                hidtab1ContactResultSelected.Value = lcInfo[0].ContactResult;
+                hidtab1ContactDesc.Value = lcInfo[0].ContactDesc;
+            }
+
+            if (hidtab1ContactStatusSelected.Value == "-99" || (hidtab1ContactStatusSelected.Value == ""))
+            {
+                ddlContactStatus.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactStatus.SelectedValue = hidtab1ContactStatusSelected.Value;
+            }
+
+            if (hidtab1ContactResultSelected.Value == "-99" || (hidtab1ContactResultSelected.Value == ""))
+            {
+                ddlContactResult.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactResult.SelectedValue = hidtab1ContactResultSelected.Value;
+            }
+
+            if (hidtab1ContactDesc.Value != "")
+            {
+                txtcontactdesc.Text = hidtab1ContactDesc.Value;
+            }
+            else
+            {
+                txtcontactdesc.Text = "";
+            }
+        }
+        protected void LoadOrderNote(String customerCode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCustomerOrderNoPagingbyCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = customerCode;
+
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<CustomerOrderInfo> lcInfo = JsonConvert.DeserializeObject<List<CustomerOrderInfo>>(respstr);
+            if (lcInfo.Count > 0)
+            {
+                hidtab1OrderNote.Value = lcInfo[0].OrderNote;
+                
+            }
+        }
+        protected void BindTop5Product(string campaigncategorycode)
+        {
+            string customercode = (Request.QueryString["CustomerCode"] != null) ? Request.QueryString["CustomerCode"].ToString() : "";
+
+            string respstr = "";
+            APIpath = APIUrl + "/api/support/ListTop5ProductodOrderCustomerByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["CustomerCode"] = customercode;
+                data["CampaignCategoryCode"] = campaigncategorycode;
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<ProductInfo> lTop5ProductInfo = JsonConvert.DeserializeObject<List<ProductInfo>>(respstr);
+
+            
+            if (lTop5ProductInfo.Count > 0)
+            {
+                if (lTop5ProductInfo[0].ProductName != null)
+                {
+                    lblProductNameTop1.Text = lTop5ProductInfo[0].ProductName;
+                    
+
+                    hidProductCodeProductTop01.Value = lTop5ProductInfo[0].ProductCode;
+                    hidPromotionDetailIdProductTop01.Value = (lTop5ProductInfo[0].PromotionDetailId != null) ? lTop5ProductInfo[0].PromotionDetailId.ToString() : "0";
+                    hidProductNameProductTop01.Value = lTop5ProductInfo[0].ProductName;
+                    hidDiscountAmountProductTop01.Value = (lTop5ProductInfo[0].DiscountAmount != null) ? lTop5ProductInfo[0].DiscountAmount.ToString() : "0";
+                    hidDiscountPercentProductTop01.Value = (lTop5ProductInfo[0].DiscountPercent != null) ? lTop5ProductInfo[0].DiscountPercent.ToString() : "0";
+                    hidCampaignCodeProductTop01.Value = lTop5ProductInfo[0].CampaignCode;
+                    hidPromotionCodeProductTop01.Value = lTop5ProductInfo[0].PromotionCode;
+                    hidPriceProductTop01.Value = (lTop5ProductInfo[0].Price != null) ? lTop5ProductInfo[0].Price.ToString() : "0";
+                    hidCampaignCategoryCodeProductTop01.Value = lTop5ProductInfo[0].CampaignCategoryCode;
+                    hidCampaignCategoryNameProductTop01.Value = lTop5ProductInfo[0].CampaignCategoryName;
+                    hidUnitProductTop01.Value = lTop5ProductInfo[0].Unit;
+                    hidUnitNameProductTop01.Value = lTop5ProductInfo[0].UnitName;
+                    ico01.Visible = true;
+                    
+                }
+                else
+                {
+                    lblProductNameTop1.Text = "";
+                    hidProductCodeProductTop01.Value = "";
+                    hidPromotionDetailIdProductTop01.Value = "";
+                    hidProductNameProductTop01.Value = "";
+                    hidDiscountAmountProductTop01.Value = "";
+                    hidDiscountPercentProductTop01.Value = "";
+                    hidCampaignCodeProductTop01.Value = "";
+                    hidPromotionCodeProductTop01.Value = "";
+                    hidPriceProductTop01.Value = "";
+                    hidCampaignCategoryCodeProductTop01.Value = "";
+                    hidCampaignCategoryNameProductTop01.Value = "";
+                    hidUnitProductTop01.Value = "";
+                    hidUnitNameProductTop01.Value = "";
+                    ico01.Visible = false;
+                }
+            }
+            if (lTop5ProductInfo.Count > 1)
+            {
+                if (lTop5ProductInfo[1].ProductName != null)
+                {
+                    lblProductNameTop2.Text = lTop5ProductInfo[1].ProductName;
+                    
+                    hidProductCodeProductTop02.Value = lTop5ProductInfo[1].ProductCode;
+                    hidPromotionDetailIdProductTop02.Value = (lTop5ProductInfo[1].PromotionDetailId != null) ? lTop5ProductInfo[1].PromotionDetailId.ToString() : "0";
+                    hidProductNameProductTop02.Value = lTop5ProductInfo[1].ProductName;
+                    hidDiscountAmountProductTop02.Value = (lTop5ProductInfo[1].DiscountAmount != null) ? lTop5ProductInfo[1].DiscountAmount.ToString() : "0";
+                    hidDiscountPercentProductTop02.Value = (lTop5ProductInfo[1].DiscountPercent != null) ? lTop5ProductInfo[1].DiscountPercent.ToString() : "0";
+                    hidCampaignCodeProductTop02.Value = lTop5ProductInfo[1].CampaignCode;
+                    hidPromotionCodeProductTop02.Value = lTop5ProductInfo[1].PromotionCode;
+                    hidPriceProductTop02.Value = (lTop5ProductInfo[1].Price != null) ? lTop5ProductInfo[1].Price.ToString() : "0";
+                    hidCampaignCategoryCodeProductTop02.Value = lTop5ProductInfo[1].CampaignCategoryCode;
+                    hidCampaignCategoryNameProductTop02.Value = lTop5ProductInfo[1].CampaignCategoryName;
+                    hidUnitProductTop02.Value = lTop5ProductInfo[1].Unit;
+                    hidUnitNameProductTop02.Value = lTop5ProductInfo[1].UnitName;
+                    ico02.Visible = true;
+                    
+                }
+                else
+                {
+                    lblProductNameTop2.Text = "";
+                    hidProductCodeProductTop02.Value = "";
+                    hidPromotionDetailIdProductTop02.Value = "";
+                    hidProductNameProductTop02.Value = "";
+                    hidDiscountAmountProductTop02.Value = "";
+                    hidDiscountPercentProductTop02.Value = "";
+                    hidCampaignCodeProductTop02.Value = "";
+                    hidPromotionCodeProductTop02.Value = "";
+                    hidPriceProductTop02.Value = "";
+                    hidCampaignCategoryCodeProductTop02.Value = "";
+                    hidCampaignCategoryNameProductTop02.Value = "";
+                    hidUnitProductTop02.Value = "";
+                    hidUnitNameProductTop02.Value = "";
+                    ico02.Visible = false;
+                }
+            }
+            if (lTop5ProductInfo.Count > 2)
+            {
+                if (lTop5ProductInfo[2].ProductName != null)
+                {
+                    lblProductNameTop3.Text = lTop5ProductInfo[2].ProductName;
+                    
+                    hidProductCodeProductTop03.Value = lTop5ProductInfo[2].ProductCode;
+                    hidPromotionDetailIdProductTop03.Value = (lTop5ProductInfo[2].PromotionDetailId != null) ? lTop5ProductInfo[2].PromotionDetailId.ToString() : "0";
+                    hidProductNameProductTop03.Value = lTop5ProductInfo[2].ProductName;
+                    hidDiscountAmountProductTop03.Value = (lTop5ProductInfo[2].DiscountAmount != null) ? lTop5ProductInfo[2].DiscountAmount.ToString() : "0";
+                    hidDiscountPercentProductTop03.Value = (lTop5ProductInfo[2].DiscountPercent != null) ? lTop5ProductInfo[2].DiscountPercent.ToString() : "0";
+                    hidCampaignCodeProductTop03.Value = lTop5ProductInfo[2].CampaignCode;
+                    hidPromotionCodeProductTop03.Value = lTop5ProductInfo[2].PromotionCode;
+                    hidPriceProductTop03.Value = (lTop5ProductInfo[2].Price != null) ? lTop5ProductInfo[2].Price.ToString() : "0";
+                    hidCampaignCategoryCodeProductTop03.Value = lTop5ProductInfo[2].CampaignCategoryCode;
+                    hidCampaignCategoryNameProductTop03.Value = lTop5ProductInfo[2].CampaignCategoryName;
+                    hidUnitProductTop03.Value = lTop5ProductInfo[2].Unit;
+                    hidUnitNameProductTop03.Value = lTop5ProductInfo[2].UnitName;
+                    ico03.Visible = true;
+                    
+                }
+                else
+                {
+                    lblProductNameTop3.Text = "";
+                    hidProductCodeProductTop03.Value = "";
+                    hidPromotionDetailIdProductTop03.Value = "";
+                    hidProductNameProductTop03.Value = "";
+                    hidDiscountAmountProductTop03.Value = "";
+                    hidDiscountPercentProductTop03.Value = "";
+                    hidCampaignCodeProductTop03.Value = "";
+                    hidPromotionCodeProductTop03.Value = "";
+                    hidPriceProductTop03.Value = "";
+                    hidCampaignCategoryCodeProductTop03.Value = "";
+                    hidCampaignCategoryNameProductTop03.Value = "";
+                    hidUnitProductTop03.Value = "";
+                    hidUnitNameProductTop03.Value = "";
+                    ico03.Visible = false;
+                }
+            }
+            if (lTop5ProductInfo.Count > 3)
+            {
+                if (lTop5ProductInfo[3].ProductName != null)
+                {
+                    lblProductNameTop4.Text = lTop5ProductInfo[3].ProductName;
+                    
+                    hidProductCodeProductTop04.Value = lTop5ProductInfo[3].ProductCode;
+                    hidPromotionDetailIdProductTop04.Value = (lTop5ProductInfo[3].PromotionDetailId != null) ? lTop5ProductInfo[3].PromotionDetailId.ToString() : "0";
+                    hidProductNameProductTop04.Value = lTop5ProductInfo[3].ProductName;
+                    hidDiscountAmountProductTop04.Value = (lTop5ProductInfo[3].DiscountAmount != null) ? lTop5ProductInfo[3].DiscountAmount.ToString() : "0";
+                    hidDiscountPercentProductTop04.Value = (lTop5ProductInfo[3].DiscountPercent != null) ? lTop5ProductInfo[3].DiscountPercent.ToString() : "0";
+                    hidCampaignCodeProductTop04.Value = lTop5ProductInfo[3].CampaignCode;
+                    hidPromotionCodeProductTop04.Value = lTop5ProductInfo[3].PromotionCode;
+                    hidPriceProductTop04.Value = (lTop5ProductInfo[3].Price != null) ? lTop5ProductInfo[3].Price.ToString() : "0";
+                    hidCampaignCategoryCodeProductTop04.Value = lTop5ProductInfo[3].CampaignCategoryCode;
+                    hidCampaignCategoryNameProductTop04.Value = lTop5ProductInfo[3].CampaignCategoryName;
+                    hidUnitProductTop04.Value = lTop5ProductInfo[3].Unit;
+                    hidUnitNameProductTop04.Value = lTop5ProductInfo[3].UnitName;
+                    ico04.Visible = true;
+                    
+                }
+                else
+                {
+                    lblProductNameTop4.Text = "";
+                    hidProductCodeProductTop04.Value = "";
+                    hidPromotionDetailIdProductTop04.Value = "";
+                    hidProductNameProductTop04.Value = "";
+                    hidDiscountAmountProductTop04.Value = "";
+                    hidDiscountPercentProductTop04.Value = "";
+                    hidCampaignCodeProductTop04.Value = "";
+                    hidPromotionCodeProductTop04.Value = "";
+                    hidPriceProductTop04.Value = "";
+                    hidCampaignCategoryCodeProductTop04.Value = "";
+                    hidCampaignCategoryNameProductTop04.Value = "";
+                    hidUnitProductTop04.Value = "";
+                    hidUnitNameProductTop04.Value = "";
+                    ico04.Visible = false;
+                }
+            }
+            if (lTop5ProductInfo.Count > 4)
+            {
+                if (lTop5ProductInfo[4].ProductName != null)
+                {
+                    lblProductNameTop5.Text = lTop5ProductInfo[4].ProductName;
+                    
+                    hidProductCodeProductTop05.Value = lTop5ProductInfo[4].ProductCode;
+                    hidPromotionDetailIdProductTop05.Value = (lTop5ProductInfo[4].PromotionDetailId != null) ? lTop5ProductInfo[4].PromotionDetailId.ToString() : "0";
+                    hidProductNameProductTop05.Value = lTop5ProductInfo[4].ProductName;
+                    hidDiscountAmountProductTop05.Value = (lTop5ProductInfo[4].DiscountAmount != null) ? lTop5ProductInfo[4].DiscountAmount.ToString() : "0";
+                    hidDiscountPercentProductTop05.Value = (lTop5ProductInfo[4].DiscountPercent != null) ? lTop5ProductInfo[4].DiscountPercent.ToString() : "0";
+                    hidCampaignCodeProductTop05.Value = lTop5ProductInfo[4].CampaignCode;
+                    hidPromotionCodeProductTop05.Value = lTop5ProductInfo[4].PromotionCode;
+                    hidPriceProductTop05.Value = (lTop5ProductInfo[4].Price != null) ? lTop5ProductInfo[4].Price.ToString() : "0";
+                    hidCampaignCategoryCodeProductTop05.Value = lTop5ProductInfo[4].CampaignCategoryCode;
+                    hidCampaignCategoryNameProductTop05.Value = lTop5ProductInfo[4].CampaignCategoryName;
+                    hidUnitProductTop05.Value = lTop5ProductInfo[4].Unit;
+                    hidUnitNameProductTop05.Value = lTop5ProductInfo[4].UnitName;
+                    ico05.Visible = true;
+                    
+                }
+                else
+                {
+                    lblProductNameTop5.Text = "";
+                    hidProductCodeProductTop05.Value = "";
+                    hidPromotionDetailIdProductTop05.Value = "";
+                    hidProductNameProductTop05.Value = "";
+                    hidDiscountAmountProductTop05.Value = "";
+                    hidDiscountPercentProductTop05.Value = "";
+                    hidCampaignCodeProductTop05.Value = "";
+                    hidPromotionCodeProductTop05.Value = "";
+                    hidPriceProductTop05.Value = "";
+                    hidCampaignCategoryCodeProductTop05.Value = "";
+                    hidCampaignCategoryNameProductTop05.Value = "";
+                    hidUnitProductTop05.Value = "";
+                    hidUnitNameProductTop05.Value = "";
+                    ico05.Visible = false;
+                }
+            }
+
+            if (lTop5ProductInfo.Count == 0)
+            {
+                lblProductNameTop1.Text = "";
+                hidProductCodeProductTop01.Value = "";
+                lblProductNameTop2.Text = "";
+                hidProductCodeProductTop02.Value = "";
+                lblProductNameTop3.Text = "";
+                hidProductCodeProductTop03.Value = "";
+                lblProductNameTop4.Text = "";
+                hidProductCodeProductTop04.Value = "";
+                lblProductNameTop5.Text = "";
+                hidProductCodeProductTop05.Value = "";
+
+                hidPromotionDetailIdProductTop01.Value = "";
+                hidProductNameProductTop01.Value = "";
+                hidDiscountAmountProductTop01.Value = "";
+                hidDiscountPercentProductTop01.Value = "";
+                hidCampaignCodeProductTop01.Value = "";
+                hidPromotionCodeProductTop01.Value = "";
+                hidPriceProductTop01.Value = "";
+                hidCampaignCategoryCodeProductTop01.Value = "";
+                hidCampaignCategoryNameProductTop01.Value = "";
+                hidUnitProductTop01.Value = "";
+                hidUnitNameProductTop01.Value = "";
+
+                hidPromotionDetailIdProductTop02.Value = "";
+                hidProductNameProductTop02.Value = "";
+                hidDiscountAmountProductTop02.Value = "";
+                hidDiscountPercentProductTop02.Value = "";
+                hidCampaignCodeProductTop02.Value = "";
+                hidPromotionCodeProductTop02.Value = "";
+                hidPriceProductTop02.Value = "";
+                hidCampaignCategoryCodeProductTop02.Value = "";
+                hidCampaignCategoryNameProductTop02.Value = "";
+                hidUnitProductTop02.Value = "";
+                hidUnitNameProductTop02.Value = "";
+
+                hidPromotionDetailIdProductTop03.Value = "";
+                hidProductNameProductTop03.Value = "";
+                hidDiscountAmountProductTop03.Value = "";
+                hidDiscountPercentProductTop03.Value = "";
+                hidCampaignCodeProductTop03.Value = "";
+                hidPromotionCodeProductTop03.Value = "";
+                hidPriceProductTop03.Value = "";
+                hidCampaignCategoryCodeProductTop03.Value = "";
+                hidCampaignCategoryNameProductTop03.Value = "";
+                hidUnitProductTop03.Value = "";
+                hidUnitNameProductTop03.Value = "";
+
+                hidPromotionDetailIdProductTop04.Value = "";
+                hidProductNameProductTop04.Value = "";
+                hidDiscountAmountProductTop04.Value = "";
+                hidDiscountPercentProductTop04.Value = "";
+                hidCampaignCodeProductTop04.Value = "";
+                hidPromotionCodeProductTop04.Value = "";
+                hidPriceProductTop04.Value = "";
+                hidCampaignCategoryCodeProductTop04.Value = "";
+                hidCampaignCategoryNameProductTop04.Value = "";
+                hidUnitProductTop04.Value = "";
+                hidUnitNameProductTop04.Value = "";
+
+                hidPromotionDetailIdProductTop05.Value = "";
+                hidProductNameProductTop05.Value = "";
+                hidDiscountAmountProductTop05.Value = "";
+                hidDiscountPercentProductTop05.Value = "";
+                hidCampaignCodeProductTop05.Value = "";
+                hidPromotionCodeProductTop05.Value = "";
+                hidPriceProductTop05.Value = "";
+                hidCampaignCategoryCodeProductTop05.Value = "";
+                hidCampaignCategoryNameProductTop05.Value = "";
+                hidUnitProductTop05.Value = "";
+                hidUnitNameProductTop05.Value = "";
+
+                ico01.Visible = false;
+                ico02.Visible = false;
+                ico03.Visible = false;
+                ico04.Visible = false;
+                ico05.Visible = false;
+            }
+            
+        }
+        public void LoadOrderdatafromTopProduct(OrderData odata)
+        {
+
+            List<OrderData> lorderdata = new List<OrderData>();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                if ((hidtab1CampaignCategory.Value == "") || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value)) // check tab 1 เป็น campaign category เดียวกับที่เลือก  //แทป1ยังว่าง
+                {
+                    if (L_orderdata1.Count > 0) //ถ้ามีข้อมูลที่แทป 1 อยู่แล้ว
+                    {
+                        lorderdata = L_orderdata1;
+                    }
+
+
+                    odata.runningNo = lorderdata.Count + 1;
+                    lorderdata.Add(odata);
+
+                    L_orderdata1 = lorderdata;
+
+                    btntab1.BackColor = System.Drawing.Color.DeepSkyBlue;
+                    btntab2.BackColor = System.Drawing.Color.Gray;
+                    btntab3.BackColor = System.Drawing.Color.Gray;
+
+                    
+
+                    hidtab.Value = "1";
+                }
+
+                LoadgvOrder(L_orderdata1);
+
+                if (hidtab1CampaignCategoryname.Value == "")
+                {
+                    hidtab1CampaignCategoryname.Value = hidcampaigncategoryname.Value;
+                }
+
+                
+            }
+            else if (hidtab.Value == "2")
+            {
+                if ((hidtab2CampaignCategory.Value == "") || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value)) // check tab 2 เป็น campaign category เดียวกับที่เลือก  //แทป2ยังว่าง
+                {
+                    if (L_orderdata2.Count > 0) //ถ้ามีข้อมูลที่แทป 2 อยู่แล้ว
+                    {
+                        lorderdata = L_orderdata2;
+                    }
+
+
+                    odata.runningNo = lorderdata.Count + 1;
+                    lorderdata.Add(odata);
+
+
+                    L_orderdata2 = lorderdata;
+
+                    btntab1.BackColor = System.Drawing.Color.Gray;
+                    btntab2.BackColor = System.Drawing.Color.DeepSkyBlue;
+                    btntab3.BackColor = System.Drawing.Color.Gray;
+
+                    
+
+                }
+
+                LoadgvOrder(L_orderdata2);
+
+                if (hidtab2CampaignCategoryname.Value == "")
+                {
+                    hidtab2CampaignCategoryname.Value = hidcampaigncategoryname.Value;
+                }
+
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                if ((hidtab3CampaignCategory.Value == "") || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value)) // check tab 3 เป็น campaign category เดียวกับที่เลือก  //แทป3ยังว่าง
+                {
+                    if (L_orderdata3.Count > 0) //ถ้ามีข้อมูลที่แทป 3 อยู่แล้ว
+                    {
+                        lorderdata = L_orderdata3;
+                    }
+
+
+                    odata.runningNo = lorderdata.Count + 1;
+                    lorderdata.Add(odata);
+
+
+                    L_orderdata3 = lorderdata;
+
+                    btntab1.BackColor = System.Drawing.Color.Gray;
+                    btntab2.BackColor = System.Drawing.Color.Gray;
+                    btntab3.BackColor = System.Drawing.Color.DeepSkyBlue;
+
+                    
+
+                }
+
+                LoadgvOrder(L_orderdata3);
+
+                if (hidtab3CampaignCategoryname.Value == "")
+                {
+                    hidtab3CampaignCategoryname.Value = hidcampaigncategoryname.Value;
+                }
+
+                
+            }
+
+
+        }
+        public void LoadgvOrderfromTopProduct(List<OrderData> lorderdata, OrderData oadata)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                if ((hidtab1CampaignCategory.Value == "") || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab1CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value))
+                {
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+                }
+                else
+                {
+                    oadata = new OrderData();
+                }
+            }
+            else if (hidtab.Value == "2")
+            {
+                if ((hidtab2CampaignCategory.Value == "") || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab2CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value)) // check tab 2 เป็น campaign category เดียวกับที่เลือก  //แทป2ยังว่าง
+                {
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                if ((hidtab3CampaignCategory.Value == "") || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop01.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop02.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop03.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop04.Value) || (hidtab3CampaignCategory.Value == hidCampaignCategoryCodeProductTop05.Value)) // check tab 2 เป็น campaign category เดียวกับที่เลือก  //แทป2ยังว่าง
+                {
+                    gvOrder.DataSource = lorderdata;
+                    gvOrder.DataBind();
+                }
+            }
+        }
+        protected List<VoucherInfo> GetVoucherPrice(String vouchercode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListVoucherNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["VoucherCode"] = vouchercode;
+                data["CampaignCategoryCode"] = hidcampaigncategorycode.Value;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<VoucherInfo> lVoucherInfo = JsonConvert.DeserializeObject<List<VoucherInfo>>(respstr);
+            return lVoucherInfo;
+        }
+        private static bool isdateValid(String str)
+        {
+            return Regex.IsMatch(str, @"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$");
+        }
+        protected Boolean ValidateSubmitOrdertab1()
+        {
+            Boolean flag = true;
+            string error = "";
+            int counterr = 0;
+
+            if (L_transportdata1.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกที่อยู่ \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (L_orderdata1.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกรายการสินค้า \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab1PaymentType_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการชำระเงิน \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab1TransportTypeCode_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการขนส่ง \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (Convert.ToDouble(lblTotalPriceAfter.Text) < 0.00)
+            {
+                flag = false;
+                error += "ยอดชำระเงินไม่ถูกต้อง \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (isdateValid(txtDate.Text.Trim()))
+            {
+                flag = (!flag) ? false : true;
+            }
+            else
+            {
+                flag = false;
+                error += "Format วันนัดส่งสินค้าไม่ถูกต้อง \\n";
+                counterr++;
+            }
+            //radiocredit check
+            if (hidtab1PaymentType_Selected.Value == "02")
+            {
+                if (ddlPeriod.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกจำนวนงวด \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+
+                if (txtPer_period.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณากรอกงวดละ \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+
+                if (ddlCardtype.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกประเภทบัตร \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (ddlCardbank.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกธนาคารผู้ออกบัตร \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtcardnumber01.Text == "" || txtcardnumber02.Text == "" || txtcardnumber03.Text == "" || txtcardnumber04.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณาเลขบัตรให้ครบถ้วน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtcvv.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณากรอกCVV \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtFName.Text == "" || txtLName.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณากรอกชื่อ-นามสกุลผู้ถือบัตรให้ครบถ้วน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtper_id.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณากรอกรหัสบัตรประชาชน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtbirthdate.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกวันเกิด \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (ddlTransferBank.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกธนาคารที่ต้องการโอน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (ddlTransferBranch.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกสาขาที่ต้องการโอน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (ddlAccountName.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกชื่อบัญชีที่ใช้โอน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (txtAccountNumber.Text == "")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกเลขที่บัญชีที่ใช้โอน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+                if (ddlAccountType.SelectedValue == "-99")
+                {
+                    flag = false;
+                    error += "กรุณาเลือกประเภทบัญชีที่ใช้โอน \\n";
+                    counterr++;
+                }
+                else
+                {
+                    flag = (!flag) ? false : true;
+                }
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+                        
+
+            if (counterr > 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('" + error + "');displayPayment();", true);
+                
+            }
+
+            return flag;
+        }
+        protected Boolean ValidateSubmitOrdertab2()
+        {
+            Boolean flag = true;
+            string error = "";
+            int counterr = 0;
+
+            if (L_transportdata2.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกที่อยู่ \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (L_orderdata2.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกรายการสินค้า \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab2PaymentType_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการชำระเงิน \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab2TransportTypeCode_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการขนส่ง \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (isdateValid(txtDate.Text.Trim()))
+            {
+                flag = (!flag) ? false : true;
+            }
+            else
+            {
+                flag = false;
+                error += "Format วันนัดส่งสินค้าไม่ถูกต้อง \\n";
+                counterr++;
+            }
+
+            if (hidtab2InventorySelect.Value == "-99" || hidtab2InventorySelect.Value == "")
+            {
+                flag = false;
+                error += "Format กรุณาเลือกคลังสินค้า \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab2CustomerTaxId.Value.Length < 13)
+            {
+                flag = false;
+                error += "กรุณาระบุรหัสเสียภาษีให้ครบ 13 หลัก \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab2CustomerTaxId.Value.Length > 13)
+            {
+                flag = false;
+                error += "กรุณาระบุรหัสเสียภาษีเกิน 13 หลัก \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (counterr > 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('" + error + "');displayPayment();", true);
+            }
+
+            return flag;
+        }
+        protected Boolean ValidateSubmitOrdertab3()
+        {
+            Boolean flag = true;
+            string error = "";
+            int counterr = 0;
+
+            if (L_transportdata3.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกที่อยู่ \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (L_orderdata3.Count == 0)
+            {
+                flag = false;
+                error += "กรุณาเลือกรายการสินค้า \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab3PaymentType_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการชำระเงิน \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab3TransportTypeCode_Selected.Value == "")
+            {
+                flag = false;
+                error += "กรุณาเลือกวิธีการขนส่ง \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (isdateValid(txtDate.Text.Trim()))
+            {
+                flag = (!flag) ? false : true;
+            }
+            else
+            {
+                flag = false;
+                error += "Format วันนัดส่งสินค้าไม่ถูกต้อง \\n";
+                counterr++;
+            }
+
+            if (hidtab3InventorySelect.Value == "-99" || hidtab3InventorySelect.Value == "")
+            {
+                flag = false;
+                error += "Format กรุณาเลือกคลังสินค้า \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab3CustomerTaxId.Value.Length < 13)
+            {
+                flag = false;
+                error += "กรุณาระบุรหัสเสียภาษีให้ครบ 13 หลัก \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (hidtab3CustomerTaxId.Value.Length > 13)
+            {
+                flag = false;
+                error += "กรุณาระบุรหัสเสียภาษีเกิน 13 หลัก \\n";
+                counterr++;
+            }
+            else
+            {
+                flag = (!flag) ? false : true;
+            }
+
+            if (counterr > 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('" + error + "');displayPayment();", true);
+            }
+
+            return flag;
+        }
+
+        protected void BindgvProductView(List<OrderData> lodata)
+        {
+            gvProductView.DataSource = lodata;
+            gvProductView.DataBind();
+        }
+        #endregion
+
+        #region Event
+
+        protected void btnSearchCampaign_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnSearchCampaignMediaPlan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearchPromotion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void linkbtnSearchPromotionMedia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearchProduct_Click(object sender, EventArgs e)
+        {
+            BindgvProduct(hidPromotionCode_Selected.Value);
+        }
+
+        protected void btnSearchProductMedia_Click(object sender, EventArgs e)
+        {
+            BindgvProductMedia(hidPromotionCode_Selected.Value, hidCampaignMediaCode_Selected.Value);
+        }
+
+        protected void UsrCtrl_SelectBranch_Click(object sender, EventArgs e)
+        {
+            Button btnClick = (Button)sender;
+
+            CheckBox chkAddress = (CheckBox)SelectBranch.FindControl("chkAddress");
+
+            HiddenField hidCustomerLat = (HiddenField)SelectBranch.FindControl("hidCustomerLat");
+            HiddenField hidCustomerLng = (HiddenField)SelectBranch.FindControl("hidCustomerLng");
+            HiddenField hidNearLat = (HiddenField)SelectBranch.FindControl("hidNearLat");
+            HiddenField hidNearLng = (HiddenField)SelectBranch.FindControl("hidNearLng");
+            HiddenField hidAreaCode = (HiddenField)SelectBranch.FindControl("hidAreaCode");
+
+            HiddenField currentDeliveryAddressId = (HiddenField)SelectBranch.FindControl("currentDeliveryAddressId");
+            HiddenField currentDeliveryAddress = (HiddenField)SelectBranch.FindControl("currentDeliveryAddress");
+            HiddenField currentDeliverySubDistrict = (HiddenField)SelectBranch.FindControl("currentDeliverySubDistrict");
+            HiddenField currentDeliverySubDistrictName = (HiddenField)SelectBranch.FindControl("currentDeliverySubDistrictName");
+            HiddenField currentDeliveryDistrict = (HiddenField)SelectBranch.FindControl("currentDeliveryDistrict");
+            HiddenField currentDeliveryDistrictName = (HiddenField)SelectBranch.FindControl("currentDeliveryDistrictName");
+            HiddenField currentDeliveryProvince = (HiddenField)SelectBranch.FindControl("currentDeliveryProvince");
+            HiddenField currentDeliveryProvinceName = (HiddenField)SelectBranch.FindControl("currentDeliveryProvinceName");
+            HiddenField currentDeliveryZipCode = (HiddenField)SelectBranch.FindControl("currentDeliveryZipCode");
+
+            HiddenField currentReceiptAddressId = (HiddenField)SelectBranch.FindControl("currentReceiptAddressId");
+            HiddenField currentReceiptAddress = (HiddenField)SelectBranch.FindControl("currentReceiptAddress");
+            HiddenField currentReceiptSubDistrict = (HiddenField)SelectBranch.FindControl("currentReceiptSubDistrict");
+            HiddenField currentReceiptSubDistrictName = (HiddenField)SelectBranch.FindControl("currentReceiptSubDistrictName");
+            HiddenField currentReceiptDistrict = (HiddenField)SelectBranch.FindControl("currentReceiptDistrict");
+            HiddenField currentReceiptDistrictName = (HiddenField)SelectBranch.FindControl("currentReceiptDistrictName");
+            HiddenField currentReceiptProvince = (HiddenField)SelectBranch.FindControl("currentReceiptProvince");
+            HiddenField currentReceiptProvinceName = (HiddenField)SelectBranch.FindControl("currentReceiptProvinceName");
+            HiddenField currentReceiptZipCode = (HiddenField)SelectBranch.FindControl("currentReceiptZipCode");
+
+            List<BranchInfo> nearbyBranch1 = new List<BranchInfo>();
+            List<BranchInfo> nearbyBranch2 = new List<BranchInfo>();
+            List<BranchInfo> nearbyBranch3 = new List<BranchInfo>();
+
+            CustomerAddressInfo cInfo = new CustomerAddressInfo();
+            cInfo.CustomerAddressId = (currentDeliveryAddressId.Value == "") ? 0 : Convert.ToInt32(currentDeliveryAddressId.Value);
+            cInfo.Lat = hidCustomerLat.Value;
+            cInfo.Long = hidCustomerLng.Value;
+            cInfo.AreaCode = hidAreaCode.Value;
+
+            UpdateCustomerAddressLatLng(cInfo);
+
+            if (hidtab.Value == "1")
+            {
+                
+
+                if (L_transportdata1.Count == 0)
+                {
+                    L_transportdata1.Add(new transportdataInfo
+                    {
+                        AddressId = currentDeliveryAddressId.Value,
+                        AddressType = "01",
+                        Address = currentDeliveryAddress.Value,
+                        SubDistrictCode = currentDeliverySubDistrict.Value,
+                        SubDistrictName = currentDeliverySubDistrictName.Value,
+                        DistrictCode = currentDeliveryDistrict.Value,
+                        DistrictName = currentDeliveryDistrictName.Value,
+                        ProvinceCode = currentDeliveryProvince.Value,
+                        ProvinceName = currentDeliveryProvinceName.Value,
+                        Zipcode = currentDeliveryZipCode.Value,
+                        NearestBranchList = nearbyBranch1,
+
+
+                    });
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata1.Add(new transportdataInfo
+                        {
+                            AddressId = currentDeliveryAddressId.Value,
+                            AddressType = "02",
+                            Address = currentDeliveryAddress.Value,
+                            SubDistrictCode = currentDeliverySubDistrict.Value,
+                            SubDistrictName = currentDeliverySubDistrictName.Value,
+                            DistrictCode = currentDeliveryDistrict.Value,
+                            DistrictName = currentDeliveryDistrictName.Value,
+                            ProvinceCode = currentDeliveryProvince.Value,
+                            ProvinceName = currentDeliveryProvinceName.Value,
+                            Zipcode = currentDeliveryZipCode.Value,
+                            NearestBranchList = nearbyBranch1,
+                        });
+                    }
+                    else
+                    {
+                        L_transportdata1.Add(new transportdataInfo
+                        {
+                            AddressId = currentReceiptAddressId.Value,
+                            AddressType = "02",
+                            Address = currentReceiptAddress.Value,
+                            SubDistrictCode = currentReceiptSubDistrict.Value,
+                            SubDistrictName = currentReceiptSubDistrictName.Value,
+                            DistrictCode = currentReceiptDistrict.Value,
+                            DistrictName = currentReceiptDistrictName.Value,
+                            ProvinceCode = currentReceiptProvince.Value,
+                            ProvinceName = currentReceiptProvinceName.Value,
+                            Zipcode = currentReceiptZipCode.Value,
+                            NearestBranchList = nearbyBranch1,
+                        });
+                    }
+
+                }
+                else
+                {
+                    L_transportdata1[0].AddressId = currentDeliveryAddressId.Value;
+                    L_transportdata1[0].Address = currentDeliveryAddress.Value;
+                    L_transportdata1[0].SubDistrictCode = currentDeliverySubDistrict.Value;
+                    L_transportdata1[0].SubDistrictName = currentDeliverySubDistrictName.Value;
+                    L_transportdata1[0].DistrictCode = currentDeliveryDistrict.Value;
+                    L_transportdata1[0].DistrictName = currentDeliveryDistrictName.Value;
+                    L_transportdata1[0].ProvinceCode = currentDeliveryProvince.Value;
+                    L_transportdata1[0].ProvinceName = currentDeliveryProvinceName.Value;
+                    L_transportdata1[0].Zipcode = currentDeliveryZipCode.Value;
+                    L_transportdata1[0].NearestBranchList = nearbyBranch1;
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata1[1].AddressId = currentDeliveryAddressId.Value;
+                        L_transportdata1[1].Address = currentDeliveryAddress.Value;
+                        L_transportdata1[1].SubDistrictCode = currentDeliverySubDistrict.Value;
+                        L_transportdata1[1].SubDistrictName = currentDeliverySubDistrictName.Value;
+                        L_transportdata1[1].DistrictCode = currentDeliveryDistrict.Value;
+                        L_transportdata1[1].DistrictName = currentDeliveryDistrictName.Value;
+                        L_transportdata1[1].ProvinceCode = currentDeliveryProvince.Value;
+                        L_transportdata1[1].ProvinceName = currentDeliveryProvinceName.Value;
+                        L_transportdata1[1].Zipcode = currentDeliveryZipCode.Value;
+                        L_transportdata1[1].NearestBranchList = nearbyBranch1;
+                    }
+                    else
+                    {
+                        L_transportdata1[1].AddressId = currentReceiptAddressId.Value;
+                        L_transportdata1[1].Address = currentReceiptAddress.Value;
+                        L_transportdata1[1].SubDistrictCode = currentReceiptSubDistrict.Value;
+                        L_transportdata1[1].SubDistrictName = currentReceiptSubDistrictName.Value;
+                        L_transportdata1[1].DistrictCode = currentReceiptDistrict.Value;
+                        L_transportdata1[1].DistrictName = currentReceiptDistrictName.Value;
+                        L_transportdata1[1].ProvinceCode = currentReceiptProvince.Value;
+                        L_transportdata1[1].ProvinceName = currentReceiptProvinceName.Value;
+                        L_transportdata1[1].Zipcode = currentReceiptZipCode.Value;
+                        L_transportdata1[1].NearestBranchList = nearbyBranch1;
+                    }
+
+                }
+
+                lblCustomerAddress.Text = L_transportdata1[0].Address;
+                lblSubDistrict.Text = L_transportdata1[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata1[0].DistrictName;
+                lblProvince.Text = L_transportdata1[0].ProvinceName;
+                lblZipcode.Text = L_transportdata1[0].Zipcode;
+
+
+                
+
+
+            }
+            else if (hidtab.Value == "2")
+            {
+                
+
+
+                if (L_transportdata2.Count == 0)
+                {
+                    L_transportdata2.Add(new transportdataInfo
+                    {
+                        AddressId = currentDeliveryAddressId.Value,
+                        AddressType = "01",
+                        Address = currentDeliveryAddress.Value,
+                        SubDistrictCode = currentDeliverySubDistrict.Value,
+                        SubDistrictName = currentDeliverySubDistrictName.Value,
+                        DistrictCode = currentDeliveryDistrict.Value,
+                        DistrictName = currentDeliveryDistrictName.Value,
+                        ProvinceCode = currentDeliveryProvince.Value,
+                        ProvinceName = currentDeliveryProvinceName.Value,
+                        Zipcode = currentDeliveryZipCode.Value,
+                        NearestBranchList = nearbyBranch2,
+
+
+                    });
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata2.Add(new transportdataInfo
+                        {
+                            AddressId = currentDeliveryAddressId.Value,
+                            AddressType = "02",
+                            Address = currentDeliveryAddress.Value,
+                            SubDistrictCode = currentDeliverySubDistrict.Value,
+                            SubDistrictName = currentDeliverySubDistrictName.Value,
+                            DistrictCode = currentDeliveryDistrict.Value,
+                            DistrictName = currentDeliveryDistrictName.Value,
+                            ProvinceCode = currentDeliveryProvince.Value,
+                            ProvinceName = currentDeliveryProvinceName.Value,
+                            Zipcode = currentDeliveryZipCode.Value,
+                            NearestBranchList = nearbyBranch2,
+                        });
+                    }
+                    else
+                    {
+                        L_transportdata2.Add(new transportdataInfo
+                        {
+                            AddressId = currentReceiptAddressId.Value,
+                            AddressType = "02",
+                            Address = currentReceiptAddress.Value,
+                            SubDistrictCode = currentReceiptSubDistrict.Value,
+                            SubDistrictName = currentReceiptSubDistrictName.Value,
+                            DistrictCode = currentReceiptDistrict.Value,
+                            DistrictName = currentReceiptDistrictName.Value,
+                            ProvinceCode = currentReceiptProvince.Value,
+                            ProvinceName = currentReceiptProvinceName.Value,
+                            Zipcode = currentReceiptZipCode.Value,
+                            NearestBranchList = nearbyBranch2,
+                        });
+                    }
+
+                }
+                else
+                {
+                    L_transportdata2[0].AddressId = currentDeliveryAddressId.Value;
+                    L_transportdata2[0].Address = currentDeliveryAddress.Value;
+                    L_transportdata2[0].SubDistrictCode = currentDeliverySubDistrict.Value;
+                    L_transportdata2[0].SubDistrictName = currentDeliverySubDistrictName.Value;
+                    L_transportdata2[0].DistrictCode = currentDeliveryDistrict.Value;
+                    L_transportdata2[0].DistrictName = currentDeliveryDistrictName.Value;
+                    L_transportdata2[0].ProvinceCode = currentDeliveryProvince.Value;
+                    L_transportdata2[0].ProvinceName = currentDeliveryProvinceName.Value;
+                    L_transportdata2[0].Zipcode = currentDeliveryZipCode.Value;
+                    L_transportdata2[0].NearestBranchList = nearbyBranch2;
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata2[1].AddressId = currentDeliveryAddressId.Value;
+                        L_transportdata2[1].Address = currentDeliveryAddress.Value;
+                        L_transportdata2[1].SubDistrictCode = currentDeliverySubDistrict.Value;
+                        L_transportdata2[1].SubDistrictName = currentDeliverySubDistrictName.Value;
+                        L_transportdata2[1].DistrictCode = currentDeliveryDistrict.Value;
+                        L_transportdata2[1].DistrictName = currentDeliveryDistrictName.Value;
+                        L_transportdata2[1].ProvinceCode = currentDeliveryProvince.Value;
+                        L_transportdata2[1].ProvinceName = currentDeliveryProvinceName.Value;
+                        L_transportdata2[1].Zipcode = currentDeliveryZipCode.Value;
+                        L_transportdata2[1].NearestBranchList = nearbyBranch2;
+                    }
+                    else
+                    {
+                        L_transportdata2[1].AddressId = currentReceiptAddressId.Value;
+                        L_transportdata2[1].Address = currentReceiptAddress.Value;
+                        L_transportdata2[1].SubDistrictCode = currentReceiptSubDistrict.Value;
+                        L_transportdata2[1].SubDistrictName = currentReceiptSubDistrictName.Value;
+                        L_transportdata2[1].DistrictCode = currentReceiptDistrict.Value;
+                        L_transportdata2[1].DistrictName = currentReceiptDistrictName.Value;
+                        L_transportdata2[1].ProvinceCode = currentReceiptProvince.Value;
+                        L_transportdata2[1].ProvinceName = currentReceiptProvinceName.Value;
+                        L_transportdata2[1].Zipcode = currentReceiptZipCode.Value;
+                        L_transportdata2[1].NearestBranchList = nearbyBranch2;
+                    }
+
+                }
+
+
+                lblCustomerAddress.Text = L_transportdata2[0].Address;
+                lblSubDistrict.Text = L_transportdata2[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata2[0].DistrictName;
+                lblProvince.Text = L_transportdata2[0].ProvinceName;
+                lblZipcode.Text = L_transportdata2[0].Zipcode;
+
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                
+
+                if (L_transportdata3.Count == 0)
+                {
+                    L_transportdata3.Add(new transportdataInfo
+                    {
+                        AddressId = currentDeliveryAddressId.Value,
+                        AddressType = "01",
+                        Address = currentDeliveryAddress.Value,
+                        SubDistrictCode = currentDeliverySubDistrict.Value,
+                        SubDistrictName = currentDeliverySubDistrictName.Value,
+                        DistrictCode = currentDeliveryDistrict.Value,
+                        DistrictName = currentDeliveryDistrictName.Value,
+                        ProvinceCode = currentDeliveryProvince.Value,
+                        ProvinceName = currentDeliveryProvinceName.Value,
+                        Zipcode = currentDeliveryZipCode.Value,
+                        NearestBranchList = nearbyBranch1,
+
+
+                    });
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata3.Add(new transportdataInfo
+                        {
+                            AddressId = currentDeliveryAddressId.Value,
+                            AddressType = "02",
+                            Address = currentDeliveryAddress.Value,
+                            SubDistrictCode = currentDeliverySubDistrict.Value,
+                            SubDistrictName = currentDeliverySubDistrictName.Value,
+                            DistrictCode = currentDeliveryDistrict.Value,
+                            DistrictName = currentDeliveryDistrictName.Value,
+                            ProvinceCode = currentDeliveryProvince.Value,
+                            ProvinceName = currentDeliveryProvinceName.Value,
+                            Zipcode = currentDeliveryZipCode.Value,
+                            NearestBranchList = nearbyBranch1,
+                        });
+                    }
+                    else
+                    {
+                        L_transportdata3.Add(new transportdataInfo
+                        {
+                            AddressId = currentReceiptAddressId.Value,
+                            AddressType = "02",
+                            Address = currentReceiptAddress.Value,
+                            SubDistrictCode = currentReceiptSubDistrict.Value,
+                            SubDistrictName = currentReceiptSubDistrictName.Value,
+                            DistrictCode = currentReceiptDistrict.Value,
+                            DistrictName = currentReceiptDistrictName.Value,
+                            ProvinceCode = currentReceiptProvince.Value,
+                            ProvinceName = currentReceiptProvinceName.Value,
+                            Zipcode = currentReceiptZipCode.Value,
+                            NearestBranchList = nearbyBranch1,
+                        });
+                    }
+
+                }
+                else
+                {
+                    L_transportdata3[0].AddressId = currentDeliveryAddressId.Value;
+                    L_transportdata3[0].Address = currentDeliveryAddress.Value;
+                    L_transportdata3[0].SubDistrictCode = currentDeliverySubDistrict.Value;
+                    L_transportdata3[0].SubDistrictName = currentDeliverySubDistrictName.Value;
+                    L_transportdata3[0].DistrictCode = currentDeliveryDistrict.Value;
+                    L_transportdata3[0].DistrictName = currentDeliveryDistrictName.Value;
+                    L_transportdata3[0].ProvinceCode = currentDeliveryProvince.Value;
+                    L_transportdata3[0].ProvinceName = currentDeliveryProvinceName.Value;
+                    L_transportdata3[0].Zipcode = currentDeliveryZipCode.Value;
+                    L_transportdata3[0].NearestBranchList = nearbyBranch3;
+
+                    if (chkAddress.Checked == true)
+                    {
+                        L_transportdata3[1].AddressId = currentDeliveryAddressId.Value;
+                        L_transportdata3[1].Address = currentDeliveryAddress.Value;
+                        L_transportdata3[1].SubDistrictCode = currentDeliverySubDistrict.Value;
+                        L_transportdata3[1].SubDistrictName = currentDeliverySubDistrictName.Value;
+                        L_transportdata3[1].DistrictCode = currentDeliveryDistrict.Value;
+                        L_transportdata3[1].DistrictName = currentDeliveryDistrictName.Value;
+                        L_transportdata3[1].ProvinceCode = currentDeliveryProvince.Value;
+                        L_transportdata3[1].ProvinceName = currentDeliveryProvinceName.Value;
+                        L_transportdata3[1].Zipcode = currentDeliveryZipCode.Value;
+                        L_transportdata3[1].NearestBranchList = nearbyBranch3;
+                    }
+                    else
+                    {
+                        L_transportdata3[1].AddressId = currentReceiptAddressId.Value;
+                        L_transportdata3[1].Address = currentReceiptAddress.Value;
+                        L_transportdata3[1].SubDistrictCode = currentReceiptSubDistrict.Value;
+                        L_transportdata3[1].SubDistrictName = currentReceiptSubDistrictName.Value;
+                        L_transportdata3[1].DistrictCode = currentReceiptDistrict.Value;
+                        L_transportdata3[1].DistrictName = currentReceiptDistrictName.Value;
+                        L_transportdata3[1].ProvinceCode = currentReceiptProvince.Value;
+                        L_transportdata3[1].ProvinceName = currentReceiptProvinceName.Value;
+                        L_transportdata3[1].Zipcode = currentReceiptZipCode.Value;
+                        L_transportdata3[1].NearestBranchList = nearbyBranch3;
+                    }
+
+                }
+
+                lblCustomerAddress.Text = L_transportdata3[0].Address;
+                lblSubDistrict.Text = L_transportdata3[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata3[0].DistrictName;
+                lblProvince.Text = L_transportdata3[0].ProvinceName;
+                lblZipcode.Text = L_transportdata3[0].Zipcode;
+
+
+                
+            }
+
+            
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "$('#modal-address').modal('hide');", true);
+
+            
+
+
+
+        }
+
+        protected void btnMapAddress_Click(object sender, EventArgs e)
+        {
+            HiddenField currentDeliveryAddressId = (HiddenField)SelectBranch.FindControl("currentDeliveryAddressId");
+            HiddenField currentReceiptAddressId = (HiddenField)SelectBranch.FindControl("currentReceiptAddressId");
+
+
+            if (hidtab.Value == "1")
+            {
+                if (L_transportdata1.Count > 0)
+                {
+                    currentDeliveryAddressId.Value = L_transportdata1[0].AddressId != "" ? L_transportdata1[0].AddressId : currentDeliveryAddressId.Value;
+                    currentReceiptAddressId.Value = L_transportdata1[1].AddressId != "" ? L_transportdata1[1].AddressId : currentReceiptAddressId.Value;
+                }
+
+            }
+
+
+            if (hidtab.Value == "2")
+            {
+                if (L_transportdata2.Count > 0)
+                {
+                    currentDeliveryAddressId.Value = L_transportdata2[0].AddressId != "" ? L_transportdata2[0].AddressId : currentDeliveryAddressId.Value;
+                    currentReceiptAddressId.Value = L_transportdata2[1].AddressId != "" ? L_transportdata2[1].AddressId : currentReceiptAddressId.Value;
+                }
+
+            }
+
+
+            if (hidtab.Value == "3")
+            {
+                if (L_transportdata3.Count > 0)
+                {
+                    currentDeliveryAddressId.Value = L_transportdata3[0].AddressId != "" ? L_transportdata3[0].AddressId : currentDeliveryAddressId.Value;
+                    currentReceiptAddressId.Value = L_transportdata3[1].AddressId != "" ? L_transportdata3[1].AddressId : currentReceiptAddressId.Value;
+                }
+
+            }
+
+            
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-address').modal();", true);
+        }
+
+        protected void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            campaign.Visible = true;
+            mediaplan.Visible = false;
+            btntabmediaplan.Visible = true;
+
+            List<CampaignInfo> lcampaignInfo = new List<CampaignInfo>();
+            lcampaignInfo = GetCampaignMasterByCriteria();
+            gvCampaign.DataSource = lcampaignInfo;
+            gvCampaign.DataBind();
+
+            String CampaignCode = "-999";
+            String PromotionCode = "-999";
+            BindgvPromotion(CampaignCode);
+            BindgvProduct(PromotionCode);
+
+            BindgvPromotionMedia(CampaignCode);
+            BindgvProductMedia(PromotionCode, hidCampaignMediaCode_Selected.Value);
+
+            gvCampaign_Section.Attributes.Add("class", "my-custom-scrollbar");
+            gvPromotion_Section.Attributes.Remove("class");
+            gvProduct_Section.Attributes.Remove("class");
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#modal-addpro').modal();", true);
+
+        }
+        protected void btnEdituser_Click(object sender, EventArgs e)
+        {
+            BindCustomerLabel(CustomerCode);
+            txtCustomerCode_Ins.Enabled = false;
+            txtCustomerFName_Edit.Enabled = false;
+            txtCustomerLName_Edit.Enabled = false;
+            txtContactTel_Ins.Enabled = false;
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#Edituser_new').modal();", true);
+        }
+
+        protected void bindDDlTitle_Ins()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["LookupType"] = "TITLE";
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<LookupInfo> lMaritalStatusInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+
+            ddlTitle_Ins.DataSource = lMaritalStatusInfo;
+            ddlTitle_Ins.DataTextField = "LookupValue";
+            ddlTitle_Ins.DataValueField = "LookupCode";
+            ddlTitle_Ins.DataBind();
+            ddlTitle_Ins.Items.Insert(0, new ListItem("Please Select-------------------------------", "-99"));
+        }
+
+        protected void bindDdlSearchGender()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListGenderNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["GenderCode"] = "";
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<GenderInfo> lGenderInfo = JsonConvert.DeserializeObject<List<GenderInfo>>(respstr);
+
+            ddlGender_Ins.DataSource = lGenderInfo;
+            ddlGender_Ins.DataTextField = "GenderName";
+            ddlGender_Ins.DataValueField = "GenderCode";
+            ddlGender_Ins.DataBind();
+            ddlGender_Ins.Items.Insert(0, new ListItem("Please Select-------------------------------", "-99"));
+        }
+
+
+        protected void bindDdlSearchMaritalStatus()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["LookupType"] = "MARITALSTATUS";
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<LookupInfo> lMaritalStatusInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+
+            ddlMaritalStatus_Ins.DataSource = lMaritalStatusInfo;
+            ddlMaritalStatus_Ins.DataTextField = "LookupValue";
+            ddlMaritalStatus_Ins.DataValueField = "LookupCode";
+            ddlMaritalStatus_Ins.DataBind();
+            ddlMaritalStatus_Ins.Items.Insert(0, new ListItem("Please Select-------------------------------", "-99"));
+        }
+
+        protected void bindDdlSearchOccupation()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListOccupationNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["OccupationCode"] = "";
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<OccupationInfo> lMaritalStatusInfo = JsonConvert.DeserializeObject<List<OccupationInfo>>(respstr);
+
+            ddlOccupation_Ins.DataSource = lMaritalStatusInfo;
+            ddlOccupation_Ins.DataTextField = "OccupationName";
+            ddlOccupation_Ins.DataValueField = "OccupationCode";
+            ddlOccupation_Ins.DataBind();
+            ddlOccupation_Ins.Items.Insert(0, new ListItem("Please Select-------------------------------", "-99"));
+        }
+
+        protected List<CallInformationInfo> GetCallinformationInfoMasterByCriteria(string CustomerFName, string CustomerLName)
+        {
+
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCallinformationInfoByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerFName"] = CustomerFName;
+                data["CustomerLName"] = CustomerLName;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CallInformationInfo> listCallInformationInfo = JsonConvert.DeserializeObject<List<CallInformationInfo>>(respstr);
+
+
+            return listCallInformationInfo;
+        }
+
+
+
+
+
+
+
+
+
+        protected void OrderHistory_Click(object sender, EventArgs e)
+        {
+            string url = Request.Url.Host;
+            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = window.open( '" + "../OrderManagement/OrderHistoryTakeOrder.aspx?CustomerCode=" + CustomerCode + "', null );", true);
+            
+
+        }
+        protected void btnHistorycontact_Click(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#Historycontact').modal();", true);
+
+        }
+
+        protected void campaign_Click(object sender, EventArgs e)
+        {
+            campaign.Visible = true;
+            mediaplan.Visible = false;
+        }
+        protected void media_Click(object sender, EventArgs e)
+        {
+            mediaplan.Visible = true;
+            campaign.Visible = false;
+
+            
+        }
+        protected void btntab1_Click(object sender, EventArgs e)
+        {
+            
+            hidtab.Value = "1";
+
+
+
+            
+
+            if (hidtab1BillDiscountPrice.Value == "" || hidtab1BillDiscountPrice.Value == null)
+            {
+                lblBillDiscountPrice.Text = string.Format("{0:n}", 0);
+            }
+            else
+            {
+                lblBillDiscountPrice.Text = hidtab1BillDiscountPrice.Value;
+            }
+
+            
+
+            if (hidtab1TransportTypeCode_Selected.Value == "" || hidtab1TransportTypeCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    if (row.RowIndex == 0)
+                    {
+                        radTransportType01.Checked = true;
+                        hidtab1TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        lblTransportPrice.Text = hidFee.Value;
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    if (hidLogisticCode.Value == hidtab1TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Checked = true;
+
+                        if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+
+                            txtTransportPrice.Text = hidtab1transportprice.Value;
+                            lblTransportPrice.Text = txtTransportPrice.Text;
+                        }
+                        else
+                        {
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+
+                            lblTransportPrice.Text = hidtab1transportprice.Value;
+                            txtTransportPrice.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+                    }
+                }
+            }
+
+            for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+            {
+                GridViewRow row = gvOrderPayment.Rows[i];
+                RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                if (hidPaymentTypeCode.Value == hidtab1PaymentType_Selected.Value)
+                {
+                    radPaymentType.Checked = true;
+                }
+                else
+                {
+                    radPaymentType.Checked = false;
+                }
+            }
+
+            if (hidtab1ChannelCode_Selected.Value == "" || hidtab1ChannelCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    Label lblChannelName = (Label)row.FindControl("lblChannelName");
+                    if (row.RowIndex == 0)
+                    {
+                        radChannelType.Checked = true;
+                        hidtab1ChannelCode_Selected.Value = hidChannelCode.Value;
+                        hidtab1ChannelName_Selected.Value = lblChannelName.Text;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    if (hidChannelCode.Value == hidtab1ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Checked = true;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+
+            
+
+            btntab1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            btntab2.BackColor = System.Drawing.Color.Gray;
+            btntab3.BackColor = System.Drawing.Color.Gray;
+
+
+            if (L_transportdata1.Count != 0)
+            {
+                lblCustomerAddress.Text = L_transportdata1[0].Address;
+                lblSubDistrict.Text = L_transportdata1[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata1[0].DistrictName;
+                lblProvince.Text = L_transportdata1[0].ProvinceName;
+                lblZipcode.Text = L_transportdata1[0].Zipcode;
+
+
+            }
+            else
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+            }
+
+            if (L_orderdata1.Count == 0)
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+            }
+
+            if (hidtab1VoucherPrice.Value == "" && hidtab1VoucherCode.Value == "")
+            {
+                txtVoucherCode.Text = "";
+                txtVoucherPrice.Text = "";
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+            else
+            {
+                txtVoucherCode.Text = hidtab1VoucherCode.Value;
+                if (hidtab1VoucherPrice.Value != "")
+                {
+                    txtVoucherPrice.Text = string.Format("{0:n}", (hidtab1VoucherPrice.Value));
+                    VoucherTrue.Visible = true;
+                    VoucherFault.Visible = false;
+                }
+                else
+                {
+                    txtVoucherPrice.Text = "";
+                    VoucherTrue.Visible = false;
+                    VoucherFault.Visible = true;
+                }
+            }
+
+            if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+            {
+                ddlInventory.SelectedValue = "-99";
+
+                BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+            }
+            else
+            {
+                ddlInventory.SelectedValue = hidtab1InventorySelect.Value;
+                BindgvProductInventory(hidtab1InventorySelect.Value);
+            }
+
+            if (hidtab1ContactStatusSelected.Value == "-99" || (hidtab1ContactStatusSelected.Value == ""))
+            {
+                ddlContactStatus.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactStatus.SelectedValue = hidtab1ContactStatusSelected.Value;
+            }
+
+            if (hidtab1ContactResultSelected.Value == "-99" || (hidtab1ContactResultSelected.Value == ""))
+            {
+                ddlContactResult.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactResult.SelectedValue = hidtab1ContactResultSelected.Value;
+            }
+
+            if (hidtab1ContactDesc.Value != "")
+            {
+                txtcontactdesc.Text = hidtab1ContactDesc.Value;
+            }
+            else
+            {
+                txtcontactdesc.Text = "";
+            }
+
+            if (hidtab1deliverydate.Value != "")
+            {
+                txtDate.Text = hidtab1deliverydate.Value;
+            }
+            else
+            {
+                txtDate.Text = "";
+            }
+
+            if (hidtab1CustomerTaxId.Value != "")
+            {
+                txtCustomerTaxID.Text = hidtab1CustomerTaxId.Value;
+            }
+            else
+            {
+                txtCustomerTaxID.Text = "";
+            }
+
+            // Finishe Order and disable page Take Order
+            
+
+            if (hidtab1orderstatus.Value == "")
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = true;
+                ico02.Visible = true;
+                ico03.Visible = true;
+                ico04.Visible = true;
+                ico05.Visible = true;
+
+                LinkBtnProductTop01.Enabled = true;
+                LinkBtnProductTop02.Enabled = true;
+                LinkBtnProductTop03.Enabled = true;
+                LinkBtnProductTop04.Enabled = true;
+                LinkBtnProductTop05.Enabled = true;
+
+                BtnSubmitOrder.Visible = true;
+                btnAddProduct.Visible = true;
+                btnCleargvOrder.Visible = true;
+                gvOrder.Columns[7].Visible = true;
+                txtVoucherCode.ReadOnly = false;
+                lblordercode.Text = hidtab1ordercode.Value;
+                lblorderstatus.Text = hidtab1orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+
+                    txtAmount_gvOrder.ReadOnly = false;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab1TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab1PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab1ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = true;
+                btnSelectAddress.Visible = true;
+                btnEditAddress.Visible = true;
+                btnAddAddress1.Visible = true;
+                btnSelectAddress1.Visible = true;
+                btnEditAddress1.Visible = true;
+                btnSave.Visible = true;
+                btnCancelSave.Visible = true;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "AppearSearch();", true);
+            }
+            else // Screen after finish order
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = false;
+                ico02.Visible = false;
+                ico03.Visible = false;
+                ico04.Visible = false;
+                ico05.Visible = false;
+
+                LinkBtnProductTop01.Enabled = false;
+                LinkBtnProductTop02.Enabled = false;
+                LinkBtnProductTop03.Enabled = false;
+                LinkBtnProductTop04.Enabled = false;
+                LinkBtnProductTop05.Enabled = false;
+
+                BtnSubmitOrder.Visible = false;
+                btnAddProduct.Visible = false;
+                btnCleargvOrder.Visible = false;
+                gvOrder.Columns[7].Visible = false;
+                txtVoucherCode.ReadOnly = true;
+                lblordercode.Text = hidtab1ordercode.Value;
+                lblorderstatus.Text = hidtab1orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+                    TextBox txtAmount_gvOrderView = (TextBox)row.FindControl("txtAmount_gvOrderView");
+
+                    txtAmount_gvOrderView.ReadOnly = true;
+                    txtAmount_gvOrder.ReadOnly = true;
+                    txtAmount_gvOrderView.Enabled = false;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab1TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab1PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab1ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = false;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = false;
+                btnSelectAddress.Visible = false;
+                btnEditAddress.Visible = false;
+                btnAddAddress1.Visible = false;
+                btnSelectAddress1.Visible = false;
+                btnEditAddress1.Visible = false;
+                btnSave.Visible = false;
+                btnCancelSave.Visible = false;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "HideSearch();", true);
+
+
+            }
+
+            if (hidtab1orderstatus.Value == "")
+            {
+                ddlContactStatus.Enabled = true;
+                ddlContactResult.Enabled = true;
+                txtcontactdesc.Enabled = true;
+                txtCustomerTaxID.Enabled = true;
+                txtCustomerTaxID.Visible = true;
+                lblCustomerTaxId.Visible = false;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrder(L_orderdata1);
+            }
+            else
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    ddlInventory.SelectedValue = "-99";
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    ddlInventory.SelectedValue = hidtab1InventorySelect.Value;
+                    ddlInventory.Enabled = false;
+                    BindgvProductInventoryfinish(hidtab1InventorySelect.Value);
+                }
+
+                ddlContactStatus.Enabled = false;
+                ddlContactResult.Enabled = false;
+                txtcontactdesc.Enabled = false;
+
+                lblCustomerTaxId.Text = hidtab1CustomerTaxId.Value;
+                txtCustomerTaxID.Enabled = false;
+                txtCustomerTaxID.Visible = false;
+                lblCustomerTaxId.Visible = true;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrderFinished(L_orderdata1);
+            }
+            /*  if (hidtab1orderstatus.Value == "")
+              {
+                  btncheckout.Visible = true;
+                  btnNewOrder.Visible = true;
+                  btnCloseTab.Visible = true;
+                  btnClear.Visible = true;
+
+                  LinkBtnProductTop01.Enabled = true;
+                  LinkBtnProductTop02.Enabled = true;
+                  LinkBtnProductTop03.Enabled = true;
+                  LinkBtnProductTop04.Enabled = true;
+                  LinkBtnProductTop05.Enabled = true;
+
+                  lblProdTop01.Visible = false;
+                  lblProdTop02.Visible = false;
+                  lblProdTop03.Visible = false;
+                  lblProdTop04.Visible = false;
+                  lblProdTop05.Visible = false;
+        }
+            else
+            {
+                btncheckout.Visible = false;
+                btnNewOrder.Visible = false;
+                btnCloseTab.Visible = false;
+                btnClear.Visible = false;
+
+                LinkBtnProductTop01.Enabled = false;
+                LinkBtnProductTop02.Enabled = false;
+                LinkBtnProductTop03.Enabled = false;
+                LinkBtnProductTop04.Enabled = false;
+                LinkBtnProductTop05.Enabled = false;
+
+                LinkBtnProductTop01.Visible = false;
+                LinkBtnProductTop02.Visible = false;
+                LinkBtnProductTop03.Visible = false;
+                LinkBtnProductTop04.Visible = false;
+                LinkBtnProductTop05.Visible = false;
+
+                lblProdTop01.Visible = true;
+                lblProdTop02.Visible = true;
+                lblProdTop03.Visible = true;
+                lblProdTop04.Visible = true;
+                lblProdTop05.Visible = true;
+            }
+            
+        
+
+            ClickRadioBranch();
+
+            lblorderstatus.Text = (hidtab1orderstatus.Value != "") ? hidtab1orderstatus.Value : "ใบสั่งขายใหม่";
+            lblordercode.Text = hidtab1ordercode.Value;
+
+            txtTransportPrice.Text = (hidtab1transportprice.Value != "") ? hidtab1transportprice.Value : "40";
+            btnCalculateTotal_Click(null, null);
+
+            txtcustomerpay.Text = (hidtab1customerpay.Value != "") ? hidtab1customerpay.Value : "";
+            txtReturnCashAMount.Text = (hidtab1ReturnCashAMount.Value != "") ? hidtab1ReturnCashAMount.Value : "";
+
+            txtOrderNoteLast.InnerText = hidtab1OrderNote.Value;*/
+
+            CheckFreeShipping(L_orderdata1);
+        }
+        protected void btntab2_Click(object sender, EventArgs e)
+        {
+            
+
+            hidtab.Value = "2";
+
+            if (hidtab2BillDiscountPrice.Value == "" || hidtab2BillDiscountPrice.Value == null)
+            {
+                lblBillDiscountPrice.Text = string.Format("{0:n}", 0);
+            }
+            else
+            {
+                lblBillDiscountPrice.Text = hidtab2BillDiscountPrice.Value;
+            }
+
+            
+
+            if (hidtab2TransportTypeCode_Selected.Value == "" || hidtab2TransportTypeCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    if (row.RowIndex == 0)
+                    {
+                        radTransportType01.Checked = true;
+                        hidtab2TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        lblTransportPrice.Text = hidFee.Value;
+                        txtTransportPrice.Text = "";
+                        hidtab2transportprice.Value = hidFee.Value;
+
+                        lblTransportPrice.Visible = true;
+                        txtTransportPrice.Visible = false;
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+
+                        lblTransportPrice.Visible = true;
+                        txtTransportPrice.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    if (hidLogisticCode.Value == hidtab2TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Checked = true;
+
+                        if (hidtab2TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+
+                            txtTransportPrice.Text = hidtab2transportprice.Value;
+                            lblTransportPrice.Text = txtTransportPrice.Text;
+                        }
+                        else
+                        {
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+
+                            hidtab2transportprice.Value = hidFee.Value;
+                            lblTransportPrice.Text = hidtab2transportprice.Value;
+                            txtTransportPrice.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+                    }
+                }
+            }
+
+            if (hidtab2PaymentType_Selected.Value == "" || hidtab2PaymentType_Selected.Value == null)
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+                    if (row.RowIndex == 0)
+                    {
+                        radPaymentType.Checked = true;
+                        hidtab2PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                    }
+                    else
+                    {
+                        radPaymentType.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+                    if (hidPaymentTypeCode.Value == hidtab2PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Checked = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Checked = false;
+                    }
+                }
+            }
+
+            if (hidtab2ChannelCode_Selected.Value == "" || hidtab2ChannelCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    if (row.RowIndex == 0)
+                    {
+                        radChannelType.Checked = true;
+                        hidtab2ChannelCode_Selected.Value = hidChannelCode.Value;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    if (hidChannelCode.Value == hidtab2ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Checked = true;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+            
+
+            btntab1.BackColor = System.Drawing.Color.Gray;
+            btntab2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            btntab3.BackColor = System.Drawing.Color.Gray;
+
+
+            if (L_transportdata2.Count != 0)
+            {
+                lblCustomerAddress.Text = L_transportdata2[0].Address;
+                lblSubDistrict.Text = L_transportdata2[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata2[0].DistrictName;
+                lblProvince.Text = L_transportdata2[0].ProvinceName;
+                lblZipcode.Text = L_transportdata2[0].Zipcode;
+
+
+            }
+            else
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+            }
+
+            if (L_orderdata2.Count == 0)
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+
+            }
+
+            if (hidtab2VoucherPrice.Value == "" && hidtab2VoucherCode.Value == "")
+            {
+                txtVoucherCode.Text = "";
+                txtVoucherPrice.Text = "";
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+            else
+            {
+                txtVoucherCode.Text = hidtab2VoucherCode.Value;
+                if (hidtab2VoucherPrice.Value != "")
+                {
+                    txtVoucherPrice.Text = string.Format("{0:n}", (hidtab2VoucherPrice.Value));
+                    VoucherTrue.Visible = true;
+                    VoucherFault.Visible = false;
+                }
+                else
+                {
+                    txtVoucherPrice.Text = "";
+                    VoucherTrue.Visible = false;
+                    VoucherFault.Visible = true;
+                }
+            }
+
+            if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+            {
+                ddlInventory.SelectedValue = "-99";
+                BindgvProductInventorywhenNoSelectedInven(hidtab2InventorySelect.Value);
+            }
+            else
+            {
+                ddlInventory.SelectedValue = hidtab2InventorySelect.Value;
+                BindgvProductInventory(hidtab2InventorySelect.Value);
+            }
+
+            if (hidtab2ContactStatusSelected.Value == "-99" || (hidtab2ContactStatusSelected.Value == ""))
+            {
+                ddlContactStatus.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactStatus.SelectedValue = hidtab2ContactStatusSelected.Value;
+            }
+
+            if (hidtab2ContactResultSelected.Value == "-99" || (hidtab2ContactResultSelected.Value == ""))
+            {
+                ddlContactResult.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactResult.SelectedValue = hidtab2ContactResultSelected.Value;
+            }
+
+            if (hidtab2ContactDesc.Value != "")
+            {
+                txtcontactdesc.Text = hidtab2ContactDesc.Value;
+            }
+            else
+            {
+                txtcontactdesc.Text = "";
+            }
+
+            if (hidtab2CustomerTaxId.Value != "")
+            {
+                txtCustomerTaxID.Text = hidtab2CustomerTaxId.Value;
+            }
+            else
+            {
+                txtCustomerTaxID.Text = "";
+            }
+
+            // Finishe Order and disable page Take Order
+            hidtab2CampaignCategory.Value = "01";
+
+            if (hidtab2orderstatus.Value == "")
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = true;
+                ico02.Visible = true;
+                ico03.Visible = true;
+                ico04.Visible = true;
+                ico05.Visible = true;
+
+                LinkBtnProductTop01.Enabled = true;
+                LinkBtnProductTop02.Enabled = true;
+                LinkBtnProductTop03.Enabled = true;
+                LinkBtnProductTop04.Enabled = true;
+                LinkBtnProductTop05.Enabled = true;
+
+                BtnSubmitOrder.Visible = true;
+                btnAddProduct.Visible = true;
+                btnCleargvOrder.Visible = true;
+                gvOrder.Columns[7].Visible = true;
+                txtVoucherCode.ReadOnly = false;
+                lblordercode.Text = hidtab2ordercode.Value;
+                lblorderstatus.Text = hidtab2orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+
+                    txtAmount_gvOrder.ReadOnly = false;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab2TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab2PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab2ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = true;
+                btnSelectAddress.Visible = true;
+                btnEditAddress.Visible = true;
+                btnAddAddress1.Visible = true;
+                btnSelectAddress1.Visible = true;
+                btnEditAddress1.Visible = true;
+                btnSave.Visible = true;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "AppearSearch();", true);
+            }
+            else // Screen after finish order
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = false;
+                ico02.Visible = false;
+                ico03.Visible = false;
+                ico04.Visible = false;
+                ico05.Visible = false;
+
+                LinkBtnProductTop01.Enabled = false;
+                LinkBtnProductTop02.Enabled = false;
+                LinkBtnProductTop03.Enabled = false;
+                LinkBtnProductTop04.Enabled = false;
+                LinkBtnProductTop05.Enabled = false;
+
+                BtnSubmitOrder.Visible = false;
+                btnAddProduct.Visible = false;
+                btnCleargvOrder.Visible = false;
+                gvOrder.Columns[7].Visible = false;
+                txtVoucherCode.ReadOnly = true;
+                lblordercode.Text = hidtab2ordercode.Value;
+                lblorderstatus.Text = hidtab2orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+
+                    txtAmount_gvOrder.ReadOnly = true;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab2TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Checked = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab2PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Checked = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab2ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Checked = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = false;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = false;
+                btnSelectAddress.Visible = false;
+                btnEditAddress.Visible = false;
+                btnAddAddress1.Visible = false;
+                btnSelectAddress1.Visible = false;
+                btnEditAddress1.Visible = false;
+                btnSave.Visible = false;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "HideSearch();", true);
+            }
+            if (hidtab2orderstatus.Value == "")
+            {
+                ddlContactStatus.Enabled = true;
+                ddlContactResult.Enabled = true;
+                txtcontactdesc.Enabled = true;
+                txtCustomerTaxID.Enabled = true;
+                txtCustomerTaxID.Visible = true;
+                lblCustomerTaxId.Visible = false;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrder(L_orderdata2);
+            }
+            else
+            {
+                if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+                {
+                    ddlInventory.SelectedValue = "-99";
+                    BindgvProductInventorywhenNoSelectedInven(hidtab2InventorySelect.Value);
+                }
+                else
+                {
+                    ddlInventory.SelectedValue = hidtab2InventorySelect.Value;
+                    ddlInventory.Enabled = false;
+                    BindgvProductInventoryfinish(hidtab2InventorySelect.Value);
+                }
+
+                ddlContactStatus.Enabled = false;
+                ddlContactResult.Enabled = false;
+                txtcontactdesc.Enabled = false;
+
+                lblCustomerTaxId.Text = hidtab1CustomerTaxId.Value;
+                txtCustomerTaxID.Enabled = false;
+                txtCustomerTaxID.Visible = false;
+                lblCustomerTaxId.Visible = true;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrderFinished(L_orderdata2);
+            }
+            
+            CheckFreeShipping(L_orderdata2);
+        }
+        protected void btntab3_Click(object sender, EventArgs e)
+        {
+            
+            hidtab.Value = "3";
+
+            if (hidtab3BillDiscountPrice.Value == "" || hidtab3BillDiscountPrice.Value == null)
+            {
+                lblBillDiscountPrice.Text = string.Format("{0:n}", 0);
+            }
+            else
+            {
+                lblBillDiscountPrice.Text = hidtab3BillDiscountPrice.Value;
+            }
+
+            
+
+            if (hidtab3TransportTypeCode_Selected.Value == "" || hidtab3TransportTypeCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    if (row.RowIndex == 0)
+                    {
+                        radTransportType01.Checked = true;
+                        hidtab3TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        lblTransportPrice.Text = hidFee.Value;
+                        txtTransportPrice.Text = "";
+                        hidtab3transportprice.Value = hidFee.Value;
+
+                        lblTransportPrice.Visible = true;
+                        txtTransportPrice.Visible = false;
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+
+                        lblTransportPrice.Visible = true;
+                        txtTransportPrice.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    if (hidLogisticCode.Value == hidtab3TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Checked = true;
+
+                        if (hidtab3TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+
+                            txtTransportPrice.Text = hidtab3transportprice.Value;
+                            lblTransportPrice.Text = txtTransportPrice.Text;
+                        }
+                        else
+                        {
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+
+                            hidtab3transportprice.Value = hidFee.Value;
+                            lblTransportPrice.Text = hidtab3transportprice.Value;
+                            txtTransportPrice.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        radTransportType01.Checked = false;
+                    }
+                }
+            }
+
+            if (hidtab3PaymentType_Selected.Value == "" || hidtab3PaymentType_Selected.Value == null)
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+                    if (row.RowIndex == 0)
+                    {
+                        radPaymentType.Checked = true;
+                        hidtab3PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                    }
+                    else
+                    {
+                        radPaymentType.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+                    if (hidPaymentTypeCode.Value == hidtab3PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Checked = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Checked = false;
+                    }
+                }
+            }
+
+            if (hidtab3ChannelCode_Selected.Value == "" || hidtab3ChannelCode_Selected.Value == null)
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    if (row.RowIndex == 0)
+                    {
+                        radChannelType.Checked = true;
+                        hidtab3ChannelCode_Selected.Value = hidChannelCode.Value;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    if (hidChannelCode.Value == hidtab3ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Checked = true;
+                    }
+                    else
+                    {
+                        radChannelType.Checked = false;
+                    }
+                }
+            }
+            
+
+            btntab1.BackColor = System.Drawing.Color.Gray;
+            btntab2.BackColor = System.Drawing.Color.Gray;
+            btntab3.BackColor = System.Drawing.Color.DeepSkyBlue;
+
+
+            if (L_transportdata3.Count != 0)
+            {
+                lblCustomerAddress.Text = L_transportdata3[0].Address;
+                lblSubDistrict.Text = L_transportdata3[0].SubDistrictName;
+                lblDistrict.Text = L_transportdata3[0].DistrictName;
+                lblProvince.Text = L_transportdata3[0].ProvinceName;
+                lblZipcode.Text = L_transportdata3[0].Zipcode;
+
+
+            }
+            else
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+            }
+
+            if (L_orderdata3.Count == 0)
+            {
+                lblCustomerAddress.Text = "";
+                lblSubDistrict.Text = "";
+                lblDistrict.Text = "";
+                lblProvince.Text = "";
+                lblZipcode.Text = "";
+
+
+            }
+
+            if (hidtab3VoucherPrice.Value == "" && hidtab3VoucherCode.Value == "")
+            {
+                txtVoucherCode.Text = "";
+                txtVoucherPrice.Text = "";
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+            else
+            {
+                txtVoucherCode.Text = hidtab3VoucherCode.Value;
+                if (hidtab3VoucherPrice.Value != "")
+                {
+                    txtVoucherPrice.Text = string.Format("{0:n}", (hidtab3VoucherPrice.Value));
+                    VoucherTrue.Visible = true;
+                    VoucherFault.Visible = false;
+                }
+                else
+                {
+                    txtVoucherPrice.Text = "";
+                    VoucherTrue.Visible = false;
+                    VoucherFault.Visible = true;
+                }
+            }
+
+            if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+            {
+                ddlInventory.SelectedValue = "-99";
+                BindgvProductInventorywhenNoSelectedInven(hidtab3InventorySelect.Value);
+            }
+            else
+            {
+                ddlInventory.SelectedValue = hidtab3InventorySelect.Value;
+                BindgvProductInventory(hidtab3InventorySelect.Value);
+            }
+
+            if (hidtab3ContactStatusSelected.Value == "-99" || (hidtab3ContactStatusSelected.Value == ""))
+            {
+                ddlContactStatus.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactStatus.SelectedValue = hidtab3ContactStatusSelected.Value;
+            }
+
+            if (hidtab3ContactResultSelected.Value == "-99" || (hidtab3ContactResultSelected.Value == ""))
+            {
+                ddlContactResult.SelectedValue = "-99";
+            }
+            else
+            {
+                ddlContactResult.SelectedValue = hidtab3ContactResultSelected.Value;
+            }
+
+            if (hidtab3ContactDesc.Value != "")
+            {
+                txtcontactdesc.Text = hidtab3ContactDesc.Value;
+            }
+            else
+            {
+                txtcontactdesc.Text = "";
+            }
+
+            if (hidtab3CustomerTaxId.Value != "")
+            {
+                txtCustomerTaxID.Text = hidtab3CustomerTaxId.Value;
+            }
+            else
+            {
+                txtCustomerTaxID.Text = "";
+            }
+
+            // Finishe Order and disable page Take Order
+            
+            if (hidtab3orderstatus.Value == "")
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = true;
+                ico02.Visible = true;
+                ico03.Visible = true;
+                ico04.Visible = true;
+                ico05.Visible = true;
+
+                LinkBtnProductTop01.Enabled = true;
+                LinkBtnProductTop02.Enabled = true;
+                LinkBtnProductTop03.Enabled = true;
+                LinkBtnProductTop04.Enabled = true;
+                LinkBtnProductTop05.Enabled = true;
+
+                BtnSubmitOrder.Visible = true;
+                btnAddProduct.Visible = true;
+                btnCleargvOrder.Visible = true;
+                gvOrder.Columns[7].Visible = true;
+                txtVoucherCode.ReadOnly = false;
+                lblordercode.Text = hidtab3ordercode.Value;
+                lblorderstatus.Text = hidtab3orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+
+                    txtAmount_gvOrder.ReadOnly = false;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab3TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab3PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab3ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = true;
+                btnSelectAddress.Visible = true;
+                btnEditAddress.Visible = true;
+                btnAddAddress1.Visible = true;
+                btnSelectAddress1.Visible = true;
+                btnEditAddress1.Visible = true;
+                btnSave.Visible = true;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "AppearSearch();", true);
+            }
+            else // Screen after finish order
+            {
+                lblProductNameTop1.Visible = true;
+                lblProductNameTop2.Visible = true;
+                lblProductNameTop3.Visible = true;
+                lblProductNameTop4.Visible = true;
+                lblProductNameTop5.Visible = true;
+
+                ico01.Visible = false;
+                ico02.Visible = false;
+                ico03.Visible = false;
+                ico04.Visible = false;
+                ico05.Visible = false;
+
+                LinkBtnProductTop01.Enabled = false;
+                LinkBtnProductTop02.Enabled = false;
+                LinkBtnProductTop03.Enabled = false;
+                LinkBtnProductTop04.Enabled = false;
+                LinkBtnProductTop05.Enabled = false;
+
+                BtnSubmitOrder.Visible = false;
+                btnAddProduct.Visible = false;
+                btnCleargvOrder.Visible = false;
+                gvOrder.Columns[7].Visible = false;
+                txtVoucherCode.ReadOnly = true;
+                lblordercode.Text = hidtab3ordercode.Value;
+                lblorderstatus.Text = hidtab3orderstatus.Value;
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrder.Rows[i];
+                    TextBox txtAmount_gvOrder = (TextBox)row.FindControl("txtAmount_gvOrder");
+
+                    txtAmount_gvOrder.ReadOnly = true;
+                }
+
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+
+                    if (hidLogisticCode.Value == hidtab3TransportTypeCode_Selected.Value)
+                    {
+                        radTransportType01.Enabled = true;
+                    }
+                    else
+                    {
+                        radTransportType01.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (hidPaymentTypeCode.Value == hidtab3PaymentType_Selected.Value)
+                    {
+                        radPaymentType.Enabled = true;
+                    }
+                    else
+                    {
+                        radPaymentType.Enabled = false;
+                    }
+                }
+
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (hidChannelCode.Value == hidtab3ChannelCode_Selected.Value)
+                    {
+                        radChannelType.Enabled = true;
+                    }
+                    else
+                    {
+                        radChannelType.Enabled = false;
+                    }
+                }
+
+                Button btnAddAddress = (Button)SelectBranch.FindControl("btnAddAddress");
+                Button btnSelectAddress = (Button)SelectBranch.FindControl("btnSelectAddress");
+                Button btnEditAddress = (Button)SelectBranch.FindControl("btnEditAddress");
+                Button btnAddAddress1 = (Button)SelectBranch.FindControl("btnAddAddress1");
+                Button btnSelectAddress1 = (Button)SelectBranch.FindControl("btnSelectAddress1");
+                Button btnEditAddress1 = (Button)SelectBranch.FindControl("btnEditAddress1");
+                Button btnSave = (Button)SelectBranch.FindControl("btnSave");
+                Button btnCancelSave = (Button)SelectBranch.FindControl("btnCancelSave");
+
+                btnAddAddress.Visible = false;
+                btnSelectAddress.Visible = false;
+                btnEditAddress.Visible = false;
+                btnAddAddress1.Visible = false;
+                btnSelectAddress1.Visible = false;
+                btnEditAddress1.Visible = false;
+                btnSave.Visible = false;
+
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "xxxx", "HideSearch();", true);
+            }
+
+            if (hidtab3orderstatus.Value == "")
+            {
+                ddlContactStatus.Enabled = true;
+                ddlContactResult.Enabled = true;
+                txtcontactdesc.Enabled = true;
+                txtCustomerTaxID.Enabled = true;
+                txtCustomerTaxID.Visible = true;
+                lblCustomerTaxId.Visible = false;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrder(L_orderdata3);
+            }
+            else
+            {
+                if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+                {
+                    ddlInventory.SelectedValue = "-99";
+                    BindgvProductInventorywhenNoSelectedInven(hidtab3InventorySelect.Value);
+                }
+                else
+                {
+                    ddlInventory.SelectedValue = hidtab3InventorySelect.Value;
+                    ddlInventory.Enabled = false;
+                    BindgvProductInventoryfinish(hidtab3InventorySelect.Value);
+                }
+
+                ddlContactStatus.Enabled = false;
+                ddlContactResult.Enabled = false;
+                txtcontactdesc.Enabled = false;
+
+                lblCustomerTaxId.Text = hidtab1CustomerTaxId.Value;
+                txtCustomerTaxID.Enabled = false;
+                txtCustomerTaxID.Visible = false;
+                lblCustomerTaxId.Visible = true;
+
+                LoadCustomerNoteProfile();
+                LoadgvOrderFinished(L_orderdata3);
+            }
+            /*  if (hidtab3orderstatus.Value == "")
+              {
+                  btncheckout.Visible = true;
+                  btnNewOrder.Visible = true;
+                  btnCloseTab.Visible = true;
+                  btnClear.Visible = true;
+              }
+              else
+              {
+                  btncheckout.Visible = false;
+                  btnNewOrder.Visible = false;
+                  btnCloseTab.Visible = false;
+                  btnClear.Visible = false;
+              }
+
+              if (L_transportdata3.Count != 0)
+              {
+                  lblCustomerAddress.Text = L_transportdata3[0].Address + " " + L_transportdata3[0].SubDistrictName
+                  + " " + L_transportdata3[0].DistrictName + " " + L_transportdata3[0].ProvinceName + " " + L_transportdata3[0].Zipcode;
+
+                  dtlNearestBranch.DataSource = L_transportdata3[0].NearestBranchList;
+                  dtlNearestBranch.DataBind();
+              }
+              else
+              {
+                  lblCustomerAddress.Text = "";
+
+                  dtlNearestBranch.DataSource = null;
+                  dtlNearestBranch.DataBind();
+              }
+
+              ClickRadioBranch();
+
+              lblorderstatus.Text = (hidtab3orderstatus.Value != "") ? hidtab3orderstatus.Value : "ใบสั่งขายใหม่";
+              lblordercode.Text = hidtab3ordercode.Value;
+
+              txtTransportPrice.Text = (hidtab3transportprice.Value != "") ? hidtab3transportprice.Value : "40";
+              btnCalculateTotal_Click(null, null);
+
+              txtcustomerpay.Text = (hidtab3customerpay.Value != "") ? hidtab3customerpay.Value : "";
+              txtReturnCashAMount.Text = (hidtab3ReturnCashAMount.Value != "") ? hidtab3ReturnCashAMount.Value : "";
+
+              txtOrderNoteLast.InnerText = hidtab3OrderNote.Value;
+              */
+
+            CheckFreeShipping(L_orderdata3);
+        }
+
+        protected void gvOrder_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+        protected void gvProduct_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvProduct.Rows[index];
+
+            Label lblmsg = (Label)row.FindControl("lblmsg");
+
+            LinkButton lblProductCode = (LinkButton)row.FindControl("lblProductCode");
+            Label lblProductName = (Label)row.FindControl("lblProductName");
+            Label lblPrice = (Label)row.FindControl("lblPrice");
+            Label lblUnitName = (Label)row.FindControl("lblUnitName");
+            
+            HiddenField hidLockAmountFlag = (HiddenField)row.FindControl("hidLockAmountFlag");
+            HiddenField hidDefaultAmount = (HiddenField)row.FindControl("hidDefaultAmount");
+            HiddenField hidPromotionCode = (HiddenField)row.FindControl("hidPromotionCode");
+            HiddenField hidPromtionName = (HiddenField)row.FindControl("hidPromtionName");
+            HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+            HiddenField hidCampaignCode = (HiddenField)row.FindControl("hidCampaignCode");
+            HiddenField hidDiscountAmount = (HiddenField)row.FindControl("hidDiscountAmount");
+            HiddenField hidDiscountPercent = (HiddenField)row.FindControl("hidDiscountPercent");
+            HiddenField hidUnit = (HiddenField)row.FindControl("hidUnit");
+            HiddenField hidUnitName = (HiddenField)row.FindControl("hidUnitName");
+            TextBox txtAmount = (TextBox)row.FindControl("txtAmount");
+            HiddenField hidMerchantCode = (HiddenField)row.FindControl("hidMerchantCode");
+            HiddenField HidMerchantName = (HiddenField)row.FindControl("HidMerchantName");
+            HiddenField hidFreeShippingCode = (HiddenField)row.FindControl("hidFreeShippingCode");
+            HiddenField hidLockCheckbox = (HiddenField)row.FindControl("hidLockCheckbox");
+            HiddenField hidFlagProSetHeader = (HiddenField)row.FindControl("hidFlagProSetHeader");
+            HiddenField hidGroupPrice = (HiddenField)row.FindControl("hidGroupPrice");
+            HiddenField hidSumPrice = (HiddenField)row.FindControl("hidSumPrice");
+            HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+            HiddenField hidProductPrice = (HiddenField)row.FindControl("hidProductPrice");
+            HiddenField hidPromotionTypeCode = (HiddenField)row.FindControl("hidPromotionTypeCode");
+            HiddenField hidPromotionTypeName = (HiddenField)row.FindControl("hidPromotionTypeName");
+            HiddenField hidMOQFlag = (HiddenField)row.FindControl("hidMOQFlag");
+            HiddenField hidMinimumQty = (HiddenField)row.FindControl("hidMinimumQty");
+            HiddenField hidProductDiscountPercent = (HiddenField)row.FindControl("hidProductDiscountPercent");
+            HiddenField hidProductDiscountAmount = (HiddenField)row.FindControl("hidProductDiscountAmount");
+            HiddenField hidParentProductCode = (HiddenField)row.FindControl("hidParentProductCode");
+
+            
+            if (e.CommandName == "ShowProductScript")
+            {
+                List<ProductInfo> pInfo = GetProductMasterByCriteria(lblProductCode.Text);
+
+                if (pInfo[0].UpsellScript != "" && pInfo[0].UpsellScript != null)
+                {
+                    txtUpsellScript.InnerText = pInfo[0].UpsellScript;
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#ProductScript').modal();", true);
+                }
+
+            }
+
+            if (e.CommandName == "SelectProduct")
+            {
+                if (hidProLockCheckbox.Value == "Y") // Promotion Set
+                {
+                    List<OrderData> lorderdataviewtemp = new List<OrderData>();
+                    List<OrderData> lorderdatagrid = new List<OrderData>();
+                    List<OrderData> lorderdatacompare = new List<OrderData>();
+                    List<OrderData> lord = new List<OrderData>();
+                    lord = L_orderdataView;
+                    Boolean flagnew = true;
+
+                    for (int i = 0; i < gvProduct.Rows.Count; i++) // For Loop Create List GridView for use compare L_OrderdataView
+                    {
+                        LinkButton lblProductCodeset = (LinkButton)gvProduct.Rows[i].FindControl("lblProductCode");
+                        Label lblProductNameset = (Label)gvProduct.Rows[i].FindControl("lblProductName");
+                        Label lblPriceset = (Label)gvProduct.Rows[i].FindControl("lblPrice");
+                        Label lblUnitNameset = (Label)gvProduct.Rows[i].FindControl("lblUnitName");
+                        HiddenField hidLockAmountFlagset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockAmountFlag");
+                        HiddenField hidDefaultAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDefaultAmount");
+                        HiddenField hidPromotionCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionCode");
+                        HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDeailInfoId");
+                        HiddenField hidCampaignCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidCampaignCode");
+                        HiddenField hidDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountAmount");
+                        HiddenField hidDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountPercent");
+                        HiddenField hidUnitset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnit");
+                        HiddenField hidUnitNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnitName");
+                        TextBox txtAmountset = (TextBox)gvProduct.Rows[i].FindControl("txtAmount");
+                        HiddenField hidMerchantCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidMerchantCode");
+                        HiddenField HidMerchantNameset = (HiddenField)gvProduct.Rows[i].FindControl("HidMerchantName");
+                        HiddenField hidFreeShippingCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidFreeShippingCode");
+                        HiddenField hidLockCheckboxset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockCheckbox");
+                        HiddenField hidFlagProSetHeaderset = (HiddenField)gvProduct.Rows[i].FindControl("hidFlagProSetHeader");
+                        HiddenField hidPromtionNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromtionName");
+                        HiddenField hidGroupPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidGroupPrice");
+                        HiddenField hidSumPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidSumPrice");
+                        HiddenField hidPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidPrice");
+                        HiddenField hidFlagComboset = (HiddenField)gvProduct.Rows[i].FindControl("hidFlagCombo");
+                        HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountPercent");
+                        HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                        OrderData odta = new OrderData();
+
+                        odta.Amount = Convert.ToInt32(txtAmountset.Text);
+                        odta.SumPrice = (hidSumPriceset.Value != "") ? Convert.ToDouble(hidSumPriceset.Value) : 0;
+
+                        odta.FlagCombo = "N";
+                        odta.ProductCode = lblProductCodeset.Text;
+                        odta.ProductName = lblProductNameset.Text;
+                        odta.Unit = hidUnitset.Value;
+                        odta.UnitName = hidUnitNameset.Value;
+                        odta.Price = Convert.ToDouble(lblPriceset.Text);
+                        odta.ProductPrice = Convert.ToDouble(lblPriceset.Text);
+                        odta.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                        odta.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                        odta.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                        odta.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                        odta.PromotionCode = hidPromotionCodeset.Value;
+                        odta.PromotionName = hidPromtionNameset.Value;
+                        odta.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                        odta.CampaignCode = hidCampaignCodeset.Value;
+                        odta.ComboCode = "";
+                        odta.ComboName = "";
+                        odta.LockCheckbox = hidLockCheckboxset.Value;
+                        odta.LockAmountFlag = hidLockAmountFlagset.Value;
+                        odta.CampaignCategory = "";
+                        odta.FreeShipping = hidFreeShippingCodeset.Value;
+                        odta.MerchantCode = hidMerchantCodeset.Value;
+                        odta.MerchantName = HidMerchantNameset.Value;
+                        odta.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                        odta.MOQFlag = hidMOQFlag.Value;
+                        odta.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odta.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odta.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odta.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                        odta.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+
+                        odta.CamcatCode = hidCatagorycode_ins.Value;
+                        odta.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                        odta.ChannelName = hidtab1ChannelName_Selected.Value;
+                        odta.MediaplanFlag = hidmediaflag_detail.Value;
+
+                        odta.runningNo = 0;
+
+                        lorderdatagrid.Add(odta);
+                    }
+
+                    foreach (var lgrid in lorderdatagrid.ToList()) // 
+                    {
+                        if (lorderdatagrid.Count > 0)
+                        {
+                            foreach (var lcheck in lord.ToList())
+                            {
+                                List<OrderData> lo = (from OrderData dr in lord.Where(s => s.PromotionCode == lgrid.PromotionCode && s.CampaignCode == lgrid.CampaignCode)
+
+                                                      select new OrderData()
+                                                      {
+                                                          FlagCombo = dr.FlagCombo,
+                                                          ProductCode = dr.ProductCode,
+                                                          ProductName = dr.ProductName,
+                                                          Unit = dr.Unit,
+                                                          UnitName = dr.UnitName,
+                                                          Price = dr.Price,
+                                                          ProductPrice = dr.ProductPrice,
+                                                          Amount = dr.Amount,
+                                                          DefaultAmount = dr.DefaultAmount,
+                                                          DiscountAmount = dr.DiscountAmount,
+                                                          DiscountPercent = dr.DiscountPercent,
+                                                          CampaignCode = dr.CampaignCode,
+                                                          PromotionCode = dr.PromotionCode,
+                                                          TransportPrice = dr.TransportPrice,
+                                                          SumPrice = dr.SumPrice,
+                                                          PromotionDetailId = dr.PromotionDetailId,
+                                                          ComboCode = dr.ComboCode,
+                                                          ComboName = dr.ComboName,
+                                                          runningNo = dr.runningNo,
+                                                          LockCheckbox = dr.LockCheckbox,
+                                                          LockAmountFlag = dr.LockAmountFlag,
+                                                          CampaignCategory = dr.CampaignCategory,
+                                                          FreeShipping = dr.FreeShipping,
+                                                          FlagProSetHeader = dr.FlagProSetHeader,
+                                                          GroupPrice = dr.GroupPrice,
+                                                          MerchantCode = dr.MerchantCode,
+                                                          MerchantName = dr.MerchantName,
+                                                          ParentPromotionCode = dr.ParentPromotionCode,
+                                                          ParentProductCode = dr.ParentProductCode,
+                                                          MOQFlag = dr.MOQFlag,
+                                                          MinimumQty = dr.MinimumQty,
+                                                          ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                          ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                          PromotionDiscountPercent = dr.PromotionDiscountPercent,
+                                                          PromotionDiscountAmount = dr.PromotionDiscountAmount,
+                                                          CamcatCode = dr.CamcatCode,
+                                                          ChannelCode = dr.ChannelCode,
+                                                          ChannelName = dr.ChannelName,
+                                                          MediaplanFlag = dr.MediaplanFlag
+
+                                                      }).ToList();
+                                OrderData od = new OrderData();
+                                flagnew = false;
+
+                                if (lo.Count > 0 && lgrid.LockAmountFlag == "Y") //duplicate
+                                {
+                                    hidFlagNotDupe.Value = "False";
+
+                                    if (lgrid.FlagProSetHeader == lcheck.FlagProSetHeader && lgrid.PromotionCode == lcheck.PromotionCode && lgrid.CampaignCode == lcheck.CampaignCode)
+                                    {
+                                        od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                        od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                        od.PromotionDiscountPercent = lcheck.PromotionDiscountPercent;
+                                        od.PromotionDiscountAmount = lcheck.PromotionDiscountAmount;
+                                        od.DiscountAmount = lgrid.DiscountAmount;
+                                        od.DiscountPercent = lgrid.DiscountPercent;
+                                        od.Price = lgrid.Price;
+                                        od.ProductPrice = lgrid.ProductPrice;
+                                        if (lgrid.GroupPrice != 0 && lcheck.GroupPrice != 0)
+                                        {
+                                            od.Amount = lgrid.Amount + lcheck.Amount;
+                                            od.SumPrice = lcheck.Price * od.Amount;
+                                        }
+                                        else
+                                        {
+                                            od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                            od.Amount = lgrid.Amount + lcheck.Amount;
+                                            od.SumPrice = (od.Price - ((od.Price * od.PromotionDiscountPercent) / 100) - od.PromotionDiscountAmount) * od.Amount;
+                                            od.DiscountAmount = od.PromotionDiscountAmount;
+                                            od.DiscountPercent = od.PromotionDiscountPercent;
+                                        }
+
+                                        od.FlagCombo = "N";
+                                        od.ProductCode = lgrid.ProductCode;
+                                        od.ProductName = lgrid.ProductName;
+                                        od.Unit = lgrid.Unit;
+                                        od.UnitName = lgrid.UnitName;
+                                        od.GroupPrice = lgrid.GroupPrice;
+                                        od.DefaultAmount = lgrid.DefaultAmount;
+                                        od.PromotionCode = lgrid.PromotionCode;
+                                        od.PromotionName = lgrid.PromotionName;
+                                        od.PromotionDetailId = lgrid.PromotionDetailId;
+                                        od.CampaignCode = lgrid.CampaignCode;
+                                        od.ComboCode = "";
+                                        od.ComboName = "";
+                                        od.LockCheckbox = lgrid.LockCheckbox;
+                                        od.LockAmountFlag = lgrid.LockAmountFlag;
+                                        od.CampaignCategory = "";
+                                        od.FreeShipping = lgrid.FreeShipping;
+                                        od.MerchantCode = lgrid.MerchantCode;
+                                        od.MerchantName = lgrid.MerchantName;
+                                        od.FlagProSetHeader = lgrid.FlagProSetHeader;
+                                        od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                                        od.ParentProductCode = lcheck.ParentProductCode;
+                                        od.ComboCode = "";
+                                        od.MOQFlag = lcheck.MOQFlag;
+                                        od.MinimumQty = lcheck.MinimumQty;
+                                        od.CamcatCode = lgrid.CamcatCode;
+                                        od.ChannelCode = lgrid.ChannelCode;
+                                        od.ChannelName = lgrid.ChannelName;
+                                        od.MediaplanFlag = lgrid.MediaplanFlag;
+
+                                        lorderdatagrid.RemoveAll(s => s.CampaignCode == lcheck.CampaignCode && s.PromotionCode == lcheck.PromotionCode && s.FlagProSetHeader == "Y");
+
+                                        lorderdatacompare.Add(od); // List will update with L_OrderdataView
+                                    }
+                                    else if (lgrid.FlagProSetHeader != lcheck.FlagProSetHeader && lgrid.PromotionCode == lcheck.PromotionCode && lgrid.CampaignCode == lcheck.CampaignCode)
+                                    {
+                                        od = new OrderData();
+
+                                        od.Amount = lcheck.Amount + lgrid.Amount;
+                                        od.SumPrice = 0;
+                                        
+
+                                        od.FlagCombo = "N";
+                                        od.ProductCode = lcheck.ProductCode;
+                                        od.ProductName = lcheck.ProductName;
+                                        od.Unit = lcheck.Unit;
+                                        od.UnitName = lcheck.UnitName;
+                                        
+                                        od.Price = 0;
+                                        od.ProductPrice = 0;
+                                        od.GroupPrice = lcheck.GroupPrice;
+                                        od.DefaultAmount = lcheck.DefaultAmount;
+                                        od.DiscountAmount = lcheck.DiscountAmount;
+                                        od.DiscountPercent = lcheck.DiscountPercent;
+                                        od.PromotionCode = lcheck.PromotionCode;
+                                        od.PromotionName = lcheck.PromotionName;
+                                        od.PromotionDetailId = lcheck.PromotionDetailId;
+                                        od.CampaignCode = lcheck.CampaignCode;
+                                        od.ComboCode = lcheck.ComboCode;
+                                        od.ComboName = lcheck.ComboName;
+                                        od.LockCheckbox = lcheck.LockCheckbox;
+                                        od.LockAmountFlag = lcheck.LockAmountFlag;
+                                        od.CampaignCategory = lcheck.CampaignCategory;
+                                        od.FreeShipping = lcheck.FreeShipping;
+                                        od.MerchantCode = lcheck.MerchantCode;
+                                        od.MerchantName = lcheck.MerchantName;
+                                        od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                                        od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                                        od.ParentProductCode = lcheck.ParentProductCode;
+                                        od.ComboCode = "";
+                                        od.MOQFlag = lcheck.MOQFlag;
+                                        od.MinimumQty = lcheck.MinimumQty;
+                                        od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                        od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                        od.PromotionDiscountPercent = lcheck.PromotionDiscountPercent;
+                                        od.PromotionDiscountAmount = lcheck.PromotionDiscountAmount;
+
+                                        od.CamcatCode = lcheck.CamcatCode;
+                                        od.ChannelCode = lcheck.ChannelCode;
+                                        od.ChannelName = lcheck.ChannelName;
+                                        od.MediaplanFlag = lcheck.MediaplanFlag;
+
+                                        lorderdatagrid.RemoveAll(s => s.CampaignCode == lcheck.CampaignCode && s.PromotionCode == lcheck.PromotionCode && s.FlagProSetHeader != "Y" && s.PromotionDetailId == lcheck.PromotionDetailId);
+
+                                        lorderdatacompare.Add(od); // List will update with L_OrderdataView
+                                    }
+                                }
+                                else
+                                {
+                                    flagnew = true;
+                                    hidFlagNotDupe.Value = "False";
+                                }
+                            }
+                        }
+                    }
+
+                    if (lord.Count > 0 && lorderdatacompare.Count > 0)
+                    {
+                        hidFlagNotDupe.Value = "Multi";
+
+                        foreach (var lcom in lorderdatacompare.ToList())
+                        {
+                            foreach (var lview in lord.ToList())
+                            {
+                                if (lcom.FlagProSetHeader == lview.FlagProSetHeader && lcom.PromotionCode == lview.PromotionCode && lcom.CampaignCode == lview.CampaignCode)
+                                {
+                                    if (lcom.FlagProSetHeader == "Y")
+                                    {
+                                        if (lcom.GroupPrice == 0)
+                                        {
+                                            lview.Amount = lcom.Amount;
+                                            lview.SumPrice = (lview.Price - ((lview.Price * lview.PromotionDiscountPercent) / 100) - lview.PromotionDiscountAmount) * lview.Amount;
+                                        }
+                                        else
+                                        {
+                                            lview.Amount = lcom.Amount;
+                                            lview.SumPrice = lview.Price * lview.Amount;
+                                        }
+                                    }
+                                    else if (lcom.FlagProSetHeader != "Y")
+                                    {
+                                        lview.Amount = lcom.Amount;
+                                        lview.SumPrice = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    
+
+                    if (hidFlagNotDupe.Value == "True")
+                    {
+                        flagnew = false;
+
+                        for (int i = 0; i < gvProduct.Rows.Count; i++)
+                        {
+                            LinkButton lblProductCodeset = (LinkButton)gvProduct.Rows[i].FindControl("lblProductCode");
+                            Label lblProductNameset = (Label)gvProduct.Rows[i].FindControl("lblProductName");
+                            Label lblPriceset = (Label)gvProduct.Rows[i].FindControl("lblPrice");
+                            Label lblUnitNameset = (Label)gvProduct.Rows[i].FindControl("lblUnitName");
+                            HiddenField hidLockAmountFlagset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockAmountFlag");
+                            HiddenField hidDefaultAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDefaultAmount");
+                            HiddenField hidPromotionCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionCode");
+                            HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDeailInfoId");
+                            HiddenField hidCampaignCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidCampaignCode");
+                            HiddenField hidDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountAmount");
+                            HiddenField hidDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountPercent");
+                            HiddenField hidUnitset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnit");
+                            HiddenField hidUnitNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnitName");
+                            TextBox txtAmountset = (TextBox)gvProduct.Rows[i].FindControl("txtAmount");
+                            HiddenField hidMerchantCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidMerchantCode");
+                            HiddenField HidMerchantNameset = (HiddenField)gvProduct.Rows[i].FindControl("HidMerchantName");
+                            HiddenField hidFreeShippingCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidFreeShippingCode");
+                            HiddenField hidLockCheckboxset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockCheckbox");
+                            HiddenField hidFlagProSetHeaderset = (HiddenField)gvProduct.Rows[i].FindControl("hidFlagProSetHeader");
+                            HiddenField hidPromtionNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromtionName");
+                            HiddenField hidGroupPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidGroupPrice");
+                            HiddenField hidSumPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidSumPrice");
+                            HiddenField hidPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidPrice");
+                            HiddenField hidParentProductCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidParentProductCode");
+                            HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountPercent");
+                            HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                            int? runningNoNotDupe = 0;
+
+                            if (hidFlagProSetHeaderset.Value == "Y")
+                            {
+                                OrderData od = new OrderData();
+
+                                od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                od.SumPrice = Convert.ToDouble(lblPriceset.Text) * od.Amount;
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCodeset.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.runningNo = L_orderdataView.Count + 1;
+                                runningNoNotDupe = od.runningNo;
+
+
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                                od.ChannelName = hidtab1ChannelName_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                L_orderdataView.Add(od);
+                            }
+                            else
+                            {
+                                OrderData od = new OrderData();
+
+                                od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                od.SumPrice = (Convert.ToDouble(lblPriceset.Text) - (Convert.ToDouble(lblPriceset.Text) * (Convert.ToInt32(hidDiscountPercentset.Value) / 100)) - Convert.ToDouble(hidDiscountAmountset.Value)) * Convert.ToDouble(od.Amount);
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                
+                                od.Price = 0;
+                                od.ProductPrice = 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCode.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.runningNo = runningNoNotDupe;
+
+
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                                od.ChannelName = hidtab1ChannelName_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                L_orderdataView.Add(od);
+                            }
+
+
+                        }
+                    }
+
+                    if (flagnew == true)
+                    {
+                        String parentpromotioncode = "";
+
+                        for (int i = 0; i < gvProduct.Rows.Count; i++)
+                        {
+                            LinkButton lblProductCodeset = (LinkButton)gvProduct.Rows[i].FindControl("lblProductCode");
+                            Label lblProductNameset = (Label)gvProduct.Rows[i].FindControl("lblProductName");
+                            Label lblPriceset = (Label)gvProduct.Rows[i].FindControl("lblPrice");
+                            Label lblUnitNameset = (Label)gvProduct.Rows[i].FindControl("lblUnitName");
+                            HiddenField hidLockAmountFlagset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockAmountFlag");
+                            HiddenField hidDefaultAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDefaultAmount");
+                            HiddenField hidPromotionCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionCode");
+                            HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDeailInfoId");
+                            HiddenField hidCampaignCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidCampaignCode");
+                            HiddenField hidDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountAmount");
+                            HiddenField hidDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountPercent");
+                            HiddenField hidUnitset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnit");
+                            HiddenField hidUnitNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidUnitName");
+                            TextBox txtAmountset = (TextBox)gvProduct.Rows[i].FindControl("txtAmount");
+                            HiddenField hidMerchantCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidMerchantCode");
+                            HiddenField HidMerchantNameset = (HiddenField)gvProduct.Rows[i].FindControl("HidMerchantName");
+                            HiddenField hidFreeShippingCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidFreeShippingCode");
+                            HiddenField hidLockCheckboxset = (HiddenField)gvProduct.Rows[i].FindControl("hidLockCheckbox");
+                            HiddenField hidFlagProSetHeaderset = (HiddenField)gvProduct.Rows[i].FindControl("hidFlagProSetHeader");
+                            HiddenField hidPromtionNameset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromtionName");
+                            HiddenField hidGroupPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidGroupPrice");
+                            HiddenField hidSumPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidSumPrice");
+                            HiddenField hidPriceset = (HiddenField)gvProduct.Rows[i].FindControl("hidPrice");
+                            HiddenField hidParentProductCodeset = (HiddenField)gvProduct.Rows[i].FindControl("hidParentProductCode");
+                            HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountPercent");
+                            HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                            int cou = 0;
+
+                            if (hidFlagProSetHeaderset.Value == "Y")
+                            {
+                                OrderData od = new OrderData();
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                if (od.GroupPrice != 0)
+                                {
+                                    od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                    od.SumPrice = Convert.ToDouble(lblPriceset.Text) * od.Amount;
+                                }
+                                else
+                                {
+                                    if (hidFlagProSetHeaderset.Value == "Y")
+                                    {
+                                        od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                        od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                        od.SumPrice = (od.Price - ((od.Price * od.PromotionDiscountPercent) / 100) - od.PromotionDiscountAmount) * od.Amount;
+                                        od.DiscountAmount = od.PromotionDiscountAmount;
+                                        od.DiscountPercent = od.PromotionDiscountPercent;
+                                    }
+                                }
+
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = "N";
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCodeset.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+
+                                //Get ParentCode
+                                if (hidtab.Value == "1")
+                                {
+                                    cou = (hidtab1countproset.Value != "") ? Convert.ToInt32(hidtab1countproset.Value) + 1 : 1;
+                                    hidtab1countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+                                else if (hidtab.Value == "2")
+                                {
+                                    cou = (hidtab2countproset.Value != "") ? Convert.ToInt32(hidtab2countproset.Value) + 1 : 1;
+                                    hidtab2countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+                                else if (hidtab.Value == "3")
+                                {
+                                    cou = (hidtab3countproset.Value != "") ? Convert.ToInt32(hidtab3countproset.Value) + 1 : 1;
+                                    hidtab3countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+
+                                od.ParentPromotionCode = parentpromotioncode;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.ComboCode = "";
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                                od.ChannelName = hidtab1ChannelName_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                lorderdataviewtemp.Add(od);
+                            }
+                            else
+                            {
+                                OrderData od = new OrderData();
+
+
+                                
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+
+                                if (od.GroupPrice != 0)
+                                {
+                                    od.Price = 0;
+                                    od.ProductPrice = 0;
+                                    od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                    od.SumPrice = 0;
+                                }
+                                else
+                                {
+                                    if (hidFlagProSetHeaderset.Value != "Y")
+                                    {
+                                        od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                        od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                        
+                                        od.SumPrice = 0;
+                                        od.DiscountAmount = od.PromotionDiscountAmount;
+                                        od.DiscountPercent = od.PromotionDiscountPercent;
+                                    }
+                                }
+
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCode.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentPromotionCode = parentpromotioncode;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.ComboCode = "";
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                                od.ChannelName = hidtab1ChannelName_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                lorderdataviewtemp.Add(od);
+                            }
+
+
+                        }
+                    }
+
+                    
+                    if (flagnew == true && hidFlagNotDupe.Value != "False")
+                    {
+                        L_orderdataView = lorderdataviewtemp;
+                    }
+                    else if (flagnew == true && hidFlagNotDupe.Value == "False")
+                    {
+                        lord.AddRange(lorderdataviewtemp);
+                    }
+                    
+                    else if (hidFlagNotDupe.Value == "Multi")
+                    {
+                        L_orderdataView = lord;
+                    }
+
+                    gvProductView_Section.Attributes.Add("class", "my-custom-scrollbar");
+                    LoadgvProductView(L_orderdataView);
+                }
+                else // Promotion by Product Format (Select gvProduct by record to gvProductView)
+                {
+                    if ((txtAmount.Text != "") && (txtAmount.Text != "0"))
+                    {
+                        OrderData odata = new OrderData();
+                        List<OrderData> lneworderdata = new List<OrderData>();
+
+                        string flagDuplicate = "N";
+
+                        lneworderdata = L_orderdataView;
+
+                        List<OrderData> lorderdatacheck = new List<OrderData>();
+                        lorderdatacheck = L_orderdataView;
+
+                        foreach (var item in lorderdatacheck.ToList())
+                        {
+                            if (item.PromotionDetailId > 0)
+                            {
+                                odata = bindorderdata(item);
+
+                                if ((item.PromotionCode == hidPromotionCode.Value) && (item.CampaignCode == hidCampaignCode.Value) && (item.PromotionDetailId.ToString() == hidPromotionDeailInfoId.Value) && (item.PromotionTypeCode.ToString() == hidPromotionTypeCode.Value) && item.ProhMinQtyHeaderFlag != "Y") // Compare ProhMinQtyHeaderFlag because don't combine value amount for Promotion MOQ
+                                {
+                                    odata.Amount = item.Amount + Convert.ToInt32(txtAmount.Text);
+                                    odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                                    item.Amount = odata.Amount;
+                                    item.SumPrice = odata.SumPrice;
+
+                                    flagDuplicate = "Y";
+                                }
+                            }
+                            else if (item.PromotionDetailId <= 0)
+                            {
+
+                            }
+                        }
+                        L_orderdataView = lneworderdata;
+
+                        if (flagDuplicate == "N")
+                        {
+                            odata = new OrderData();
+
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.Price = (lblPrice.Text != "") ? Convert.ToDouble(lblPrice.Text) : -99;
+                            odata.ProductPrice = (hidProductPrice.Value != null) ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                            odata.Amount = Convert.ToInt32(txtAmount.Text);
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.PromotionName = hidPromtionName.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                            odata.PromotionTypeName = hidPromotionTypeName.Value;
+                            odata.MOQFlag = hidMOQFlag.Value; // Flag of Promotion MOQ Type 
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0; // Quantity minimum for trigger MOQ Set
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = odata.ProductDiscountPercent;
+                            odata.DiscountAmount = odata.ProductDiscountAmount;
+                            odata.CamcatCode = hidCatagorycode_ins.Value;
+                            odata.ChannelCode = hidtab1ChannelCode_Selected.Value;
+                            odata.ChannelName = hidtab1ChannelName_Selected.Value;
+                            odata.MediaplanFlag = hidmediaflag_detail.Value;
+                            if (odata.MOQFlag.Trim() != "Y")
+                            {
+                                if (hidProductDiscountPercent.Value != "" && hidProductDiscountAmount.Value != "")
+                                {
+                                    odata.Price = (Convert.ToDouble(lblPrice.Text) + odata.DiscountAmount) / (1 - (odata.DiscountPercent * 0.01));
+                                    odata.SumPrice = (odata.Price - ((odata.Price * odata.DiscountPercent) / 100) - odata.DiscountAmount) * odata.Amount;
+                                }
+                            }
+
+                            odata.CheckMinQty = 0;
+                            odata.ProhMinQtyHeaderFlag = "N"; // Flag Put all Group of Promotion MOQ (Head + Child)
+                            odata.GroupPrice = Convert.ToDouble(hidGroupPrice.Value); // New Price of Promotion MOQ after MOQ trigger
+                            odata.ProductPrice = (hidProductPrice.Value != null) ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.runningNo = lneworderdata.Count + 1;
+
+                            lneworderdata.Add(odata);
+
+                            
+                        }
+
+                        if (hidPromotionTypeCode.Value == "07" || hidPromotionTypeCode.Value == "08")//กำหนดจำนวนขั้นต่ำ ฟรีค่าคนส่ง + ส่วนลดสินค้า
+                        {
+                            CheckMOQ(lneworderdata);
+                        }
+
+                        if (hidPromotionTypeCode.Value == "09") // กำหนดจำนวนขั้นต่ำ สร้างราคาโปรโมชันใหม่
+                        {
+                            CheckMOQforAddNew(lneworderdata, lblProductCode.Text, lblPrice.Text, hidCampaignCode.Value, hidPromotionCode.Value);
+                        }
+                        gvProductView_Section.Attributes.Add("class", "my-custom-scrollbar");
+                        LoadgvProductView(lneworderdata);
+
+                        L_orderdataView = lneworderdata;
+
+                        
+                    }
+                }
+            }
+        }
+        protected void gvProductMedia_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvProductMedia.Rows[index];
+
+            Label lblmsg = (Label)row.FindControl("lblmsg");
+
+            LinkButton lblProductCode = (LinkButton)row.FindControl("lblProductCode");
+            Label lblProductName = (Label)row.FindControl("lblProductName");
+            Label lblPrice = (Label)row.FindControl("lblPrice");
+            Label lblUnitName = (Label)row.FindControl("lblUnitName");
+            
+            HiddenField hidLockAmountFlag = (HiddenField)row.FindControl("hidLockAmountFlag");
+            HiddenField hidDefaultAmount = (HiddenField)row.FindControl("hidDefaultAmount");
+            HiddenField hidPromotionCode = (HiddenField)row.FindControl("hidPromotionCode");
+            HiddenField hidPromtionName = (HiddenField)row.FindControl("hidPromtionName");
+            HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+            HiddenField hidCampaignCode = (HiddenField)row.FindControl("hidCampaignCode");
+            HiddenField hidDiscountAmount = (HiddenField)row.FindControl("hidDiscountAmount");
+            HiddenField hidDiscountPercent = (HiddenField)row.FindControl("hidDiscountPercent");
+            HiddenField hidUnit = (HiddenField)row.FindControl("hidUnit");
+            HiddenField hidUnitName = (HiddenField)row.FindControl("hidUnitName");
+            TextBox txtAmount = (TextBox)row.FindControl("txtAmount");
+            HiddenField hidMerchantCode = (HiddenField)row.FindControl("hidMerchantCode");
+            HiddenField HidMerchantName = (HiddenField)row.FindControl("HidMerchantName");
+            HiddenField hidFreeShippingCode = (HiddenField)row.FindControl("hidFreeShippingCode");
+            HiddenField hidLockCheckbox = (HiddenField)row.FindControl("hidLockCheckbox");
+            HiddenField hidFlagProSetHeader = (HiddenField)row.FindControl("hidFlagProSetHeader");
+            HiddenField hidGroupPrice = (HiddenField)row.FindControl("hidGroupPrice");
+            HiddenField hidSumPrice = (HiddenField)row.FindControl("hidSumPrice");
+            HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+            HiddenField hidProductPrice = (HiddenField)row.FindControl("hidProductPrice");
+            HiddenField hidPromotionTypeCode = (HiddenField)row.FindControl("hidPromotionTypeCode");
+            HiddenField hidPromotionTypeName = (HiddenField)row.FindControl("hidPromotionTypeName");
+            HiddenField hidMOQFlag = (HiddenField)row.FindControl("hidMOQFlag");
+            HiddenField hidMinimumQty = (HiddenField)row.FindControl("hidMinimumQty");
+            HiddenField hidProductDiscountPercent = (HiddenField)row.FindControl("hidProductDiscountPercent");
+            HiddenField hidProductDiscountAmount = (HiddenField)row.FindControl("hidProductDiscountAmount");
+            HiddenField hidParentProductCode = (HiddenField)row.FindControl("hidParentProductCode");
+
+            
+            if (e.CommandName == "ShowProductScriptMedia")
+            {
+                List<ProductInfo> pInfo = GetProductMasterByCriteria(lblProductCode.Text);
+
+                if (pInfo[0].UpsellScript != "" && pInfo[0].UpsellScript != null)
+                {
+                    txtUpsellScript.InnerText = pInfo[0].UpsellScript;
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#ProductScript').modal();", true);
+                }
+
+            }
+
+            if (e.CommandName == "SelectProductMedia")
+            {
+                if (hidProLockCheckboxMedia.Value == "Y") // Promotion Set
+                {
+                    List<OrderData> lorderdataviewtemp = new List<OrderData>();
+                    List<OrderData> lorderdatagrid = new List<OrderData>();
+                    List<OrderData> lorderdatacompare = new List<OrderData>();
+                    List<OrderData> lord = new List<OrderData>();
+                    lord = L_orderdataViewMedia;
+                    Boolean flagnew = true;
+
+                    for (int i = 0; i < gvProductMedia.Rows.Count; i++) // For Loop Create List GridView for use compare L_OrderdataView
+                    {
+                        LinkButton lblProductCodeset = (LinkButton)gvProductMedia.Rows[i].FindControl("lblProductCode");
+                        Label lblProductNameset = (Label)gvProductMedia.Rows[i].FindControl("lblProductName");
+                        Label lblPriceset = (Label)gvProductMedia.Rows[i].FindControl("lblPrice");
+                        Label lblUnitNameset = (Label)gvProductMedia.Rows[i].FindControl("lblUnitName");
+                        HiddenField hidLockAmountFlagset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockAmountFlag");
+                        HiddenField hidDefaultAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDefaultAmount");
+                        HiddenField hidPromotionCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionCode");
+                        HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDeailInfoId");
+                        HiddenField hidCampaignCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidCampaignCode");
+                        HiddenField hidDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountAmount");
+                        HiddenField hidDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountPercent");
+                        HiddenField hidUnitset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnit");
+                        HiddenField hidUnitNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnitName");
+                        TextBox txtAmountset = (TextBox)gvProductMedia.Rows[i].FindControl("txtAmount");
+                        HiddenField hidMerchantCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidMerchantCode");
+                        HiddenField HidMerchantNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("HidMerchantName");
+                        HiddenField hidFreeShippingCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFreeShippingCode");
+                        HiddenField hidLockCheckboxset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockCheckbox");
+                        HiddenField hidFlagProSetHeaderset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFlagProSetHeader");
+                        HiddenField hidPromtionNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromtionName");
+                        HiddenField hidGroupPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidGroupPrice");
+                        HiddenField hidSumPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidSumPrice");
+                        HiddenField hidPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPrice");
+                        HiddenField hidFlagComboset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFlagCombo");
+                        HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountPercent");
+                        HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                        OrderData odta = new OrderData();
+
+                        odta.Amount = Convert.ToInt32(txtAmountset.Text);
+                        odta.SumPrice = (hidSumPriceset.Value != "") ? Convert.ToDouble(hidSumPriceset.Value) : 0;
+
+                        odta.FlagCombo = "N";
+                        odta.ProductCode = lblProductCodeset.Text;
+                        odta.ProductName = lblProductNameset.Text;
+                        odta.Unit = hidUnitset.Value;
+                        odta.UnitName = hidUnitNameset.Value;
+                        odta.Price = Convert.ToDouble(lblPriceset.Text);
+                        odta.ProductPrice = Convert.ToDouble(lblPriceset.Text);
+                        odta.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                        odta.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                        odta.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                        odta.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                        odta.PromotionCode = hidPromotionCodeset.Value;
+                        odta.PromotionName = hidPromtionNameset.Value;
+                        odta.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                        odta.CampaignCode = hidCampaignCodeset.Value;
+                        odta.ComboCode = "";
+                        odta.ComboName = "";
+                        odta.LockCheckbox = hidLockCheckboxset.Value;
+                        odta.LockAmountFlag = hidLockAmountFlagset.Value;
+                        odta.CampaignCategory = "";
+                        odta.FreeShipping = hidFreeShippingCodeset.Value;
+                        odta.MerchantCode = hidMerchantCodeset.Value;
+                        odta.MerchantName = HidMerchantNameset.Value;
+                        odta.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                        odta.MOQFlag = hidMOQFlag.Value;
+                        odta.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odta.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odta.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odta.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                        odta.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+
+                        odta.CamcatCode = hidCatagorycode_ins.Value;
+                        odta.ChannelCode = hidCam_MediaSaleChannel.Value;
+                        odta.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                        odta.MediaplanFlag = hidmediaflag_detail.Value;
+                        odta.runningNo = 0;
+
+                        lorderdatagrid.Add(odta);
+                    }
+
+                    foreach (var lgrid in lorderdatagrid.ToList()) // 
+                    {
+                        if (lorderdatagrid.Count > 0)
+                        {
+                            foreach (var lcheck in lord.ToList())
+                            {
+                                List<OrderData> lo = (from OrderData dr in lord.Where(s => s.PromotionCode == lgrid.PromotionCode && s.CampaignCode == lgrid.CampaignCode)
+
+                                                      select new OrderData()
+                                                      {
+                                                          FlagCombo = dr.FlagCombo,
+                                                          ProductCode = dr.ProductCode,
+                                                          ProductName = dr.ProductName,
+                                                          Unit = dr.Unit,
+                                                          UnitName = dr.UnitName,
+                                                          Price = dr.Price,
+                                                          ProductPrice = dr.ProductPrice,
+                                                          Amount = dr.Amount,
+                                                          DefaultAmount = dr.DefaultAmount,
+                                                          DiscountAmount = dr.DiscountAmount,
+                                                          DiscountPercent = dr.DiscountPercent,
+                                                          CampaignCode = dr.CampaignCode,
+                                                          PromotionCode = dr.PromotionCode,
+                                                          TransportPrice = dr.TransportPrice,
+                                                          SumPrice = dr.SumPrice,
+                                                          PromotionDetailId = dr.PromotionDetailId,
+                                                          ComboCode = dr.ComboCode,
+                                                          ComboName = dr.ComboName,
+                                                          runningNo = dr.runningNo,
+                                                          LockCheckbox = dr.LockCheckbox,
+                                                          LockAmountFlag = dr.LockAmountFlag,
+                                                          CampaignCategory = dr.CampaignCategory,
+                                                          FreeShipping = dr.FreeShipping,
+                                                          FlagProSetHeader = dr.FlagProSetHeader,
+                                                          GroupPrice = dr.GroupPrice,
+                                                          MerchantCode = dr.MerchantCode,
+                                                          MerchantName = dr.MerchantName,
+                                                          ParentPromotionCode = dr.ParentPromotionCode,
+                                                          ParentProductCode = dr.ParentProductCode,
+                                                          MOQFlag = dr.MOQFlag,
+                                                          MinimumQty = dr.MinimumQty,
+                                                          ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                          ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                          PromotionDiscountPercent = dr.PromotionDiscountPercent,
+                                                          PromotionDiscountAmount = dr.PromotionDiscountAmount,
+                                                          CamcatCode = dr.CamcatCode,
+                                                          ChannelCode = dr.ChannelCode,
+                                                          ChannelName = dr.ChannelName,
+                                                          MediaplanFlag = dr.MediaplanFlag
+                                                      }).ToList();
+                                OrderData od = new OrderData();
+                                flagnew = false;
+
+                                if (lo.Count > 0 && lgrid.LockAmountFlag == "Y") //duplicate
+                                {
+                                    hidFlagNotDupe.Value = "False";
+
+                                    if (lgrid.FlagProSetHeader == lcheck.FlagProSetHeader && lgrid.PromotionCode == lcheck.PromotionCode && lgrid.CampaignCode == lcheck.CampaignCode)
+                                    {
+                                        od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                        od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                        od.PromotionDiscountPercent = lcheck.PromotionDiscountPercent;
+                                        od.PromotionDiscountAmount = lcheck.PromotionDiscountAmount;
+                                        od.DiscountAmount = lgrid.DiscountAmount;
+                                        od.DiscountPercent = lgrid.DiscountPercent;
+                                        od.Price = lgrid.Price;
+                                        od.ProductPrice = lgrid.ProductPrice;
+
+                                        if (lgrid.GroupPrice != 0 && lcheck.GroupPrice != 0)
+                                        {
+                                            od.Amount = lgrid.Amount + lcheck.Amount;
+                                            od.SumPrice = lcheck.Price * od.Amount;
+                                        }
+                                        else
+                                        {
+                                            od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                            od.Amount = lgrid.Amount + lcheck.Amount;
+                                            od.SumPrice = (od.Price - ((od.Price * od.PromotionDiscountPercent) / 100) - od.PromotionDiscountAmount) * od.Amount;
+                                            od.DiscountAmount = od.PromotionDiscountAmount;
+                                            od.DiscountPercent = od.PromotionDiscountPercent;
+                                        }
+
+                                        od.FlagCombo = "N";
+                                        od.ProductCode = lgrid.ProductCode;
+                                        od.ProductName = lgrid.ProductName;
+                                        od.Unit = lgrid.Unit;
+                                        od.UnitName = lgrid.UnitName;
+                                        od.GroupPrice = lgrid.GroupPrice;
+                                        od.DefaultAmount = lgrid.DefaultAmount;
+                                        od.PromotionCode = lgrid.PromotionCode;
+                                        od.PromotionName = lgrid.PromotionName;
+                                        od.PromotionDetailId = lgrid.PromotionDetailId;
+                                        od.CampaignCode = lgrid.CampaignCode;
+                                        od.ComboCode = "";
+                                        od.ComboName = "";
+                                        od.LockCheckbox = lgrid.LockCheckbox;
+                                        od.LockAmountFlag = lgrid.LockAmountFlag;
+                                        od.CampaignCategory = "";
+                                        od.FreeShipping = lgrid.FreeShipping;
+                                        od.MerchantCode = lgrid.MerchantCode;
+                                        od.MerchantName = lgrid.MerchantName;
+                                        od.FlagProSetHeader = lgrid.FlagProSetHeader;
+                                        od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                                        od.ParentProductCode = lcheck.ParentProductCode;
+                                        od.ComboCode = "";
+                                        od.MOQFlag = lcheck.MOQFlag;
+                                        od.MinimumQty = lcheck.MinimumQty;
+                                        od.CamcatCode = lgrid.CamcatCode;
+                                        od.ChannelCode = lgrid.ChannelCode;
+                                        od.ChannelName = lgrid.ChannelName;
+                                        od.MediaplanFlag = lgrid.MediaplanFlag;
+                                        lorderdatagrid.RemoveAll(s => s.CampaignCode == lcheck.CampaignCode && s.PromotionCode == lcheck.PromotionCode && s.FlagProSetHeader == "Y");
+
+                                        lorderdatacompare.Add(od); // List will update with L_OrderdataView
+                                    }
+                                    else if (lgrid.FlagProSetHeader != lcheck.FlagProSetHeader && lgrid.PromotionCode == lcheck.PromotionCode && lgrid.CampaignCode == lcheck.CampaignCode)
+                                    {
+                                        od = new OrderData();
+
+                                        od.Amount = lcheck.Amount + lgrid.Amount;
+                                        od.SumPrice = 0;
+                                        
+
+                                        od.FlagCombo = "N";
+                                        od.ProductCode = lcheck.ProductCode;
+                                        od.ProductName = lcheck.ProductName;
+                                        od.Unit = lcheck.Unit;
+                                        od.UnitName = lcheck.UnitName;
+                                        
+                                        od.Price = 0;
+                                        od.ProductPrice = 0;
+                                        od.GroupPrice = lcheck.GroupPrice;
+                                        od.DefaultAmount = lcheck.DefaultAmount;
+                                        od.DiscountAmount = lcheck.DiscountAmount;
+                                        od.DiscountPercent = lcheck.DiscountPercent;
+                                        od.PromotionCode = lcheck.PromotionCode;
+                                        od.PromotionName = lcheck.PromotionName;
+                                        od.PromotionDetailId = lcheck.PromotionDetailId;
+                                        od.CampaignCode = lcheck.CampaignCode;
+                                        od.ComboCode = lcheck.ComboCode;
+                                        od.ComboName = lcheck.ComboName;
+                                        od.LockCheckbox = lcheck.LockCheckbox;
+                                        od.LockAmountFlag = lcheck.LockAmountFlag;
+                                        od.CampaignCategory = lcheck.CampaignCategory;
+                                        od.FreeShipping = lcheck.FreeShipping;
+                                        od.MerchantCode = lcheck.MerchantCode;
+                                        od.MerchantName = lcheck.MerchantName;
+                                        od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                                        od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                                        od.ParentProductCode = lcheck.ParentProductCode;
+                                        od.ComboCode = "";
+                                        od.MOQFlag = lcheck.MOQFlag;
+                                        od.MinimumQty = lcheck.MinimumQty;
+                                        od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                        od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                        od.PromotionDiscountPercent = lcheck.PromotionDiscountPercent;
+                                        od.PromotionDiscountAmount = lcheck.PromotionDiscountAmount;
+                                        od.CamcatCode = lcheck.CamcatCode;
+                                        od.ChannelCode = lcheck.ChannelCode;
+                                        od.ChannelName = lcheck.ChannelName;
+                                        od.MediaplanFlag = lcheck.MediaplanFlag;
+                                        lorderdatagrid.RemoveAll(s => s.CampaignCode == lcheck.CampaignCode && s.PromotionCode == lcheck.PromotionCode && s.FlagProSetHeader != "Y" && s.PromotionDetailId == lcheck.PromotionDetailId);
+
+                                        lorderdatacompare.Add(od); // List will update with L_OrderdataView
+                                    }
+                                }
+                                else
+                                {
+                                    flagnew = true;
+                                    hidFlagNotDupe.Value = "False";
+                                }
+                            }
+                        }
+                    }
+
+                    if (lord.Count > 0 && lorderdatacompare.Count > 0)
+                    {
+                        hidFlagNotDupe.Value = "Multi";
+
+                        foreach (var lcom in lorderdatacompare.ToList())
+                        {
+                            foreach (var lview in lord.ToList())
+                            {
+                                if (lcom.FlagProSetHeader == lview.FlagProSetHeader && lcom.PromotionCode == lview.PromotionCode && lcom.CampaignCode == lview.CampaignCode)
+                                {
+                                    if (lcom.FlagProSetHeader == "Y")
+                                    {
+                                        if (lcom.GroupPrice == 0)
+                                        {
+                                            lview.Amount = lcom.Amount;
+                                            lview.SumPrice = (lview.Price - ((lview.Price * lview.PromotionDiscountPercent) / 100) - lview.PromotionDiscountAmount) * lview.Amount;
+                                        }
+                                        else
+                                        {
+                                            lview.Amount = lcom.Amount;
+                                            lview.SumPrice = lview.Price * lview.Amount;
+                                        }
+                                    }
+                                    else if (lcom.FlagProSetHeader != "Y")
+                                    {
+                                        lview.Amount = lcom.Amount;
+                                        lview.SumPrice = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    
+
+                    if (hidFlagNotDupe.Value == "True")
+                    {
+                        flagnew = false;
+
+                        for (int i = 0; i < gvProductMedia.Rows.Count; i++)
+                        {
+                            LinkButton lblProductCodeset = (LinkButton)gvProductMedia.Rows[i].FindControl("lblProductCode");
+                            Label lblProductNameset = (Label)gvProductMedia.Rows[i].FindControl("lblProductName");
+                            Label lblPriceset = (Label)gvProductMedia.Rows[i].FindControl("lblPrice");
+                            Label lblUnitNameset = (Label)gvProductMedia.Rows[i].FindControl("lblUnitName");
+                            HiddenField hidLockAmountFlagset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockAmountFlag");
+                            HiddenField hidDefaultAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDefaultAmount");
+                            HiddenField hidPromotionCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionCode");
+                            HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDeailInfoId");
+                            HiddenField hidCampaignCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidCampaignCode");
+                            HiddenField hidDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountAmount");
+                            HiddenField hidDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountPercent");
+                            HiddenField hidUnitset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnit");
+                            HiddenField hidUnitNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnitName");
+                            TextBox txtAmountset = (TextBox)gvProductMedia.Rows[i].FindControl("txtAmount");
+                            HiddenField hidMerchantCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidMerchantCode");
+                            HiddenField HidMerchantNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("HidMerchantName");
+                            HiddenField hidFreeShippingCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFreeShippingCode");
+                            HiddenField hidLockCheckboxset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockCheckbox");
+                            HiddenField hidFlagProSetHeaderset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFlagProSetHeader");
+                            HiddenField hidPromtionNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromtionName");
+                            HiddenField hidGroupPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidGroupPrice");
+                            HiddenField hidSumPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidSumPrice");
+                            HiddenField hidPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPrice");
+                            HiddenField hidParentProductCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidParentProductCode");
+                            HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountPercent");
+                            HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                            int? runningNoNotDupe = 0;
+
+                            if (hidFlagProSetHeaderset.Value == "Y")
+                            {
+                                OrderData od = new OrderData();
+
+                                od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                od.SumPrice = Convert.ToDouble(lblPriceset.Text) * od.Amount;
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCodeset.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.runningNo = L_orderdataViewMedia.Count + 1;
+                                runningNoNotDupe = od.runningNo;
+
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidCam_MediaSaleChannel.Value;
+                                od.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                L_orderdataViewMedia.Add(od);
+                            }
+                            else
+                            {
+                                OrderData od = new OrderData();
+
+                                od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                od.SumPrice = (Convert.ToDouble(lblPriceset.Text) - (Convert.ToDouble(lblPriceset.Text) * (Convert.ToInt32(hidDiscountPercentset.Value) / 100)) - Convert.ToDouble(hidDiscountAmountset.Value)) * Convert.ToDouble(od.Amount);
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                
+                                od.Price = 0;
+                                od.ProductPrice = 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCode.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.runningNo = runningNoNotDupe;
+
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidCam_MediaSaleChannel.Value;
+                                od.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                L_orderdataViewMedia.Add(od);
+                            }
+
+
+                        }
+                    }
+
+                    if (flagnew == true)
+                    {
+                        String parentpromotioncode = "";
+
+                        for (int i = 0; i < gvProductMedia.Rows.Count; i++)
+                        {
+                            LinkButton lblProductCodeset = (LinkButton)gvProductMedia.Rows[i].FindControl("lblProductCode");
+                            Label lblProductNameset = (Label)gvProductMedia.Rows[i].FindControl("lblProductName");
+                            Label lblPriceset = (Label)gvProductMedia.Rows[i].FindControl("lblPrice");
+                            Label lblUnitNameset = (Label)gvProductMedia.Rows[i].FindControl("lblUnitName");
+                            HiddenField hidLockAmountFlagset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockAmountFlag");
+                            HiddenField hidDefaultAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDefaultAmount");
+                            HiddenField hidPromotionCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionCode");
+                            HiddenField hidPromotionDeailInfoIdset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDeailInfoId");
+                            HiddenField hidCampaignCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidCampaignCode");
+                            HiddenField hidDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountAmount");
+                            HiddenField hidDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountPercent");
+                            HiddenField hidUnitset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnit");
+                            HiddenField hidUnitNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnitName");
+                            TextBox txtAmountset = (TextBox)gvProductMedia.Rows[i].FindControl("txtAmount");
+                            HiddenField hidMerchantCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidMerchantCode");
+                            HiddenField HidMerchantNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("HidMerchantName");
+                            HiddenField hidFreeShippingCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFreeShippingCode");
+                            HiddenField hidLockCheckboxset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockCheckbox");
+                            HiddenField hidFlagProSetHeaderset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFlagProSetHeader");
+                            HiddenField hidPromtionNameset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromtionName");
+                            HiddenField hidGroupPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidGroupPrice");
+                            HiddenField hidSumPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidSumPrice");
+                            HiddenField hidPriceset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPrice");
+                            HiddenField hidParentProductCodeset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidParentProductCode");
+                            HiddenField hidPromotionDiscountPercentset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountPercent");
+                            HiddenField hidPromotionDiscountAmountset = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountAmount");
+
+                            int cou = 0;
+
+                            if (hidFlagProSetHeaderset.Value == "Y")
+                            {
+                                OrderData od = new OrderData();
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                if (od.GroupPrice != 0)
+                                {
+                                    od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                    od.SumPrice = Convert.ToDouble(lblPriceset.Text) * od.Amount;
+                                }
+                                else
+                                {
+                                    if (hidFlagProSetHeaderset.Value == "Y")
+                                    {
+                                        od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                        od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                        od.SumPrice = (od.Price - ((od.Price * od.PromotionDiscountPercent) / 100) - od.PromotionDiscountAmount) * od.Amount;
+                                        od.DiscountAmount = od.PromotionDiscountAmount;
+                                        od.DiscountPercent = od.PromotionDiscountPercent;
+                                    }
+                                }
+
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = "N";
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCodeset.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+
+                                //Get ParentCode
+                                if (hidtab.Value == "1")
+                                {
+                                    cou = (hidtab1countproset.Value != "") ? Convert.ToInt32(hidtab1countproset.Value) + 1 : 1;
+                                    hidtab1countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+                                else if (hidtab.Value == "2")
+                                {
+                                    cou = (hidtab2countproset.Value != "") ? Convert.ToInt32(hidtab2countproset.Value) + 1 : 1;
+                                    hidtab2countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+                                else if (hidtab.Value == "3")
+                                {
+                                    cou = (hidtab3countproset.Value != "") ? Convert.ToInt32(hidtab3countproset.Value) + 1 : 1;
+                                    hidtab3countproset.Value = cou.ToString();
+                                    parentpromotioncode = cou.ToString() + hidPromotionCodeset.Value;
+                                }
+
+                                od.ParentPromotionCode = parentpromotioncode;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.ComboCode = "";
+
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidCam_MediaSaleChannel.Value;
+                                od.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                lorderdataviewtemp.Add(od);
+                            }
+                            else
+                            {
+                                OrderData od = new OrderData();
+
+
+                                
+
+                                od.FlagCombo = "N";
+                                od.ProductCode = lblProductCodeset.Text;
+                                od.ProductName = lblProductNameset.Text;
+                                od.Unit = hidUnitset.Value;
+                                od.UnitName = hidUnitNameset.Value;
+                                
+                                od.DiscountAmount = (hidDiscountAmountset.Value != "") ? Convert.ToInt32(hidDiscountAmountset.Value) : 0;
+                                od.DiscountPercent = (hidDiscountPercentset.Value != "") ? Convert.ToInt32(hidDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountPercent = (hidPromotionDiscountPercentset.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercentset.Value) : 0;
+                                od.PromotionDiscountAmount = (hidPromotionDiscountAmountset.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmountset.Value) : 0;
+                                od.Price = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.ProductPrice = (lblPriceset.Text != "") ? Convert.ToDouble(lblPriceset.Text) : 0;
+                                od.GroupPrice = (hidGroupPriceset.Value != "") ? Convert.ToInt32(hidGroupPriceset.Value) : 0;
+
+                                if (od.GroupPrice != 0)
+                                {
+                                    od.Price = 0;
+                                    od.ProductPrice = 0;
+                                    od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                    od.SumPrice = 0;
+                                }
+                                else
+                                {
+                                    if (hidFlagProSetHeaderset.Value != "Y")
+                                    {
+                                        od.Price = (od.Price + od.PromotionDiscountAmount) / (1 - (od.PromotionDiscountPercent * 0.01));
+                                        od.Amount = Convert.ToInt32(txtAmountset.Text);
+                                        
+                                        od.SumPrice = 0;
+                                        od.DiscountAmount = od.PromotionDiscountAmount;
+                                        od.DiscountPercent = od.PromotionDiscountPercent;
+                                    }
+                                }
+
+                                od.DefaultAmount = (hidDefaultAmountset.Value != "") ? Convert.ToInt32(hidDefaultAmountset.Value) : 0;
+
+                                od.PromotionCode = hidPromotionCodeset.Value;
+                                od.PromotionName = hidPromtionNameset.Value;
+                                od.PromotionDetailId = (hidPromotionDeailInfoIdset.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoIdset.Value) : 0;
+                                od.CampaignCode = hidCampaignCodeset.Value;
+                                od.ComboCode = "";
+                                od.ComboName = "";
+                                od.runningNo = 1;
+                                od.LockCheckbox = hidLockCheckboxset.Value;
+                                od.LockAmountFlag = hidLockAmountFlagset.Value;
+                                od.CampaignCategory = "";
+                                od.FreeShipping = hidFreeShippingCode.Value;
+                                od.MerchantCode = hidMerchantCodeset.Value;
+                                od.MerchantName = HidMerchantNameset.Value;
+                                od.FlagProSetHeader = hidFlagProSetHeaderset.Value;
+                                od.ParentPromotionCode = parentpromotioncode;
+                                od.ParentProductCode = hidParentProductCodeset.Value;
+                                od.MOQFlag = hidMOQFlag.Value;
+                                od.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                                od.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                                od.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                                od.ComboCode = "";
+                                od.CamcatCode = hidCatagorycode_ins.Value;
+                                od.ChannelCode = hidCam_MediaSaleChannel.Value;
+                                od.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                                od.MediaplanFlag = hidmediaflag_detail.Value;
+                                
+
+                                lorderdataviewtemp.Add(od);
+                            }
+
+
+                        }
+                    }
+
+                    
+                    if (flagnew == true && hidFlagNotDupe.Value != "False")
+                    {
+                        L_orderdataViewMedia = lorderdataviewtemp;
+                    }
+                    else if (flagnew == true && hidFlagNotDupe.Value == "False")
+                    {
+                        lord.AddRange(lorderdataviewtemp);
+                    }
+                    
+                    else if (hidFlagNotDupe.Value == "Multi")
+                    {
+                        L_orderdataViewMedia = lord;
+                    }
+
+                    LoadgvProductViewMedia(L_orderdataViewMedia);
+                }
+                else // Promotion by Product Format (Select gvProduct by record to gvProductView)
+                {
+                    if ((txtAmount.Text != "") && (txtAmount.Text != "0"))
+                    {
+                        OrderData odata = new OrderData();
+                        List<OrderData> lneworderdata = new List<OrderData>();
+
+                        string flagDuplicate = "N";
+
+                        lneworderdata = L_orderdataViewMedia;
+
+                        List<OrderData> lorderdatacheck = new List<OrderData>();
+                        lorderdatacheck = L_orderdataViewMedia;
+
+                        foreach (var item in lorderdatacheck.ToList())
+                        {
+                            if (item.PromotionDetailId > 0)
+                            {
+                                odata = bindorderdata(item);
+
+                                if ((item.PromotionCode == hidPromotionCode.Value) && (item.CampaignCode == hidCampaignCode.Value) && (item.PromotionDetailId.ToString() == hidPromotionDeailInfoId.Value) && (item.PromotionTypeCode.ToString() == hidPromotionTypeCode.Value) && item.ProhMinQtyHeaderFlag != "Y") // Compare ProhMinQtyHeaderFlag because don't combine value amount for Promotion MOQ
+                                {
+                                    odata.Amount = item.Amount + Convert.ToInt32(txtAmount.Text);
+                                    odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                                    item.Amount = odata.Amount;
+                                    item.SumPrice = odata.SumPrice;
+
+                                    flagDuplicate = "Y";
+                                }
+                            }
+                            else if (item.PromotionDetailId <= 0)
+                            {
+
+                            }
+                        }
+                        L_orderdataViewMedia = lneworderdata;
+
+                        if (flagDuplicate == "N")
+                        {
+                            odata = new OrderData();
+
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.Price = (lblPrice.Text != "") ? Convert.ToDouble(lblPrice.Text) : -99;
+                            odata.ProductPrice = (hidProductPrice.Value != null) ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                            odata.Amount = Convert.ToInt32(txtAmount.Text);
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.PromotionName = hidPromtionName.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                            odata.PromotionTypeName = hidPromotionTypeName.Value;
+                            odata.MOQFlag = hidMOQFlag.Value; // Flag of Promotion MOQ Type 
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0; // Quantity minimum for trigger MOQ Set
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = odata.ProductDiscountPercent;
+                            odata.DiscountAmount = odata.ProductDiscountAmount;
+                            odata.CamcatCode = hidCatagorycode_ins.Value;
+                            odata.ChannelCode = hidCam_MediaSaleChannel.Value;
+                            odata.ChannelName = hidtab1ChannelNameMedia_Selected.Value;
+                            odata.MediaplanFlag = hidmediaflag_detail.Value;
+                            if (odata.MOQFlag.Trim() != "Y")
+                            {
+                                if (hidProductDiscountPercent.Value != "" && hidProductDiscountAmount.Value != "")
+                                {
+                                    odata.Price = (Convert.ToDouble(lblPrice.Text) + odata.DiscountAmount) / (1 - (odata.DiscountPercent * 0.01));
+                                    odata.SumPrice = (odata.Price - ((odata.Price * odata.DiscountPercent) / 100) - odata.DiscountAmount) * odata.Amount;
+                                }
+                            }
+
+                            odata.CheckMinQty = 0;
+                            odata.ProhMinQtyHeaderFlag = "N"; // Flag Put all Group of Promotion MOQ (Head + Child)
+                            odata.GroupPrice = Convert.ToDouble(hidGroupPrice.Value); // New Price of Promotion MOQ after MOQ trigger
+                            odata.ProductPrice = (hidProductPrice.Value != null) ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.runningNo = lneworderdata.Count + 1;
+
+                            lneworderdata.Add(odata);
+
+                            
+                        }
+
+                        if (hidPromotionTypeCode.Value == "07" || hidPromotionTypeCode.Value == "08")//กำหนดจำนวนขั้นต่ำ ฟรีค่าคนส่ง + ส่วนลดสินค้า
+                        {
+                            CheckMOQ(lneworderdata);
+                        }
+
+                        if (hidPromotionTypeCode.Value == "09") // กำหนดจำนวนขั้นต่ำ สร้างราคาโปรโมชันใหม่
+                        {
+                            CheckMOQforAddNew(lneworderdata, lblProductCode.Text, lblPrice.Text, hidCampaignCode.Value, hidPromotionCode.Value);
+                        }
+
+                        LoadgvProductViewMedia(lneworderdata);
+
+                        L_orderdataViewMedia = lneworderdata;
+
+                        
+                    }
+                }
+            }
+        }
+        protected void gvProduct_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidLockAmountFlag = (HiddenField)e.Row.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeader = (HiddenField)e.Row.FindControl("hidFlagProSetHeader");
+                HiddenField hidGroupPrice = (HiddenField)e.Row.FindControl("hidGroupPrice");
+                HiddenField hidProductDiscountAmount = (HiddenField)e.Row.FindControl("hidProductDiscountAmount");
+                HiddenField hidProductDiscountPercent = (HiddenField)e.Row.FindControl("hidProductDiscountPercent");
+                HiddenField hidPrice = (HiddenField)e.Row.FindControl("hidPrice");
+                LinkButton btnSelectProduct = (LinkButton)e.Row.FindControl("btnSelectProduct");
+                TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount");
+                Label lblSumPrice = (Label)e.Row.FindControl("lblSumPrice");
+                Label lblPrice = (Label)e.Row.FindControl("lblPrice");
+                Label lblPriceBeforeDisCount = (Label)e.Row.FindControl("lblPriceBeforeDisCount");
+
+
+                if (hidProLockCheckbox.Value.Trim() == "Y")
+                {
+                    if (hidGroupPrice.Value != "0")
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            btnSelectProduct.Visible = true;
+                            lblPrice.Visible = true;
+                            txtAmount.ReadOnly = false;
+                        }
+                        else
+                        {
+                            btnSelectProduct.Visible = false;
+                            lblSumPrice.Visible = false;
+                            lblPrice.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            btnSelectProduct.Visible = true;
+                            txtAmount.ReadOnly = false;
+                            string a = lblSumPrice.Text;
+                            lblSumPrice.Visible = true;
+                        }
+                        else
+                        {
+                            btnSelectProduct.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                lblSumPrice.Visible = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                                lblSumPrice.Visible = false;
+                            }
+                        }
+                    }
+                }
+                
+
+            }
+        }
+        protected void gvProductMedia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidLockAmountFlag = (HiddenField)e.Row.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeader = (HiddenField)e.Row.FindControl("hidFlagProSetHeader");
+                HiddenField hidGroupPrice = (HiddenField)e.Row.FindControl("hidGroupPrice");
+                HiddenField hidProductDiscountAmount = (HiddenField)e.Row.FindControl("hidProductDiscountAmount");
+                HiddenField hidProductDiscountPercent = (HiddenField)e.Row.FindControl("hidProductDiscountPercent");
+                HiddenField hidPrice = (HiddenField)e.Row.FindControl("hidPrice");
+                LinkButton btnSelectProduct = (LinkButton)e.Row.FindControl("btnSelectProduct");
+                TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount");
+                Label lblSumPrice = (Label)e.Row.FindControl("lblSumPrice");
+                Label lblPrice = (Label)e.Row.FindControl("lblPrice");
+                Label lblPriceBeforeDisCount = (Label)e.Row.FindControl("lblPriceBeforeDisCount");
+
+
+                if (hidProLockCheckboxMedia.Value.Trim() == "Y")
+                {
+                    if (hidGroupPrice.Value != "0")
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            btnSelectProduct.Visible = true;
+                            lblPrice.Visible = true;
+                            txtAmount.ReadOnly = false;
+                        }
+                        else
+                        {
+                            btnSelectProduct.Visible = false;
+                            lblSumPrice.Visible = false;
+                            lblPrice.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            btnSelectProduct.Visible = true;
+                            txtAmount.ReadOnly = false;
+                            string a = lblSumPrice.Text;
+                            lblSumPrice.Visible = true;
+                        }
+                        else
+                        {
+                            btnSelectProduct.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                lblSumPrice.Visible = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                                lblSumPrice.Visible = false;
+                            }
+                        }
+                    }
+                }
+                
+
+            }
+        }
+        protected void gvProductView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidLockCheckbox = (HiddenField)e.Row.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)e.Row.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeader = (HiddenField)e.Row.FindControl("hidFlagProSetHeader");
+                HiddenField hidFlagCombo = (HiddenField)e.Row.FindControl("hidFlagCombo");
+                HiddenField hidMOQFlag = (HiddenField)e.Row.FindControl("hidMOQFlag");
+                HiddenField hidProhMinQtyHeaderFlag = (HiddenField)e.Row.FindControl("hidProhMinQtyHeaderFlag");
+                HiddenField hidMOQNewHeaderFlag = (HiddenField)e.Row.FindControl("hidMOQNewHeaderFlag");
+                HiddenField hidGroupPrice = (HiddenField)e.Row.FindControl("hidGroupPrice");
+                TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount");
+                Label lblSumPrice = (Label)e.Row.FindControl("lblSumPrice");
+                LinkButton btnClose = (LinkButton)e.Row.FindControl("btnClose");
+
+                if (hidLockCheckbox.Value.Trim() == "Y")
+                {
+                    if (hidGroupPrice.Value != "0")
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value != "Y")
+                        {
+                            txtAmount.ReadOnly = false;
+                            btnClose.Visible = true;
+
+                        }
+                        else if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value == "Y")
+                        {
+                            txtAmount.Enabled = false;
+                            btnClose.Visible = true;
+                        }
+                        else
+                        {
+                            lblSumPrice.Visible = false;
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hidFlagProSetHeader.Value == "Y")
+                        {
+                            btnClose.Visible = true;
+                            txtAmount.ReadOnly = false;
+                        }
+                        else
+                        {
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                lblSumPrice.Visible = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                                lblSumPrice.Visible = false;
+                            }
+                        }
+                    }
+                }
+                if (hidProhMinQtyHeaderFlag.Value.Trim() == "Y")
+                {
+                    txtAmount.Enabled = false;
+
+                    if (hidMOQNewHeaderFlag.Value == "Y")
+                    {
+                        lblSumPrice.Visible = true;
+                        btnClose.Visible = true;
+                    }
+                    else
+                    {
+                        btnClose.Visible = false;
+                    }
+                }
+                if (hidMOQFlag.Value == "Y" && hidProhMinQtyHeaderFlag.Value == "Y")
+                {
+                    if (hidMOQNewHeaderFlag.Value != "Y")
+                    {
+                        lblSumPrice.Text = "";
+                    }
+                }
+
+            }
+        }
+        protected void gvProductViewMedia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidLockCheckbox = (HiddenField)e.Row.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)e.Row.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeader = (HiddenField)e.Row.FindControl("hidFlagProSetHeader");
+                HiddenField hidFlagCombo = (HiddenField)e.Row.FindControl("hidFlagCombo");
+                HiddenField hidMOQFlag = (HiddenField)e.Row.FindControl("hidMOQFlag");
+                HiddenField hidProhMinQtyHeaderFlag = (HiddenField)e.Row.FindControl("hidProhMinQtyHeaderFlag");
+                HiddenField hidMOQNewHeaderFlag = (HiddenField)e.Row.FindControl("hidMOQNewHeaderFlag");
+                HiddenField hidGroupPrice = (HiddenField)e.Row.FindControl("hidGroupPrice");
+                TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount");
+                Label lblSumPrice = (Label)e.Row.FindControl("lblSumPrice");
+                LinkButton btnClose = (LinkButton)e.Row.FindControl("btnClose");
+
+                if (hidLockCheckbox.Value.Trim() == "Y")
+                {
+                    if (hidGroupPrice.Value != "0")
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value != "Y")
+                        {
+                            txtAmount.ReadOnly = false;
+                            btnClose.Visible = true;
+
+                        }
+                        else if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value == "Y")
+                        {
+                            txtAmount.Enabled = false;
+                            btnClose.Visible = true;
+                        }
+                        else
+                        {
+                            lblSumPrice.Visible = false;
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hidFlagProSetHeader.Value == "Y")
+                        {
+                            btnClose.Visible = true;
+                            txtAmount.ReadOnly = false;
+                        }
+                        else
+                        {
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                lblSumPrice.Visible = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                                lblSumPrice.Visible = false;
+                            }
+                        }
+                    }
+                }
+                if (hidProhMinQtyHeaderFlag.Value.Trim() == "Y")
+                {
+                    txtAmount.Enabled = false;
+
+                    if (hidMOQNewHeaderFlag.Value == "Y")
+                    {
+                        lblSumPrice.Visible = true;
+                        btnClose.Visible = true;
+                    }
+                    else
+                    {
+                        btnClose.Visible = false;
+                    }
+                }
+                if (hidMOQFlag.Value == "Y" && hidProhMinQtyHeaderFlag.Value == "Y")
+                {
+                    if (hidMOQNewHeaderFlag.Value != "Y")
+                    {
+                        lblSumPrice.Text = "";
+                    }
+                }
+
+            }
+        }
+        protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                /*  TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount");
+                  HiddenField hidSumprice = (HiddenField)e.Row.FindControl("hidSumprice");
+                  Label lbltotal = (Label)e.Row.FindControl("lbltotal");
+                  HiddenField hidParentProductCode = (HiddenField)e.Row.FindControl("hidParentProductCode");
+                  HiddenField hidFlagCombo = (HiddenField)e.Row.FindControl("hidFlagCombo");
+                  LinkButton btnClose = (LinkButton)e.Row.FindControl("btnClose");
+                  CheckBox chkOrder = (CheckBox)e.Row.FindControl("chkOrder");
+
+                  decimal? Sumprice = Decimal.Parse(hidSumprice.Value);
+
+                  lbltotal.Text = string.Format("{0:n}", (Sumprice * Convert.ToDecimal(txtAmount.Text)));
+
+
+                  if (hidFlagCombo.Value != "")
+                  {
+                      if (hidParentProductCode.Value != "")
+                      {
+                          btnClose.Visible = false;
+                          txtAmount.Visible = false;
+                          chkOrder.Visible = false;
+                          lbltotal.Visible = false;
+                      }
+                      else
+                      {
+                          txtAmount.Enabled = false;
+                      }
+
+                  }
+                  */
+
+                HiddenField hidLockCheckbox = (HiddenField)e.Row.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)e.Row.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeader = (HiddenField)e.Row.FindControl("hidFlagProSetHeader");
+                HiddenField hidFlagCombo = (HiddenField)e.Row.FindControl("hidFlagCombo");
+                TextBox txtAmount = (TextBox)e.Row.FindControl("txtAmount_gvOrder");
+                TextBox txtAmount_gvOrderView = (TextBox)e.Row.FindControl("txtAmount_gvOrderView");
+                Label lblSumPrice = (Label)e.Row.FindControl("lblSumPrice");
+                LinkButton btnClose = (LinkButton)e.Row.FindControl("btnClose");
+                HiddenField hidMOQFlag = (HiddenField)e.Row.FindControl("hidMOQFlag");
+                HiddenField hidProhMinQtyHeaderFlag = (HiddenField)e.Row.FindControl("hidProhMinQtyHeaderFlag");
+                HiddenField hidMOQNewHeaderFlag = (HiddenField)e.Row.FindControl("hidMOQNewHeaderFlag");
+                HiddenField hidGroupPrice = (HiddenField)e.Row.FindControl("hidGroupPrice");
+
+                if (hidLockCheckbox.Value.Trim() == "Y")
+                {
+                    if (hidGroupPrice.Value != "0")
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value != "Y")
+                        {
+                            txtAmount.ReadOnly = false;
+                            txtAmount_gvOrderView.ReadOnly = false;
+                            btnClose.Visible = true;
+
+                        }
+                        else if (hidFlagProSetHeader.Value.Trim() == "Y" && hidFlagCombo.Value == "Y")
+                        {
+                            txtAmount.Enabled = false;
+                            txtAmount_gvOrderView.Enabled = false;
+                            btnClose.Visible = true;
+                        }
+                        else
+                        {
+                            lblSumPrice.Visible = false;
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value.Trim() == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                txtAmount_gvOrderView.Enabled = false;
+                            }
+                            else
+                            {
+                                txtAmount.Enabled = true;
+                                txtAmount_gvOrderView.Enabled = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hidFlagProSetHeader.Value == "Y")
+                        {
+                            btnClose.Visible = true;
+                            txtAmount.ReadOnly = false;
+                            txtAmount_gvOrderView.ReadOnly = false;
+                        }
+                        else
+                        {
+                            btnClose.Visible = false;
+
+                            if (hidLockAmountFlag.Value == "Y")
+                            {
+                                txtAmount.Enabled = false;
+                                txtAmount_gvOrderView.Enabled = false;
+                                lblSumPrice.Visible = false;
+                            }
+                            else
+                            {
+                                
+
+                                txtAmount.Enabled = true;
+                                txtAmount_gvOrderView.Enabled = true;
+                                lblSumPrice.Visible = false;
+                            }
+                        }
+                    }
+                }
+                if (hidProhMinQtyHeaderFlag.Value.Trim() == "Y")
+                {
+                    txtAmount.Enabled = false;
+
+                    if (hidMOQNewHeaderFlag.Value == "Y")
+                    {
+                        lblSumPrice.Visible = true;
+                        btnClose.Visible = true;
+                    }
+                    else
+                    {
+                        btnClose.Visible = false;
+                    }
+                }
+                if (hidMOQFlag.Value == "Y" && hidProhMinQtyHeaderFlag.Value == "Y")
+                {
+                    if (hidMOQNewHeaderFlag.Value != "Y")
+                    {
+                        lblSumPrice.Text = "";
+                    }
+                }
+
+            }
+        }
+        protected void gvSubPromotionDetail_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)e.Row.FindControl("hidSubMainPromotionDetailInfoId");
+                HiddenField hidPromotionDetailId = (HiddenField)e.Row.FindControl("hidPromotionDetailId");
+                LinkButton btnSelectExchangeProduct = (LinkButton)e.Row.FindControl("btnSelectExchangeProduct");
+
+                List<SubPromotionDetailInfo> ListExchange = CheckComboProductExchange(Convert.ToInt32(hidPromotionDetailId.Value), hidSubMainPromotionDetailInfoId.Value);
+
+
+                if (ListExchange.Count > 0)
+                {
+                    btnSelectExchangeProduct.Visible = true;
+                }
+                else
+                {
+                    btnSelectExchangeProduct.Visible = false;
+                }
+
+            }
+        }
+        protected void gvSubPromotionDetailMedia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)e.Row.FindControl("hidSubMainPromotionDetailInfoId");
+                HiddenField hidPromotionDetailId = (HiddenField)e.Row.FindControl("hidPromotionDetailId");
+                LinkButton btnSelectExchangeProduct = (LinkButton)e.Row.FindControl("btnSelectExchangeProduct");
+
+                List<SubPromotionDetailInfo> ListExchange = CheckComboProductExchange(Convert.ToInt32(hidPromotionDetailId.Value), hidSubMainPromotionDetailInfoId.Value);
+
+
+                if (ListExchange.Count > 0)
+                {
+                    btnSelectExchangeProduct.Visible = true;
+                }
+                else
+                {
+                    btnSelectExchangeProduct.Visible = false;
+                }
+
+            }
+        }
+        protected void gvProductInventory_RowDatabound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblBalance = (Label)e.Row.FindControl("lblBalance");
+                Label lblCurrent = (Label)e.Row.FindControl("lblCurrent");
+
+                if (Convert.ToInt32(lblBalance.Text) <= 0)
+                {
+                    lblBalance.ForeColor = System.Drawing.Color.Red;
+                }
+
+                if (Convert.ToInt32(lblCurrent.Text) <= 0)
+                {
+                    lblCurrent.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+        }
+        protected void chkSubMainPromotionDetailAll_Changed(object sender, EventArgs e)
+        {
+            for (int i = 0; i < gvSubMainPromotionDetail.Rows.Count; i++)
+            {
+                CheckBox chkall = (CheckBox)gvSubMainPromotionDetail.HeaderRow.FindControl("chkSubMainPromotionDetailAll");
+
+                if (chkall.Checked == true)
+                {
+                    HiddenField hidCode = (HiddenField)gvSubMainPromotionDetail.Rows[i].FindControl("hidMainProductCode");
+
+                    if (Codelist != "")
+                    {
+                        Codelist += ",'" + hidCode.Value + "'";
+                    }
+                    else
+                    {
+                        Codelist += "'" + hidCode.Value + "'";
+                    }
+
+                    CheckBox chkSubMainPromotionDetail = (CheckBox)gvSubMainPromotionDetail.Rows[i].FindControl("chkSubMainPromotionDetail");
+
+                    chkSubMainPromotionDetail.Checked = true;
+                }
+                else
+                {
+                    CheckBox chkSubMainPromotionDetail = (CheckBox)gvSubMainPromotionDetail.Rows[i].FindControl("chkSubMainPromotionDetail");
+
+                    chkSubMainPromotionDetail.Checked = false;
+                }
+            }
+            hidIdList.Value = Codelist;
+        }
+
+        protected void chkSubExchangePromotionDetailAll_Changed(object sender, EventArgs e)
+        {
+            for (int i = 0; i < gvSubExchangePromotiondetailInfo.Rows.Count; i++)
+            {
+                CheckBox chkall = (CheckBox)gvSubExchangePromotiondetailInfo.HeaderRow.FindControl("chkSubExchangePromotionDetailAll");
+
+                if (chkall.Checked == true)
+                {
+                    HiddenField hidCode = (HiddenField)gvSubExchangePromotiondetailInfo.Rows[i].FindControl("hidExchangeProductCode");
+
+                    if (Codelist != "")
+                    {
+                        Codelist += ",'" + hidCode.Value + "'";
+                    }
+                    else
+                    {
+                        Codelist += "'" + hidCode.Value + "'";
+                    }
+
+                    CheckBox chkSubExchangePromotionDetail = (CheckBox)gvSubExchangePromotiondetailInfo.Rows[i].FindControl("chkSubExchangePromotionDetail");
+
+                    chkSubExchangePromotionDetail.Checked = true;
+                }
+                else
+                {
+                    CheckBox chkSubExchangePromotionDetail = (CheckBox)gvSubExchangePromotiondetailInfo.Rows[i].FindControl("chkSubExchangePromotionDetail");
+
+                    chkSubExchangePromotionDetail.Checked = false;
+                }
+            }
+            hidIdList1.Value = Codelist;
+        }
+
+        protected void txtVat_TextChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                
+                hidtab1Vat.Value = txtVat.Text;
+
+                Loadtotal(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2Vat.Value = txtVat.Text;
+
+                Loadtotal(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3Vat.Value = txtVat.Text;
+
+                Loadtotal(L_orderdata3);
+            }
+        }
+        protected void txtCustomerTaxID_TextChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                hidtab1CustomerTaxId.Value = txtCustomerTaxID.Text;
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2CustomerTaxId.Value = txtCustomerTaxID.Text;
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3CustomerTaxId.Value = txtCustomerTaxID.Text;
+            }
+        }
+        protected void txtTransport_TextChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                {
+                    double? d = Convert.ToDouble(txtTransportPrice.Text);
+                    txtTransportPrice.Text = string.Format("{0:n}", (Convert.ToDouble(d)));
+
+                    hidtab1transportprice.Value = txtTransportPrice.Text;
+                    lblTransportPrice.Text = txtTransportPrice.Text;
+                }
+                else
+                {
+                    hidtab1transportprice.Value = lblTransportPrice.Text;
+                }
+                Loadtotal(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                if (hidtab2TransportTypeCode_Selected.Value == "LOGIS01")
+                {
+                    double? d = Convert.ToDouble(txtTransportPrice.Text);
+                    txtTransportPrice.Text = string.Format("{0:n}", (Convert.ToDouble(d)));
+
+                    hidtab2transportprice.Value = txtTransportPrice.Text;
+                    lblTransportPrice.Text = txtTransportPrice.Text;
+                }
+                else
+                {
+                    hidtab2transportprice.Value = lblTransportPrice.Text;
+                }
+                Loadtotal(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                if (hidtab3TransportTypeCode_Selected.Value == "LOGIS01")
+                {
+                    double? d = Convert.ToDouble(txtTransportPrice.Text);
+                    txtTransportPrice.Text = string.Format("{0:n}", (Convert.ToDouble(d)));
+
+                    hidtab3transportprice.Value = txtTransportPrice.Text;
+                    lblTransportPrice.Text = txtTransportPrice.Text;
+                }
+                else
+                {
+                    hidtab3transportprice.Value = lblTransportPrice.Text;
+                }
+                Loadtotal(L_orderdata3);
+            }
+        }
+        protected void txtAmountgvProduct_TextChanged(object sender, EventArgs e)
+        {
+
+            PromotionDetailInfo pdInfo = new PromotionDetailInfo();
+            List<PromotionDetailInfo> lpdInfo = new List<PromotionDetailInfo>();
+            List<PromotionDetailInfo> lamount = new List<PromotionDetailInfo>();
+
+            int? amounthead = 0;
+            int? sumdefaultamountchild = 0;
+            int? sumamountchild = 0;
+            int? amountmax = 0;
+
+            for (int i = 0; i < gvProduct.Rows.Count; i++)
+            {
+                Label lblPrice = (Label)gvProduct.Rows[i].FindControl("lblPrice");
+                TextBox txtAmount = (TextBox)gvProduct.Rows[i].FindControl("txtAmount");
+                Label lblSumPrice = (Label)gvProduct.Rows[i].FindControl("lblSumPrice");
+                LinkButton lblProductCode = (LinkButton)gvProduct.Rows[i].FindControl("lblProductCode");
+                Label lblProductName = (Label)gvProduct.Rows[i].FindControl("lblProductName");
+
+                HiddenField hidFlagProSetHeader = (HiddenField)gvProduct.Rows[i].FindControl("hidFlagProSetHeader");
+                HiddenField hidDefaultAmount = (HiddenField)gvProduct.Rows[i].FindControl("hidDefaultAmount");
+                HiddenField hidAmount = (HiddenField)gvProduct.Rows[i].FindControl("hidAmount");
+                HiddenField hidSumPrice = (HiddenField)gvProduct.Rows[i].FindControl("hidSumPrice");
+                HiddenField hidLockCheckbox = (HiddenField)gvProduct.Rows[i].FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)gvProduct.Rows[i].FindControl("hidLockAmountFlag");
+                HiddenField hidGroupPrice = (HiddenField)gvProduct.Rows[i].FindControl("hidGroupPrice");
+                HiddenField hidPromotionDiscountAmount = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountAmount");
+                HiddenField hidPromotionDiscountPercent = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDiscountPercent");
+                HiddenField hidCampaignCode = (HiddenField)gvProduct.Rows[i].FindControl("hidCampaignCode");
+                HiddenField hidPromotionCode = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionCode");
+                HiddenField hidPromtionName = (HiddenField)gvProduct.Rows[i].FindControl("hidPromtionName");
+                HiddenField hidMerchantCode = (HiddenField)gvProduct.Rows[i].FindControl("hidMerchantCode");
+                HiddenField HidMerchantName = (HiddenField)gvProduct.Rows[i].FindControl("HidMerchantName");
+                HiddenField hidFreeShippingCode = (HiddenField)gvProduct.Rows[i].FindControl("hidFreeShippingCode");
+                HiddenField hidUnit = (HiddenField)gvProduct.Rows[i].FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)gvProduct.Rows[i].FindControl("hidUnitName");
+                HiddenField hidPromotionDeailInfoId = (HiddenField)gvProduct.Rows[i].FindControl("hidPromotionDeailInfoId");
+                HiddenField hidParentProductCode = (HiddenField)gvProduct.Rows[i].FindControl("hidParentProductCode");
+                HiddenField hidPrice = (HiddenField)gvProduct.Rows[i].FindControl("hidPrice");
+                HiddenField hidDiscountAmount = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountAmount");
+                HiddenField hidDiscountPercent = (HiddenField)gvProduct.Rows[i].FindControl("hidDiscountPercent");
+
+                hidSumPrice.Value = lblSumPrice.Text;
+
+                if (hidLockCheckbox.Value == "Y") // Promotion Set
+                {
+                    if (hidGroupPrice.Value != "0") // Promotion Set and Group Price (Set New Price)
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                            else
+                            {
+                                lblSumPrice.Visible = false;
+                                txtAmount.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                hidAmount.Value = txtAmount.Text;
+                                string a = lblSumPrice.Text;
+                            }
+                        }
+                        else // Promotion Set and able to edit Amount Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+
+                                amounthead = Convert.ToInt32(txtAmount.Text);
+                            }
+                            else
+                            {
+                                
+                                hidAmount.Value = txtAmount.Text;
+
+                                sumdefaultamountchild += Convert.ToInt32(hidDefaultAmount.Value);
+                                sumamountchild += Convert.ToInt32(txtAmount.Text);
+                            }
+                        }
+                    }
+                    else // Promotion Set Calculate from Product Price
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                            else
+                            {
+                                txtAmount.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                        }
+                        else // Able to edit Amount Case
+                        {
+                            // Bind Data from TextChange to prepare calculate
+                            // Add PromotionSet Head
+                            if (hidFlagProSetHeader.Value == "Y")
+                            {
+                                pdInfo = new PromotionDetailInfo();
+
+                                pdInfo.CampaignCode = hidCampaignCode.Value;
+                                pdInfo.PromotionCode = hidPromotionCode.Value;
+                                pdInfo.PromotionName = hidPromtionName.Value;
+                                pdInfo.ProductCode = lblProductCode.Text;
+                                pdInfo.ProductName = lblProductName.Text;
+                                pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                                pdInfo.Unit = hidUnit.Value;
+                                pdInfo.UnitName = hidUnitName.Value;
+                                pdInfo.MerchantCode = hidMerchantCode.Value;
+                                pdInfo.MerchantName = HidMerchantName.Value;
+                                pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                                pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                                pdInfo.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToDouble(hidDiscountAmount.Value) : 0;
+                                pdInfo.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                                pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                                pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                                pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                                pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                                pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                                pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                                pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                                pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                                pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                                pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                                lpdInfo.Add(pdInfo);
+                            }
+                            else // Add Child
+                            {
+                                pdInfo = new PromotionDetailInfo();
+
+                                pdInfo.CampaignCode = hidCampaignCode.Value;
+                                pdInfo.PromotionCode = hidPromotionCode.Value;
+                                pdInfo.PromotionName = hidPromtionName.Value;
+                                pdInfo.ProductCode = lblProductCode.Text;
+                                pdInfo.ProductName = lblProductName.Text;
+                                pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                                pdInfo.Unit = hidUnit.Value;
+                                pdInfo.UnitName = hidUnitName.Value;
+                                pdInfo.MerchantCode = hidMerchantCode.Value;
+                                pdInfo.MerchantName = HidMerchantName.Value;
+                                pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                                pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                                pdInfo.DiscountAmount = Convert.ToDouble(hidDiscountAmount.Value);
+                                pdInfo.DiscountPercent = Convert.ToInt32(hidDiscountPercent.Value);
+                                pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                                pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                                pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                                pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                                pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                                pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                                pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+
+                                lpdInfo.Add(pdInfo);
+                            }
+                        }
+                    }
+                }
+                else // Promotion Product Standard
+                {
+                    hidAmount.Value = txtAmount.Text;
+                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                }
+
+                // Re-Binding for check Promotion Set with change amount
+                if (hidLockCheckbox.Value == "Y" && hidLockAmountFlag.Value == "N")
+                {
+                    if (hidFlagProSetHeader.Value == "Y")
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.CampaignCode = hidCampaignCode.Value;
+                        pdInfo.PromotionCode = hidPromotionCode.Value;
+                        pdInfo.PromotionName = hidPromtionName.Value;
+                        pdInfo.ProductCode = lblProductCode.Text;
+                        pdInfo.ProductName = lblProductName.Text;
+                        pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        pdInfo.Unit = hidUnit.Value;
+                        pdInfo.UnitName = hidUnitName.Value;
+                        pdInfo.MerchantCode = hidMerchantCode.Value;
+                        pdInfo.MerchantName = HidMerchantName.Value;
+                        pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                        pdInfo.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToDouble(hidDiscountAmount.Value) : 0;
+                        pdInfo.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        pdInfo.LockCheckbox = hidLockCheckbox.Value; //Promotion Set Type
+                        pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                        pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                        pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                        pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                        pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                        pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                        pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                        pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                        lamount.Add(pdInfo);
+                    }
+                    else // Add Child
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.CampaignCode = hidCampaignCode.Value;
+                        pdInfo.PromotionCode = hidPromotionCode.Value;
+                        pdInfo.PromotionName = hidPromtionName.Value;
+                        pdInfo.ProductCode = lblProductCode.Text;
+                        pdInfo.ProductName = lblProductName.Text;
+                        pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        pdInfo.Unit = hidUnit.Value;
+                        pdInfo.UnitName = hidUnitName.Value;
+                        pdInfo.MerchantCode = hidMerchantCode.Value;
+                        pdInfo.MerchantName = HidMerchantName.Value;
+                        pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                        pdInfo.DiscountAmount = Convert.ToDouble(hidDiscountAmount.Value);
+                        pdInfo.DiscountPercent = Convert.ToInt32(hidDiscountPercent.Value);
+                        pdInfo.LockCheckbox = hidLockCheckbox.Value; //Promotion Set Type
+                        pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                        pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                        pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                        pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                        pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                        pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                        pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                        pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                        lamount.Add(pdInfo);
+                    }
+                }
+            }
+
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+            HiddenField hidProductCode = (HiddenField)currentRow.FindControl("hidProductCode");
+            HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+            HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+            HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+            HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+            HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+
+            amountmax = amounthead * sumdefaultamountchild;
+            int? sumamountother = 0;
+            Boolean flagamountover = true;
+
+            if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N")
+            {
+                foreach (var lamountother in lamount)
+                {
+                    if (lamountother.FlagProSetHeader != "Y")
+                    {
+                        if (lamountother.CampaignCode == hidCampaignCoderow.Value && lamountother.PromotionCode == hidPromotionCoderow.Value && lamountother.ProductCode == hidProductCode.Value)
+                        {
+
+                        }
+                        else
+                        {
+                            sumamountother += lamountother.Amount;
+                        }
+
+                    }
+                }
+
+                foreach (var lamountother1 in lamount)
+                {
+                    if (lamountother1.FlagProSetHeader != "Y")
+                    {
+                        if (lamountother1.CampaignCode == hidCampaignCoderow.Value && lamountother1.PromotionCode == hidPromotionCoderow.Value && lamountother1.ProductCode == hidProductCode.Value)
+                        {
+                            if (amountmax >= sumamountchild)
+                            {
+                                flagamountover = (!flagamountover) ? false : true;
+                            }
+                            else
+                            {
+                                lamountother1.Amount = amountmax - sumamountother;
+                                flagamountover = false;
+                            }
+                        }
+                    }
+                }
+
+                if (flagamountover == false)
+                {
+                    gvProduct.DataSource = lamount;
+                    gvProduct.DataBind();
+                }
+            }
+            // ReCalculate
+            if (lpdInfo.Count > 0)
+            {
+                Double? sumprice = 0;
+
+                foreach (var lsetV in lpdInfo.ToList())
+                {
+                    if (lsetV.FlagProSetHeader != "Y")
+                    {
+                        sumprice += lsetV.Price * lsetV.Amount;
+                    }
+                }
+                foreach (var lsetV in lpdInfo.ToList())
+                {
+                    if (lsetV.FlagProSetHeader == "Y")
+                    {
+                        lsetV.Price = sumprice;
+                        lsetV.PromotionDiscountPercent = (lsetV.PromotionDiscountPercent != null) ? lsetV.PromotionDiscountPercent : 0;
+                        lsetV.SumPrice = (sumprice * lsetV.Amount) - (lsetV.Amount * lsetV.PromotionDiscountAmount) - (lsetV.Amount * (sumprice * lsetV.PromotionDiscountPercent / 100));
+                    }
+                }
+                gvProduct.DataSource = lpdInfo;
+                gvProduct.DataBind();
+            }
+        }
+        protected void txtAmountgvProductMedia_TextChanged(object sender, EventArgs e)
+        {
+            PromotionDetailInfo pdInfo = new PromotionDetailInfo();
+            List<PromotionDetailInfo> lpdInfo = new List<PromotionDetailInfo>();
+            List<PromotionDetailInfo> lamount = new List<PromotionDetailInfo>();
+
+            int? amounthead = 0;
+            int? sumdefaultamountchild = 0;
+            int? sumamountchild = 0;
+            int? amountmax = 0;
+
+            for (int i = 0; i < gvProductMedia.Rows.Count; i++)
+            {
+                Label lblPrice = (Label)gvProductMedia.Rows[i].FindControl("lblPrice");
+                TextBox txtAmount = (TextBox)gvProductMedia.Rows[i].FindControl("txtAmount");
+                Label lblSumPrice = (Label)gvProductMedia.Rows[i].FindControl("lblSumPrice");
+                LinkButton lblProductCode = (LinkButton)gvProductMedia.Rows[i].FindControl("lblProductCode");
+                Label lblProductName = (Label)gvProductMedia.Rows[i].FindControl("lblProductName");
+
+                HiddenField hidFlagProSetHeader = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFlagProSetHeader");
+                HiddenField hidDefaultAmount = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDefaultAmount");
+                HiddenField hidAmount = (HiddenField)gvProductMedia.Rows[i].FindControl("hidAmount");
+                HiddenField hidSumPrice = (HiddenField)gvProductMedia.Rows[i].FindControl("hidSumPrice");
+                HiddenField hidLockCheckbox = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)gvProductMedia.Rows[i].FindControl("hidLockAmountFlag");
+                HiddenField hidGroupPrice = (HiddenField)gvProductMedia.Rows[i].FindControl("hidGroupPrice");
+                HiddenField hidPromotionDiscountAmount = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountAmount");
+                HiddenField hidPromotionDiscountPercent = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDiscountPercent");
+                HiddenField hidCampaignCode = (HiddenField)gvProductMedia.Rows[i].FindControl("hidCampaignCode");
+                HiddenField hidPromotionCode = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionCode");
+                HiddenField hidPromtionName = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromtionName");
+                HiddenField hidMerchantCode = (HiddenField)gvProductMedia.Rows[i].FindControl("hidMerchantCode");
+                HiddenField HidMerchantName = (HiddenField)gvProductMedia.Rows[i].FindControl("HidMerchantName");
+                HiddenField hidFreeShippingCode = (HiddenField)gvProductMedia.Rows[i].FindControl("hidFreeShippingCode");
+                HiddenField hidUnit = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)gvProductMedia.Rows[i].FindControl("hidUnitName");
+                HiddenField hidPromotionDeailInfoId = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPromotionDeailInfoId");
+                HiddenField hidParentProductCode = (HiddenField)gvProductMedia.Rows[i].FindControl("hidParentProductCode");
+                HiddenField hidPrice = (HiddenField)gvProductMedia.Rows[i].FindControl("hidPrice");
+                HiddenField hidDiscountAmount = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountAmount");
+                HiddenField hidDiscountPercent = (HiddenField)gvProductMedia.Rows[i].FindControl("hidDiscountPercent");
+
+                hidSumPrice.Value = lblSumPrice.Text;
+
+                if (hidLockCheckbox.Value == "Y") // Promotion Set
+                {
+                    if (hidGroupPrice.Value != "0") // Promotion Set and Group Price (Set New Price)
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                            else
+                            {
+                                lblSumPrice.Visible = false;
+                                txtAmount.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                hidAmount.Value = txtAmount.Text;
+                                string a = lblSumPrice.Text;
+                            }
+                        }
+                        else // Promotion Set and able to edit Amount Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+
+                                amounthead = Convert.ToInt32(txtAmount.Text);
+                            }
+                            else
+                            {
+                                
+                                hidAmount.Value = txtAmount.Text;
+
+                                sumdefaultamountchild += Convert.ToInt32(hidDefaultAmount.Value);
+                                sumamountchild += Convert.ToInt32(txtAmount.Text);
+                            }
+                        }
+                    }
+                    else // Promotion Set Calculate from Product Price
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                            else
+                            {
+                                txtAmount.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                            }
+                        }
+                        else // Able to edit Amount Case
+                        {
+                            // Bind Data from TextChange to prepare calculate
+                            // Add PromotionSet Head
+                            if (hidFlagProSetHeader.Value == "Y")
+                            {
+                                pdInfo = new PromotionDetailInfo();
+
+                                pdInfo.CampaignCode = hidCampaignCode.Value;
+                                pdInfo.PromotionCode = hidPromotionCode.Value;
+                                pdInfo.PromotionName = hidPromtionName.Value;
+                                pdInfo.ProductCode = lblProductCode.Text;
+                                pdInfo.ProductName = lblProductName.Text;
+                                pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                                pdInfo.Unit = hidUnit.Value;
+                                pdInfo.UnitName = hidUnitName.Value;
+                                pdInfo.MerchantCode = hidMerchantCode.Value;
+                                pdInfo.MerchantName = HidMerchantName.Value;
+                                pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                                pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                                pdInfo.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToDouble(hidDiscountAmount.Value) : 0;
+                                pdInfo.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                                pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                                pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                                pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                                pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                                pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                                pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                                pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                                pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                                pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                                pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                                lpdInfo.Add(pdInfo);
+                            }
+                            else // Add Child
+                            {
+                                pdInfo = new PromotionDetailInfo();
+
+                                pdInfo.CampaignCode = hidCampaignCode.Value;
+                                pdInfo.PromotionCode = hidPromotionCode.Value;
+                                pdInfo.PromotionName = hidPromtionName.Value;
+                                pdInfo.ProductCode = lblProductCode.Text;
+                                pdInfo.ProductName = lblProductName.Text;
+                                pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                                pdInfo.Unit = hidUnit.Value;
+                                pdInfo.UnitName = hidUnitName.Value;
+                                pdInfo.MerchantCode = hidMerchantCode.Value;
+                                pdInfo.MerchantName = HidMerchantName.Value;
+                                pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                                pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                                pdInfo.DiscountAmount = Convert.ToDouble(hidDiscountAmount.Value);
+                                pdInfo.DiscountPercent = Convert.ToInt32(hidDiscountPercent.Value);
+                                pdInfo.LockCheckbox = "Y"; //Promotion Set Type
+                                pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                                pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                                pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                                pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                                pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                                pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+
+                                lpdInfo.Add(pdInfo);
+                            }
+                        }
+                    }
+                }
+                else // Promotion Product Standard
+                {
+                    hidAmount.Value = txtAmount.Text;
+                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)));
+                }
+
+                // Re-Binding for check Promotion Set with change amount
+                if (hidLockCheckbox.Value == "Y" && hidLockAmountFlag.Value == "N")
+                {
+                    if (hidFlagProSetHeader.Value == "Y")
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.CampaignCode = hidCampaignCode.Value;
+                        pdInfo.PromotionCode = hidPromotionCode.Value;
+                        pdInfo.PromotionName = hidPromtionName.Value;
+                        pdInfo.ProductCode = lblProductCode.Text;
+                        pdInfo.ProductName = lblProductName.Text;
+                        pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        pdInfo.Unit = hidUnit.Value;
+                        pdInfo.UnitName = hidUnitName.Value;
+                        pdInfo.MerchantCode = hidMerchantCode.Value;
+                        pdInfo.MerchantName = HidMerchantName.Value;
+                        pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                        pdInfo.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToDouble(hidDiscountAmount.Value) : 0;
+                        pdInfo.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        pdInfo.LockCheckbox = hidLockCheckbox.Value; //Promotion Set Type
+                        pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                        pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                        pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                        pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                        pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                        pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                        pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                        pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                        lamount.Add(pdInfo);
+                    }
+                    else // Add Child
+                    {
+                        pdInfo = new PromotionDetailInfo();
+
+                        pdInfo.CampaignCode = hidCampaignCode.Value;
+                        pdInfo.PromotionCode = hidPromotionCode.Value;
+                        pdInfo.PromotionName = hidPromtionName.Value;
+                        pdInfo.ProductCode = lblProductCode.Text;
+                        pdInfo.ProductName = lblProductName.Text;
+                        pdInfo.GroupPrice = (hidGroupPrice.Value != null || hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        pdInfo.Unit = hidUnit.Value;
+                        pdInfo.UnitName = hidUnitName.Value;
+                        pdInfo.MerchantCode = hidMerchantCode.Value;
+                        pdInfo.MerchantName = HidMerchantName.Value;
+                        pdInfo.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        pdInfo.PromotionDetailInfoId = Convert.ToInt32(hidPromotionDeailInfoId.Value);
+                        pdInfo.DiscountAmount = Convert.ToDouble(hidDiscountAmount.Value);
+                        pdInfo.DiscountPercent = Convert.ToInt32(hidDiscountPercent.Value);
+                        pdInfo.LockCheckbox = hidLockCheckbox.Value; //Promotion Set Type
+                        pdInfo.LockAmountFlag = hidLockAmountFlag.Value;
+                        pdInfo.FreeShippingCode = hidFreeShippingCode.Value;
+                        pdInfo.ParentProductCode = hidParentProductCode.Value; // Hard Value of Set Header for use function GetTextPrice at gvProductView (Hide Show Price and SumPrice
+                        pdInfo.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                        pdInfo.Amount = (txtAmount.Text != "") ? Convert.ToInt32(txtAmount.Text) : 0;
+                        pdInfo.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : 0;
+                        pdInfo.SumPrice = Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text);
+                        pdInfo.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        pdInfo.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+
+                        lamount.Add(pdInfo);
+                    }
+                }
+            }
+
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+            HiddenField hidProductCode = (HiddenField)currentRow.FindControl("hidProductCode");
+            HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+            HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+            HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+            HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+            HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+
+            amountmax = amounthead * sumdefaultamountchild;
+            int? sumamountother = 0;
+            Boolean flagamountover = true;
+
+            if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N")
+            {
+                foreach (var lamountother in lamount)
+                {
+                    if (lamountother.FlagProSetHeader != "Y")
+                    {
+                        if (lamountother.CampaignCode == hidCampaignCoderow.Value && lamountother.PromotionCode == hidPromotionCoderow.Value && lamountother.ProductCode == hidProductCode.Value)
+                        {
+
+                        }
+                        else
+                        {
+                            sumamountother += lamountother.Amount;
+                        }
+
+                    }
+                }
+
+                foreach (var lamountother1 in lamount)
+                {
+                    if (lamountother1.FlagProSetHeader != "Y")
+                    {
+                        if (lamountother1.CampaignCode == hidCampaignCoderow.Value && lamountother1.PromotionCode == hidPromotionCoderow.Value && lamountother1.ProductCode == hidProductCode.Value)
+                        {
+                            if (amountmax >= sumamountchild)
+                            {
+                                flagamountover = (!flagamountover) ? false : true;
+                            }
+                            else
+                            {
+                                lamountother1.Amount = amountmax - sumamountother;
+                                flagamountover = false;
+                            }
+                        }
+                    }
+                }
+
+                if (flagamountover == false)
+                {
+                    gvProductMedia.DataSource = lamount;
+                    gvProductMedia.DataBind();
+                }
+            }
+            // ReCalculate
+            if (lpdInfo.Count > 0)
+            {
+                Double? sumprice = 0;
+
+                foreach (var lsetV in lpdInfo.ToList())
+                {
+                    if (lsetV.FlagProSetHeader != "Y")
+                    {
+                        sumprice += lsetV.Price * lsetV.Amount;
+                    }
+                }
+                foreach (var lsetV in lpdInfo.ToList())
+                {
+                    if (lsetV.FlagProSetHeader == "Y")
+                    {
+                        lsetV.Price = sumprice;
+                        lsetV.PromotionDiscountPercent = (lsetV.PromotionDiscountPercent != null) ? lsetV.PromotionDiscountPercent : 0;
+                        lsetV.SumPrice = (sumprice * lsetV.Amount) - (lsetV.Amount * lsetV.PromotionDiscountAmount) - (lsetV.Amount * (sumprice * lsetV.PromotionDiscountPercent / 100));
+                    }
+                }
+                gvProductMedia.DataSource = lpdInfo;
+                gvProductMedia.DataBind();
+            }
+        }
+        protected void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < gvProduct.Rows.Count; i++)
+            {
+                CheckBox chkProduct = (CheckBox)gvProduct.Rows[i].FindControl("chkProduct");
+                Label lblPrice = (Label)gvProduct.Rows[i].FindControl("lblPrice");
+                TextBox txtAmount = (TextBox)gvProduct.Rows[i].FindControl("txtAmount");
+                Label lblSumPrice = (Label)gvProduct.Rows[i].FindControl("lblSumPrice");
+
+                lblSumPrice.Text = (Convert.ToInt32(lblPrice.Text) * Convert.ToInt32(txtAmount.Text)).ToString();
+            }
+        }
+        protected void txtAmountView_TextChanged(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lorderdataProductStd = new List<OrderData>();
+
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+            HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+            HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+            HiddenField hidPromotionTypeCoderow = (HiddenField)currentRow.FindControl("hidPromotionTypeCode");
+            HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+            HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+            HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+            HiddenField hidParentPromotionCoderow = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+            HiddenField hidGroupPricerow = (HiddenField)currentRow.FindControl("hidGroupPrice");
+            Label lblProductCoderow = (Label)currentRow.FindControl("lblProductCode");
+            HiddenField hidPricerow = (HiddenField)currentRow.FindControl("hidPrice");
+
+            for (int i = 0; i < gvProductView.Rows.Count; i++)
+            {
+                HiddenField hidPrice = (HiddenField)gvProductView.Rows[i].FindControl("hidPrice");
+                HiddenField hidProductPrice = (HiddenField)gvProductView.Rows[i].FindControl("hidProductPrice");
+                TextBox txtAmount = (TextBox)gvProductView.Rows[i].FindControl("txtAmount");
+                Label lblSumPrice = (Label)gvProductView.Rows[i].FindControl("lblSumPrice");
+                HiddenField hidFlagProSetHeader = (HiddenField)gvProductView.Rows[i].FindControl("hidFlagProSetHeader");
+                HiddenField hidDefaultAmount = (HiddenField)gvProductView.Rows[i].FindControl("hidDefaultAmount");
+                HiddenField hidAmount = (HiddenField)gvProductView.Rows[i].FindControl("hidAmount");
+                HiddenField hidSumPrice = (HiddenField)gvProductView.Rows[i].FindControl("hidSumPrice");
+                HiddenField hidLockCheckbox = (HiddenField)gvProductView.Rows[i].FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)gvProductView.Rows[i].FindControl("hidLockAmountFlag");
+                HiddenField hidPromotionCode = (HiddenField)gvProductView.Rows[i].FindControl("hidPromotionCode");
+                HiddenField hidCampaignCode = (HiddenField)gvProductView.Rows[i].FindControl("hidCampaignCode");
+                HiddenField hidPromotionDeailInfoId = (HiddenField)gvProductView.Rows[i].FindControl("hidPromotionDeailInfoId");
+                Label lblProductCode = (Label)gvProductView.Rows[i].FindControl("lblProductCode");
+                Label lblProductName = (Label)gvProductView.Rows[i].FindControl("lblProductName");
+                HiddenField hidUnit = (HiddenField)gvProductView.Rows[i].FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)gvProductView.Rows[i].FindControl("hidUnitName");
+                HiddenField hidDiscountAmount = (HiddenField)gvProductView.Rows[i].FindControl("hidDiscountAmount");
+                HiddenField hidDiscountPercent = (HiddenField)gvProductView.Rows[i].FindControl("hidDiscountPercent");
+                HiddenField hidMerchantCode = (HiddenField)gvProductView.Rows[i].FindControl("hidMerchantCode");
+                HiddenField HidMerchantName = (HiddenField)gvProductView.Rows[i].FindControl("HidMerchantName");
+                HiddenField hidFreeShippingCode = (HiddenField)gvProductView.Rows[i].FindControl("hidFreeShippingCode");
+                HiddenField hidRunning = (HiddenField)gvProductView.Rows[i].FindControl("hidRunning");
+                HiddenField hidParentPromotionCode = (HiddenField)gvProductView.Rows[i].FindControl("hidParentPromotionCode");
+                HiddenField hidParentProductCode = (HiddenField)gvProductView.Rows[i].FindControl("hidParentProductCode");
+                HiddenField hidMOQFlag = (HiddenField)gvProductView.Rows[i].FindControl("hidMOQFlag");
+                HiddenField hidProhMinQtyHeaderFlag = (HiddenField)gvProductView.Rows[i].FindControl("hidProhMinQtyHeaderFlag");
+                HiddenField hidMOQNewHeaderFlag = (HiddenField)gvProductView.Rows[i].FindControl("hidMOQNewHeaderFlag");
+                HiddenField hidMinimumQty = (HiddenField)gvProductView.Rows[i].FindControl("hidMinimumQty");
+                HiddenField hidProductDiscountPercent = (HiddenField)gvProductView.Rows[i].FindControl("hidProductDiscountPercent");
+                HiddenField hidProductDiscountAmount = (HiddenField)gvProductView.Rows[i].FindControl("hidProductDiscountAmount");
+                HiddenField hidPromotionDiscountPercent = (HiddenField)gvProductView.Rows[i].FindControl("hidPromotionDiscountPercent");
+                HiddenField hidPromotionDiscountAmount = (HiddenField)gvProductView.Rows[i].FindControl("hidPromotionDiscountAmount");
+                HiddenField hidPromotionTypeCode = (HiddenField)gvProductView.Rows[i].FindControl("hidPromotionTypeCode");
+                HiddenField hidGroupPrice = (HiddenField)gvProductView.Rows[i].FindControl("hidGroupPrice");
+                HiddenField hidCamcatCode_nud = (HiddenField)gvProductView.Rows[i].FindControl("hidCamcatCode_nud");
+                HiddenField hidChannelCode_nud = (HiddenField)gvProductView.Rows[i].FindControl("hidChannelCode_nud");
+                HiddenField hidChannelName_nud = (HiddenField)gvProductView.Rows[i].FindControl("hidChannelName_nud");
+                HiddenField hidMediaplanFlag_nud = (HiddenField)gvProductView.Rows[i].FindControl("hidMediaplanFlag_nud");
+                hidAmount.Value = txtAmount.Text;
+                hidPrice.Value = (hidPrice.Value != "") ? hidPrice.Value : "0";
+                lblSumPrice.Text = ((Convert.ToDouble(hidPrice.Value) - (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(hidDiscountPercent.Value) / 100) - Convert.ToDouble(hidDiscountAmount.Value)) * Convert.ToInt32(txtAmount.Text)).ToString();
+                hidSumPrice.Value = lblSumPrice.Text;
+
+                if (hidLockCheckbox.Value == "N") // Promotion Product Standard
+                {
+                    odata = new OrderData();
+
+                    odata.FlagCombo = hidFlagComboset_Selected.Value;
+                    odata.ProductCode = lblProductCode.Text;
+                    odata.ProductName = lblProductName.Text;
+                    odata.Unit = hidUnit.Value;
+                    odata.UnitName = hidUnitName.Value;
+                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                    odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToInt32(hidGroupPrice.Value) : 0;
+                    odata.Amount = Convert.ToInt32(txtAmount.Text);
+                    odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                    odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                    odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                    odata.PromotionCode = hidPromotionCode.Value;
+                    odata.MerchantName = HidMerchantName.Value;
+                    odata.FreeShipping = hidFreeShippingCode.Value;
+                    odata.LockAmountFlag = hidLockAmountFlag.Value;
+                    odata.LockCheckbox = hidLockCheckbox.Value;
+                    odata.ProhMinQtyHeaderFlag = "N";
+                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                    odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                    odata.CampaignCode = hidCampaignCode.Value;
+                    odata.runningNo = Convert.ToInt32(hidRunning.Value);
+                    odata.MOQFlag = hidMOQFlag.Value;
+                    odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                    odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                    odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                    odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                    odata.ParentProductCode = hidParentProductCode.Value;
+                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                    odata.CamcatCode = hidCamcatCode_nud.Value;
+                    odata.ChannelCode = hidChannelCode_nud.Value;
+                    odata.ChannelName = hidChannelName_nud.Value;
+                    odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                    lorderdataProductStd.Add(odata);
+                }
+                else if (hidLockCheckbox.Value == "Y")
+                {
+                    if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                    {
+                        odata = new OrderData();
+
+                        if (hidProhMinQtyHeaderFlag.Value == "") // Promotion Normal Set (ไม่ใช่ MOQ และจับกลุ่ม)
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidLockAmountFlag.Value = "N";
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            }
+                            else
+                            {
+                                if (hidGroupPrice.Value != "0")
+                                {
+                                    lblSumPrice.Visible = false;
+                                    txtAmount.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                    hidAmount.Value = txtAmount.Text;
+                                    string a = lblSumPrice.Text;
+                                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                                    odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                    odata.SumPrice = 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    
+                                    txtAmount.Text = hidAmountChange.Value;
+                                    hidAmount.Value = txtAmount.Text;
+                                    string a = lblSumPrice.Text;
+                                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                    
+                                    odata.SumPrice = 0;
+                                }
+                            }
+                        }
+                        else // Promotion Set MOQ และจับกลุ่ม
+                        {
+                            if (hidMOQNewHeaderFlag.Value == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            }
+                            else
+                            {
+                                lblSumPrice.Visible = false;
+                                hidAmount.Value = txtAmount.Text;
+                                string a = lblSumPrice.Text;
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = 0;
+                            }
+                        }
+
+                        odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                        odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                        odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.CamcatCode = hidCamcatCode_nud.Value;
+                        odata.ChannelCode = hidChannelCode_nud.Value;
+                        odata.ChannelName = hidChannelName_nud.Value;
+                        odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                        lorderdataProductStd.Add(odata);
+                    }
+                    else // Able to edit Amount Case
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            hidLockAmountFlag.Value = "N";
+                            lblSumPrice.Visible = true;
+                            hidPromotionSetAmount.Value = txtAmount.Text;
+                            hidAmountChange.Value = hidPromotionSetAmount.Value;
+                            hidAmount.Value = txtAmount.Text;
+                            lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                        }
+                        else
+                        {
+                            
+                            hidAmount.Value = txtAmount.Text;
+                        }
+
+                        odata = new OrderData();
+
+                        odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        odata.Amount = Convert.ToInt32(txtAmount.Text);
+                        odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                        odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                        odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.CamcatCode = hidCamcatCode_nud.Value;
+                        odata.ChannelCode = hidChannelCode_nud.Value;
+                        odata.ChannelName = hidChannelName_nud.Value;
+                        odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                        lorderdataProductStd.Add(odata);
+                    }
+                }
+            }
+
+            // Check Amount of Promotion Set New Price and able edit amount (LockAmountFlag == "N")
+            if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value != "0")
+            {
+                // Check L_orderdataView for compare with new txtamount
+                OrderData ordata = new OrderData();
+                List<OrderData> lordata = new List<OrderData>();
+
+                foreach (var lov in L_orderdataView)
+                {
+                    if (lov.CampaignCode == hidCampaignCoderow.Value && lov.PromotionCode == hidPromotionCoderow.Value && lov.LockCheckbox == hidLockCheckboxrow.Value && lov.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && lov.LockAmountFlag == "N")
+                        {
+                            if (lov.FlagProSetHeader == "Y")
+                            {
+                                ordata = new OrderData();
+
+                                ordata.ProductCode = lov.ProductCode;
+                                ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                ordata.Amount = lov.Amount;
+
+                                lordata.Add(ordata); // List for redata of amount L_orderdataView
+                            }
+                            else
+                            {
+                                ordata = new OrderData();
+
+                                ordata.ProductCode = lov.ProductCode;
+                                ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                ordata.Amount = lov.Amount;
+
+                                lordata.Add(ordata); // List for redata of amount L_orderdataView
+                            }
+                        }
+                    }
+                }
+
+                int? amounthead = 0;
+                int? amountchild = 0;
+                int? sumdefaultamount = 0;
+                int? amountmax = 0;
+
+                foreach (var lview in lorderdataProductStd)
+                {
+                    if (lview.CampaignCode == hidCampaignCoderow.Value && lview.PromotionCode == hidPromotionCoderow.Value && lview.LockCheckbox == hidLockCheckboxrow.Value && lview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && lview.LockAmountFlag == "N")
+                        {
+                            if (lview.FlagProSetHeader == "Y")
+                            {
+                                amounthead = lview.Amount;
+                            }
+                            else
+                            {
+                                amountchild += lview.Amount;
+                                sumdefaultamount += lview.DefaultAmount;
+                            }
+                        }
+                    }
+                }
+
+                amountmax = amounthead * sumdefaultamount;
+
+                foreach (var llview in lorderdataProductStd)
+                {
+                    if (llview.CampaignCode == hidCampaignCoderow.Value && llview.PromotionCode == hidPromotionCoderow.Value && llview.LockCheckbox == hidLockCheckboxrow.Value && llview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && llview.LockAmountFlag == "N")
+                        {
+                            if (amountmax >= amountchild)
+                            {
+
+                            }
+                            else
+                            {
+                                foreach (var lv in lordata)
+                                {
+                                    if (llview.FlagProSetHeader == lv.FlagProSetHeader && llview.ProductCode == lv.ProductCode)
+                                    {
+                                        llview.Amount = lv.Amount;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            else if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value == "0")
+            {
+                double? sumchildprice = 0;
+                double? sumchildlockamount = 0;
+                foreach (var loset in lorderdataProductStd)
+                {
+                    if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (loset.FlagProSetHeader != "Y")
+                        {
+                            if (loset.LockCheckbox == "Y" && loset.LockAmountFlag == "Y" && loset.GroupPrice == 0)
+                            {
+                                sumchildprice += loset.Price;
+                            }
+                            else
+                            {
+                                loset.SumPrice = loset.Price * loset.Amount;
+                                sumchildprice += loset.SumPrice;
+                            }
+                        }
+                    }
+                }
+                foreach (var loset in lorderdataProductStd)
+                {
+                    if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (loset.FlagProSetHeader == "Y")
+                        {
+                            if (loset.LockCheckbox == "Y" && loset.GroupPrice == 0)
+                            {
+                                sumchildlockamount = sumchildprice - ((sumchildprice * loset.PromotionDiscountPercent) / 100) - loset.PromotionDiscountAmount;
+                                loset.SumPrice = sumchildlockamount * loset.Amount;
+                            }
+                            else
+                            {
+                                loset.SumPrice = sumchildprice * loset.Amount;
+                            }
+                        }
+                    }
+                }
+            }
+
+            L_orderdataView = lorderdataProductStd;
+            CheckMOQ(L_orderdataView);
+            if (hidPromotionTypeCoderow.Value == "09")
+            {
+                CheckMOQforAddNew(L_orderdataView, lblProductCoderow.Text, hidPricerow.Value, hidCampaignCoderow.Value, hidPromotionCoderow.Value);
+            }
+            LoadgvProductView(lorderdataProductStd);
+        }
+        protected void txtAmountViewMedia_TextChanged(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lorderdataProductStd = new List<OrderData>();
+
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+            HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+            HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+            HiddenField hidPromotionTypeCoderow = (HiddenField)currentRow.FindControl("hidPromotionTypeCode");
+            HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+            HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+            HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+            HiddenField hidParentPromotionCoderow = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+            HiddenField hidGroupPricerow = (HiddenField)currentRow.FindControl("hidGroupPrice");
+            Label lblProductCoderow = (Label)currentRow.FindControl("lblProductCode");
+            HiddenField hidPricerow = (HiddenField)currentRow.FindControl("hidPrice");
+
+            for (int i = 0; i < gvProductViewMedia.Rows.Count; i++)
+            {
+                HiddenField hidPrice = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPrice");
+                HiddenField hidProductPrice = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidProductPrice");
+                TextBox txtAmount = (TextBox)gvProductViewMedia.Rows[i].FindControl("txtAmount");
+                Label lblSumPrice = (Label)gvProductViewMedia.Rows[i].FindControl("lblSumPrice");
+                HiddenField hidFlagProSetHeader = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidFlagProSetHeader");
+                HiddenField hidDefaultAmount = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidDefaultAmount");
+                HiddenField hidAmount = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidAmount");
+                HiddenField hidSumPrice = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidSumPrice");
+                HiddenField hidLockCheckbox = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlag = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidLockAmountFlag");
+                HiddenField hidPromotionCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPromotionCode");
+                HiddenField hidCampaignCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidCampaignCode");
+                HiddenField hidPromotionDeailInfoId = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPromotionDeailInfoId");
+                Label lblProductCode = (Label)gvProductViewMedia.Rows[i].FindControl("lblProductCode");
+                Label lblProductName = (Label)gvProductViewMedia.Rows[i].FindControl("lblProductName");
+                HiddenField hidUnit = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidUnitName");
+                HiddenField hidDiscountAmount = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidDiscountAmount");
+                HiddenField hidDiscountPercent = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidDiscountPercent");
+                HiddenField hidMerchantCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidMerchantCode");
+                HiddenField HidMerchantName = (HiddenField)gvProductViewMedia.Rows[i].FindControl("HidMerchantName");
+                HiddenField hidFreeShippingCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidFreeShippingCode");
+                HiddenField hidRunning = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidRunning");
+                HiddenField hidParentPromotionCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidParentPromotionCode");
+                HiddenField hidParentProductCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidParentProductCode");
+                HiddenField hidMOQFlag = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidMOQFlag");
+                HiddenField hidProhMinQtyHeaderFlag = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidProhMinQtyHeaderFlag");
+                HiddenField hidMOQNewHeaderFlag = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidMOQNewHeaderFlag");
+                HiddenField hidMinimumQty = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidMinimumQty");
+                HiddenField hidProductDiscountPercent = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidProductDiscountPercent");
+                HiddenField hidProductDiscountAmount = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidProductDiscountAmount");
+                HiddenField hidPromotionDiscountPercent = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPromotionDiscountPercent");
+                HiddenField hidPromotionDiscountAmount = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPromotionDiscountAmount");
+                HiddenField hidPromotionTypeCode = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidPromotionTypeCode");
+                HiddenField hidGroupPrice = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidGroupPrice");
+                HiddenField hidCamcatCode_nud = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidCamcatCode_nud");
+                HiddenField hidChannelCode_nud = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidChannelCode_nud");
+                HiddenField hidChannelName_nud = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidChannelName_nud");
+                HiddenField hidMediaplanFlag_nud = (HiddenField)gvProductViewMedia.Rows[i].FindControl("hidMediaplanFlag_nud");
+                hidAmount.Value = txtAmount.Text;
+                hidPrice.Value = (hidPrice.Value != "") ? hidPrice.Value : "0";
+                lblSumPrice.Text = ((Convert.ToDouble(hidPrice.Value) - (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(hidDiscountPercent.Value) / 100) - Convert.ToDouble(hidDiscountAmount.Value)) * Convert.ToInt32(txtAmount.Text)).ToString();
+                hidSumPrice.Value = lblSumPrice.Text;
+
+                if (hidLockCheckbox.Value == "N") // Promotion Product Standard
+                {
+                    odata = new OrderData();
+
+                    odata.FlagCombo = hidFlagComboset_Selected.Value;
+                    odata.ProductCode = lblProductCode.Text;
+                    odata.ProductName = lblProductName.Text;
+                    odata.Unit = hidUnit.Value;
+                    odata.UnitName = hidUnitName.Value;
+                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                    odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToInt32(hidGroupPrice.Value) : 0;
+                    odata.Amount = Convert.ToInt32(txtAmount.Text);
+                    odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                    odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                    odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                    odata.PromotionCode = hidPromotionCode.Value;
+                    odata.MerchantName = HidMerchantName.Value;
+                    odata.FreeShipping = hidFreeShippingCode.Value;
+                    odata.LockAmountFlag = hidLockAmountFlag.Value;
+                    odata.LockCheckbox = hidLockCheckbox.Value;
+                    odata.ProhMinQtyHeaderFlag = "N";
+                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                    odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                    odata.CampaignCode = hidCampaignCode.Value;
+                    odata.runningNo = Convert.ToInt32(hidRunning.Value);
+                    odata.MOQFlag = hidMOQFlag.Value;
+                    odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                    odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                    odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                    odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                    odata.ParentProductCode = hidParentProductCode.Value;
+                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                    odata.CamcatCode = hidCamcatCode_nud.Value;
+                    odata.ChannelCode = hidChannelCode_nud.Value;
+                    odata.ChannelName = hidChannelName_nud.Value;
+                    odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                    lorderdataProductStd.Add(odata);
+                }
+                else if (hidLockCheckbox.Value == "Y")
+                {
+                    if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                    {
+                        odata = new OrderData();
+
+                        if (hidProhMinQtyHeaderFlag.Value == "") // Promotion Normal Set (ไม่ใช่ MOQ และจับกลุ่ม)
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidLockAmountFlag.Value = "N";
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount.Text;
+                                hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                hidAmount.Value = txtAmount.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            }
+                            else
+                            {
+                                lblSumPrice.Visible = false;
+                                
+                                txtAmount.Text = hidAmountChange.Value;
+                                hidAmount.Value = txtAmount.Text;
+                                string a = lblSumPrice.Text;
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                
+                                odata.SumPrice = 0;
+                            }
+                        }
+                        else // Promotion Set MOQ และจับกลุ่ม
+                        {
+                            if (hidMOQNewHeaderFlag.Value == "Y")
+                            {
+                                lblSumPrice.Visible = true;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            }
+                            else
+                            {
+                                lblSumPrice.Visible = false;
+                                hidAmount.Value = txtAmount.Text;
+                                string a = lblSumPrice.Text;
+                                odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                odata.Amount = Convert.ToInt32(txtAmount.Text);
+                                odata.SumPrice = 0;
+                            }
+                        }
+
+                        odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                        odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                        odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.CamcatCode = hidCamcatCode_nud.Value;
+                        odata.ChannelCode = hidChannelCode_nud.Value;
+                        odata.ChannelName = hidChannelName_nud.Value;
+                        odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                        lorderdataProductStd.Add(odata);
+                    }
+                    else // Able to edit Amount Case
+                    {
+                        if (hidFlagProSetHeader.Value.Trim() == "Y")
+                        {
+                            hidLockAmountFlag.Value = "N";
+                            lblSumPrice.Visible = true;
+                            hidPromotionSetAmount.Value = txtAmount.Text;
+                            hidAmountChange.Value = hidPromotionSetAmount.Value;
+                            hidAmount.Value = txtAmount.Text;
+                            lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount.Text)));
+                        }
+                        else
+                        {
+                            
+                            hidAmount.Value = txtAmount.Text;
+                        }
+
+                        odata = new OrderData();
+
+                        odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                        odata.Amount = Convert.ToInt32(txtAmount.Text);
+                        odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                        odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                        odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.CamcatCode = hidCamcatCode_nud.Value;
+                        odata.ChannelCode = hidChannelCode_nud.Value;
+                        odata.ChannelName = hidChannelName_nud.Value;
+                        odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                        lorderdataProductStd.Add(odata);
+                    }
+                }
+            }
+
+            // Check Amount of Promotion Set New Price and able edit amount (LockAmountFlag == "N")
+            if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value != "0")
+            {
+                // Check L_orderdataView for compare with new txtamount
+                OrderData ordata = new OrderData();
+                List<OrderData> lordata = new List<OrderData>();
+
+                foreach (var lov in L_orderdataViewMedia)
+                {
+                    if (lov.CampaignCode == hidCampaignCoderow.Value && lov.PromotionCode == hidPromotionCoderow.Value && lov.LockCheckbox == hidLockCheckboxrow.Value && lov.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && lov.LockAmountFlag == "N")
+                        {
+                            if (lov.FlagProSetHeader == "Y")
+                            {
+                                ordata = new OrderData();
+
+                                ordata.ProductCode = lov.ProductCode;
+                                ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                ordata.Amount = lov.Amount;
+
+                                lordata.Add(ordata); // List for redata of amount L_orderdataView
+                            }
+                            else
+                            {
+                                ordata = new OrderData();
+
+                                ordata.ProductCode = lov.ProductCode;
+                                ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                ordata.Amount = lov.Amount;
+
+                                lordata.Add(ordata); // List for redata of amount L_orderdataView
+                            }
+                        }
+                    }
+                }
+
+                int? amounthead = 0;
+                int? amountchild = 0;
+                int? sumdefaultamount = 0;
+                int? amountmax = 0;
+
+                foreach (var lview in lorderdataProductStd)
+                {
+                    if (lview.CampaignCode == hidCampaignCoderow.Value && lview.PromotionCode == hidPromotionCoderow.Value && lview.LockCheckbox == hidLockCheckboxrow.Value && lview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && lview.LockAmountFlag == "N")
+                        {
+                            if (lview.FlagProSetHeader == "Y")
+                            {
+                                amounthead = lview.Amount;
+                            }
+                            else
+                            {
+                                amountchild += lview.Amount;
+                                sumdefaultamount += lview.DefaultAmount;
+                            }
+                        }
+                    }
+                }
+
+                amountmax = amounthead * sumdefaultamount;
+
+                foreach (var llview in lorderdataProductStd)
+                {
+                    if (llview.CampaignCode == hidCampaignCoderow.Value && llview.PromotionCode == hidPromotionCoderow.Value && llview.LockCheckbox == hidLockCheckboxrow.Value && llview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (hidLockAmountFlagrow.Value == "N" && llview.LockAmountFlag == "N")
+                        {
+                            if (amountmax >= amountchild)
+                            {
+
+                            }
+                            else
+                            {
+                                foreach (var lv in lordata)
+                                {
+                                    if (llview.FlagProSetHeader == lv.FlagProSetHeader && llview.ProductCode == lv.ProductCode)
+                                    {
+                                        llview.Amount = lv.Amount;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            else if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value == "0")
+            {
+                double? sumchildprice = 0;
+                double? sumchildlockamount = 0;
+                foreach (var loset in lorderdataProductStd)
+                {
+                    if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (loset.FlagProSetHeader != "Y")
+                        {
+                            if (loset.LockCheckbox == "Y" && loset.LockAmountFlag == "Y" && loset.GroupPrice == 0)
+                            {
+                                sumchildprice += loset.Price;
+                            }
+                            else
+                            {
+                                loset.SumPrice = loset.Price * loset.Amount;
+                                sumchildprice += loset.SumPrice;
+                            }
+                        }
+                    }
+                }
+                foreach (var loset in lorderdataProductStd)
+                {
+                    if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                    {
+                        if (loset.FlagProSetHeader == "Y")
+                        {
+                            if (loset.LockCheckbox == "Y" && loset.GroupPrice == 0)
+                            {
+                                sumchildlockamount = sumchildprice - ((sumchildprice * loset.PromotionDiscountPercent) / 100) - loset.PromotionDiscountAmount;
+                                loset.SumPrice = sumchildlockamount * loset.Amount;
+                            }
+                            else
+                            {
+                                loset.SumPrice = sumchildprice * loset.Amount;
+                            }
+                        }
+                    }
+                }
+            }
+
+            L_orderdataViewMedia = lorderdataProductStd;
+            CheckMOQ(L_orderdataViewMedia);
+            if (hidPromotionTypeCoderow.Value == "09")
+            {
+                CheckMOQforAddNew(L_orderdataViewMedia, lblProductCoderow.Text, hidPricerow.Value, hidCampaignCoderow.Value, hidPromotionCoderow.Value);
+            }
+            LoadgvProductViewMedia(lorderdataProductStd);
+        }
+        protected void txtAmount_gvOrderView1_TextChange(object sender, EventArgs e)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                OrderData odata = new OrderData();
+                List<OrderData> lorderdataProductStd = new List<OrderData>();
+
+                GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+                TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+                HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+                HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+                HiddenField hidPromotionTypeCoderow = (HiddenField)currentRow.FindControl("hidPromotionTypeCode");
+                HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+                HiddenField hidParentPromotionCoderow = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+                HiddenField hidGroupPricerow = (HiddenField)currentRow.FindControl("hidGroupPrice");
+                Label lblProductCoderow = (Label)currentRow.FindControl("lblProductCode");
+                HiddenField hidPricerow = (HiddenField)currentRow.FindControl("hidPrice");
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    HiddenField hidPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidPrice");
+                    HiddenField hidProductPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidProductPrice");
+                    TextBox txtAmount_gvOrderView = (TextBox)gvOrder.Rows[i].FindControl("txtAmount_gvOrderView");
+                    Label lblSumPrice = (Label)gvOrder.Rows[i].FindControl("lblSumPrice");
+                    HiddenField hidFlagProSetHeader = (HiddenField)gvOrder.Rows[i].FindControl("hidFlagProSetHeader");
+                    HiddenField hidDefaultAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDefaultAmount");
+                    HiddenField hidAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidAmount");
+                    HiddenField hidSumPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidSumPrice");
+                    HiddenField hidLockCheckbox = (HiddenField)gvOrder.Rows[i].FindControl("hidLockCheckbox");
+                    HiddenField hidLockAmountFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidLockAmountFlag");
+                    HiddenField hidPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionCode");
+                    HiddenField hidCampaignCode = (HiddenField)gvOrder.Rows[i].FindControl("hidCampaignCode");
+                    HiddenField hidPromotionDeailInfoId = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDeailInfoId");
+                    Label lblProductCode = (Label)gvOrder.Rows[i].FindControl("lblProductCode");
+                    Label lblProductName = (Label)gvOrder.Rows[i].FindControl("lblProductName");
+                    HiddenField hidUnit = (HiddenField)gvOrder.Rows[i].FindControl("hidUnit");
+                    HiddenField hidUnitName = (HiddenField)gvOrder.Rows[i].FindControl("hidUnitName");
+                    HiddenField hidDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountAmount");
+                    HiddenField hidDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountPercent");
+                    HiddenField hidMerchantCode = (HiddenField)gvOrder.Rows[i].FindControl("hidMerchantCode");
+                    HiddenField HidMerchantName = (HiddenField)gvOrder.Rows[i].FindControl("HidMerchantName");
+                    HiddenField hidFreeShippingCode = (HiddenField)gvOrder.Rows[i].FindControl("hidFreeShippingCode");
+                    HiddenField hidRunning = (HiddenField)gvOrder.Rows[i].FindControl("hidRunning");
+                    HiddenField hidParentPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentPromotionCode");
+                    HiddenField hidParentProductCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentProductCode");
+                    HiddenField hidMOQFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQFlag");
+                    HiddenField hidProhMinQtyHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidProhMinQtyHeaderFlag");
+                    HiddenField hidMOQNewHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQNewHeaderFlag");
+                    HiddenField hidMinimumQty = (HiddenField)gvOrder.Rows[i].FindControl("hidMinimumQty");
+                    HiddenField hidProductDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountPercent");
+                    HiddenField hidProductDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountAmount");
+                    HiddenField hidPromotionDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountPercent");
+                    HiddenField hidPromotionDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountAmount");
+                    HiddenField hidPromotionTypeCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionTypeCode");
+                    HiddenField hidGroupPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidGroupPrice");
+                    HiddenField hidCamcatCode_nud = (HiddenField)gvOrder.Rows[i].FindControl("hidCamcatCode_nud");
+                    HiddenField hidChannelCode_nud = (HiddenField)gvOrder.Rows[i].FindControl("hidChannelCode_nud");
+                    HiddenField hidChannelName_nud = (HiddenField)gvOrder.Rows[i].FindControl("hidChannelName_nud");
+                    HiddenField hidMediaplanFlag_nud = (HiddenField)gvOrder.Rows[i].FindControl("hidMediaplanFlag_nud");
+
+                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                    hidPrice.Value = (hidPrice.Value != "") ? hidPrice.Value : "0";
+                    lblSumPrice.Text = ((Convert.ToDouble(hidPrice.Value) - (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(hidDiscountPercent.Value) / 100) - Convert.ToDouble(hidDiscountAmount.Value)) * Convert.ToInt32(txtAmount_gvOrderView.Text)).ToString();
+                    hidSumPrice.Value = lblSumPrice.Text;
+
+                    if (hidLockCheckbox.Value == "N") // Promotion Product Standard
+                    {
+                        odata = new OrderData();
+
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToInt32(hidGroupPrice.Value) : 0;
+                        odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                        odata.DefaultAmount = (hidDefaultAmount.Value != null) ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.runningNo = Convert.ToInt32(hidRunning.Value);
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = "N";
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                        odata.CamcatCode = hidCamcatCode_nud.Value;
+                        odata.ChannelCode = hidChannelCode_nud.Value;
+                        odata.ChannelName = hidChannelName_nud.Value;
+                        odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                        lorderdataProductStd.Add(odata);
+                    }
+                    else if (hidLockCheckbox.Value == "Y")
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            odata = new OrderData();
+
+                            if (hidProhMinQtyHeaderFlag.Value == "") // Promotion Normal Set (ไม่ใช่ MOQ และจับกลุ่ม)
+                            {
+                                if (hidFlagProSetHeader.Value.Trim() == "Y")
+                                {
+                                    hidLockAmountFlag.Value = "N";
+                                    lblSumPrice.Visible = true;
+                                    hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                    hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+                                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    if (hidGroupPrice.Value != "0") // Promotion Set and Group Price (Set New Price)
+                                    {
+                                        lblSumPrice.Visible = false;
+                                        txtAmount_gvOrderView.Text = (Convert.ToInt32(hidDefaultAmount.Value) * Convert.ToInt32(hidPromotionSetAmount.Value)).ToString();
+                                        hidAmount.Value = txtAmount_gvOrderView.Text;
+                                        string a = lblSumPrice.Text;
+                                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                        odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                        
+                                        odata.SumPrice = 0;
+                                    }
+                                    else
+                                    {
+                                        lblSumPrice.Visible = false;
+                                        
+                                        txtAmount_gvOrderView.Text = hidAmountChange.Value;
+                                        hidAmount.Value = txtAmount_gvOrderView.Text;
+                                        string a = lblSumPrice.Text;
+                                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                        odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                        
+                                        odata.SumPrice = 0;
+                                    }
+                                }
+                            }
+                            else // Promotion Set MOQ และจับกลุ่ม
+                            {
+                                if (hidMOQNewHeaderFlag.Value == "Y")
+                                {
+                                    lblSumPrice.Visible = true;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+                                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    string a = lblSumPrice.Text;
+                                    odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = 0;
+                                }
+                            }
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                            odata.CamcatCode = hidCamcatCode_nud.Value;
+                            odata.ChannelCode = hidChannelCode_nud.Value;
+                            odata.ChannelName = hidChannelName_nud.Value;
+                            odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                            lorderdataProductStd.Add(odata);
+                        }
+                        else // Able to edit Amount Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidLockAmountFlag.Value = "N";
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+                            }
+                            else
+                            {
+                                
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                            }
+
+                            odata = new OrderData();
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+                            odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                            odata.CamcatCode = hidCamcatCode_nud.Value;
+                            odata.ChannelCode = hidChannelCode_nud.Value;
+                            odata.ChannelName = hidChannelName_nud.Value;
+                            odata.MediaplanFlag = hidMediaplanFlag_nud.Value;
+                            lorderdataProductStd.Add(odata);
+                        }
+                    }
+                }
+
+                // Check Amount of Promotion Set New Price and able edit amount (LockAmountFlag == "N")
+                if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value != "0")
+                {
+                    // Check L_orderdataView for compare with new txtamount
+                    OrderData ordata = new OrderData();
+                    List<OrderData> lordata = new List<OrderData>();
+
+                    foreach (var lov in L_orderdataView)
+                    {
+                        if (lov.CampaignCode == hidCampaignCoderow.Value && lov.PromotionCode == hidPromotionCoderow.Value && lov.LockCheckbox == hidLockCheckboxrow.Value && lov.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lov.LockAmountFlag == "N")
+                            {
+                                if (lov.FlagProSetHeader == "Y")
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                                else
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                            }
+                        }
+                    }
+
+                    int? amounthead = 0;
+                    int? amountchild = 0;
+                    int? sumdefaultamount = 0;
+                    int? amountmax = 0;
+
+                    foreach (var lview in lorderdataProductStd)
+                    {
+                        if (lview.CampaignCode == hidCampaignCoderow.Value && lview.PromotionCode == hidPromotionCoderow.Value && lview.LockCheckbox == hidLockCheckboxrow.Value && lview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lview.LockAmountFlag == "N")
+                            {
+                                if (lview.FlagProSetHeader == "Y")
+                                {
+                                    amounthead = lview.Amount;
+                                }
+                                else
+                                {
+                                    amountchild += lview.Amount;
+                                    sumdefaultamount += lview.DefaultAmount;
+                                }
+                            }
+                        }
+                    }
+
+                    amountmax = amounthead * sumdefaultamount;
+
+                    foreach (var llview in lorderdataProductStd)
+                    {
+                        if (llview.CampaignCode == hidCampaignCoderow.Value && llview.PromotionCode == hidPromotionCoderow.Value && llview.LockCheckbox == hidLockCheckboxrow.Value && llview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && llview.LockAmountFlag == "N")
+                            {
+                                if (amountmax >= amountchild)
+                                {
+
+                                }
+                                else
+                                {
+                                    foreach (var lv in lordata)
+                                    {
+                                        if (llview.FlagProSetHeader == lv.FlagProSetHeader && llview.ProductCode == lv.ProductCode)
+                                        {
+                                            llview.Amount = lv.Amount;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+                else if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value == "0")
+                {
+                    double? sumchildprice = 0;
+                    double? sumchildlockamount = 0;
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader != "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.LockAmountFlag == "Y" && loset.GroupPrice == 0)
+                                {
+                                    sumchildprice += loset.Price;
+                                }
+                                else
+                                {
+                                    loset.SumPrice = loset.Price * loset.Amount;
+                                    sumchildprice += loset.SumPrice;
+                                }
+                            }
+                        }
+                    }
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader == "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.GroupPrice == 0)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    loset.SumPrice = sumchildprice * loset.Amount;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                L_orderdata1 = lorderdataProductStd;
+                CheckMOQ(L_orderdata1);
+                
+                CheckFreeShipping(L_orderdata1);
+                if (hidPromotionTypeCoderow.Value == "09")
+                {
+                    CheckMOQforAddNew(L_orderdata1, lblProductCoderow.Text, hidPricerow.Value, hidCampaignCoderow.Value, hidPromotionCoderow.Value);
+                }
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrder(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                OrderData odata = new OrderData();
+                List<OrderData> lorderdataProductStd = new List<OrderData>();
+
+                GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+                TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+                HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+                HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+                HiddenField hidPromotionTypeCoderow = (HiddenField)currentRow.FindControl("hidPromotionTypeCode");
+                HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+                HiddenField hidParentPromotionCoderow = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+                HiddenField hidGroupPricerow = (HiddenField)currentRow.FindControl("hidGroupPrice");
+                Label lblProductCoderow = (Label)currentRow.FindControl("lblProductCode");
+                HiddenField hidPricerow = (HiddenField)currentRow.FindControl("hidPrice");
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    HiddenField hidPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidPrice");
+                    HiddenField hidProductPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidProductPrice");
+                    TextBox txtAmount_gvOrderView = (TextBox)gvOrder.Rows[i].FindControl("txtAmount_gvOrderView");
+                    Label lblSumPrice = (Label)gvOrder.Rows[i].FindControl("lblSumPrice");
+                    HiddenField hidFlagProSetHeader = (HiddenField)gvOrder.Rows[i].FindControl("hidFlagProSetHeader");
+                    HiddenField hidDefaultAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDefaultAmount");
+                    HiddenField hidAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidAmount");
+                    HiddenField hidSumPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidSumPrice");
+                    HiddenField hidLockCheckbox = (HiddenField)gvOrder.Rows[i].FindControl("hidLockCheckbox");
+                    HiddenField hidLockAmountFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidLockAmountFlag");
+                    HiddenField hidPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionCode");
+                    HiddenField hidCampaignCode = (HiddenField)gvOrder.Rows[i].FindControl("hidCampaignCode");
+                    HiddenField hidPromotionDeailInfoId = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDeailInfoId");
+                    Label lblProductCode = (Label)gvOrder.Rows[i].FindControl("lblProductCode");
+                    Label lblProductName = (Label)gvOrder.Rows[i].FindControl("lblProductName");
+                    HiddenField hidUnit = (HiddenField)gvOrder.Rows[i].FindControl("hidUnit");
+                    HiddenField hidUnitName = (HiddenField)gvOrder.Rows[i].FindControl("hidUnitName");
+                    HiddenField hidDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountAmount");
+                    HiddenField hidDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountPercent");
+                    HiddenField hidMerchantCode = (HiddenField)gvOrder.Rows[i].FindControl("hidMerchantCode");
+                    HiddenField HidMerchantName = (HiddenField)gvOrder.Rows[i].FindControl("HidMerchantName");
+                    HiddenField hidFreeShippingCode = (HiddenField)gvOrder.Rows[i].FindControl("hidFreeShippingCode");
+                    HiddenField hidRunning = (HiddenField)gvOrder.Rows[i].FindControl("hidRunning");
+                    HiddenField hidParentPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentPromotionCode");
+                    HiddenField hidParentProductCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentProductCode");
+                    HiddenField hidMOQFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQFlag");
+                    HiddenField hidProhMinQtyHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidProhMinQtyHeaderFlag");
+                    HiddenField hidMOQNewHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQNewHeaderFlag");
+                    HiddenField hidMinimumQty = (HiddenField)gvOrder.Rows[i].FindControl("hidMinimumQty");
+                    HiddenField hidProductDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountPercent");
+                    HiddenField hidProductDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountAmount");
+                    HiddenField hidPromotionDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountPercent");
+                    HiddenField hidPromotionDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountAmount");
+                    HiddenField hidPromotionTypeCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionTypeCode");
+                    HiddenField hidGroupPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidGroupPrice");
+
+                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                    hidPrice.Value = (hidPrice.Value != "") ? hidPrice.Value : "0";
+                    lblSumPrice.Text = ((Convert.ToDouble(hidPrice.Value) - (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(hidDiscountPercent.Value) / 100) - Convert.ToDouble(hidDiscountAmount.Value)) * Convert.ToInt32(txtAmount_gvOrderView.Text)).ToString();
+                    hidSumPrice.Value = lblSumPrice.Text;
+
+                    if (hidLockCheckbox.Value == "N") // Promotion Product Standard
+                    {
+                        odata = new OrderData();
+
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToInt32(hidGroupPrice.Value) : 0;
+                        odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                        odata.DefaultAmount = (hidDefaultAmount.Value != null) ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.runningNo = Convert.ToInt32(hidRunning.Value);
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = "N";
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+
+                        lorderdataProductStd.Add(odata);
+                    }
+                    else if (hidLockCheckbox.Value == "Y")
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            odata = new OrderData();
+
+                            if (hidProhMinQtyHeaderFlag.Value == "") // Promotion Normal Set (ไม่ใช่ MOQ และจับกลุ่ม)
+                            {
+                                if (hidFlagProSetHeader.Value.Trim() == "Y")
+                                {
+                                    hidLockAmountFlag.Value = "N";
+                                    lblSumPrice.Visible = true;
+                                    hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                    hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    
+                                    txtAmount_gvOrderView.Text = hidAmountChange.Value;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    string a = lblSumPrice.Text;
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    
+                                    odata.SumPrice = 0;
+                                }
+                            }
+                            else // Promotion Set MOQ และจับกลุ่ม
+                            {
+                                if (hidMOQNewHeaderFlag.Value == "Y")
+                                {
+                                    lblSumPrice.Visible = true;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    string a = lblSumPrice.Text;
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = 0;
+                                }
+                            }
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+
+                            lorderdataProductStd.Add(odata);
+                        }
+                        else // Able to edit Amount Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidLockAmountFlag.Value = "N";
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+                            }
+                            else
+                            {
+                                
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                            }
+
+                            odata = new OrderData();
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+
+                            lorderdataProductStd.Add(odata);
+                        }
+                    }
+                }
+
+                // Check Amount of Promotion Set New Price and able edit amount (LockAmountFlag == "N")
+                if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value != "0")
+                {
+                    // Check L_orderdataView for compare with new txtamount
+                    OrderData ordata = new OrderData();
+                    List<OrderData> lordata = new List<OrderData>();
+
+                    foreach (var lov in L_orderdataView)
+                    {
+                        if (lov.CampaignCode == hidCampaignCoderow.Value && lov.PromotionCode == hidPromotionCoderow.Value && lov.LockCheckbox == hidLockCheckboxrow.Value && lov.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lov.LockAmountFlag == "N")
+                            {
+                                if (lov.FlagProSetHeader == "Y")
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                                else
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                            }
+                        }
+                    }
+
+                    int? amounthead = 0;
+                    int? amountchild = 0;
+                    int? sumdefaultamount = 0;
+                    int? amountmax = 0;
+
+                    foreach (var lview in lorderdataProductStd)
+                    {
+                        if (lview.CampaignCode == hidCampaignCoderow.Value && lview.PromotionCode == hidPromotionCoderow.Value && lview.LockCheckbox == hidLockCheckboxrow.Value && lview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lview.LockAmountFlag == "N")
+                            {
+                                if (lview.FlagProSetHeader == "Y")
+                                {
+                                    amounthead = lview.Amount;
+                                }
+                                else
+                                {
+                                    amountchild += lview.Amount;
+                                    sumdefaultamount += lview.DefaultAmount;
+                                }
+                            }
+                        }
+                    }
+
+                    amountmax = amounthead * sumdefaultamount;
+
+                    foreach (var llview in lorderdataProductStd)
+                    {
+                        if (llview.CampaignCode == hidCampaignCoderow.Value && llview.PromotionCode == hidPromotionCoderow.Value && llview.LockCheckbox == hidLockCheckboxrow.Value && llview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && llview.LockAmountFlag == "N")
+                            {
+                                if (amountmax >= amountchild)
+                                {
+
+                                }
+                                else
+                                {
+                                    foreach (var lv in lordata)
+                                    {
+                                        if (llview.FlagProSetHeader == lv.FlagProSetHeader && llview.ProductCode == lv.ProductCode)
+                                        {
+                                            llview.Amount = lv.Amount;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+                else if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value == "0")
+                {
+                    double? sumchildprice = 0;
+                    double? sumchildlockamount = 0;
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader != "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.LockAmountFlag == "Y" && loset.GroupPrice == 0)
+                                {
+                                    sumchildprice += loset.Price;
+                                }
+                                else
+                                {
+                                    loset.SumPrice = loset.Price * loset.Amount;
+                                    sumchildprice += loset.SumPrice;
+                                }
+                            }
+                        }
+                    }
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader == "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.GroupPrice == 0)
+                                {
+                                    sumchildlockamount = sumchildprice - ((sumchildprice * loset.PromotionDiscountPercent) / 100) - loset.PromotionDiscountAmount;
+                                    loset.SumPrice = sumchildlockamount * loset.Amount;
+                                }
+                                else
+                                {
+                                    loset.SumPrice = sumchildprice * loset.Amount;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                L_orderdata2 = lorderdataProductStd;
+                CheckMOQ(L_orderdata2);
+                
+                CheckFreeShipping(L_orderdata2);
+                if (hidPromotionTypeCoderow.Value == "09")
+                {
+                    CheckMOQforAddNew(L_orderdata2, lblProductCoderow.Text, hidPricerow.Value, hidCampaignCoderow.Value, hidPromotionCoderow.Value);
+                }
+                if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab2InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab2InventorySelect.Value);
+                }
+
+                LoadgvOrder(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                OrderData odata = new OrderData();
+                List<OrderData> lorderdataProductStd = new List<OrderData>();
+
+                GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+                TextBox txtAmountrow = (TextBox)currentRow.FindControl("txtAmount");
+                HiddenField hidPromotionCoderow = (HiddenField)currentRow.FindControl("hidPromotionCode");
+                HiddenField hidCampaignCoderow = (HiddenField)currentRow.FindControl("hidCampaignCode");
+                HiddenField hidPromotionTypeCoderow = (HiddenField)currentRow.FindControl("hidPromotionTypeCode");
+                HiddenField hidLockCheckboxrow = (HiddenField)currentRow.FindControl("hidLockCheckbox");
+                HiddenField hidLockAmountFlagrow = (HiddenField)currentRow.FindControl("hidLockAmountFlag");
+                HiddenField hidFlagProSetHeadersetrow = (HiddenField)currentRow.FindControl("hidFlagProSetHeaderset");
+                HiddenField hidParentPromotionCoderow = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+                HiddenField hidGroupPricerow = (HiddenField)currentRow.FindControl("hidGroupPrice");
+                Label lblProductCoderow = (Label)currentRow.FindControl("lblProductCode");
+                HiddenField hidPricerow = (HiddenField)currentRow.FindControl("hidPrice");
+
+                for (int i = 0; i < gvOrder.Rows.Count; i++)
+                {
+                    HiddenField hidPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidPrice");
+                    HiddenField hidProductPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidProductPrice");
+                    TextBox txtAmount_gvOrderView = (TextBox)gvOrder.Rows[i].FindControl("txtAmount_gvOrderView");
+                    Label lblSumPrice = (Label)gvOrder.Rows[i].FindControl("lblSumPrice");
+                    HiddenField hidFlagProSetHeader = (HiddenField)gvOrder.Rows[i].FindControl("hidFlagProSetHeader");
+                    HiddenField hidDefaultAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDefaultAmount");
+                    HiddenField hidAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidAmount");
+                    HiddenField hidSumPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidSumPrice");
+                    HiddenField hidLockCheckbox = (HiddenField)gvOrder.Rows[i].FindControl("hidLockCheckbox");
+                    HiddenField hidLockAmountFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidLockAmountFlag");
+                    HiddenField hidPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionCode");
+                    HiddenField hidCampaignCode = (HiddenField)gvOrder.Rows[i].FindControl("hidCampaignCode");
+                    HiddenField hidPromotionDeailInfoId = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDeailInfoId");
+                    Label lblProductCode = (Label)gvOrder.Rows[i].FindControl("lblProductCode");
+                    Label lblProductName = (Label)gvOrder.Rows[i].FindControl("lblProductName");
+                    HiddenField hidUnit = (HiddenField)gvOrder.Rows[i].FindControl("hidUnit");
+                    HiddenField hidUnitName = (HiddenField)gvOrder.Rows[i].FindControl("hidUnitName");
+                    HiddenField hidDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountAmount");
+                    HiddenField hidDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidDiscountPercent");
+                    HiddenField hidMerchantCode = (HiddenField)gvOrder.Rows[i].FindControl("hidMerchantCode");
+                    HiddenField HidMerchantName = (HiddenField)gvOrder.Rows[i].FindControl("HidMerchantName");
+                    HiddenField hidFreeShippingCode = (HiddenField)gvOrder.Rows[i].FindControl("hidFreeShippingCode");
+                    HiddenField hidRunning = (HiddenField)gvOrder.Rows[i].FindControl("hidRunning");
+                    HiddenField hidParentPromotionCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentPromotionCode");
+                    HiddenField hidParentProductCode = (HiddenField)gvOrder.Rows[i].FindControl("hidParentProductCode");
+                    HiddenField hidMOQFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQFlag");
+                    HiddenField hidProhMinQtyHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidProhMinQtyHeaderFlag");
+                    HiddenField hidMOQNewHeaderFlag = (HiddenField)gvOrder.Rows[i].FindControl("hidMOQNewHeaderFlag");
+                    HiddenField hidMinimumQty = (HiddenField)gvOrder.Rows[i].FindControl("hidMinimumQty");
+                    HiddenField hidProductDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountPercent");
+                    HiddenField hidProductDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidProductDiscountAmount");
+                    HiddenField hidPromotionDiscountPercent = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountPercent");
+                    HiddenField hidPromotionDiscountAmount = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionDiscountAmount");
+                    HiddenField hidPromotionTypeCode = (HiddenField)gvOrder.Rows[i].FindControl("hidPromotionTypeCode");
+                    HiddenField hidGroupPrice = (HiddenField)gvOrder.Rows[i].FindControl("hidGroupPrice");
+
+                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                    hidPrice.Value = (hidPrice.Value != "") ? hidPrice.Value : "0";
+                    lblSumPrice.Text = ((Convert.ToDouble(hidPrice.Value) - (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(hidDiscountPercent.Value) / 100) - Convert.ToDouble(hidDiscountAmount.Value)) * Convert.ToInt32(txtAmount_gvOrderView.Text)).ToString();
+                    hidSumPrice.Value = lblSumPrice.Text;
+
+                    if (hidLockCheckbox.Value == "N") // Promotion Product Standard
+                    {
+                        odata = new OrderData();
+
+                        odata.FlagCombo = hidFlagComboset_Selected.Value;
+                        odata.ProductCode = lblProductCode.Text;
+                        odata.ProductName = lblProductName.Text;
+                        odata.Unit = hidUnit.Value;
+                        odata.UnitName = hidUnitName.Value;
+                        odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                        odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToInt32(hidGroupPrice.Value) : 0;
+                        odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                        odata.DefaultAmount = (hidDefaultAmount.Value != null) ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                        odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                        odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                        odata.PromotionCode = hidPromotionCode.Value;
+                        odata.MerchantName = HidMerchantName.Value;
+                        odata.FreeShipping = hidFreeShippingCode.Value;
+                        odata.LockAmountFlag = hidLockAmountFlag.Value;
+                        odata.LockCheckbox = hidLockCheckbox.Value;
+                        odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                        odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                        odata.CampaignCode = hidCampaignCode.Value;
+                        odata.runningNo = Convert.ToInt32(hidRunning.Value);
+                        odata.MOQFlag = hidMOQFlag.Value;
+                        odata.ProhMinQtyHeaderFlag = "N";
+                        odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                        odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                        odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                        odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+                        odata.ParentProductCode = hidParentProductCode.Value;
+                        odata.ProductPrice = (hidProductPrice.Value != "") ? Convert.ToDouble(hidProductPrice.Value) : 0;
+
+                        lorderdataProductStd.Add(odata);
+                    }
+                    else if (hidLockCheckbox.Value == "Y")
+                    {
+                        if (hidLockAmountFlag.Value.Trim() == "Y") // Lock Amount cannot edit Case
+                        {
+                            odata = new OrderData();
+
+                            if (hidProhMinQtyHeaderFlag.Value == "") // Promotion Normal Set (ไม่ใช่ MOQ และจับกลุ่ม)
+                            {
+                                if (hidFlagProSetHeader.Value.Trim() == "Y")
+                                {
+                                    hidLockAmountFlag.Value = "N";
+                                    lblSumPrice.Visible = true;
+                                    hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                    hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    
+                                    txtAmount_gvOrderView.Text = hidAmountChange.Value;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    string a = lblSumPrice.Text;
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    
+                                    odata.SumPrice = 0;
+                                }
+                            }
+                            else // Promotion Set MOQ และจับกลุ่ม
+                            {
+                                if (hidMOQNewHeaderFlag.Value == "Y")
+                                {
+                                    lblSumPrice.Visible = true;
+                                    lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                                }
+                                else
+                                {
+                                    lblSumPrice.Visible = false;
+                                    hidAmount.Value = txtAmount_gvOrderView.Text;
+                                    string a = lblSumPrice.Text;
+
+                                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                                    odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                                    odata.SumPrice = 0;
+                                }
+                            }
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+
+                            lorderdataProductStd.Add(odata);
+                        }
+                        else // Able to edit Amount Case
+                        {
+                            if (hidFlagProSetHeader.Value.Trim() == "Y")
+                            {
+                                hidLockAmountFlag.Value = "N";
+                                lblSumPrice.Visible = true;
+                                hidPromotionSetAmount.Value = txtAmount_gvOrderView.Text;
+                                hidAmountChange.Value = hidPromotionSetAmount.Value;
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDouble(hidPrice.Value) * Convert.ToInt32(txtAmount_gvOrderView.Text)));
+                            }
+                            else
+                            {
+                                
+                                hidAmount.Value = txtAmount_gvOrderView.Text;
+                            }
+
+                            odata = new OrderData();
+
+                            odata.FlagProSetHeader = hidFlagProSetHeader.Value;
+                            odata.FlagCombo = hidFlagComboset_Selected.Value;
+                            odata.ProductCode = lblProductCode.Text;
+                            odata.ProductName = lblProductName.Text;
+                            odata.Unit = hidUnit.Value;
+                            odata.UnitName = hidUnitName.Value;
+                            odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : -99;
+                            odata.GroupPrice = (hidGroupPrice.Value != "") ? Convert.ToDouble(hidGroupPrice.Value) : 0;
+                            odata.Amount = Convert.ToInt32(txtAmount_gvOrderView.Text);
+                            odata.DefaultAmount = (hidDefaultAmount.Value != "") ? Convert.ToInt32(hidDefaultAmount.Value) : -99;
+                            odata.DiscountAmount = (hidDiscountAmount.Value != "") ? Convert.ToInt32(hidDiscountAmount.Value) : 0;
+                            odata.DiscountPercent = (hidDiscountPercent.Value != "") ? Convert.ToInt32(hidDiscountPercent.Value) : 0;
+                            odata.PromotionCode = hidPromotionCode.Value;
+                            odata.MerchantName = HidMerchantName.Value;
+                            odata.FreeShipping = hidFreeShippingCode.Value;
+                            odata.LockAmountFlag = hidLockAmountFlag.Value;
+                            odata.LockCheckbox = hidLockCheckbox.Value;
+                            odata.SumPrice = (lblSumPrice.Text != "") ? Convert.ToDouble(lblSumPrice.Text) : 0;
+                            odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                            odata.CampaignCode = hidCampaignCode.Value;
+                            odata.ParentPromotionCode = hidParentPromotionCode.Value;
+                            odata.ParentProductCode = hidParentProductCode.Value;
+                            odata.MOQFlag = hidMOQFlag.Value;
+                            odata.ProhMinQtyHeaderFlag = hidProhMinQtyHeaderFlag.Value;
+                            odata.MOQNewHeaderFlag = hidMOQNewHeaderFlag.Value;
+                            odata.MinimumQty = (hidMinimumQty.Value != "") ? Convert.ToInt32(hidMinimumQty.Value) : 0;
+                            odata.ProductDiscountPercent = (hidProductDiscountPercent.Value != "") ? Convert.ToInt32(hidProductDiscountPercent.Value) : 0;
+                            odata.ProductDiscountAmount = (hidProductDiscountAmount.Value != "") ? Convert.ToInt32(hidProductDiscountAmount.Value) : 0;
+                            odata.PromotionDiscountPercent = (hidPromotionDiscountPercent.Value != "") ? Convert.ToInt32(hidPromotionDiscountPercent.Value) : 0;
+                            odata.PromotionDiscountAmount = (hidPromotionDiscountAmount.Value != "") ? Convert.ToInt32(hidPromotionDiscountAmount.Value) : 0;
+                            odata.PromotionTypeCode = hidPromotionTypeCode.Value;
+
+                            lorderdataProductStd.Add(odata);
+                        }
+                    }
+                }
+
+                // Check Amount of Promotion Set New Price and able edit amount (LockAmountFlag == "N")
+                if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value != "0")
+                {
+                    // Check L_orderdataView for compare with new txtamount
+                    OrderData ordata = new OrderData();
+                    List<OrderData> lordata = new List<OrderData>();
+
+                    foreach (var lov in L_orderdataView)
+                    {
+                        if (lov.CampaignCode == hidCampaignCoderow.Value && lov.PromotionCode == hidPromotionCoderow.Value && lov.LockCheckbox == hidLockCheckboxrow.Value && lov.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lov.LockAmountFlag == "N")
+                            {
+                                if (lov.FlagProSetHeader == "Y")
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                                else
+                                {
+                                    ordata = new OrderData();
+
+                                    ordata.ProductCode = lov.ProductCode;
+                                    ordata.FlagProSetHeader = lov.FlagProSetHeader;
+                                    ordata.Amount = lov.Amount;
+
+                                    lordata.Add(ordata); // List for redata of amount L_orderdataView
+                                }
+                            }
+                        }
+                    }
+
+                    int? amounthead = 0;
+                    int? amountchild = 0;
+                    int? sumdefaultamount = 0;
+                    int? amountmax = 0;
+
+                    foreach (var lview in lorderdataProductStd)
+                    {
+                        if (lview.CampaignCode == hidCampaignCoderow.Value && lview.PromotionCode == hidPromotionCoderow.Value && lview.LockCheckbox == hidLockCheckboxrow.Value && lview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && lview.LockAmountFlag == "N")
+                            {
+                                if (lview.FlagProSetHeader == "Y")
+                                {
+                                    amounthead = lview.Amount;
+                                }
+                                else
+                                {
+                                    amountchild += lview.Amount;
+                                    sumdefaultamount += lview.DefaultAmount;
+                                }
+                            }
+                        }
+                    }
+
+                    amountmax = amounthead * sumdefaultamount;
+
+                    foreach (var llview in lorderdataProductStd)
+                    {
+                        if (llview.CampaignCode == hidCampaignCoderow.Value && llview.PromotionCode == hidPromotionCoderow.Value && llview.LockCheckbox == hidLockCheckboxrow.Value && llview.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (hidLockAmountFlagrow.Value == "N" && llview.LockAmountFlag == "N")
+                            {
+                                if (amountmax >= amountchild)
+                                {
+
+                                }
+                                else
+                                {
+                                    foreach (var lv in lordata)
+                                    {
+                                        if (llview.FlagProSetHeader == lv.FlagProSetHeader && llview.ProductCode == lv.ProductCode)
+                                        {
+                                            llview.Amount = lv.Amount;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+                else if (hidLockCheckboxrow.Value == "Y" && hidLockAmountFlagrow.Value == "N" && hidGroupPricerow.Value == "0")
+                {
+                    double? sumchildprice = 0;
+                    double? sumchildlockamount = 0;
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader != "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.LockAmountFlag == "Y" && loset.GroupPrice == 0)
+                                {
+                                    sumchildprice += loset.Price;
+                                }
+                                else
+                                {
+                                    loset.SumPrice = loset.Price * loset.Amount;
+                                    sumchildprice += loset.SumPrice;
+                                }
+                            }
+                        }
+                    }
+                    foreach (var loset in lorderdataProductStd)
+                    {
+                        if (loset.CampaignCode == hidCampaignCoderow.Value && loset.PromotionCode == hidPromotionCoderow.Value && loset.ParentPromotionCode == hidParentPromotionCoderow.Value)
+                        {
+                            if (loset.FlagProSetHeader == "Y")
+                            {
+                                if (loset.LockCheckbox == "Y" && loset.GroupPrice == 0)
+                                {
+                                    sumchildlockamount = sumchildprice - ((sumchildprice * loset.PromotionDiscountPercent) / 100) - loset.PromotionDiscountAmount;
+                                    loset.SumPrice = sumchildlockamount * loset.Amount;
+                                }
+                                else
+                                {
+                                    loset.SumPrice = sumchildprice * loset.Amount;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                L_orderdata3 = lorderdataProductStd;
+                CheckMOQ(L_orderdata3);
+                
+                CheckFreeShipping(L_orderdata3);
+                if (hidPromotionTypeCoderow.Value == "09")
+                {
+                    CheckMOQforAddNew(L_orderdata3, lblProductCoderow.Text, hidPricerow.Value, hidCampaignCoderow.Value, hidPromotionCoderow.Value);
+                }
+
+                if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab3InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab3InventorySelect.Value);
+                }
+
+                LoadgvOrder(L_orderdata3);
+            }
+        }
+        protected void txtcontactdesc_TextChanged(object sender, EventArgs e)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                hidtab1ContactDesc.Value = txtcontactdesc.Text;
+            }
+            if (hidtab.Value == "2")
+            {
+                hidtab2ContactDesc.Value = txtcontactdesc.Text;
+            }
+            if (hidtab.Value == "3")
+            {
+                hidtab3ContactDesc.Value = txtcontactdesc.Text;
+            }
+        }
+
+        
+        protected void btnAddCombo_Click(object sender, EventArgs e)
+        {
+            int cou = 0;
+            int? runningNo = 0;
+            string parentproductcode = "";
+
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            lneworderdata = L_orderdataView;
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            lorderdatacheck = L_orderdataView;
+
+            foreach (GridViewRow row in gvComboset.Rows)
+            {
+                HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+                HiddenField hidCombosetCode = (HiddenField)row.FindControl("hidCombosetCode");
+                HiddenField hidPromotionDetailName = (HiddenField)row.FindControl("hidPromotionDetailName");
+                HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+                HiddenField hidAmount = (HiddenField)row.FindControl("hidAmount");
+                HiddenField hidFreeShipping = (HiddenField)row.FindControl("hidFreeShipping");
+
+
+                //Add Combo Parent
+                if (hidPromotiondetailId_Selected.Value == hidPromotionDeailInfoId.Value)
+                {
+                    //Get ParentCode
+                    if (hidtab.Value == "1")
+                    {
+                        cou = (hidtab1countcomboset.Value != "") ? Convert.ToInt32(hidtab1countcomboset.Value) + 1 : 1;
+                        hidtab1countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+                    else if (hidtab.Value == "2")
+                    {
+                        cou = (hidtab2countcomboset.Value != "") ? Convert.ToInt32(hidtab2countcomboset.Value) + 1 : 1;
+                        hidtab2countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+                    else if (hidtab.Value == "3")
+                    {
+                        cou = (hidtab3countcomboset.Value != "") ? Convert.ToInt32(hidtab3countcomboset.Value) + 1 : 1;
+                        hidtab3countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+
+                    odata = new OrderData();
+                    odata.ParentProductCode = parentproductcode;
+                    odata.CampaignCode = hidCampaignCode_Selected.Value;
+                    odata.ComboCode = parentproductcode;
+                    odata.ComboName = hidPromotionDetailName.Value;
+                    odata.FlagCombo = "Y";
+                    odata.ProductCode = hidCombosetCode.Value;
+                    odata.ProductName = hidPromotionDetailName.Value;
+                    odata.Unit = "10";
+                    odata.UnitName = "ชุด";
+                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                    odata.Amount = (hidAmount.Value != "") ? Convert.ToInt32(hidAmount.Value) : 1;
+                    odata.DefaultAmount = 0;
+                    odata.DiscountAmount = 0;
+                    odata.DiscountPercent = 0;
+                    odata.PromotionCode = hidPromotionCode_Selected.Value;
+                    odata.MerchantName = "";
+                    odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                    odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                    odata.runningNo = lneworderdata.Count + 1;
+                    odata.FreeShipping = hidFreeShipping.Value;
+                    odata.FlagProSetHeader = "Y";
+                    odata.LockAmountFlag = "Y";
+                    odata.LockCheckbox = "Y";
+
+
+                    runningNo = odata.runningNo;
+
+                    lneworderdata.Add(odata);
+                }
+            }
+
+            //Add Child
+            foreach (GridViewRow Row in gvSubMainPromotionDetail.Rows)
+            {
+                SubPromotionDetailInfo sInfo = new SubPromotionDetailInfo();
+
+
+                HiddenField hidUnit = (HiddenField)Row.FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)Row.FindControl("hidUnitName");
+                HiddenField hidCampaignCode = (HiddenField)Row.FindControl("hidCampaignCode");
+                HiddenField hidPromotionCode = (HiddenField)Row.FindControl("hidPromotionCode");
+                HiddenField hidFlagComboSet = (HiddenField)Row.FindControl("hidFlagComboSet");
+                HiddenField hidMainProductCode = (HiddenField)Row.FindControl("hidMainProductCode");
+                HiddenField hidMainProductName = (HiddenField)Row.FindControl("hidMainProductName");
+                HiddenField hidAmount = (HiddenField)Row.FindControl("hidAmount");
+                HiddenField hidFlagSubPromotionDetailMain = (HiddenField)Row.FindControl("hidFlagSubPromotionDetailMain");
+                HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)Row.FindControl("hidSubMainPromotionDetailInfoId");
+                HiddenField hidPromotionDetailId = (HiddenField)Row.FindControl("hidPromotionDetailId");
+                HiddenField hidFreeShipping = (HiddenField)Row.FindControl("hidFreeShipping");
+
+                odata = new OrderData();
+
+                odata.FlagCombo = hidFlagComboset_Selected.Value;
+                odata.ProductCode = hidMainProductCode.Value;
+                odata.ProductName = hidMainProductName.Value;
+                odata.Unit = hidUnit.Value;
+                odata.UnitName = hidUnitName.Value;
+                odata.Price = 0;
+                odata.Amount = (hidAmount.Value != "") ? Convert.ToInt32(hidAmount.Value) : 1;
+                odata.DefaultAmount = 0;
+                odata.DiscountAmount = 0;
+                odata.DiscountPercent = 0;
+                odata.PromotionCode = hidPromotionCode.Value;
+                odata.MerchantName = "";
+                odata.FlagProSetHeader = "";
+                odata.LockAmountFlag = "Y";
+                odata.LockCheckbox = "Y";
+
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                odata.PromotionDetailId = (hidPromotionDetailId.Value != "") ? Convert.ToInt32(hidPromotionDetailId.Value) : -99;
+                odata.CampaignCode = "";
+                odata.runningNo = runningNo;
+                odata.ParentProductCode = parentproductcode;
+                odata.FreeShipping = hidFreeShipping.Value;
+
+
+                lneworderdata.Add(odata);
+            }
+
+            LoadgvProductView(lneworderdata);
+
+            L_orderdataView = lneworderdata;
+
+        }
+
+        protected void btnAddComboMedia_Click(object sender, EventArgs e)
+        {
+            int cou = 0;
+            int? runningNo = 0;
+            string parentproductcode = "";
+
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            lneworderdata = L_orderdataViewMedia;
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            lorderdatacheck = L_orderdataViewMedia;
+
+            foreach (GridViewRow row in gvCombosetMedia.Rows)
+            {
+                HiddenField hidPromotionDeailInfoId = (HiddenField)row.FindControl("hidPromotionDeailInfoId");
+                HiddenField hidCombosetCode = (HiddenField)row.FindControl("hidCombosetCode");
+                HiddenField hidPromotionDetailName = (HiddenField)row.FindControl("hidPromotionDetailName");
+                HiddenField hidPrice = (HiddenField)row.FindControl("hidPrice");
+                HiddenField hidAmount = (HiddenField)row.FindControl("hidAmount");
+                HiddenField hidFreeShipping = (HiddenField)row.FindControl("hidFreeShipping");
+
+
+                //Add Combo Parent
+                if (hidPromotiondetailId_Selected.Value == hidPromotionDeailInfoId.Value)
+                {
+                    //Get ParentCode
+                    if (hidtab.Value == "1")
+                    {
+                        cou = (hidtab1countcomboset.Value != "") ? Convert.ToInt32(hidtab1countcomboset.Value) + 1 : 1;
+                        hidtab1countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+                    else if (hidtab.Value == "2")
+                    {
+                        cou = (hidtab2countcomboset.Value != "") ? Convert.ToInt32(hidtab2countcomboset.Value) + 1 : 1;
+                        hidtab2countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+                    else if (hidtab.Value == "3")
+                    {
+                        cou = (hidtab3countcomboset.Value != "") ? Convert.ToInt32(hidtab3countcomboset.Value) + 1 : 1;
+                        hidtab3countcomboset.Value = cou.ToString();
+                        parentproductcode = cou.ToString() + hidPromotionDeailInfoId.Value;
+                    }
+
+                    odata = new OrderData();
+                    odata.ParentProductCode = parentproductcode;
+                    odata.CampaignCode = hidCampaignCode_Selected.Value;
+                    odata.ComboCode = parentproductcode;
+                    odata.ComboName = hidPromotionDetailName.Value;
+                    odata.FlagCombo = "Y";
+                    odata.ProductCode = hidCombosetCode.Value;
+                    odata.ProductName = hidPromotionDetailName.Value;
+                    odata.Unit = "10";
+                    odata.UnitName = "ชุด";
+                    odata.Price = (hidPrice.Value != "") ? Convert.ToDouble(hidPrice.Value) : 0;
+                    odata.Amount = (hidAmount.Value != "") ? Convert.ToInt32(hidAmount.Value) : 1;
+                    odata.DefaultAmount = 0;
+                    odata.DiscountAmount = 0;
+                    odata.DiscountPercent = 0;
+                    odata.PromotionCode = hidPromotionCode_Selected.Value;
+                    odata.MerchantName = "";
+                    odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                    odata.PromotionDetailId = (hidPromotionDeailInfoId.Value != "") ? Convert.ToInt32(hidPromotionDeailInfoId.Value) : -99;
+                    odata.runningNo = lneworderdata.Count + 1;
+                    odata.FreeShipping = hidFreeShipping.Value;
+                    odata.FlagProSetHeader = "Y";
+                    odata.LockAmountFlag = "Y";
+                    odata.LockCheckbox = "Y";
+
+
+                    runningNo = odata.runningNo;
+
+                    lneworderdata.Add(odata);
+                }
+            }
+
+            //Add Child
+            foreach (GridViewRow Row in gvSubMainPromotionDetailMedia.Rows)
+            {
+                SubPromotionDetailInfo sInfo = new SubPromotionDetailInfo();
+
+
+                HiddenField hidUnit = (HiddenField)Row.FindControl("hidUnit");
+                HiddenField hidUnitName = (HiddenField)Row.FindControl("hidUnitName");
+                HiddenField hidCampaignCode = (HiddenField)Row.FindControl("hidCampaignCode");
+                HiddenField hidPromotionCode = (HiddenField)Row.FindControl("hidPromotionCode");
+                HiddenField hidFlagComboSet = (HiddenField)Row.FindControl("hidFlagComboSet");
+                HiddenField hidMainProductCode = (HiddenField)Row.FindControl("hidMainProductCode");
+                HiddenField hidMainProductName = (HiddenField)Row.FindControl("hidMainProductName");
+                HiddenField hidAmount = (HiddenField)Row.FindControl("hidAmount");
+                HiddenField hidFlagSubPromotionDetailMain = (HiddenField)Row.FindControl("hidFlagSubPromotionDetailMain");
+                HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)Row.FindControl("hidSubMainPromotionDetailInfoId");
+                HiddenField hidPromotionDetailId = (HiddenField)Row.FindControl("hidPromotionDetailId");
+                HiddenField hidFreeShipping = (HiddenField)Row.FindControl("hidFreeShipping");
+
+                odata = new OrderData();
+
+                odata.FlagCombo = hidFlagComboset_Selected.Value;
+                odata.ProductCode = hidMainProductCode.Value;
+                odata.ProductName = hidMainProductName.Value;
+                odata.Unit = hidUnit.Value;
+                odata.UnitName = hidUnitName.Value;
+                odata.Price = 0;
+                odata.Amount = (hidAmount.Value != "") ? Convert.ToInt32(hidAmount.Value) : 1;
+                odata.DefaultAmount = 0;
+                odata.DiscountAmount = 0;
+                odata.DiscountPercent = 0;
+                odata.PromotionCode = hidPromotionCode.Value;
+                odata.MerchantName = "";
+                odata.FlagProSetHeader = "";
+                odata.LockAmountFlag = "Y";
+                odata.LockCheckbox = "Y";
+
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                odata.PromotionDetailId = (hidPromotionDetailId.Value != "") ? Convert.ToInt32(hidPromotionDetailId.Value) : -99;
+                odata.CampaignCode = "";
+                odata.runningNo = runningNo;
+                odata.ParentProductCode = parentproductcode;
+                odata.FreeShipping = hidFreeShipping.Value;
+
+
+                lneworderdata.Add(odata);
+            }
+
+            LoadgvProductViewMedia(lneworderdata);
+
+            L_orderdataViewMedia = lneworderdata;
+        }
+
+        protected void btnCancelCombo_Click(object sender, EventArgs e)
+        {
+            BindSubMainPromotionDetailInfo(hidPromotiondetailId_Selected.Value != "" ? Convert.ToInt32(hidPromotiondetailId_Selected.Value) : 0, hidCombosetCode_Selected.Value);
+        }
+
+        protected void btnCancelComboMedia_Click(object sender, EventArgs e)
+        {
+            BindSubMainPromotionDetailInfoMedia(hidPromotiondetailId_Selected.Value != "" ? Convert.ToInt32(hidPromotiondetailId_Selected.Value) : 0, hidCombosetCode_Selected.Value);
+        }
+
+
+        protected void BtnAddtoCart_Click(object sender, EventArgs e)
+        {
+            
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            lorderdatacheck = L_orderdataView;
+            OrderData odata = new OrderData();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata1;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode && s.ChannelCode == lcheck.ChannelCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  ParentPromotionCode = dr.ParentPromotionCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag,
+                                                  OrderDetailID = dr.OrderDetailID,
+                                                  GroupPrice = dr.GroupPrice,
+                                                  CamcatCode = dr.CamcatCode,
+                                                  ChannelCode = dr.ChannelCode,
+                                                  ChannelName = dr.ChannelName,
+                                                  MediaplanFlag = dr.MediaplanFlag,
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.ParentPromotionCode = lo[0].ParentPromotionCode;
+                            od.FreeShipping = lo[0].FreeShipping;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+                            od.GroupPrice = lo[0].GroupPrice;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+                            od.CamcatCode = lo[0].CamcatCode;
+                            od.MediaplanFlag = lo[0].MediaplanFlag;
+                            od.ChannelCode = lo[0].ChannelCode;
+                            od.ChannelName = lo[0].ChannelName;
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+                            od.GroupPrice = lcheck.GroupPrice;
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+                            od.CamcatCode = lcheck.CamcatCode;
+                            od.MediaplanFlag = lcheck.MediaplanFlag;
+                            od.ChannelCode = lcheck.ChannelCode;
+                            od.ChannelName = lcheck.ChannelName;
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.GroupPrice = item.GroupPrice;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.ParentPromotionCode = item.ParentPromotionCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.ProhMinQtyHeaderFlag = item.ProhMinQtyHeaderFlag;
+                    od.MOQNewHeaderFlag = item.MOQNewHeaderFlag;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.PromotionDiscountPercent = item.PromotionDiscountPercent;
+                    od.PromotionDiscountAmount = item.PromotionDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+                    od.OrderDetailID = item.OrderDetailID;
+                    od.GroupPrice = item.GroupPrice;
+                    od.CamcatCode = item.CamcatCode;//new
+                    od.ChannelCode = item.ChannelCode;
+                    od.ChannelName = item.ChannelName;
+                    od.MediaplanFlag = item.MediaplanFlag;
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+                L_orderdata1 = lorderdataviewtemp;
+
+                CheckMOQ(L_orderdata1);
+
+                
+
+                CheckFreeShipping(L_orderdata1);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrder(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata2;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag,
+                                                  OrderDetailID = dr.OrderDetailID
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.FreeShipping = lo[0].FreeShipping;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+                    od.OrderDetailID = item.OrderDetailID;
+
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+
+
+                L_orderdata2 = lorderdataviewtemp;
+                CheckFreeShipping(L_orderdata2);
+                LoadgvOrder(L_orderdata2);
+
+                if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab2InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab2InventorySelect.Value);
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata3;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag,
+                                                  OrderDetailID = dr.OrderDetailID
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+                            od.OrderDetailID = lcheck.OrderDetailID;
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+                    od.OrderDetailID = item.OrderDetailID;
+
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+                L_orderdata3 = lorderdataviewtemp;
+                CheckFreeShipping(L_orderdata3);
+
+                if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab3InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab3InventorySelect.Value);
+                }
+
+                LoadgvOrder(L_orderdata3);
+            }
+
+            gvProductView.DataSource = null;
+            gvProductView.DataBind();
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "$('#modal-addpro').modal('hide');", true);
+            
+        }
+
+        protected void BtnAddtoCartMedia_Click(object sender, EventArgs e)
+        {
+            
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            lorderdatacheck = L_orderdataViewMedia;
+            OrderData odata = new OrderData();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata1;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode && s.ChannelCode == lcheck.ChannelCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  ParentPromotionCode = dr.ParentPromotionCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag,
+                                                  CamcatCode = dr.CamcatCode,
+                                                  ChannelCode = dr.ChannelCode,
+                                                  ChannelName = dr.ChannelName,
+                                                  MediaplanFlag = dr.MediaplanFlag
+
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.ParentPromotionCode = lo[0].ParentPromotionCode;
+                            od.FreeShipping = lo[0].FreeShipping;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+
+
+                            od.CamcatCode = lo[0].CamcatCode;
+                            od.ChannelCode = lo[0].ChannelCode;
+                            od.ChannelName = lo[0].ChannelName;
+                            od.MediaplanFlag = lo[0].MediaplanFlag;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.ParentPromotionCode = lcheck.ParentPromotionCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+
+                            od.CamcatCode = lcheck.CamcatCode;
+                            od.ChannelCode = lcheck.ChannelCode;
+                            od.ChannelName = lcheck.ChannelName;
+                            od.MediaplanFlag = lcheck.MediaplanFlag;
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.GroupPrice = item.GroupPrice;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.ParentPromotionCode = item.ParentPromotionCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.ProhMinQtyHeaderFlag = item.ProhMinQtyHeaderFlag;
+                    od.MOQNewHeaderFlag = item.MOQNewHeaderFlag;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.PromotionDiscountPercent = item.PromotionDiscountPercent;
+                    od.PromotionDiscountAmount = item.PromotionDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+
+                    od.CamcatCode = item.CamcatCode;//new
+                    od.ChannelCode = item.ChannelCode;
+                    od.ChannelName = item.ChannelName;
+                    od.MediaplanFlag = item.MediaplanFlag;
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+                L_orderdata1 = lorderdataviewtemp;
+
+                CheckMOQ(L_orderdata1);
+
+                
+
+                CheckFreeShipping(L_orderdata1);
+
+                LoadgvOrder(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata2;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.FreeShipping = lo[0].FreeShipping;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+
+
+                L_orderdata2 = lorderdataviewtemp;
+                CheckFreeShipping(L_orderdata2);
+                LoadgvOrder(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                List<OrderData> lord = new List<OrderData>();
+                lord = L_orderdata3;
+
+                OrderData tdata = new OrderData();
+                List<OrderData> lorderdataviewtemp = new List<OrderData>();
+
+                if (lord.Count > 0)
+                {
+                    foreach (var lcheck in lord.ToList())
+                    {
+                        List<OrderData> lo = (from OrderData dr in lorderdatacheck.Where(s => s.FlagCombo != "Y" && s.PromotionCode == lcheck.PromotionCode && s.PromotionDetailId == lcheck.PromotionDetailId && s.CampaignCode == lcheck.CampaignCode)
+
+                                              select new OrderData()
+                                              {
+                                                  FlagCombo = dr.FlagCombo,
+                                                  ProductCode = dr.ProductCode,
+                                                  ProductName = dr.ProductName,
+                                                  Unit = dr.Unit,
+                                                  UnitName = dr.UnitName,
+                                                  Price = dr.Price,
+                                                  ProductPrice = dr.ProductPrice,
+                                                  Amount = dr.Amount,
+                                                  DefaultAmount = dr.DefaultAmount,
+                                                  DiscountAmount = dr.DiscountAmount,
+                                                  DiscountPercent = dr.DiscountPercent,
+                                                  CampaignCode = dr.CampaignCode,
+                                                  PromotionCode = dr.PromotionCode,
+                                                  TransportPrice = dr.TransportPrice,
+                                                  SumPrice = dr.SumPrice,
+                                                  PromotionDetailId = dr.PromotionDetailId,
+                                                  ComboCode = dr.ComboCode,
+                                                  ComboName = dr.ComboName,
+                                                  runningNo = dr.runningNo,
+                                                  LockAmountFlag = dr.LockAmountFlag,
+                                                  LockCheckbox = dr.LockCheckbox,
+                                                  CampaignCategory = dr.CampaignCategory,
+                                                  NetPrice = dr.NetPrice,
+                                                  Vat = dr.Vat,
+                                                  ParentProductCode = dr.ParentProductCode,
+                                                  FreeShipping = dr.FreeShipping,
+                                                  FlagProSetHeader = dr.FlagProSetHeader,
+                                                  PromotionTypeCode = dr.PromotionTypeCode,
+                                                  PromotionTypeName = dr.PromotionTypeName,
+                                                  MOQFlag = dr.MOQFlag,
+                                                  MinimumQty = dr.MinimumQty,
+                                                  ProductDiscountPercent = dr.ProductDiscountPercent,
+                                                  ProductDiscountAmount = dr.ProductDiscountAmount,
+                                                  FreeShippingBill = dr.FreeShippingBill,
+                                                  TradeFlag = dr.TradeFlag
+
+                                              }).ToList();
+
+                        OrderData od = new OrderData();
+
+
+
+                        if (lo.Count > 0) //duplicate
+                        {
+                            od.FlagCombo = lo[0].FlagCombo;
+                            od.ProductCode = lo[0].ProductCode;
+                            od.ProductName = lo[0].ProductName;
+                            od.Unit = lo[0].Unit;
+                            od.UnitName = lo[0].UnitName;
+                            od.Price = lo[0].Price;
+                            od.ProductPrice = lo[0].ProductPrice;
+                            od.DefaultAmount = lo[0].DefaultAmount;
+                            od.DiscountAmount = lo[0].DiscountAmount;
+                            od.DiscountPercent = lo[0].DiscountPercent;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.TransportPrice = lo[0].TransportPrice;
+                            od.PromotionDetailId = lo[0].PromotionDetailId;
+                            od.CampaignCode = lo[0].CampaignCode;
+                            od.PromotionCode = lo[0].PromotionCode;
+                            od.ComboCode = lo[0].ComboCode;
+                            od.ComboName = lo[0].ComboName;
+                            od.runningNo = lo[0].runningNo;
+                            od.LockAmountFlag = lo[0].LockAmountFlag;
+                            od.LockCheckbox = lo[0].LockCheckbox;
+                            od.CampaignCategory = lo[0].CampaignCategory;
+                            od.NetPrice = lo[0].NetPrice;
+                            od.Vat = lo[0].Vat;
+                            od.ParentProductCode = lo[0].ParentProductCode;
+                            od.FlagProSetHeader = lo[0].FlagProSetHeader;
+                            od.PromotionTypeCode = lo[0].PromotionTypeCode;
+                            od.PromotionTypeName = lo[0].PromotionTypeName;
+                            od.MOQFlag = lo[0].MOQFlag;
+                            od.MinimumQty = lo[0].MinimumQty;
+                            od.ProductDiscountPercent = lo[0].ProductDiscountPercent;
+                            od.ProductDiscountAmount = lo[0].ProductDiscountAmount;
+                            od.FreeShippingBill = lo[0].FreeShippingBill;
+                            od.TradeFlag = lo[0].TradeFlag;
+
+                            od.Amount = lo[0].Amount + lcheck.Amount;
+                            od.SumPrice = (lcheck.Price - (lcheck.Price * (lcheck.DiscountPercent / 100)) - lcheck.DiscountAmount) * od.Amount;
+
+                            lorderdatacheck.RemoveAll(s => s.CampaignCode == lo[0].CampaignCode && s.PromotionCode == lo[0].PromotionCode && s.PromotionDetailId == lo[0].PromotionDetailId);
+                        }
+                        else // not duplicate
+                        {
+                            od.FlagCombo = lcheck.FlagCombo;
+                            od.ProductCode = lcheck.ProductCode;
+                            od.ProductName = lcheck.ProductName;
+                            od.Unit = lcheck.Unit;
+                            od.UnitName = lcheck.UnitName;
+                            od.Price = lcheck.Price;
+                            od.ProductPrice = lcheck.ProductPrice;
+                            od.DefaultAmount = lcheck.DefaultAmount;
+                            od.DiscountAmount = lcheck.DiscountAmount;
+                            od.DiscountPercent = lcheck.DiscountPercent;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.TransportPrice = lcheck.TransportPrice;
+                            od.PromotionDetailId = lcheck.PromotionDetailId;
+                            od.CampaignCode = lcheck.CampaignCode;
+                            od.PromotionCode = lcheck.PromotionCode;
+                            od.ComboCode = lcheck.ComboCode;
+                            od.ComboName = lcheck.ComboName;
+                            od.runningNo = lcheck.runningNo;
+                            od.LockAmountFlag = lcheck.LockAmountFlag;
+                            od.LockCheckbox = lcheck.LockCheckbox;
+                            od.CampaignCategory = lcheck.CampaignCategory;
+                            od.NetPrice = lcheck.NetPrice;
+                            od.Vat = lcheck.Vat;
+                            od.ParentProductCode = lcheck.ParentProductCode;
+                            od.FreeShipping = lcheck.FreeShipping;
+                            od.FlagProSetHeader = lcheck.FlagProSetHeader;
+                            od.PromotionTypeCode = lcheck.PromotionTypeCode;
+                            od.PromotionTypeName = lcheck.PromotionTypeName;
+                            od.MOQFlag = lcheck.MOQFlag;
+                            od.MinimumQty = lcheck.MinimumQty;
+                            od.ProductDiscountPercent = lcheck.ProductDiscountPercent;
+                            od.ProductDiscountAmount = lcheck.ProductDiscountAmount;
+                            od.FreeShippingBill = lcheck.FreeShippingBill;
+                            od.TradeFlag = lcheck.TradeFlag;
+
+                            od.Amount = lcheck.Amount;
+                            od.SumPrice = lcheck.SumPrice;
+
+                        }
+
+                        lorderdataviewtemp.Add(od);
+                    }
+
+                }
+
+
+
+                foreach (var item in lorderdatacheck) //add modal product ส่วนที่เหลือที่ไม่มีใน lorderdata
+                {
+                    OrderData od = new OrderData();
+
+                    od.Amount = item.Amount;
+                    od.SumPrice = item.SumPrice;
+                    od.PromotionDetailId = item.PromotionDetailId;
+                    od.FlagCombo = item.FlagCombo;
+                    od.ProductCode = item.ProductCode;
+                    od.ProductName = item.ProductName;
+                    od.Unit = item.Unit;
+                    od.UnitName = item.UnitName;
+                    od.Price = item.Price;
+                    od.ProductPrice = item.ProductPrice;
+                    od.Amount = item.Amount;
+                    od.DefaultAmount = item.DefaultAmount;
+                    od.DiscountAmount = item.DiscountAmount;
+                    od.DiscountPercent = item.DiscountPercent;
+                    od.PromotionCode = item.PromotionCode;
+                    od.TransportPrice = item.TransportPrice;
+                    od.CampaignCode = item.CampaignCode;
+                    od.PromotionCode = item.PromotionCode;
+                    od.ComboCode = item.ComboCode;
+                    od.ComboName = item.ComboName;
+                    od.ParentProductCode = item.ParentProductCode;
+                    od.FreeShipping = item.FreeShipping;
+                    od.FlagProSetHeader = item.FlagProSetHeader;
+                    od.PromotionTypeCode = item.PromotionTypeCode;
+                    od.PromotionTypeName = item.PromotionTypeName;
+                    od.MOQFlag = item.MOQFlag;
+                    od.MinimumQty = item.MinimumQty;
+                    od.ProductDiscountPercent = item.ProductDiscountPercent;
+                    od.ProductDiscountAmount = item.ProductDiscountAmount;
+                    od.FreeShippingBill = item.FreeShippingBill;
+                    od.TradeFlag = item.TradeFlag;
+
+                    int? maxrunning = ((from soh in lorderdataviewtemp select soh.runningNo).Max()) + 1;
+
+                    od.runningNo = (maxrunning == null) ? 1 : maxrunning;
+                    od.LockAmountFlag = item.LockAmountFlag;
+                    od.LockCheckbox = item.LockCheckbox;
+                    od.CampaignCategory = item.CampaignCategory;
+                    od.NetPrice = item.NetPrice;
+                    od.Vat = item.Vat;
+
+                    lorderdataviewtemp.Add(od);
+                }
+
+                L_orderdata3 = lorderdataviewtemp;
+                CheckFreeShipping(L_orderdata3);
+                LoadgvOrder(L_orderdata3);
+            }
+
+            gvProductViewMedia.DataSource = null;
+            gvProductViewMedia.DataBind();
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "$('#modal-addpro').modal('hide');", true);
+            
+        }
+
+        protected void txtAmount_gvOrder_TextChanged(object sender, EventArgs e)
+        {
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtAmount_gvOrder = (TextBox)currentRow.FindControl("txtAmount_gvOrder");
+            Label lblprice = (Label)currentRow.FindControl("lblprice");
+            Label lbldiscount = (Label)currentRow.FindControl("lbldiscount");
+            Label lblSumPrice = (Label)currentRow.FindControl("lblSumPrice");
+            HiddenField hidRunning = (HiddenField)currentRow.FindControl("hidRunning");
+
+            List<OrderData> lorderdata = new List<OrderData>();
+
+            if (hidtab.Value == "1")
+            {
+                lorderdata = LoadOrderdata(L_orderdata1, txtAmount_gvOrder, lblSumPrice, hidRunning);
+                L_orderdata1 = lorderdata;
+                LoadgvOrder(L_orderdata1);
+
+                BindgvProductInventory(hidtab1InventorySelect.Value);
+            }
+            else if (hidtab.Value == "2")
+            {
+                lorderdata = LoadOrderdata(L_orderdata2, txtAmount_gvOrder, lblSumPrice, hidRunning);
+                L_orderdata2 = lorderdata;
+                LoadgvOrder(L_orderdata2);
+
+                BindgvProductInventory(hidtab2InventorySelect.Value);
+            }
+            else if (hidtab.Value == "3")
+            {
+                lorderdata = LoadOrderdata(L_orderdata3, txtAmount_gvOrder, lblSumPrice, hidRunning);
+                L_orderdata3 = lorderdata;
+                LoadgvOrder(L_orderdata3);
+
+                BindgvProductInventory(hidtab3InventorySelect.Value);
+            }
+
+            
+        }
+
+        protected List<OrderData> LoadOrderdata(List<OrderData> Lorderdata, TextBox txtAmount_gvOrder, Label lblSumPrice, HiddenField hidRunning)
+        {
+            List<OrderData> lorderdata = new List<OrderData>();
+
+            foreach (var item in Lorderdata)
+            {
+                OrderData odata = new OrderData();
+
+                odata.runningNo = Convert.ToInt32(item.runningNo.Value);
+
+                if (odata.runningNo == Convert.ToInt32(hidRunning.Value))
+                {
+                    odata.Amount = Convert.ToInt32(txtAmount_gvOrder.Text);
+                }
+                else
+                {
+                    odata.Amount = Convert.ToInt32(item.Amount);
+                }
+                odata.CampaignCategory = item.CampaignCategory;
+                odata.CampaignCategoryName = item.CampaignCategoryName;
+                odata.PromotionDetailId = item.PromotionDetailId;
+                odata.CampaignCode = item.CampaignCode;
+                odata.PromotionCode = item.PromotionCode;
+                odata.ProductCode = item.ProductCode;
+                odata.ColorCode = item.ColorCode;
+                odata.FlagCombo = item.FlagCombo;
+                odata.ParentProductCode = item.ParentProductCode;
+                odata.ComboCode = item.ComboCode;
+                odata.ComboName = item.ComboName;
+                odata.ProductName = item.ProductName;
+                odata.ProductPrice = item.ProductPrice;
+                odata.Unit = item.Unit;
+                odata.UnitName = item.UnitName;
+                odata.DiscountAmount = (item.DiscountAmount != null) ? Convert.ToInt32(item.DiscountAmount) : 0;
+                odata.DiscountPercent = (item.DiscountPercent != null) ? Convert.ToInt32(item.DiscountPercent) : 0;
+                odata.Price = (item.Price != null) ? Convert.ToDouble(item.Price) : -99;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                lblSumPrice.Text = string.Format("{0:n}", (Convert.ToDecimal(odata.SumPrice) * odata.Amount));
+                lorderdata.Add(odata);
+            }
+
+            return lorderdata;
+        }
+
+        protected void chkDiscount_Changed(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CloseAllTab_Click(object sender, EventArgs e)
+        {
+            Session.Remove("L_orderdata1");
+            Session.Remove("L_orderdata2");
+            Session.Remove("L_orderdata3");
+
+            lblCustomerAddress.Text = "";
+            lblSubDistrict.Text = "";
+            lblDistrict.Text = "";
+            lblProvince.Text = "";
+            lblZipcode.Text = "";
+
+            Response.Redirect("..\\Closed.aspx");
+            
+        }
+
+        protected void ReturntoOrderPage_Click(object sender, EventArgs e)
+        {
+            Session.Remove("L_orderdata1");
+            Session.Remove("L_orderdata2");
+            Session.Remove("L_orderdata3");
+            L_transportdata1 = new List<transportdataInfo>();
+
+            lblCustomerAddress.Text = "";
+            lblSubDistrict.Text = "";
+            lblDistrict.Text = "";
+            lblProvince.Text = "";
+            lblZipcode.Text = "";
+
+            Response.Redirect("/src/FullfillOrderlist/AppointmentOrderManagement.aspx");
+            
+        }
+
+        protected void Submitorder(object sender, EventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+            POInfo pInfo = new POInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+            hidflagmediaplan.Value = "N";
+            double? sumvat = 0;
+            double? sumtotal = 0;
+            string APIpath = "";
+            string firstchannel = "";
+            string firstcampaigncategorycode = "";
+            var txtCardNumber = txtcardnumber01.Text + txtcardnumber02.Text + txtcardnumber03.Text + txtcardnumber04.Text;
+            var txtFullName = txtFName.Text + " " + txtLName.Text;
+            string strordercode = "";
+            CustomerCode = (Request.QueryString["CustomerCode"] != null) ? Request.QueryString["CustomerCode"].ToString() : "";
+            CustomerPhone = (Request.QueryString["Customerphone"] != null) ? Request.QueryString["Customerphone"].ToString() : "";
+
+            if (empInfo == null)
+            {
+                Response.Redirect("..\\..\\Default.aspx?flaglogin=_EMPCODENULL");
+
+            }
+            else
+            {
+                UpdateCustomerNoteProfile(CustomerCode);
+                UpdateCustomerTaxId(CustomerCode);
+                if (hidtab.Value == "1")
+                {
+                    if (ValidateSubmitOrdertab1())
+                    {
+                        hidtab1OrderNote.Value = txtNoteOrder.Text;
+                        hidtab1ContactDesc.Value = txtcontactdesc.Text;
+                        string date = DateTime.ParseExact(txtDate.Text.Trim(), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                        hidtab1deliverydate.Value = date;
+                        
+
+                        foreach (var lodt in L_orderdata1)
+                        {
+                            int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+                            sumvat += (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100);
+                            sumtotal += (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount);
+                            firstchannel = L_orderdata1[0].ChannelCode;
+                            firstcampaigncategorycode = L_orderdata1[0].CamcatCode;
+                            if (lodt.MediaplanFlag == "Y")
+                            {
+                                hidflagmediaplan.Value = "Y";
+                            }
+                        }
+
+                        APIpath = APIUrl + "/api/support/UpdateRetailOrderdata";
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["FlagMediaPlan"] = hidflagmediaplan.Value;
+                            data["OrderCode"] = OrderCode;
+                            data["OrderType"] = "01";
+                            data["CustomerCode"] = CustomerCode;
+                            data["CustomerPhone"] = CustomerPhone;
+                            data["SubTotalPrice"] = sumtotal.ToString();
+                            data["Vat"] = sumvat.ToString();
+                            data["PercentVat"] = hidtab1Vat.Value;
+                            data["TransportPrice"] = hidtab1transportprice.Value;
+                            
+                            data["TotalPrice"] = (sumtotal + sumvat + Convert.ToDouble(hidtab1transportprice.Value)).ToString();
+                            data["OrderStatusCode"] = "01";
+                            data["OrderStateCode"] = "16";
+
+                            
+
+                            
+                            data["DeliveryDate"] = hidtab1deliverydate.Value;
+                            data["UpdateBy"] = empInfo.EmpCode;
+                            data["CreateBy"] = empInfo.EmpCode;
+                            data["FlagDelete"] = "N";
+                            data["CampaignCategoryCode"] = firstcampaigncategorycode; // Hardcode for binding Loadlatest order
+                                                                    //data["CampaignCategoryCode"] = hidtab1CampaignCategory.Value;
+                            data["BranchCode"] = "01"; // Hardcode wait Pete to update
+                                                       
+                            data["OrderNote"] = hidtab1OrderNote.Value;
+                            data["ChannelCode"] = firstchannel;
+                            data["BranchOrderID"] = hidbranchorderID.Value;
+                            data["InventoryCode"] = hidtab1InventorySelect.Value;
+                            data["TaxID"] = hidtab1CustomerTaxId.Value;
+                            data["FlagApproved"] = "N";
+                            data["MediaPhone"] = hidmediaphone.Value;
+                            
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            strordercode = Encoding.UTF8.GetString(response);
+                            
+                        }
+
+                        // Delete OrderDetailInfo for first action
+                        foreach (var lddt in L_orderdataforDelete)
+                        {
+                            string respstringdelorderdetail = "";
+                            APIpath = APIUrl + "/api/support/DeleteOrderDetailofRetailTakeOrder";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderDetailID"] = (lddt.OrderDetailID != null) ? lddt.OrderDetailID.ToString() : "0";
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringdelorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        //Insert Orderdetailinfo For New Record
+                        foreach (var lodt in L_orderdata1)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/InsertRetailOrderdetaildata";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+                                int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+
+                                data["ProductCode"] = lodt.ProductCode;
+                                data["PromotionDetailId"] = (lodt.PromotionDetailId != null) ? lodt.PromotionDetailId.ToString() : "0";
+                                data["Price"] = lodt.SumPrice.ToString();
+                                data["ProductPrice"] = lodt.ProductPrice.ToString();
+                                data["CustomerCode"] = CustomerCode;
+                                data["NetPrice"] = ((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount).ToString();
+                                data["TotalPrice"] = (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount).ToString();
+                                data["Vat"] = (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100).ToString();
+                                data["Unit"] = lodt.Unit; 
+                                data["Amount"] = lodt.Amount.ToString();
+                                data["DefaultAmount"] = lodt.DefaultAmount.ToString();
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                data["FlagDelete"] = "N";
+                                data["OrderCode"] = OrderCode;
+                                data["ParentProductCode"] = lodt.ParentProductCode;
+                                data["ParentPromotionCode"] = lodt.ParentPromotionCode;
+                                data["FlagCombo"] = lodt.FlagCombo;
+                                data["ComboCode"] = lodt.ComboCode; 
+                                data["ComboName"] = lodt.ComboName;
+                                data["PromotionCode"] = lodt.PromotionCode;
+                                data["CampaignCode"] = lodt.CampaignCode;
+                                data["runningNo"] = lodt.runningNo.ToString();
+                                data["LockAmountFlag"] = lodt.LockAmountFlag;
+                                data["LockCheckbox"] = lodt.LockCheckbox;
+                                data["FreeShipping"] = lodt.FreeShipping;
+                                data["FlagProSetHeader"] = lodt.FlagProSetHeader;
+                                data["PromotionTypeCode"] = lodt.PromotionTypeCode;
+                                data["PromotionTypeName"] = lodt.PromotionTypeName;
+                                data["MOQFlag"] = lodt.MOQFlag;
+                                data["MinimumQty"] = lodt.MinimumQty.ToString();
+                                data["DiscountAmount"] = lodt.DiscountAmount.ToString();
+                                data["DiscountPercent"] = lodt.DiscountPercent.ToString();
+                                data["ProductDiscountPercent"] = lodt.ProductDiscountPercent.ToString();
+                                data["ProductDiscountAmount"] = lodt.ProductDiscountAmount.ToString();
+                                data["FreeShippingBill"] = lodt.FreeShippingBill;
+                                data["TradeFlag"] = lodt.TradeFlag;
+                                data["TransportPrice"] = lodt.TransportPrice.ToString();
+                                data["SumPrice"] = lodt.SumPrice.ToString();
+                                data["InventoryCode"] = hidtab1InventorySelect.Value;
+                                data["CampaignCategoryCode"] = lodt.CamcatCode;
+                                data["ChannelCode"] = lodt.ChannelCode;
+                                data["MediaPlanFlag"] = lodt.MediaplanFlag;
+                                data["CreateDate"] = hidCreateDate.Value;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        // update paymentdata
+                        paymentdataInfo pdata = new paymentdataInfo();
+                        List<paymentdataInfo> lpdata = new List<paymentdataInfo>();
+
+                        pdata.OrderCode = OrderCode;
+                        
+                        pdata.PaymentTypeCode = hidtab1PaymentType_Selected.Value;
+                        pdata.Payamount = Convert.ToDouble(lblTotalPriceAfter.Text);
+                        pdata.CreateBy = hidEmpCode.Value;
+                        pdata.UpdateBy = hidEmpCode.Value;
+                        pdata.FlagDelete = "N";
+
+                        pdata.Installment = ddlPeriod.SelectedValue;
+                        pdata.InstallmentPrice = txtPer_period.Text;
+                        pdata.FirstInstallment = txtFirst_period.Text;
+                        pdata.CardIssuename = ddlCardbank.SelectedValue;
+                        pdata.CardNo = txtCardNumber;
+                        pdata.CardType = ddlCardtype.SelectedValue;
+                        pdata.CVCNo = txtcvv.Text;
+                        pdata.CardHolderName = txtFullName;
+                        pdata.CardExpMonth = ddlmonth_expire.SelectedValue;
+                        pdata.CardExpYear = ddlyear_expire.SelectedValue;
+                        pdata.CitizenId = txtper_id.Text;
+                        pdata.BirthDate = txtbirthdate.Text;
+                        pdata.BankCode = ddlTransferBank.SelectedValue;
+                        pdata.BankBranch = ddlTransferBranch.SelectedValue;
+                        pdata.AccountName = ddlAccountName.SelectedValue;
+                        pdata.AccountType = ddlAccountType.SelectedValue;
+                        pdata.AccountNo = txtAccountNumber.Text;
+                        pdata.PaymentOtherdetail = txtareaAnotherPay.Text;
+                        pdata.MpayNum = txtMpayPhoneNum.Text;
+                        pdata.MpayName = txtMpayName.Text;
+                        pdata.PaymentGateway = txtpaymentgateway.Text;
+
+                        lpdata.Add(pdata);
+
+                        foreach (var paymentV in lpdata)
+                        {
+                            string respstring = "";
+                            APIpath = APIUrl + "/api/support/UpdateRetailOrderPayment";
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderCode"] = paymentV.OrderCode;
+                                data["PaymentTypeCode"] = paymentV.PaymentTypeCode;
+                                data["Payamount"] = paymentV.Payamount.ToString();
+                                data["CreateBy"] = paymentV.CreateBy;
+                                data["UpdateBy"] = paymentV.UpdateBy;
+                                data["FlagDelete"] = "N";
+
+                                //เพิ่ม
+                                data["Installment"] = paymentV.Installment;
+                                data["InstallmentPrice"] = paymentV.InstallmentPrice;
+                                data["FirstInstallment"] = paymentV.FirstInstallment;
+                                data["CardIssuename"] = paymentV.CardIssuename;
+                                data["CardNo"] = paymentV.CardNo;
+                                data["CardType"] = paymentV.CardType;
+                                data["CVCNo"] = paymentV.CVCNo;
+                                data["CardHolderName"] = paymentV.CardHolderName;
+                                data["CardExpMonth"] = paymentV.CardExpMonth;
+                                data["CardExpYear"] = paymentV.CardExpYear;
+                                data["CitizenId"] = paymentV.CitizenId;
+                                data["BirthDate"] = paymentV.BirthDate;
+                                data["BankCode"] = paymentV.BankCode;
+                                data["BankBranch"] = paymentV.BankBranch;
+                                data["AccountName"] = paymentV.AccountName;
+                                data["AccountType"] = paymentV.AccountType;
+                                data["AccountNo"] = paymentV.AccountNo;
+                                data["PaymentOtherdetail"] = paymentV.PaymentOtherdetail;
+                                data["MpayNum"] = paymentV.MpayNum;
+                                data["MpayName"] = paymentV.MpayName;
+                                data["PaymentGateway"] = paymentV.PaymentGateway;
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstring = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        // update transportdata
+                        foreach (var ttaV in L_transportdata1)
+                        {
+                            if (ttaV.AddressType == "01")
+                            {
+                                ttaV.OrderTransportID = (hidtab1ordertransportadresstype01.Value == "") ? 0 : Convert.ToInt32(hidtab1ordertransportadresstype01.Value);
+                            }
+                            else if (ttaV.AddressType == "02")
+                            {
+                                ttaV.OrderTransportID = (hidtab1ordertransportadresstype02.Value == "") ? 0 : Convert.ToInt32(hidtab1ordertransportadresstype02.Value);
+                            }
+                        }
+
+                        foreach (var tdataV in L_transportdata1)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/UpdateRetailOrderTransport";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderTransportID"] = tdataV.OrderTransportID.ToString();
+                                data["OrderCode"] = OrderCode;
+                                data["CustomerCode"] = CustomerCode;
+                                data["Address"] = tdataV.Address;
+                                data["SubDistrictCode"] = tdataV.SubDistrictCode;
+                                data["DistrictCode"] = tdataV.DistrictCode;
+                                data["ProvinceCode"] = tdataV.ProvinceCode;
+                                data["Zipcode"] = tdataV.Zipcode;
+                                data["TransportType"] = hidtab1TransportTypeCode_Selected.Value;
+                                data["TransportPrice"] = hidtab1transportprice.Value;
+                                data["AddressType"] = tdataV.AddressType;
+                                data["InventoryCode"] = hidtab1InventorySelect.Value;
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+                        hidtab1orderstatus.Value = "อัพเดตใบสั่งขาย";
+                        hidtab1ordercode.Value = OrderCode;
+                        lblorderstatus.Text = hidtab1orderstatus.Value;
+                        lblordercode.Text = hidtab1ordercode.Value;
+
+                        
+                        InsertUpdateInventoryDetailFromEditOrder(hidtab1InventorySelect.Value, hidtab1ordercode.Value);
+                        InsertUpdateContactHistory(hidtab1ContactStatusSelected.Value, hidtab1ContactResultSelected.Value, hidtab1ContactDesc.Value, hidtab1ordercode.Value);
+                        InsertUpdateInventoryMovement(hidtab1InventorySelect.Value, hidtab1ordercode.Value);
+
+                        foreach (var oe in L_orderdataforDelete.ToList())
+                        {
+
+                        }
+
+                        btntab1_Click(null, null);
+                    }
+                }
+                else if (hidtab.Value == "2")
+                {
+                    if (ValidateSubmitOrdertab2())
+                    {
+                        hidtab2transportprice.Value = lblTransportPrice.Text;
+                        hidtab2OrderNote.Value = txtNoteOrder.Text;
+                        
+                        hidtab2ContactDesc.Value = txtcontactdesc.Text;
+                        string date = DateTime.ParseExact(txtDate.Text.Trim(), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                        hidtab2deliverydate.Value = date;
+
+                        foreach (var lodt in L_orderdata2)
+                        {
+                            int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+                            sumvat += (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100);
+                            sumtotal += (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount);
+                        }
+
+                        APIpath = APIUrl + "/api/support/InsertRetailOrderdata";
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["OrderType"] = "01";
+                            data["CustomerCode"] = CustomerCode;
+                            data["CustomerPhone"] = CustomerPhone;
+                            data["SubTotalPrice"] = sumtotal.ToString();
+                            data["Vat"] = sumvat.ToString();
+                            data["TransportPrice"] = hidtab2transportprice.Value;
+                            
+                            data["TotalPrice"] = (sumtotal + sumvat + Convert.ToDouble(hidtab2transportprice.Value)).ToString();
+                            data["OrderStatusCode"] = "01";
+                            data["OrderStateCode"] = "01";
+
+                            
+
+                            data["DeliveryDate"] = hidtab2deliverydate.Value;
+                            data["UpdateBy"] = empInfo.EmpCode;
+                            data["CreateBy"] = empInfo.EmpCode;
+                            data["FlagDelete"] = "N";
+                            data["CampaignCategoryCode"] = "ASTON"; //Set CampaignCategoryCode for binding Loadlatest order
+                                                                    
+                            data["BranchCode"] = "01"; //Save for set BranchCode for TakeOrderRetail
+                                                       
+                            data["OrderNote"] = hidtab2OrderNote.Value;
+                            data["ChannelCode"] = "Tel";
+                            data["FlagApproved"] = "N";
+                            data["MerchantMapCode"] = MerchantMapCode;
+                            data["MerchantMapName"] = MerchantMapName;
+                            
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            strordercode = Encoding.UTF8.GetString(response);
+                            strordercode = strordercode.Replace("\"", "");
+                        }
+
+                        //Insert Orderdetailinfo
+                        foreach (var lodt in L_orderdata2)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/InsertRetailOrderdetaildata";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+                                int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+
+                                data["ProductCode"] = lodt.ProductCode;
+                                data["PromotionDetailId"] = lodt.PromotionDetailId.ToString(); 
+                                data["Price"] = lodt.Price.ToString(); 
+                                data["ProductPrice"] = lodt.ProductPrice.ToString();
+                                data["CustomerCode"] = CustomerCode;
+                                data["NetPrice"] = ((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount).ToString();
+                                data["TotalPrice"] = (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount).ToString();
+                                data["Vat"] = (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100).ToString();
+                                data["Unit"] = lodt.Unit; 
+                                data["Amount"] = lodt.Amount.ToString();
+                                data["DefaultAmount"] = lodt.DefaultAmount.ToString();
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                data["FlagDelete"] = "N";
+                                data["OrderCode"] = strordercode;
+                                data["ParentProductCode"] = lodt.ParentProductCode;
+                                data["ParentPromotionCode"] = lodt.ParentPromotionCode;
+                                data["FlagCombo"] = lodt.FlagCombo;
+                                data["ComboCode"] = lodt.ComboCode; 
+                                data["ComboName"] = lodt.ComboName;
+                                data["PromotionCode"] = lodt.PromotionCode;
+                                data["CampaignCode"] = lodt.CampaignCode;
+                                data["runningNo"] = lodt.runningNo.ToString();
+                                data["LockAmountFlag"] = lodt.LockAmountFlag;
+                                data["LockCheckbox"] = lodt.LockCheckbox;
+                                data["FreeShipping"] = lodt.FreeShipping;
+                                data["FlagProSetHeader"] = lodt.FlagProSetHeader;
+                                data["PromotionTypeCode"] = lodt.PromotionTypeCode;
+                                data["PromotionTypeName"] = lodt.PromotionTypeName;
+                                data["MOQFlag"] = lodt.MOQFlag;
+                                data["MinimumQty"] = lodt.MinimumQty.ToString();
+                                data["DiscountAmount"] = lodt.DiscountAmount.ToString();
+                                data["DiscountPercent"] = lodt.DiscountPercent.ToString();
+                                data["ProductDiscountPercent"] = lodt.ProductDiscountPercent.ToString();
+                                data["ProductDiscountAmount"] = lodt.ProductDiscountAmount.ToString();
+                                data["FreeShippingBill"] = lodt.FreeShippingBill;
+                                data["TradeFlag"] = lodt.TradeFlag;
+                                data["TransportPrice"] = lodt.TransportPrice.ToString();
+                                data["SumPrice"] = lodt.SumPrice.ToString();
+                                data["InventoryCode"] = hidtab2InventorySelect.Value;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        //real insert paymentdata
+                        paymentdataInfo pdata = new paymentdataInfo();
+                        List<paymentdataInfo> lpdata = new List<paymentdataInfo>();
+
+                        pdata.OrderCode = strordercode;
+                        
+                        pdata.PaymentTypeCode = hidtab1PaymentType_Selected.Value;
+                        pdata.Payamount = Convert.ToDouble(lblTotalPriceAfter.Text);
+                        pdata.CreateBy = hidEmpCode.Value;
+                        pdata.UpdateBy = hidEmpCode.Value;
+                        pdata.FlagDelete = "N";
+
+                        pdata.Installment = ddlPeriod.SelectedValue;
+                        pdata.InstallmentPrice = txtPer_period.Text;
+                        pdata.FirstInstallment = txtFirst_period.Text;
+                        pdata.CardIssuename = ddlCardbank.SelectedValue;
+                        pdata.CardNo = txtCardNumber;
+                        pdata.CardType = ddlCardtype.SelectedValue;
+                        pdata.CVCNo = txtcvv.Text;
+                        pdata.CardHolderName = txtFullName;
+                        pdata.CardExpMonth = ddlmonth_expire.SelectedValue;
+                        pdata.CardExpYear = ddlyear_expire.SelectedValue;
+                        pdata.CitizenId = txtper_id.Text;
+                        pdata.BirthDate = txtbirthdate.Text;
+                        pdata.BankCode = ddlTransferBank.SelectedValue;
+                        pdata.BankBranch = ddlTransferBranch.SelectedValue;
+                        pdata.AccountName = ddlAccountName.SelectedValue;
+                        pdata.AccountType = ddlAccountType.SelectedValue;
+                        pdata.AccountNo = txtAccountNumber.Text;
+                        pdata.PaymentOtherdetail = txtareaAnotherPay.Text;
+                        pdata.MpayNum = txtMpayPhoneNum.Text;
+                        pdata.MpayName = txtMpayName.Text;
+                        pdata.PaymentGateway = txtpaymentgateway.Text;
+
+                        lpdata.Add(pdata);
+
+                        foreach (var paymentV in lpdata)
+                        {
+                            string respstring = "";
+                            APIpath = APIUrl + "/api/support/L_paymentRetailInsert";
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderCode"] = paymentV.OrderCode;
+                                data["PaymentTypeCode"] = paymentV.PaymentTypeCode;
+                                data["Payamount"] = paymentV.Payamount.ToString();
+                                data["CreateBy"] = paymentV.CreateBy;
+                                data["UpdateBy"] = paymentV.UpdateBy;
+                                data["FlagDelete"] = "N";
+
+                                //เพิ่ม
+                                data["Installment"] = paymentV.Installment;
+                                data["InstallmentPrice"] = paymentV.InstallmentPrice;
+                                data["FirstInstallment"] = paymentV.FirstInstallment;
+                                data["CardIssuename"] = paymentV.CardIssuename;
+                                data["CardNo"] = paymentV.CardNo;
+                                data["CardType"] = paymentV.CardType;
+                                data["CVCNo"] = paymentV.CVCNo;
+                                data["CardHolderName"] = paymentV.CardHolderName;
+                                data["CardExpMonth"] = paymentV.CardExpMonth;
+                                data["CardExpYear"] = paymentV.CardExpYear;
+                                data["CitizenId"] = paymentV.CitizenId;
+                                data["BirthDate"] = paymentV.BirthDate;
+                                data["BankCode"] = paymentV.BankCode;
+                                data["BankBranch"] = paymentV.BankBranch;
+                                data["AccountName"] = paymentV.AccountName;
+                                data["AccountType"] = paymentV.AccountType;
+                                data["AccountNo"] = paymentV.AccountNo;
+                                data["PaymentOtherdetail"] = paymentV.PaymentOtherdetail;
+                                data["MpayNum"] = paymentV.MpayNum;
+                                data["MpayName"] = paymentV.MpayName;
+                                data["PaymentGateway"] = paymentV.PaymentGateway;
+                                data["MerchantMapCode"] = MerchantMapCode;
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstring = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        // insert transportdata
+                        foreach (var tdataV in L_transportdata2)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/InsertRetailTransportdata";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderCode"] = strordercode;
+                                data["CustomerCode"] = CustomerCode;
+                                data["Address"] = tdataV.Address;
+                                data["SubDistrictCode"] = tdataV.SubDistrictCode;
+                                data["DistrictCode"] = tdataV.DistrictCode;
+                                data["ProvinceCode"] = tdataV.ProvinceCode;
+                                data["Zipcode"] = tdataV.Zipcode;
+                                data["TransportType"] = hidtab2TransportTypeCode_Selected.Value;
+                                data["TransportPrice"] = hidtab2transportprice.Value;
+                                data["AddressType"] = tdataV.AddressType;
+                                data["InventoryCode"] = hidtab2InventorySelect.Value;
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                data["MerchantMapCode"] = MerchantMapCode;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+                        hidtab2orderstatus.Value = "สร้างใบสั่งขาย";
+                        hidtab2ordercode.Value = strordercode;
+                        lblorderstatus.Text = hidtab2orderstatus.Value;
+                        lblordercode.Text = hidtab2ordercode.Value;
+
+                        InsertUpdateInventoryDetail(hidtab2InventorySelect.Value, hidtab2ordercode.Value);
+                        InsertUpdateContactHistory(hidtab2ContactStatusSelected.Value, hidtab2ContactResultSelected.Value, hidtab2ContactDesc.Value, hidtab2ordercode.Value);
+
+                        btntab2_Click(null, null);
+                    }
+                }
+                else if (hidtab.Value == "3")
+                {
+                    if (ValidateSubmitOrdertab3())
+                    {
+                        hidtab3transportprice.Value = lblTransportPrice.Text;
+                        hidtab3OrderNote.Value = txtNoteOrder.Text;
+                        hidtab3ContactDesc.Value = txtcontactdesc.Text;
+                        string date = DateTime.ParseExact(txtDate.Text.Trim(), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                        hidtab3deliverydate.Value = date;
+
+                        foreach (var lodt in L_orderdata3)
+                        {
+                            int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+                            sumvat += (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100);
+                            sumtotal += (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount);
+                        }
+
+                        APIpath = APIUrl + "/api/support/InsertRetailOrderdata";
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["OrderType"] = "01";
+                            data["CustomerCode"] = CustomerCode;
+                            data["CustomerPhone"] = CustomerPhone;
+                            data["SubTotalPrice"] = sumtotal.ToString();
+                            data["Vat"] = sumvat.ToString();
+                            data["TransportPrice"] = hidtab3transportprice.Value;
+                            
+                            data["TotalPrice"] = (sumtotal + sumvat + Convert.ToDouble(hidtab3transportprice.Value)).ToString();
+                            data["OrderStatusCode"] = "01";
+                            data["OrderStateCode"] = "01";
+
+                            
+
+                            data["DeliveryDate"] = hidtab3deliverydate.Value;
+                            data["UpdateBy"] = empInfo.EmpCode;
+                            data["CreateBy"] = empInfo.EmpCode;
+                            data["FlagDelete"] = "N";
+                            data["CampaignCategoryCode"] = "ASTON"; //Set CampaignCategoryCode for binding Loadlatest order
+
+
+                            data["BranchCode"] = "01"; //Save for set BranchCode for TakeOrderRetail
+
+                            data["OrderNote"] = hidtab3OrderNote.Value;
+                            data["ChannelCode"] = "Tel";
+                            data["FlagApproved"] = "N";
+
+                            
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            strordercode = Encoding.UTF8.GetString(response);
+                            strordercode = strordercode.Replace("\"", "");
+                        }
+
+                        //Insert Orderdetailinfo
+                        foreach (var lodt in L_orderdata3)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/InsertRetailOrderdetaildata";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+                                int? vat = txtVat.Text != "" ? Convert.ToInt32(txtVat.Text) : 0;
+
+                                data["ProductCode"] = lodt.ProductCode;
+                                data["PromotionDetailId"] = lodt.PromotionDetailId.ToString();
+                                data["Price"] = lodt.Price.ToString();
+                                data["ProductPrice"] = lodt.ProductPrice.ToString();
+                                data["CustomerCode"] = CustomerCode;
+                                data["NetPrice"] = ((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount).ToString();
+                                data["TotalPrice"] = (((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount).ToString();
+                                data["Vat"] = (((((lodt.Price - ((lodt.Price * lodt.DiscountPercent) / 100)) - lodt.DiscountAmount) * lodt.Amount) * vat) / 100).ToString();
+                                data["Unit"] = lodt.Unit; 
+                                data["Amount"] = lodt.Amount.ToString();
+                                data["DefaultAmount"] = lodt.DefaultAmount.ToString();
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                data["FlagDelete"] = "N";
+                                data["OrderCode"] = strordercode;
+                                data["ParentProductCode"] = lodt.ParentProductCode;
+                                data["ParentPromotionCode"] = lodt.ParentPromotionCode;
+                                data["FlagCombo"] = lodt.FlagCombo;
+                                data["ComboCode"] = lodt.ComboCode; 
+                                data["ComboName"] = lodt.ComboName;
+                                data["PromotionCode"] = lodt.PromotionCode;
+                                data["CampaignCode"] = lodt.CampaignCode;
+                                data["runningNo"] = lodt.runningNo.ToString();
+                                data["LockAmountFlag"] = lodt.LockAmountFlag;
+                                data["LockCheckbox"] = lodt.LockCheckbox;
+                                data["FreeShipping"] = lodt.FreeShipping;
+                                data["FlagProSetHeader"] = lodt.FlagProSetHeader;
+                                data["PromotionTypeCode"] = lodt.PromotionTypeCode;
+                                data["PromotionTypeName"] = lodt.PromotionTypeName;
+                                data["MOQFlag"] = lodt.MOQFlag;
+                                data["MinimumQty"] = lodt.MinimumQty.ToString();
+                                data["DiscountAmount"] = lodt.DiscountAmount.ToString();
+                                data["DiscountPercent"] = lodt.DiscountPercent.ToString();
+                                data["ProductDiscountPercent"] = lodt.ProductDiscountPercent.ToString();
+                                data["ProductDiscountAmount"] = lodt.ProductDiscountAmount.ToString();
+                                data["FreeShippingBill"] = lodt.FreeShippingBill;
+                                data["TradeFlag"] = lodt.TradeFlag;
+                                data["TransportPrice"] = lodt.TransportPrice.ToString();
+                                data["SumPrice"] = lodt.SumPrice.ToString();
+                                data["InventoryCode"] = hidtab3InventorySelect.Value;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        // insert paymentdata
+                        paymentdataInfo pdata = new paymentdataInfo();
+                        List<paymentdataInfo> lpdata = new List<paymentdataInfo>();
+
+                        pdata.OrderCode = strordercode;
+                        
+                        pdata.PaymentTypeCode = hidtab3PaymentType_Selected.Value;
+                        pdata.Payamount = Convert.ToDouble(lblTotalPriceAfter.Text);
+                        pdata.CreateBy = hidEmpCode.Value;
+                        pdata.UpdateBy = hidEmpCode.Value;
+                        pdata.FlagDelete = "N";
+
+                        lpdata.Add(pdata);
+
+                        foreach (var paymentV in lpdata)
+                        {
+                            string respstring = "";
+                            APIpath = APIUrl + "/api/support/L_paymentRetailInsert";
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderCode"] = paymentV.OrderCode;
+                                data["PaymentTypeCode"] = paymentV.PaymentTypeCode;
+                                data["Payamount"] = paymentV.Payamount.ToString();
+                                data["CreateBy"] = paymentV.CreateBy;
+                                data["UpdateBy"] = paymentV.UpdateBy;
+                                data["FlagDelete"] = "N";
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstring = Encoding.UTF8.GetString(response);
+                            }
+                        }
+
+                        // insert transportdata
+                        foreach (var tdataV in L_transportdata3)
+                        {
+                            string respstringorderdetail = "";
+                            APIpath = APIUrl + "/api/support/InsertRetailTransportdata";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderCode"] = strordercode;
+                                data["CustomerCode"] = CustomerCode;
+                                data["Address"] = tdataV.Address;
+                                data["SubDistrictCode"] = tdataV.SubDistrictCode;
+                                data["DistrictCode"] = tdataV.DistrictCode;
+                                data["ProvinceCode"] = tdataV.ProvinceCode;
+                                data["Zipcode"] = tdataV.Zipcode;
+                                data["TransportType"] = hidtab3TransportTypeCode_Selected.Value;
+                                data["TransportPrice"] = hidtab3transportprice.Value;
+                                data["AddressType"] = tdataV.AddressType;
+                                data["InventoryCode"] = hidtab3InventorySelect.Value;
+                                data["UpdateBy"] = empInfo.EmpCode;
+                                data["CreateBy"] = empInfo.EmpCode;
+                                
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstringorderdetail = Encoding.UTF8.GetString(response);
+                            }
+                        }
+                        hidtab3orderstatus.Value = "สร้างใบสั่งขาย";
+                        hidtab3ordercode.Value = strordercode;
+                        lblorderstatus.Text = hidtab3orderstatus.Value;
+                        lblordercode.Text = hidtab3ordercode.Value;
+
+                        InsertUpdateInventoryDetail(hidtab3InventorySelect.Value, hidtab3ordercode.Value);
+                        InsertUpdateContactHistory(hidtab3ContactStatusSelected.Value, hidtab3ContactResultSelected.Value, hidtab3ContactDesc.Value, hidtab3ordercode.Value);
+
+                        btntab3_Click(null, null);
+                    }
+                }
+
+                if (strordercode != "")
+                {
+                    
+
+                    L_orderdata1 = new List<OrderData>();
+                    L_orderdataforDelete = new List<OrderData>();
+                    L_transportdata1 = new List<transportdataInfo>();                    
+
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "redirect",
+                    "alert('แก้ไขใบสั่งขายเสร็จสิ้น'); window.location='" +
+                    Request.ApplicationPath + "../src/FullfillOrderlist/AppointmentOrderManagement.aspx';", true);
+                }
+            }
+
+
+        }
+        protected void radTransportType01_CheckChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    if (radTransportType01.Checked == true)
+                    {
+                        hidtab1TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+
+                        if (hidtab1TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            hidtab1transportprice.Value = txtTransportPrice.Text;
+                            lblTransportPrice.Text = hidtab1transportprice.Value;
+
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+                        }
+                        else
+                        {
+                            hidtab1transportprice.Value = hidFee.Value;
+                            lblTransportPrice.Text = hidtab1transportprice.Value;
+
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+                        }
+                    }
+                }
+                Loadtotal(L_orderdata1);
+
+                ViewState["hidtab1TransportTypeCode_SelectedValue"] = hidtab1TransportTypeCode_Selected.Value;
+            }
+            else if (hidtab.Value == "2")
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    if (radTransportType01.Checked == true)
+                    {
+                        hidtab2TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+
+                        if (hidtab2TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            hidtab2transportprice.Value = txtTransportPrice.Text;
+                            lblTransportPrice.Text = hidtab2transportprice.Value;
+
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+                        }
+                        else
+                        {
+                            hidtab2transportprice.Value = hidFee.Value;
+                            lblTransportPrice.Text = hidtab2transportprice.Value;
+
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+                        }
+                    }
+                }
+                Loadtotal(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                for (int i = 0; i < gvTransport.Rows.Count; i++)
+                {
+                    GridViewRow row = gvTransport.Rows[i];
+                    RadioButton radTransportType01 = (RadioButton)row.FindControl("radTransportType01");
+                    HiddenField hidFee = (HiddenField)row.FindControl("hidFee");
+                    HiddenField hidLogisticCode = (HiddenField)row.FindControl("hidLogisticCode");
+                    if (radTransportType01.Checked == true)
+                    {
+                        hidtab3TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+
+                        if (hidtab3TransportTypeCode_Selected.Value == "LOGIS01")
+                        {
+                            hidtab3transportprice.Value = txtTransportPrice.Text;
+                            lblTransportPrice.Text = hidtab3transportprice.Value;
+
+                            lblTransportPrice.Visible = false;
+                            txtTransportPrice.Visible = true;
+                        }
+                        else
+                        {
+                            hidtab3transportprice.Value = hidFee.Value;
+                            lblTransportPrice.Text = hidtab3transportprice.Value;
+
+                            lblTransportPrice.Visible = true;
+                            txtTransportPrice.Visible = false;
+                        }
+                    }
+                }
+                Loadtotal(L_orderdata3);
+            }
+        }
+        protected void radPaymentType_CheckChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (radPaymentType.Checked == true)
+                    {
+                        hidtab1PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                    }
+                }
+            }
+            else if (hidtab.Value == "2")
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (radPaymentType.Checked == true)
+                    {
+                        hidtab2PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                    }
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                for (int i = 0; i < gvOrderPayment.Rows.Count; i++)
+                {
+                    GridViewRow row = gvOrderPayment.Rows[i];
+                    RadioButton radPaymentType = (RadioButton)row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)row.FindControl("hidPaymentTypeCode");
+
+                    if (radPaymentType.Checked == true)
+                    {
+                        hidtab3PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                    }
+                }
+            }
+        }
+
+        protected void radChannelType_CheckChanged(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+                    Label lblChannelName = (Label)row.FindControl("lblChannelName");
+                    if (radChannelType.Checked == true)
+                    {
+                        hidtab1ChannelCode_Selected.Value = hidChannelCode.Value;
+                        hidtab1ChannelName_Selected.Value = lblChannelName.Text;
+                    }
+                }
+            }
+            else if (hidtab.Value == "2")
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (radChannelType.Checked == true)
+                    {
+                        hidtab2ChannelCode_Selected.Value = hidChannelCode.Value;
+                    }
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                for (int i = 0; i < gvChannel.Rows.Count; i++)
+                {
+                    GridViewRow row = gvChannel.Rows[i];
+                    RadioButton radChannelType = (RadioButton)row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)row.FindControl("hidChannelCode");
+
+                    if (radChannelType.Checked == true)
+                    {
+                        hidtab3ChannelCode_Selected.Value = hidChannelCode.Value;
+                    }
+                }
+            }
+        }
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
+
+            Label lbltotal = (Label)currentRow.FindControl("lbltotal");
+            Label lblSumPrice = (Label)currentRow.FindControl("lblSumPrice");
+            HiddenField hidRunning = (HiddenField)currentRow.FindControl("hidRunning");
+            List<OrderData> lorderdata = new List<OrderData>();
+            HiddenField hidComboCode = (HiddenField)currentRow.FindControl("hidComboCode");
+            HiddenField hidParentPromotionCode = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+            HiddenField hidTradeFlag = (HiddenField)currentRow.FindControl("hidTradeFlag");
+
+            List<OrderData> lorerdatafordelete = new List<OrderData>();
+
+            if (L_orderdata1.Count > 0)
+            {
+                foreach (var item in L_orderdata1.ToList())
+                {
+                    OrderData odata = new OrderData();
+                    odata = bindorderdata(item);
+
+                    lorerdatafordelete.Add(odata);
+                }
+            }
+
+            if (hidtab.Value == "1")
+            {
+                if (hidComboCode.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    lorerdatafordelete.RemoveAll(x => x.ComboCode == hidComboCode.Value);
+                    lorerdatafordelete.RemoveAll(x => x.ParentProductCode == hidComboCode.Value);
+                    lorderdata = LoadOrderbyList(lorerdatafordelete, lblSumPrice);
+
+                }
+                else if (hidRunning.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    lorerdatafordelete.RemoveAll(x => x.runningNo == Convert.ToInt32(hidRunning.Value));
+                    lorderdata = LoadOrderbyList(lorerdatafordelete, lblSumPrice);
+
+                }
+                else if (hidParentPromotionCode.Value != "")
+                {
+                    lorerdatafordelete.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                    lorderdata = LoadOrderbyList(lorerdatafordelete, lblSumPrice);
+                }
+
+                L_orderdata1 = lorderdata;
+                CheckMOQ(L_orderdata1);
+
+                if (hidTradeFlag.Value == "" || hidTradeFlag.Value == "N")
+                {
+                    
+                }
+
+                CheckFreeShipping(L_orderdata1);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrder(lorderdata);
+            }
+            if (hidtab.Value == "2")
+            {
+                if (hidComboCode.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    L_orderdata2.RemoveAll(x => x.ComboCode == hidComboCode.Value);
+                    L_orderdata2.RemoveAll(x => x.ParentProductCode == hidComboCode.Value);
+                    lorderdata = LoadOrderbyList(L_orderdata2, lblSumPrice);
+
+                }
+                else if (hidRunning.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    L_orderdata2.RemoveAll(x => x.runningNo == Convert.ToInt32(hidRunning.Value));
+                    lorderdata = LoadOrderbyList(L_orderdata2, lblSumPrice);
+
+                }
+                else if (hidParentPromotionCode.Value != "")
+                {
+                    L_orderdata2.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                    lorderdata = LoadOrderbyList(L_orderdata2, lblSumPrice);
+                }
+                L_orderdata2 = lorderdata;
+                CheckMOQ(L_orderdata2);
+
+                if (hidTradeFlag.Value == "" || hidTradeFlag.Value == "N")
+                {
+                    
+                }
+
+                CheckFreeShipping(L_orderdata2);
+
+                if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab2InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab2InventorySelect.Value);
+                }
+
+                LoadgvOrder(lorderdata);
+            }
+            if (hidtab.Value == "3")
+            {
+                if (hidComboCode.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    L_orderdata3.RemoveAll(x => x.ComboCode == hidComboCode.Value);
+                    L_orderdata3.RemoveAll(x => x.ParentProductCode == hidComboCode.Value);
+                    lorderdata = LoadOrderbyList(L_orderdata3, lblSumPrice);
+
+                }
+                else if (hidRunning.Value != "" && hidParentPromotionCode.Value == "")
+                {
+                    L_orderdata3.RemoveAll(x => x.runningNo == Convert.ToInt32(hidRunning.Value));
+                    lorderdata = LoadOrderbyList(L_orderdata3, lblSumPrice);
+
+                }
+                else if (hidParentPromotionCode.Value != "")
+                {
+                    L_orderdata3.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                    lorderdata = LoadOrderbyList(L_orderdata3, lblSumPrice);
+                }
+                L_orderdata3 = lorderdata;
+                CheckMOQ(L_orderdata3);
+
+                if (hidTradeFlag.Value == "" || hidTradeFlag.Value == "N")
+                {
+                    
+                }
+
+                CheckFreeShipping(L_orderdata3);
+
+                if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab3InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab3InventorySelect.Value);
+                }
+
+                LoadgvOrder(lorderdata);
+            }
+        }
+        protected void btnCloseView_Click(object sender, EventArgs e)
+        {
+            GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
+
+            Label lbltotal = (Label)currentRow.FindControl("lbltotal");
+            Label lblSumPrice = (Label)currentRow.FindControl("lblSumPrice");
+            HiddenField hidRunning = (HiddenField)currentRow.FindControl("hidRunning");
+            List<OrderData> lorderdata = new List<OrderData>();
+            HiddenField hidComboCode = (HiddenField)currentRow.FindControl("hidComboCode");
+            HiddenField hidParentPromotionCode = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+            HiddenField hidProhMinQtyHeaderFlag = (HiddenField)currentRow.FindControl("hidProhMinQtyHeaderFlag");
+
+            if (hidComboCode.Value != "" && hidParentPromotionCode.Value == "")
+            {
+                L_orderdataView.RemoveAll(x => x.ComboCode == hidComboCode.Value);
+                L_orderdataView.RemoveAll(x => x.ParentProductCode == hidComboCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataView, lblSumPrice);
+            }
+            else if (hidRunning.Value != "" && hidParentPromotionCode.Value == "")
+            {
+                L_orderdataView.RemoveAll(x => x.runningNo == Convert.ToInt32(hidRunning.Value));
+                lorderdata = LoadOrderbyList(L_orderdataView, lblSumPrice);
+            }
+            else if (hidParentPromotionCode.Value != "")
+            {
+                L_orderdataView.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataView, lblSumPrice);
+            }
+            else if (hidParentPromotionCode.Value != "" && hidProhMinQtyHeaderFlag.Value == "Y")
+            {
+                L_orderdataView.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataView, lblSumPrice);
+            }
+
+            L_orderdataView = lorderdata;
+            CheckMOQ(L_orderdataView);
+            CheckFreeShipping(L_orderdataView);
+            LoadgvProductView(lorderdata);
+        }
+        protected void btnCloseViewMedia_Click(object sender, EventArgs e)
+        {
+            GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
+
+            Label lbltotal = (Label)currentRow.FindControl("lbltotal");
+            Label lblSumPrice = (Label)currentRow.FindControl("lblSumPrice");
+            HiddenField hidRunning = (HiddenField)currentRow.FindControl("hidRunning");
+            List<OrderData> lorderdata = new List<OrderData>();
+            HiddenField hidComboCode = (HiddenField)currentRow.FindControl("hidComboCode");
+            HiddenField hidParentPromotionCode = (HiddenField)currentRow.FindControl("hidParentPromotionCode");
+            HiddenField hidProhMinQtyHeaderFlag = (HiddenField)currentRow.FindControl("hidProhMinQtyHeaderFlag");
+
+            if (hidComboCode.Value != "" && hidParentPromotionCode.Value == "")
+            {
+                L_orderdataViewMedia.RemoveAll(x => x.ComboCode == hidComboCode.Value);
+                L_orderdataViewMedia.RemoveAll(x => x.ParentProductCode == hidComboCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataViewMedia, lblSumPrice);
+            }
+            else if (hidRunning.Value != "" && hidParentPromotionCode.Value == "")
+            {
+                L_orderdataViewMedia.RemoveAll(x => x.runningNo == Convert.ToInt32(hidRunning.Value));
+                lorderdata = LoadOrderbyList(L_orderdataViewMedia, lblSumPrice);
+            }
+            else if (hidParentPromotionCode.Value != "")
+            {
+                L_orderdataViewMedia.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataViewMedia, lblSumPrice);
+            }
+            else if (hidParentPromotionCode.Value != "" && hidProhMinQtyHeaderFlag.Value == "Y")
+            {
+                L_orderdataViewMedia.RemoveAll(x => x.ParentPromotionCode == hidParentPromotionCode.Value);
+                lorderdata = LoadOrderbyList(L_orderdataViewMedia, lblSumPrice);
+            }
+
+            L_orderdataViewMedia = lorderdata;
+            CheckMOQ(L_orderdataViewMedia);
+            CheckFreeShipping(L_orderdataViewMedia);
+            LoadgvProductViewMedia(lorderdata);
+        }
+        
+        protected void AddtocartProductTop01(object sender, EventArgs e)
+        {
+            try
+            {
+                OrderData odata = new OrderData();
+                List<OrderData> lneworderdata = new List<OrderData>();
+
+                List<OrderData> lorderdatacheck = new List<OrderData>();
+                string flagDuplicate = "N";
+
+                
+
+                if (hidtab.Value == "1")
+                {
+                    string a = hidtab1CampaignCategory.Value;
+                    string b = hidcampaigncategorycode.Value;
+
+                    hidtab1CampaignCategory.Value = hidCampaignCategoryCodeProductTop01.Value;
+                    hidtab1CampaignCategoryname.Value = hidCampaignCategoryNameProductTop01.Value;
+
+                    
+                    lorderdatacheck = L_orderdata1;
+                    foreach (var item in lorderdatacheck)
+                    {
+                        odata = bindorderdata(item);
+
+                        if ((item.PromotionCode == hidPromotionCodeProductTop01.Value) && (item.CampaignCode == hidCampaignCodeProductTop01.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop01.Value))
+                        {
+
+                            odata.Amount = item.Amount + 1;
+                            odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+
+                            flagDuplicate = "Y";
+                        }
+                        else
+                        {
+
+                            odata.Amount = item.Amount;
+                            odata.SumPrice = odata.SumPrice;
+
+                        }
+
+                        lneworderdata.Add(odata);
+
+                    }
+                    L_orderdata1 = lneworderdata;
+                    
+                }
+                else if (hidtab.Value == "2")
+                {
+                    hidtab2CampaignCategory.Value = hidCampaignCategoryCodeProductTop01.Value;
+                    hidtab2CampaignCategoryname.Value = hidCampaignCategoryNameProductTop01.Value;
+                    
+                    lorderdatacheck = L_orderdata2;
+                    foreach (var item in lorderdatacheck)
+                    {
+                        odata = bindorderdata(item);
+
+                        if ((item.PromotionCode == hidPromotionCodeProductTop01.Value) && (item.CampaignCode == hidCampaignCodeProductTop01.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop01.Value))
+                        {
+
+                            odata.Amount = item.Amount + 1;
+                            odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                            flagDuplicate = "Y";
+                        }
+                        else
+                        {
+                            odata.Amount = item.Amount;
+                            odata.SumPrice = odata.SumPrice;
+                        }
+
+                        lneworderdata.Add(odata);
+
+
+
+                    }
+                    L_orderdata2 = lneworderdata;
+                    
+                }
+                else if (hidtab.Value == "3")
+                {
+                    hidtab3CampaignCategory.Value = hidCampaignCategoryCodeProductTop01.Value;
+                    hidtab3CampaignCategoryname.Value = hidCampaignCategoryNameProductTop01.Value;
+                    
+                    lorderdatacheck = L_orderdata3;
+
+                    foreach (var item in lorderdatacheck)
+                    {
+                        odata = bindorderdata(item);
+
+                        if ((item.PromotionCode == hidPromotionCodeProductTop01.Value) && (item.CampaignCode == hidCampaignCodeProductTop01.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop01.Value))
+                        {
+
+                            odata.Amount = item.Amount + 1;
+                            odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                            flagDuplicate = "Y";
+                        }
+                        else
+                        {
+                            odata.Amount = item.Amount;
+                            odata.SumPrice = odata.SumPrice;
+                        }
+
+                        lneworderdata.Add(odata);
+
+
+                    }
+
+                    
+                }
+                L_orderdata3 = lneworderdata;
+
+                if (flagDuplicate == "N")
+                {
+                    odata = new OrderData();
+
+                    odata.CampaignCategory = hidcampaigncategorycode.Value;
+                    odata.CampaignCategoryName = hidcampaigncategoryname.Value;
+                    odata.CampaignCode = hidCampaignCodeProductTop01.Value;
+                    odata.PromotionCode = hidPromotionCodeProductTop01.Value;
+                    odata.PromotionDetailId = (hidPromotionDetailIdProductTop01.Value != "") ? Convert.ToInt32(hidPromotionDetailIdProductTop01.Value) : 0;
+                    odata.ProductCode = hidProductCodeProductTop01.Value;
+                    odata.ProductName = hidProductNameProductTop01.Value;
+                    odata.DiscountAmount = (hidDiscountAmountProductTop01.Value != "") ? Convert.ToInt32(hidDiscountAmountProductTop01.Value) : 0;
+                    odata.DiscountPercent = (hidDiscountPercentProductTop01.Value != "") ? Convert.ToInt32(hidDiscountPercentProductTop01.Value) : 0;
+                    odata.Price = (hidPriceProductTop01.Value != "") ? Convert.ToDouble(hidPriceProductTop01.Value) : -99;
+                    odata.Unit = hidUnitProductTop01.Value;
+                    odata.UnitName = hidUnitNameProductTop01.Value;
+                    odata.Amount = 1;
+                    odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                    odata.ParentProductCode = "";
+                    odata.ProductPrice = 0;
+                    odata.LockCheckbox = "N";
+                    odata.DefaultAmount = 1;
+
+                                        
+                    LoadOrderdatafromTopProduct(odata);
+
+                    if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                    {
+                        BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                    }
+                    else
+                    {
+                        BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                    }
+                }
+                else
+                {
+                    if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                    {
+                        BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                    }
+                    else
+                    {
+                        BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                    }
+
+                    LoadgvOrderfromTopProduct(lneworderdata, odata);
+                    
+
+                }
+                btnCalculateTotal_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        protected void AddtocartProductTop02(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            string flagDuplicate = "N";
+
+            
+
+            if (hidtab.Value == "1")
+            {
+                hidtab1CampaignCategory.Value = hidCampaignCategoryCodeProductTop02.Value;
+                hidtab1CampaignCategoryname.Value = hidCampaignCategoryNameProductTop02.Value;
+                
+                lorderdatacheck = L_orderdata1;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop02.Value) && (item.CampaignCode == hidCampaignCodeProductTop02.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop02.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+
+
+                }
+                L_orderdata1 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2CampaignCategory.Value = hidCampaignCategoryCodeProductTop02.Value;
+                hidtab2CampaignCategoryname.Value = hidCampaignCategoryNameProductTop02.Value;
+                
+                lorderdatacheck = L_orderdata2;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop02.Value) && (item.CampaignCode == hidCampaignCodeProductTop02.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop02.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+
+                    lneworderdata.Add(odata);
+
+                }
+                L_orderdata2 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3CampaignCategory.Value = hidCampaignCategoryCodeProductTop02.Value;
+                hidtab3CampaignCategoryname.Value = hidCampaignCategoryNameProductTop02.Value;
+                
+                lorderdatacheck = L_orderdata3;
+
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop02.Value) && (item.CampaignCode == hidCampaignCodeProductTop02.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop02.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+
+                }
+
+                L_orderdata3 = lneworderdata;
+                
+            }
+            if (flagDuplicate == "N")
+            {
+                odata = new OrderData();
+
+                odata.CampaignCategory = hidcampaigncategorycode.Value;
+                odata.CampaignCategoryName = hidcampaigncategoryname.Value;
+                odata.CampaignCode = hidCampaignCodeProductTop02.Value;
+                odata.PromotionCode = hidPromotionCodeProductTop02.Value;
+                odata.PromotionDetailId = (hidPromotionDetailIdProductTop02.Value != "") ? Convert.ToInt32(hidPromotionDetailIdProductTop02.Value) : 0;
+                odata.ProductCode = hidProductCodeProductTop02.Value;
+                odata.ProductName = hidProductNameProductTop02.Value;
+                odata.DiscountAmount = (hidDiscountAmountProductTop02.Value != "") ? Convert.ToInt32(hidDiscountAmountProductTop02.Value) : 0;
+                odata.DiscountPercent = (hidDiscountPercentProductTop02.Value != "") ? Convert.ToInt32(hidDiscountPercentProductTop02.Value) : 0;
+                odata.Price = (hidPriceProductTop02.Value != "") ? Convert.ToDouble(hidPriceProductTop02.Value) : -99;
+                odata.Unit = hidUnitProductTop02.Value;
+                odata.UnitName = hidUnitNameProductTop02.Value;
+                odata.Amount = 1;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                odata.ParentProductCode = "";
+                odata.ProductPrice = 0;
+                odata.LockCheckbox = "N";
+                odata.DefaultAmount = 1;                
+
+                
+                LoadOrderdatafromTopProduct(odata);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+            }
+            else
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrderfromTopProduct(lneworderdata, odata);
+                
+            }
+
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "function", "displayNonSelected()", true);
+            btnCalculateTotal_Click(null, null);
+        }
+        protected void AddtocartProductTop03(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            string flagDuplicate = "N";
+
+            
+
+            if (hidtab.Value == "1")
+            {
+                hidtab1CampaignCategory.Value = hidCampaignCategoryCodeProductTop03.Value;
+                hidtab1CampaignCategoryname.Value = hidCampaignCategoryNameProductTop03.Value;
+                
+                lorderdatacheck = L_orderdata1;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop03.Value) && (item.CampaignCode == hidCampaignCodeProductTop03.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop03.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+
+                }
+                L_orderdata1 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2CampaignCategory.Value = hidCampaignCategoryCodeProductTop03.Value;
+                hidtab2CampaignCategoryname.Value = hidCampaignCategoryNameProductTop03.Value;
+                
+                lorderdatacheck = L_orderdata2;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop03.Value) && (item.CampaignCode == hidCampaignCodeProductTop03.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop03.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+                L_orderdata2 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3CampaignCategory.Value = hidCampaignCategoryCodeProductTop03.Value;
+                hidtab3CampaignCategoryname.Value = hidCampaignCategoryNameProductTop03.Value;
+                
+                lorderdatacheck = L_orderdata3;
+
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop03.Value) && (item.CampaignCode == hidCampaignCodeProductTop03.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop03.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+
+                L_orderdata3 = lneworderdata;
+                
+            }
+            if (flagDuplicate == "N")
+            {
+                odata = new OrderData();
+
+                odata.CampaignCategory = hidcampaigncategorycode.Value;
+                odata.CampaignCategoryName = hidcampaigncategoryname.Value;
+                odata.CampaignCode = hidCampaignCodeProductTop03.Value;
+                odata.PromotionCode = hidPromotionCodeProductTop03.Value;
+                odata.PromotionDetailId = (hidPromotionDetailIdProductTop03.Value != "") ? Convert.ToInt32(hidPromotionDetailIdProductTop03.Value) : 0;
+                odata.ProductCode = hidProductCodeProductTop03.Value;
+                odata.ProductName = hidProductNameProductTop03.Value;
+                odata.DiscountAmount = (hidDiscountAmountProductTop03.Value != "") ? Convert.ToInt32(hidDiscountAmountProductTop03.Value) : 0;
+                odata.DiscountPercent = (hidDiscountPercentProductTop03.Value != "") ? Convert.ToInt32(hidDiscountPercentProductTop03.Value) : 0;
+                odata.Price = (hidPriceProductTop03.Value != "") ? Convert.ToDouble(hidPriceProductTop03.Value) : -99;
+                odata.Unit = hidUnitProductTop03.Value;
+                odata.UnitName = hidUnitNameProductTop03.Value;
+                odata.Amount = 1;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                odata.ParentProductCode = "";
+                odata.ProductPrice = 0;
+                odata.LockCheckbox = "N";
+                odata.DefaultAmount = 1;                
+
+                
+                LoadOrderdatafromTopProduct(odata);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+            }
+            else
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrderfromTopProduct(lneworderdata, odata);
+                
+            }
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "function", "displayNonSelected()", true);
+            btnCalculateTotal_Click(null, null);
+        }
+        protected void AddtocartProductTop04(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            string flagDuplicate = "N";
+
+            
+
+            if (hidtab.Value == "1")
+            {
+                hidtab1CampaignCategory.Value = hidCampaignCategoryCodeProductTop04.Value;
+                hidtab1CampaignCategoryname.Value = hidCampaignCategoryNameProductTop04.Value;
+                
+                lorderdatacheck = L_orderdata1;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop04.Value) && (item.CampaignCode == hidCampaignCodeProductTop04.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop04.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+                L_orderdata1 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2CampaignCategory.Value = hidCampaignCategoryCodeProductTop04.Value;
+                hidtab2CampaignCategoryname.Value = hidCampaignCategoryNameProductTop04.Value;
+                
+                lorderdatacheck = L_orderdata2;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop04.Value) && (item.CampaignCode == hidCampaignCodeProductTop04.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop04.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+                L_orderdata2 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3CampaignCategory.Value = hidCampaignCategoryCodeProductTop04.Value;
+                hidtab3CampaignCategoryname.Value = hidCampaignCategoryNameProductTop04.Value;
+                
+                lorderdatacheck = L_orderdata3;
+
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop04.Value) && (item.CampaignCode == hidCampaignCodeProductTop04.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop04.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+
+                L_orderdata3 = lneworderdata;
+                
+            }
+            if (flagDuplicate == "N")
+            {
+                odata = new OrderData();
+
+                odata.CampaignCategory = hidcampaigncategorycode.Value;
+                odata.CampaignCategoryName = hidcampaigncategoryname.Value;
+                odata.CampaignCode = hidCampaignCodeProductTop04.Value;
+                odata.PromotionCode = hidPromotionCodeProductTop04.Value;
+                odata.PromotionDetailId = (hidPromotionDetailIdProductTop04.Value != "") ? Convert.ToInt32(hidPromotionDetailIdProductTop04.Value) : 0;
+                odata.ProductCode = hidProductCodeProductTop04.Value;
+                odata.ProductName = hidProductNameProductTop04.Value;
+                odata.DiscountAmount = (hidDiscountAmountProductTop04.Value != "") ? Convert.ToInt32(hidDiscountAmountProductTop04.Value) : 0;
+                odata.DiscountPercent = (hidDiscountPercentProductTop04.Value != "") ? Convert.ToInt32(hidDiscountPercentProductTop04.Value) : 0;
+                odata.Price = (hidPriceProductTop04.Value != "") ? Convert.ToDouble(hidPriceProductTop04.Value) : -99;
+                odata.Unit = hidUnitProductTop04.Value;
+                odata.UnitName = hidUnitNameProductTop04.Value;
+                odata.Amount = 1;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                odata.ParentProductCode = "";
+                odata.ProductPrice = 0;
+                odata.LockCheckbox = "N";
+                odata.DefaultAmount = 1;                
+
+                
+                LoadOrderdatafromTopProduct(odata);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+            }
+            else
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrderfromTopProduct(lneworderdata, odata);
+                
+            }
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "function", "displayNonSelected()", true);
+            btnCalculateTotal_Click(null, null);
+        }
+        protected void AddtocartProductTop05(object sender, EventArgs e)
+        {
+            OrderData odata = new OrderData();
+            List<OrderData> lneworderdata = new List<OrderData>();
+
+            List<OrderData> lorderdatacheck = new List<OrderData>();
+            string flagDuplicate = "N";
+
+            
+
+
+            if (hidtab.Value == "1")
+            {
+                hidtab1CampaignCategory.Value = hidCampaignCategoryCodeProductTop05.Value;
+                hidtab1CampaignCategoryname.Value = hidCampaignCategoryNameProductTop05.Value;
+                
+                lorderdatacheck = L_orderdata1;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop05.Value) && (item.CampaignCode == hidCampaignCodeProductTop05.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop05.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+                L_orderdata1 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2CampaignCategory.Value = hidCampaignCategoryCodeProductTop05.Value;
+                hidtab2CampaignCategoryname.Value = hidCampaignCategoryNameProductTop05.Value;
+                
+                lorderdatacheck = L_orderdata2;
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop05.Value) && (item.CampaignCode == hidCampaignCodeProductTop05.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop05.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+                L_orderdata2 = lneworderdata;
+                
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3CampaignCategory.Value = hidCampaignCategoryCodeProductTop05.Value;
+                hidtab3CampaignCategoryname.Value = hidCampaignCategoryNameProductTop05.Value;
+                
+                lorderdatacheck = L_orderdata3;
+
+                foreach (var item in lorderdatacheck)
+                {
+                    odata = bindorderdata(item);
+
+                    if ((item.PromotionCode == hidPromotionCodeProductTop05.Value) && (item.CampaignCode == hidCampaignCodeProductTop05.Value) && (item.PromotionDetailId.ToString() == hidPromotionDetailIdProductTop05.Value))
+                    {
+
+                        odata.Amount = item.Amount + 1;
+                        odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+
+                        flagDuplicate = "Y";
+                    }
+                    else
+                    {
+                        odata.Amount = item.Amount;
+                        odata.SumPrice = odata.SumPrice;
+                    }
+                    lneworderdata.Add(odata);
+                }
+
+                L_orderdata3 = lneworderdata;
+                
+            }
+            if (flagDuplicate == "N")
+            {
+                odata = new OrderData();
+
+                odata.CampaignCategory = hidcampaigncategorycode.Value;
+                odata.CampaignCategoryName = hidcampaigncategoryname.Value;
+                odata.CampaignCode = hidCampaignCodeProductTop05.Value;
+                odata.PromotionCode = hidPromotionCodeProductTop05.Value;
+                odata.PromotionDetailId = (hidPromotionDetailIdProductTop05.Value != "") ? Convert.ToInt32(hidPromotionDetailIdProductTop05.Value) : 0;
+                odata.ProductCode = hidProductCodeProductTop05.Value;
+                odata.ProductName = hidProductNameProductTop05.Value;
+                odata.DiscountAmount = (hidDiscountAmountProductTop05.Value != "") ? Convert.ToInt32(hidDiscountAmountProductTop05.Value) : 0;
+                odata.DiscountPercent = (hidDiscountPercentProductTop05.Value != "") ? Convert.ToInt32(hidDiscountPercentProductTop05.Value) : 0;
+                odata.Price = (hidPriceProductTop05.Value != "") ? Convert.ToDouble(hidPriceProductTop05.Value) : -99;
+                odata.Unit = hidUnitProductTop05.Value;
+                odata.UnitName = hidUnitNameProductTop05.Value;
+                odata.Amount = 1;
+                odata.SumPrice = ((odata.Price - ((odata.Price * odata.DiscountPercent) / 100)) - odata.DiscountAmount) * odata.Amount;
+                odata.ParentProductCode = "";
+                odata.ProductPrice = 0;
+                odata.LockCheckbox = "N";
+                odata.DefaultAmount = 1;                
+
+                
+                LoadOrderdatafromTopProduct(odata);
+
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+            }
+            else
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventorywhenNoSelectedInven(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+
+                LoadgvOrderfromTopProduct(lneworderdata, odata);
+                
+            }
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "function", "displayNonSelected()", true);
+            btnCalculateTotal_Click(null, null);
+        }
+        protected void btnCalculateTotal_Click(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                Loadtotal(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                Loadtotal(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                Loadtotal(L_orderdata3);
+            }
+
+        }
+        protected void txtVoucherCode_TextChanged(object sender, EventArgs e)
+        {
+            VoucherInfo vInfo = new VoucherInfo();
+            List<VoucherInfo> lVoucherInfo = new List<VoucherInfo>();
+            vInfo.VoucherCode = txtVoucherCode.Text;
+            lVoucherInfo = GetVoucherPrice(vInfo.VoucherCode);
+
+            if (hidtab.Value == "1")
+            {
+                if (hidtab1VoucherCode.Value == "")
+                {
+                    if (lVoucherInfo.Count > 0)
+                    {
+                        hidtab1VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                        hidtab1VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                        txtVoucherPrice.Text = string.Format("{0:n}", (hidtab1VoucherPrice.Value));
+                        VoucherTrue.Visible = true;
+                        VoucherFault.Visible = false;
+                    }
+                    else
+                    {
+                        hidtab1VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab1VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (txtVoucherCode.Text != "")
+                    {
+                        if (lVoucherInfo.Count > 0)
+                        {
+                            hidtab1VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                            hidtab1VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                            txtVoucherPrice.Text = string.Format("{0:n}", (hidtab1VoucherPrice.Value));
+                            VoucherTrue.Visible = true;
+                            VoucherFault.Visible = false;
+                        }
+                        else
+                        {
+                            hidtab1VoucherCode.Value = txtVoucherCode.Text;
+                            txtVoucherPrice.Text = "";
+                            hidtab1VoucherPrice.Value = txtVoucherPrice.Text;
+                            VoucherTrue.Visible = false;
+                            VoucherFault.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        hidtab1VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab1VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = false;
+                    }
+
+                }
+                Loadtotal(L_orderdata1);
+            }
+            else if (hidtab.Value == "2")
+            {
+                if (hidtab2VoucherCode.Value == "")
+                {
+                    if (lVoucherInfo.Count > 0)
+                    {
+                        hidtab2VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                        hidtab2VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                        txtVoucherPrice.Text = string.Format("{0:n}", (hidtab2VoucherPrice.Value));
+                        VoucherTrue.Visible = true;
+                        VoucherFault.Visible = false;
+                    }
+                    else
+                    {
+                        hidtab2VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab2VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (txtVoucherCode.Text != "")
+                    {
+                        vInfo.VoucherCode = txtVoucherCode.Text;
+                        lVoucherInfo = GetVoucherPrice(vInfo.VoucherCode);
+
+                        if (lVoucherInfo.Count > 0)
+                        {
+                            hidtab2VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                            hidtab2VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                            txtVoucherPrice.Text = string.Format("{0:n}", (hidtab2VoucherPrice.Value));
+                            VoucherTrue.Visible = true;
+                            VoucherFault.Visible = false;
+                        }
+                        else
+                        {
+                            hidtab2VoucherCode.Value = txtVoucherCode.Text;
+                            txtVoucherPrice.Text = "";
+                            hidtab2VoucherPrice.Value = txtVoucherPrice.Text;
+                            VoucherTrue.Visible = false;
+                            VoucherFault.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        hidtab2VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab2VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = false;
+                    }
+                }
+                Loadtotal(L_orderdata2);
+            }
+            else if (hidtab.Value == "3")
+            {
+                if (hidtab3VoucherCode.Value == "")
+                {
+                    if (lVoucherInfo.Count > 0)
+                    {
+                        hidtab3VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                        hidtab3VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                        txtVoucherPrice.Text = string.Format("{0:n}", (hidtab3VoucherPrice.Value));
+                        VoucherTrue.Visible = true;
+                        VoucherFault.Visible = false;
+                    }
+                    else
+                    {
+                        hidtab3VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab3VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (txtVoucherCode.Text != "")
+                    {
+                        vInfo.VoucherCode = txtVoucherCode.Text;
+                        lVoucherInfo = GetVoucherPrice(vInfo.VoucherCode);
+
+                        if (lVoucherInfo.Count > 0)
+                        {
+                            hidtab3VoucherCode.Value = lVoucherInfo[0].VoucherCode;
+                            hidtab3VoucherPrice.Value = lVoucherInfo[0].Price.ToString();
+                            txtVoucherPrice.Text = string.Format("{0:n}", (hidtab3VoucherPrice.Value));
+                            VoucherTrue.Visible = true;
+                            VoucherFault.Visible = false;
+                        }
+                        else
+                        {
+                            hidtab3VoucherCode.Value = txtVoucherCode.Text;
+                            txtVoucherPrice.Text = "";
+                            hidtab3VoucherPrice.Value = txtVoucherPrice.Text;
+                            VoucherTrue.Visible = false;
+                            VoucherFault.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        hidtab3VoucherCode.Value = txtVoucherCode.Text;
+                        txtVoucherPrice.Text = "";
+                        hidtab3VoucherPrice.Value = txtVoucherPrice.Text;
+                        VoucherTrue.Visible = false;
+                        VoucherFault.Visible = false;
+                    }
+                }
+                Loadtotal(L_orderdata3);
+            }
+        }
+        protected void btnCleargvOrder_Click(object sender, EventArgs e)
+        {
+            if (hidtab.Value == "1")
+            {
+                Session.Remove("L_orderdata1");
+                LoadgvOrder(L_orderdata1);
+                Loadtotal(L_orderdata1);
+
+                VoucherDefault.Visible = true;
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+            if (hidtab.Value == "2")
+            {
+                Session.Remove("L_orderdata2");
+                LoadgvOrder(L_orderdata2);
+                Loadtotal(L_orderdata2);
+
+                VoucherDefault.Visible = true;
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+            if (hidtab.Value == "3")
+            {
+                Session.Remove("L_orderdata3");
+                LoadgvOrder(L_orderdata3);
+                Loadtotal(L_orderdata3);
+
+                VoucherDefault.Visible = true;
+                VoucherTrue.Visible = false;
+                VoucherFault.Visible = false;
+            }
+        }
+        protected void gvSubMainPromotionDetail_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvSubMainPromotionDetail.Rows[index];
+
+            HiddenField hidMainProductCode = (HiddenField)row.FindControl("hidMainProductCode");
+            HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)row.FindControl("hidSubMainPromotionDetailInfoId");
+            HiddenField hidPromotionDetailId = (HiddenField)row.FindControl("hidPromotionDetailId");
+
+            Label lblProductName = (Label)row.FindControl("lblProductName");
+            Label lblProductCode = (Label)row.FindControl("lblProductCode");
+
+            HiddenField hidFlagSubProduct = (HiddenField)row.FindControl("hidFlagSubProduct");
+
+            if (e.CommandName == "SelectExchangeProduct")
+            {
+                BindSubExchangePromotionDetailInfo(Convert.ToInt32(hidPromotionDetailId.Value), hidSubMainPromotionDetailInfoId.Value);
+            }
+        }
+        protected void gvSubMainPromotionDetailMedia_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvSubMainPromotionDetailMedia.Rows[index];
+
+            HiddenField hidMainProductCode = (HiddenField)row.FindControl("hidMainProductCode");
+            HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)row.FindControl("hidSubMainPromotionDetailInfoId");
+            HiddenField hidPromotionDetailId = (HiddenField)row.FindControl("hidPromotionDetailId");
+
+            Label lblProductName = (Label)row.FindControl("lblProductName");
+            Label lblProductCode = (Label)row.FindControl("lblProductCode");
+
+            HiddenField hidFlagSubProduct = (HiddenField)row.FindControl("hidFlagSubProduct");
+
+            if (e.CommandName == "SelectExchangeProductMedia")
+            {
+                BindSubExchangePromotionDetailInfoMedia(Convert.ToInt32(hidPromotionDetailId.Value), hidSubMainPromotionDetailInfoId.Value);
+            }
+        }
+        protected void btnCloseAddtoCart_Click(object sender, EventArgs e)
+        {
+            Session.Remove("L_orderdataView");
+            LoadgvProductView(L_orderdataView);
+
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "$('#modal-addpro').modal('hide');", true);
+        }
+        protected void btnCloseAddtoCartMedia_Click(object sender, EventArgs e)
+        {
+            Session.Remove("L_orderdataViewMedia");
+            LoadgvProductViewMedia(L_orderdataViewMedia);
+
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "$('#modal-addpro').modal('hide');", true);
+        }
+
+        protected void gvSubExchangePromotiondetailInfo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvSubExchangePromotiondetailInfo.Rows[index];
+
+            HiddenField hidExchangeProductCode = (HiddenField)row.FindControl("hidExchangeProductCode");
+            HiddenField hidExchangeProductName = (HiddenField)row.FindControl("hidExchangeProductName");
+            HiddenField hidExchangeAmount = (HiddenField)row.FindControl("hidExchangeAmount");
+            HiddenField hidSubMainExchangeID = (HiddenField)row.FindControl("hidSubMainExchangeID");
+            HiddenField hidExchangeUnit = (HiddenField)row.FindControl("hidUnit");
+            HiddenField hidExchageUnitName = (HiddenField)row.FindControl("hidUNITName");
+
+            List<SubPromotionDetailInfo> lsubmain = new List<SubPromotionDetailInfo>();
+
+
+            if (e.CommandName == "SelectSubProduct")
+            {
+
+                foreach (GridViewRow Row in gvSubMainPromotionDetail.Rows)
+                {
+                    SubPromotionDetailInfo sInfo = new SubPromotionDetailInfo();
+
+                    HiddenField hidCampaignCode = (HiddenField)Row.FindControl("hidCampaignCode");
+                    HiddenField hidPromotionCode = (HiddenField)Row.FindControl("hidPromotionCode");
+                    HiddenField hidFlagComboSet = (HiddenField)Row.FindControl("hidFlagComboSet");
+                    HiddenField hidMainProductCode = (HiddenField)Row.FindControl("hidMainProductCode");
+                    HiddenField hidMainProductName = (HiddenField)Row.FindControl("hidMainProductName");
+                    HiddenField hidAmount = (HiddenField)Row.FindControl("hidAmount");
+                    HiddenField hidFlagSubPromotionDetailMain = (HiddenField)Row.FindControl("hidFlagSubPromotionDetailMain");
+                    HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)Row.FindControl("hidSubMainPromotionDetailInfoId");
+                    HiddenField hidPromotionDetailId = (HiddenField)Row.FindControl("hidPromotionDetailId");
+                    HiddenField hidUnit = (HiddenField)Row.FindControl("hidUnit");
+                    HiddenField hidUnitName = (HiddenField)Row.FindControl("hidUnitName");
+
+                    if (hidSubMainPromotionDetailInfoId.Value == hidSubMainExchangeID.Value)
+                    {
+                        sInfo.MainProductCode = hidExchangeProductCode.Value;
+                        sInfo.MainProductName = hidExchangeProductName.Value;
+                        sInfo.UNIT = hidExchangeUnit.Value;
+                        sInfo.UNITName = hidExchageUnitName.Value;
+                        sInfo.Amount = Convert.ToInt32(hidExchangeAmount.Value);
+
+                    }
+                    else
+                    {
+                        sInfo.MainProductCode = hidMainProductCode.Value;
+                        sInfo.MainProductName = hidMainProductName.Value;
+                        sInfo.UNIT = hidUnit.Value;
+                        sInfo.UNITName = hidUnitName.Value;
+                        sInfo.Amount = Convert.ToInt32(hidAmount.Value);
+
+                    }
+
+                    sInfo.CampaignCode = hidCampaignCode.Value;
+                    sInfo.PromotionCode = hidPromotionCode.Value;
+                    sInfo.PromotionDetailId = Convert.ToInt32(hidPromotionDetailId.Value);
+                    sInfo.FlagComboSet = hidFlagComboSet.Value;
+                    sInfo.FlagSubPromotionDetailMain = hidFlagSubPromotionDetailMain.Value;
+                    sInfo.SubMainPromotionDetailInfoId = Convert.ToInt32(hidSubMainPromotionDetailInfoId.Value);
+
+
+                    lsubmain.Add(sInfo);
+                }
+
+                gvSubMainPromotionDetail.DataSource = lsubmain;
+                gvSubMainPromotionDetail.DataBind();
+
+                gvSubExchangePromotiondetailInfo.DataSource = null;
+                gvSubExchangePromotiondetailInfo.DataBind();
+            }
+
+        }
+
+        protected void gvSubExchangePromotiondetailInfoMedia_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            EmpInfo empInfo = new EmpInfo();
+
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = gvSubExchangePromotiondetailInfoMedia.Rows[index];
+
+            HiddenField hidExchangeProductCode = (HiddenField)row.FindControl("hidExchangeProductCode");
+            HiddenField hidExchangeProductName = (HiddenField)row.FindControl("hidExchangeProductName");
+            HiddenField hidExchangeAmount = (HiddenField)row.FindControl("hidExchangeAmount");
+            HiddenField hidSubMainExchangeID = (HiddenField)row.FindControl("hidSubMainExchangeID");
+            HiddenField hidExchangeUnit = (HiddenField)row.FindControl("hidUnit");
+            HiddenField hidExchageUnitName = (HiddenField)row.FindControl("hidUNITName");
+
+            List<SubPromotionDetailInfo> lsubmain = new List<SubPromotionDetailInfo>();
+
+
+            if (e.CommandName == "SelectSubProductMedia")
+            {
+
+                foreach (GridViewRow Row in gvSubMainPromotionDetailMedia.Rows)
+                {
+                    SubPromotionDetailInfo sInfo = new SubPromotionDetailInfo();
+
+                    HiddenField hidCampaignCode = (HiddenField)Row.FindControl("hidCampaignCode");
+                    HiddenField hidPromotionCode = (HiddenField)Row.FindControl("hidPromotionCode");
+                    HiddenField hidFlagComboSet = (HiddenField)Row.FindControl("hidFlagComboSet");
+                    HiddenField hidMainProductCode = (HiddenField)Row.FindControl("hidMainProductCode");
+                    HiddenField hidMainProductName = (HiddenField)Row.FindControl("hidMainProductName");
+                    HiddenField hidAmount = (HiddenField)Row.FindControl("hidAmount");
+                    HiddenField hidFlagSubPromotionDetailMain = (HiddenField)Row.FindControl("hidFlagSubPromotionDetailMain");
+                    HiddenField hidSubMainPromotionDetailInfoId = (HiddenField)Row.FindControl("hidSubMainPromotionDetailInfoId");
+                    HiddenField hidPromotionDetailId = (HiddenField)Row.FindControl("hidPromotionDetailId");
+                    HiddenField hidUnit = (HiddenField)Row.FindControl("hidUnit");
+                    HiddenField hidUnitName = (HiddenField)Row.FindControl("hidUnitName");
+
+                    if (hidSubMainPromotionDetailInfoId.Value == hidSubMainExchangeID.Value)
+                    {
+                        sInfo.MainProductCode = hidExchangeProductCode.Value;
+                        sInfo.MainProductName = hidExchangeProductName.Value;
+                        sInfo.UNIT = hidExchangeUnit.Value;
+                        sInfo.UNITName = hidExchageUnitName.Value;
+                        sInfo.Amount = Convert.ToInt32(hidExchangeAmount.Value);
+
+                    }
+                    else
+                    {
+                        sInfo.MainProductCode = hidMainProductCode.Value;
+                        sInfo.MainProductName = hidMainProductName.Value;
+                        sInfo.UNIT = hidUnit.Value;
+                        sInfo.UNITName = hidUnitName.Value;
+                        sInfo.Amount = Convert.ToInt32(hidAmount.Value);
+
+                    }
+
+                    sInfo.CampaignCode = hidCampaignCode.Value;
+                    sInfo.PromotionCode = hidPromotionCode.Value;
+                    sInfo.PromotionDetailId = Convert.ToInt32(hidPromotionDetailId.Value);
+                    sInfo.FlagComboSet = hidFlagComboSet.Value;
+                    sInfo.FlagSubPromotionDetailMain = hidFlagSubPromotionDetailMain.Value;
+                    sInfo.SubMainPromotionDetailInfoId = Convert.ToInt32(hidSubMainPromotionDetailInfoId.Value);
+
+
+                    lsubmain.Add(sInfo);
+                }
+
+                gvSubMainPromotionDetailMedia.DataSource = lsubmain;
+                gvSubMainPromotionDetailMedia.DataBind();
+
+                gvSubExchangePromotiondetailInfoMedia.DataSource = null;
+                gvSubExchangePromotiondetailInfoMedia.DataBind();
+            }
+        }
+        protected void BtnCancel_Click(Object sender, EventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "openconfirm", "CancelReturnUrl();", true);
+        }
+
+        #endregion
+
+        #region Binding
+
+        protected string GetSubString(object objCode)
+        {
+            string strCode = (objCode != null) ? objCode.ToString() : "";
+
+
+            if (strCode != "" && strCode.Length > 20)
+            {
+                strCode = strCode.Substring(0, 20) + "...";
+            }
+
+
+
+            return strCode;
+        }
+        protected string GetPrice(object objPrice, object objDiscountAmount, object objDiscountPercent)
+        {
+            decimal? strPrice = (objPrice != null) ? Convert.ToDecimal(objPrice) : 0;
+            decimal? strDiscountAmount = (objDiscountAmount != null) ? Convert.ToDecimal(objDiscountAmount) : 0;
+            decimal? strDiscountPercent = (objDiscountPercent != null) ? Convert.ToDecimal(objDiscountPercent) : 0;
+
+            decimal? sumprice = strPrice - strDiscountAmount - ((strPrice * strDiscountPercent) / 100);
+
+            return sumprice.ToString();
+        }
+
+        protected string GetTextPrice(object objParentProductCode, object objPrice, object objDiscountAmount, object objDiscountPercent, object objcolorcode)
+        {
+            string strParentProductCode = (objParentProductCode != null) ? objParentProductCode.ToString() : "";
+            string strcolor = (objcolorcode != null) ? objcolorcode.ToString() : "";
+
+            string strPrice1 = "";
+            decimal? strPrice = 0;
+
+            if (strParentProductCode != "-PromotionNewPrice")
+            {
+                strPrice = (objPrice != null) ? Convert.ToDecimal(objPrice) : 0;
+            }
+            else if (strParentProductCode == "-PromotionNewPrice")
+            {
+                strPrice1 = objPrice.ToString();
+            }
+
+            decimal? strDiscountAmount = (objDiscountAmount != null) ? Convert.ToDecimal(objDiscountAmount) : 0;
+            decimal? strDiscountPercent = (objDiscountPercent != null) ? Convert.ToDecimal(objDiscountPercent) : 0;
+
+            decimal? sumprice = strPrice - strDiscountAmount - ((strPrice * strDiscountPercent) / 100);
+
+            string strret = "";
+
+            strcolor = (strcolor != "") ? strcolor : "#333333";
+
+            if (strParentProductCode == "")
+            {
+                if (strPrice > sumprice)
+                {
+                    if (sumprice < 0)
+                    {
+                        sumprice = 0;
+                    }
+
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + string.Format("{0:n}", strPrice) + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    strret = "<font color=\"" + strcolor + "\">" + string.Format("{0:n}", strPrice) + "  </font>";
+
+                }
+            }
+
+            if (strParentProductCode == "-x9") // Head of Promotion Set New Price
+            {
+                if (strDiscountAmount != 0 || strDiscountPercent != 0)
+                {
+                    if (sumprice < 0)
+                    {
+                        sumprice = 0;
+                    }
+
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + string.Format("{0:n}", strPrice) + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    String price = strPrice.ToString();
+                    price = "";
+
+                    strret = "  " +
+                             "  <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+            }
+
+            if (strParentProductCode == "-y9") // Head of Promotion Set Not New Price
+            {
+                if (strDiscountAmount != 0 || strDiscountPercent != 0)
+                {
+                    if (sumprice < 0)
+                    {
+                        sumprice = 0;
+                    }
+
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + string.Format("{0:n}", strPrice) + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    strret = "  " +
+                             "  <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+            }
+
+            if (strParentProductCode == "-x99") // Child of Promotion Set New Price            
+            {
+                String price = strPrice.ToString();
+                price = "";
+
+                if (strPrice > sumprice)
+                {
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + price + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    strret = "<font color=\"" + strcolor + "\">" + price + "  </font>";
+
+                }
+            }
+
+            if (strParentProductCode == "-y99") // Child of Promotion Set not New Price            
+            {
+                String price = strPrice.ToString();
+                price = "";
+
+                if (strPrice > sumprice)
+                {
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + price + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    strret = "<font color=\"" + strcolor + "\">" + string.Format("{0:n}", strPrice) + "  </font>";
+
+                }
+            }
+
+            if (strParentProductCode == "-9MOQ")
+            {
+                String price = strPrice.ToString();
+                price = "";
+
+                strret = "  " +
+                         "  <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+            }
+            if (strParentProductCode == "-99MOQ") // Child of Promotion Set               
+            {
+                String price = strPrice.ToString();
+                price = "";
+
+                if (strPrice > sumprice)
+                {
+                    strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + price + "</span>  " +
+                             "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", sumprice) + "  </span> ";
+                }
+                else
+                {
+                    strret = "<font color=\"" + strcolor + "\">" + price + "  </font>";
+
+                }
+            }
+            if (strParentProductCode == "-999MOQ")
+            {
+                strret = "<font color=\"" + strcolor + "\">" + string.Format("{0:n}", strPrice) + "  </font>";
+            }
+            if (strParentProductCode == "-PromotionNewPrice")
+            {
+                
+                String strPriceCombine = strPrice1.ToString();
+                String productprice = "";
+                String price = "";
+
+                string[] s = strPriceCombine.Split(',');
+
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        productprice = s[0];
+                    }
+                    else if (i == 1)
+                    {
+                        price = s[1];
+                    }
+                }
+
+                strret = "  <span style = \"text-decoration: line-through;color:" + strcolor + "\" >" + string.Format("{0:n}", Convert.ToDouble(productprice)) + "</span>  " +
+                         "  &nbsp; <span style = \"color:" + strcolor + "\" >" + string.Format("{0:n}", Convert.ToDouble(price)) + "  </span> ";
+            }
+
+            return strret;
+        }
+        protected List<LookupInfo> GetListCardTypeCreditByRadio()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "CARDTYPE";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetListBank()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "BANK";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetListInstallment_Credit()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "INSTALLMENTCREDIT";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetListBankBranch()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "BANKBRANCH";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetListBankOwener()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "BANKOWNER";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected List<LookupInfo> GetListAccountType()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListLookupNopagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["LookupType"] = "ACCOUNTTYPE";
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<LookupInfo> lLookupInfo = JsonConvert.DeserializeObject<List<LookupInfo>>(respstr);
+            return lLookupInfo;
+        }
+        protected void BindgvTransport()
+        {
+            List<LogisticInfo> llogisticInfo = new List<LogisticInfo>();
+            llogisticInfo = GetLogisticMasterByCriteria();
+
+            if (llogisticInfo.Count > 0)
+            {
+                foreach (var od in llogisticInfo)
+                {
+                    od.FeeOther = "ระบุค่าขนส่ง";
+                }
+            }
+
+            gvTransport.DataSource = llogisticInfo;
+            gvTransport.DataBind();
+        }
+        protected void BindgvOrderPayment()
+        {
+            List<LookupInfo> llookupInfo = new List<LookupInfo>();
+            llookupInfo = GetPaymenyTypeMasterByCriteria();
+            gvOrderPayment.DataSource = llookupInfo;
+            gvOrderPayment.DataBind();
+        }
+        protected void BindgvChannel()
+        {
+            List<ChannelInfo> lchannelInfo = new List<ChannelInfo>();
+            lchannelInfo = GetChannelMasterByCriteria();
+            gvChannel.DataSource = lchannelInfo;
+            gvChannel.DataBind();
+        }
+        protected void BindDdlInventory()
+        {
+            List<InventoryInfo> linvInfo = new List<InventoryInfo>();
+            linvInfo = GetListMasterInventoryByCriteria();
+
+            ddlInventory.DataSource = linvInfo;
+            ddlInventory.DataTextField = "InventoryName";
+            ddlInventory.DataValueField = "InventoryCode";
+            ddlInventory.DataBind();
+
+            ddlInventory.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+        }
+        protected void BindDdlContactStatus()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetContactHistoryDropdownListMaster();
+
+            ddlContactStatus.DataSource = lInfo;
+            ddlContactStatus.DataTextField = "LookupValue";
+            ddlContactStatus.DataValueField = "LookupCode";
+            ddlContactStatus.DataBind();
+
+            ddlContactStatus.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+        }
+        protected void BindDdlContactResult()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetContactResultDropdownListMaster();
+
+            ddlContactResult.DataSource = lInfo;
+            ddlContactResult.DataTextField = "LookupValue";
+            ddlContactResult.DataValueField = "LookupCode";
+            ddlContactResult.DataBind();
+
+            ddlContactResult.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+        }
+        protected void BindDDLMonth_Expire()
+        {
+
+
+            ddlmonth_expire.Items.Insert(0, new ListItem("January", "1"));
+            ddlmonth_expire.Items.Insert(1, new ListItem("Febuary", "2"));
+            ddlmonth_expire.Items.Insert(2, new ListItem("March", "3"));
+            ddlmonth_expire.Items.Insert(3, new ListItem("April", "4"));
+            ddlmonth_expire.Items.Insert(4, new ListItem("May", "5"));
+            ddlmonth_expire.Items.Insert(5, new ListItem("June", "6"));
+            ddlmonth_expire.Items.Insert(6, new ListItem("July", "7"));
+            ddlmonth_expire.Items.Insert(7, new ListItem("August", "8"));
+            ddlmonth_expire.Items.Insert(8, new ListItem("September", "9"));
+            ddlmonth_expire.Items.Insert(9, new ListItem("October", "10"));
+            ddlmonth_expire.Items.Insert(10, new ListItem("November", "11"));
+            ddlmonth_expire.Items.Insert(11, new ListItem("December", "12"));
+
+            
+            ddlmonth_expire.SelectedValue = DateTime.Now.Month.ToString();
+
+        }
+        protected void BindDDLYear_Expire()
+        {
+
+
+            ddlyear_expire.Items.Insert(0, new ListItem("2026", "2026"));
+            ddlyear_expire.Items.Insert(1, new ListItem("2025", "2025"));
+            ddlyear_expire.Items.Insert(2, new ListItem("2024", "2024"));
+            ddlyear_expire.Items.Insert(3, new ListItem("2023", "2023"));
+            ddlyear_expire.Items.Insert(4, new ListItem("2022", "2022"));
+            ddlyear_expire.Items.Insert(5, new ListItem("2021", "2021"));
+            ddlyear_expire.Items.Insert(6, new ListItem("2020", "2020"));
+
+            
+            ddlyear_expire.SelectedValue = DateTime.Now.Year.ToString();
+
+        }
+        protected void BindDDLCardType_Credit()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListCardTypeCreditByRadio();
+            ddlCardtype.DataSource = lInfo;
+            ddlCardtype.DataTextField = "LookupValue";
+            ddlCardtype.DataValueField = "LookupCode";
+            ddlCardtype.DataBind();
+
+            ddlCardtype.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+
+        }
+        protected void BindDDLBank_Credit()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListBank();
+            ddlCardbank.DataSource = lInfo;
+            ddlCardbank.DataTextField = "LookupValue";
+            ddlCardbank.DataValueField = "LookupCode";
+            ddlCardbank.DataBind();
+
+            ddlCardbank.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+
+        }
+        protected void BindDDLBank_Transfer()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListBank();
+            ddlTransferBank.DataSource = lInfo;
+            ddlTransferBank.DataTextField = "LookupValue";
+            ddlTransferBank.DataValueField = "LookupCode";
+            ddlTransferBank.DataBind();
+
+            ddlTransferBank.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+
+
+        }
+        protected void BinkDDLInstallment_Credit()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListInstallment_Credit();
+            ddlPeriod.DataSource = lInfo;
+            ddlPeriod.DataTextField = "LookupValue";
+            ddlPeriod.DataValueField = "LookupCode";
+            ddlPeriod.DataBind();
+
+            ddlPeriod.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+
+        }
+        protected void BindDDLBankBranch()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListBankBranch();
+            ddlTransferBranch.DataSource = lInfo;
+            ddlTransferBranch.DataTextField = "LookupValue";
+            ddlTransferBranch.DataValueField = "LookupCode";
+            ddlTransferBranch.DataBind();
+
+            ddlTransferBranch.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+
+
+        }
+        protected void BindDDLBankOwener()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListBankOwener();
+            ddlAccountName.DataSource = lInfo;
+            ddlAccountName.DataTextField = "LookupValue";
+            ddlAccountName.DataValueField = "LookupCode";
+            ddlAccountName.DataBind();
+
+            ddlAccountName.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+        }
+        
+        protected void BindDDLAccountType()
+        {
+            List<LookupInfo> lInfo = new List<LookupInfo>();
+            lInfo = GetListAccountType();
+            ddlAccountType.DataSource = lInfo;
+            ddlAccountType.DataTextField = "LookupValue";
+            ddlAccountType.DataValueField = "LookupCode";
+            ddlAccountType.DataBind();
+
+            ddlAccountType.Items.Insert(0, new ListItem("---- กรุณาเลือก ----", "-99"));
+        }
+        protected void ddlInventory_SelectedChanged(object sender, EventArgs e)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                hidtab1InventorySelect.Value = ddlInventory.SelectedValue;
+
+                if (hidtab1InventorySelect.Value != "-99")
+                {
+                    
+                    BindgvProductInventoryBeforeOrderEdit(hidtab1InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventorywhenNoSelectedInven("-99");
+                }
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2InventorySelect.Value = ddlInventory.SelectedValue;
+
+                if (hidtab2InventorySelect.Value != "-99")
+                {
+                    BindgvProductInventory(hidtab2InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventorywhenNoSelectedInven("-99");
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3InventorySelect.Value = ddlInventory.SelectedValue;
+
+                if (hidtab3InventorySelect.Value != "-99")
+                {
+                    BindgvProductInventory(hidtab3InventorySelect.Value);
+                }
+                else
+                {
+                    BindgvProductInventorywhenNoSelectedInven("-99");
+                }
+            }
+        }
+        protected void BindgvProductInventory(String inventorycode)
+        {
+            InventoryInfo invdInfo = new InventoryInfo();
+            List<InventoryDetailInfo> linvdInfo = new List<InventoryDetailInfo>();
+
+            invdInfo.InventoryCode = inventorycode;
+            linvdInfo = GetInventoryBalance(invdInfo);
+
+            List<OrderData> lord = new List<OrderData>();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                foreach (var item in L_orderdata1.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                    lord.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                var LorderdataList = lord.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new OrderData
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName
+                    };
+                }).ToList();
+
+                foreach (var od in LorderdataList.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (LorderdataList.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                
+                                ivd.Balance = ov.QTY - ov.Reserved - od.Amount;
+                                lidvInfo.Add(ivd);
+
+                                LorderdataList.RemoveAll(s => s.ProductCode == od.ProductCode);
+                            }
+                        }
+                    }
+                }
+
+                if (LorderdataList.Count > 0)
+                {
+                    foreach (var og in LorderdataList)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        
+                        ivd.Balance = ivd.QTY - ivd.Amount;
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+            else if (hidtab.Value == "2")
+            {
+                foreach (var item in L_orderdata2.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (lord.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                ivd.Balance = ov.Balance;
+
+                                lidvInfo.Add(ivd);
+
+                                lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                            }
+                        }
+                    }
+                }
+
+                if (lord.Count > 0)
+                {
+                    foreach (var og in lord)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        ivd.Balance = 0;
+                        
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+            else if (hidtab.Value == "3")
+            {
+                foreach (var item in L_orderdata3.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (lord.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                ivd.Balance = ov.Balance;
+
+                                lidvInfo.Add(ivd);
+
+                                lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                            }
+                        }
+                    }
+                }
+
+                if (lord.Count > 0)
+                {
+                    foreach (var og in lord)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        ivd.Balance = 0;
+                        
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+        }
+        protected void BindgvProductInventoryBeforeOrderEdit(String inventorycode)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                if (L_orderdataforDelete[0].InventoryCode != hidtab1InventorySelect.Value)
+                {
+                    InventoryInfo inordInfo = new InventoryInfo();
+                    List<InventoryDetailInfo> linordInfo = new List<InventoryDetailInfo>();
+
+                    inordInfo.InventoryCode = inventorycode;
+
+                    linordInfo = GetInventoryBalance(inordInfo);
+
+                    List<OrderData> lord1 = new List<OrderData>();
+
+                    foreach (var item in L_orderdata1.ToList())
+                    {
+                        lord1.Add(bindorderdata(item));
+                        lord1.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                    }
+
+                    InventoryDetailInfoNew ivd1 = new InventoryDetailInfoNew();
+                    List<InventoryDetailInfoNew> lidvInfo1 = new List<InventoryDetailInfoNew>();
+
+                    var LorderdataList1 = lord1.GroupBy(e => e.ProductCode).Select(g =>
+                    {
+                        var item = g.First();
+                        return new OrderData
+                        {
+                            Amount = g.Sum(e => e.Amount),
+
+                            ProductCode = item.ProductCode,
+                            ProductName = item.ProductName
+                        };
+                    }).ToList();
+
+                    foreach (var oa in LorderdataList1.ToList()) // ProductCode อยู่ใน InventoryDetail
+                    {
+                        if (LorderdataList1.Count > 0)
+                        {
+                            foreach (var ob in linordInfo)
+                            {
+                                if (oa.ProductCode == ob.ProductCode)
+                                {
+                                    ivd1 = new InventoryDetailInfoNew();
+
+                                    ivd1.ProductCode = oa.ProductCode;
+                                    ivd1.ProductName = oa.ProductName;
+                                    ivd1.Amount = oa.Amount; // จำนวน
+                                    ivd1.QTY = ob.QTY;
+                                    ivd1.Reserved = ob.Reserved;
+                                    ivd1.Current = ob.Current;
+                                    ivd1.Balance = ob.Current - oa.Amount;
+                                    lidvInfo1.Add(ivd1);
+
+                                    LorderdataList1.RemoveAll(s => s.ProductCode == oa.ProductCode);
+                                }
+                            }
+                        }
+                    }
+
+                    gvProductInventory.DataSource = lidvInfo1;
+                    gvProductInventory.DataBind();
+                }
+                else
+                {
+                    // Remove reserve balance Orderdata from load
+                    InventoryInfo invdInfo = new InventoryInfo();
+                    List<InventoryDetailInfo> linvdInfo = new List<InventoryDetailInfo>();
+
+                    invdInfo.InventoryCode = inventorycode;
+                    
+
+                    linvdInfo = GetInventoryBalance(invdInfo);
+
+                    List<OrderData> lord = new List<OrderData>();
+                    List<OrderData> lorddel = new List<OrderData>();
+
+                    foreach (var item in L_orderdata1.ToList())
+                    {
+                        lord.Add(bindorderdata(item));
+                        lord.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                    }
+
+                    foreach (var item01 in L_orderdataforDelete.ToList())
+                    {
+                        lorddel.Add(bindorderdata(item01));
+                        lorddel.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                    }
+
+                    InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                    List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                    var LorderdataList = lord.GroupBy(e => e.ProductCode).Select(g =>
+                    {
+                        var item = g.First();
+                        return new OrderData
+                        {
+                            Amount = g.Sum(e => e.Amount),
+
+                            ProductCode = item.ProductCode,
+                            ProductName = item.ProductName
+                        };
+                    }).ToList();
+
+                    var LorderdataDelList = lorddel.GroupBy(e => e.ProductCode).Select(g =>
+                    {
+                        var item = g.First();
+                        return new OrderData
+                        {
+                            Amount = g.Sum(e => e.Amount),
+
+                            ProductCode = item.ProductCode,
+                            ProductName = item.ProductName
+                        };
+                    }).ToList();
+
+                    foreach (var od in LorderdataList.ToList()) // ProductCode in L_Orderdata1
+                    {
+                        if (LorderdataList.Count > 0)
+                        {
+                            foreach (var ov in linvdInfo) // Product in Database InventoryDetail
+                            {
+                                if (od.ProductCode == ov.ProductCode)
+                                {
+                                    foreach (var ox in LorderdataDelList.ToList()) // Product of OrderLoad
+                                    {
+                                        if (od.ProductCode == ox.ProductCode)
+                                        {
+                                            ivd = new InventoryDetailInfoNew();
+
+                                            ivd.ProductCode = od.ProductCode;
+                                            ivd.ProductName = od.ProductName;
+                                            ivd.Amount = od.Amount; // จำนวน
+                                            ivd.QTY = ov.QTY;
+                                            ivd.Reserved = ov.Reserved - ox.Amount;
+                                            ivd.Current = ov.Current + ox.Amount;
+                                            ivd.Balance = ov.Current + ox.Amount - od.Amount;
+                                            lidvInfo.Add(ivd);
+
+                                            LorderdataList.RemoveAll(s => s.ProductCode == od.ProductCode);
+                                        }                                       
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (LorderdataList.Count > 0)
+                    {
+                        foreach (var vo in LorderdataList.ToList())
+                        {
+                            if (LorderdataList.Count > 0)
+                            {
+                                foreach (var vp in linvdInfo)
+                                {
+                                    if (vo.ProductCode == vp.ProductCode)
+                                    {
+                                        ivd = new InventoryDetailInfoNew();
+
+                                        ivd.ProductCode = vo.ProductCode;
+                                        ivd.ProductName = vo.ProductName;
+                                        ivd.Amount = vo.Amount; // จำนวน
+                                        ivd.QTY = vp.QTY;
+                                        ivd.Reserved = vp.Reserved;
+                                        ivd.Current = vp.Current;
+                                        ivd.Balance = vp.Current - vo.Amount;
+                                        lidvInfo.Add(ivd);
+
+                                        LorderdataList.RemoveAll(s => s.ProductCode == vo.ProductCode);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    gvProductInventory.DataSource = lidvInfo;
+                    gvProductInventory.DataBind();
+                }                
+            }
+        }
+        protected void BindgvProductInventorywhenNoSelectedInven(String inventorycode)
+        {
+            InventoryDetailInfoNew invdInfo = new InventoryDetailInfoNew();
+            List<InventoryDetailInfoNew> linvdInfo = new List<InventoryDetailInfoNew>();
+
+            invdInfo.InventoryCode = inventorycode;
+            invdInfo.ProductCode = "SP003";
+            invdInfo.ProductName = "สายชาร์จที่จุดบุหรี่";
+
+            linvdInfo.Add(invdInfo);
+            
+
+            List<OrderData> lord = new List<OrderData>();
+
+            InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+            List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+            foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+            {
+                if (lord.Count > 0)
+                {
+                    foreach (var ov in linvdInfo)
+                    {
+                        if (od.ProductCode == ov.ProductCode)
+                        {
+                            ivd = new InventoryDetailInfoNew();
+
+                            ivd.ProductCode = od.ProductCode;
+                            ivd.ProductName = od.ProductName;
+                            ivd.Amount = od.Amount; // จำนวน
+                            ivd.QTY = ov.QTY;
+                            ivd.Reserved = ov.Reserved;
+                            ivd.Current = ov.Current;
+                            ivd.Balance = ov.Balance;
+
+                            lidvInfo.Add(ivd);
+
+                            lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                        }
+                    }
+                }
+            }
+
+            if (lord.Count > 0)
+            {
+                foreach (var og in lord)
+                {
+                    ivd = new InventoryDetailInfoNew();
+
+                    ivd.ProductCode = og.ProductCode;
+                    ivd.ProductName = og.ProductName;
+                    ivd.Amount = og.Amount; // จำนวน
+                    ivd.QTY = 0;
+                    ivd.Reserved = 0;
+                    ivd.Current = 0;
+                    ivd.Balance = 0;
+                    
+
+                    lidvInfo.Add(ivd);
+                }
+            }
+
+            var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+            {
+                var item = g.First();
+                return new InventoryDetailInfoNew
+                {
+                    Amount = g.Sum(e => e.Amount),
+
+                    ProductCode = item.ProductCode,
+                    ProductName = item.ProductName,
+                    QTY = item.QTY,
+                    Reserved = item.Reserved,
+                    Current = item.Current,
+                    Balance = item.Balance
+                };
+            }).ToList();
+
+            gvProductInventory.DataSource = ProductInvenList;
+            gvProductInventory.DataBind();
+
+        }
+        protected void BindgvProductInventoryFromLoad()
+        {
+            if (hidtab.Value == "1" || hidtab.Value == "")
+            {
+                if (hidtab1InventorySelect.Value == "-99" || (hidtab1InventorySelect.Value == ""))
+                {
+                    BindgvProductInventory("-99");
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab1InventorySelect.Value);
+                }
+            }
+            else if (hidtab.Value == "2")
+            {
+                if (hidtab2InventorySelect.Value == "-99" || (hidtab2InventorySelect.Value == ""))
+                {
+                    BindgvProductInventory("-99");
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab2InventorySelect.Value);
+                }
+            }
+            else if (hidtab.Value == "3")
+            {
+                if (hidtab3InventorySelect.Value == "-99" || (hidtab3InventorySelect.Value == ""))
+                {
+                    BindgvProductInventory("-99");
+                }
+                else
+                {
+                    BindgvProductInventory(hidtab3InventorySelect.Value);
+                }
+            }
+        }
+        protected void BindgvProductInventoryfinish(String inventorycode)
+        {
+            InventoryInfo invdInfo = new InventoryInfo();
+            List<InventoryDetailInfo> linvdInfo = new List<InventoryDetailInfo>();
+
+            invdInfo.InventoryCode = inventorycode;
+            linvdInfo = GetInventoryBalance(invdInfo);
+
+            List<OrderData> lord = new List<OrderData>();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                foreach (var item in L_orderdata1.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (lord.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                ivd.Balance = ov.Current;
+                                
+                                lidvInfo.Add(ivd);
+
+                                lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                            }
+                        }
+                    }
+                }
+
+                if (lord.Count > 0)
+                {
+                    foreach (var og in lord)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        
+                        ivd.Balance = ivd.QTY - ivd.Amount;
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+            else if (hidtab.Value == "2")
+            {
+                foreach (var item in L_orderdata2.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (lord.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                ivd.Balance = ov.Current;
+
+                                lidvInfo.Add(ivd);
+
+                                lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                            }
+                        }
+                    }
+                }
+
+                if (lord.Count > 0)
+                {
+                    foreach (var og in lord)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        ivd.Balance = 0;
+                        
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+            else if (hidtab.Value == "3")
+            {
+                foreach (var item in L_orderdata3.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                }
+
+                InventoryDetailInfoNew ivd = new InventoryDetailInfoNew();
+                List<InventoryDetailInfoNew> lidvInfo = new List<InventoryDetailInfoNew>();
+
+                foreach (var od in lord.ToList()) // ProductCode อยู่ใน InventoryDetail
+                {
+                    if (lord.Count > 0)
+                    {
+                        foreach (var ov in linvdInfo)
+                        {
+                            if (od.ProductCode == ov.ProductCode)
+                            {
+                                ivd = new InventoryDetailInfoNew();
+
+                                ivd.ProductCode = od.ProductCode;
+                                ivd.ProductName = od.ProductName;
+                                ivd.Amount = od.Amount; // จำนวน
+                                ivd.QTY = ov.QTY;
+                                ivd.Reserved = ov.Reserved;
+                                ivd.Current = ov.Current;
+                                ivd.Balance = ov.Current;
+
+                                lidvInfo.Add(ivd);
+
+                                lord.RemoveAll(s => s.ProductCode == od.ProductCode && s.PromotionCode == od.PromotionCode);
+                            }
+                        }
+                    }
+                }
+
+                if (lord.Count > 0)
+                {
+                    foreach (var og in lord)
+                    {
+                        ivd = new InventoryDetailInfoNew();
+
+                        ivd.ProductCode = og.ProductCode;
+                        ivd.ProductName = og.ProductName;
+                        ivd.Amount = og.Amount; // จำนวน
+                        ivd.QTY = 0;
+                        ivd.Reserved = 0;
+                        ivd.Current = 0;
+                        ivd.Balance = 0;
+                        
+
+                        lidvInfo.Add(ivd);
+                    }
+                }
+
+                var ProductInvenList = lidvInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                gvProductInventory.DataSource = ProductInvenList;
+                gvProductInventory.DataBind();
+            }
+        }
+        protected void InsertUpdateInventoryDetail(String inventorycode, String ordercode)
+        {
+            EmpInfo empInfo = new EmpInfo();
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            InventoryDetailInfoNew idInfo = new InventoryDetailInfoNew();
+            List<InventoryDetailInfoNew> lidInfo = new List<InventoryDetailInfoNew>();
+
+            foreach (GridViewRow row in gvProductInventory.Rows)
+            {
+                Label lblProductCode = (Label)row.FindControl("lblProductCode");
+                Label lblProductName = (Label)row.FindControl("lblProductName");
+                Label lblAmount = (Label)row.FindControl("lblAmount");
+                Label lblQTY = (Label)row.FindControl("lblQTY");
+                Label lblReserved = (Label)row.FindControl("lblReserved");
+                Label lblCurrent = (Label)row.FindControl("lblCurrent");
+                Label lblBalance = (Label)row.FindControl("lblBalance");
+
+                idInfo = new InventoryDetailInfoNew();
+
+                idInfo.ProductCode = lblProductCode.Text;
+                idInfo.ProductName = lblProductName.Text;
+                idInfo.Amount = (lblAmount.Text != null) ? Convert.ToInt32(lblAmount.Text) : 0;
+                idInfo.QTY = (lblQTY != null) ? Convert.ToInt32(lblQTY.Text) : 0;
+                idInfo.Reserved = (lblReserved.Text != null) ? Convert.ToInt32(lblReserved.Text) : 0;
+                idInfo.Current = (lblCurrent.Text != null) ? Convert.ToInt32(lblCurrent.Text) : 0;
+                idInfo.Balance = (lblBalance.Text != null) ? Convert.ToInt32(lblBalance.Text) : 0;
+
+                lidInfo.Add(idInfo);
+            }
+
+                var filteredList = lidInfo.GroupBy(e => e.ProductCode).Select(g =>
+            {
+                var item = g.First();
+                return new InventoryDetailInfoNew
+                {
+                    Amount = g.Sum(e => e.Amount),
+
+                    ProductCode = item.ProductCode,
+                    ProductName = item.ProductName,
+                    QTY = item.QTY,
+                    Reserved = item.Reserved,
+                    Current = item.Current,
+                    Balance = item.Balance
+                };
+            }).ToList();
+
+                foreach (var od in filteredList.ToList())
+                {
+                    InventoryInfo iInfo = new InventoryInfo();
+                    List<InventoryInfo> liInfo = new List<InventoryInfo>();
+
+                    liInfo = GetInventoryDetailInfo(inventorycode, od.ProductCode);
+
+                    if (liInfo.Count > 0) // Update
+                    {
+                        string respstring = "";
+                        APIpath = APIUrl + "/api/support/UpdateInventoryDetailfromTakeOrderRetail";
+
+                        int? reserved = od.Amount + liInfo[0].Reserved;
+                        int? current = od.Balance;
+                        
+                        int? balance = liInfo[0].Balance;
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["InventoryCode"] = inventorycode;
+                            data["ProductCode"] = od.ProductCode;
+                            data["QTY"] = od.QTY.ToString();
+                            data["Reserved"] = reserved.ToString();
+                            data["Current"] = current.ToString();
+                            data["Balance"] = balance.ToString();
+                            data["UpdateBy"] = empInfo.EmpCode;
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            respstring = Encoding.UTF8.GetString(response);
+                        }
+                    }
+                    else // Insert
+                    {
+                        string respstring = "";
+                        APIpath = APIUrl + "/api/support/InsertInventoryDetailfromTakeOrderRetail";
+
+                        int? reserved = od.Amount + 0;
+                        int? current = od.Balance;
+                        int? balance = 0;
+                        
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["InventoryCode"] = inventorycode;
+                            data["ProductCode"] = od.ProductCode;
+                            data["QTY"] = od.QTY.ToString();
+                            data["Reserved"] = reserved.ToString();
+                            data["Current"] = current.ToString();
+                            data["Balance"] = balance.ToString();
+                            data["CreateBy"] = empInfo.EmpCode;
+                            data["UpdateBy"] = empInfo.EmpCode;
+                            data["FlagDelete"] = "N";
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            respstring = Encoding.UTF8.GetString(response);
+                        }
+                    }
+                }            
+        }
+        protected void InsertUpdateInventoryDetailFromEditOrder(String inventorycode, String ordercode)
+        {
+            EmpInfo empInfo = new EmpInfo();
+            empInfo = (EmpInfo)Session["EmpInfo"];
+
+            InventoryDetailInfoNew idInfo = new InventoryDetailInfoNew();
+            List<InventoryDetailInfoNew> lidInfo = new List<InventoryDetailInfoNew>();
+
+            foreach (GridViewRow row in gvProductInventory.Rows)
+            {
+                Label lblProductCode = (Label)row.FindControl("lblProductCode");
+                Label lblProductName = (Label)row.FindControl("lblProductName");
+                Label lblAmount = (Label)row.FindControl("lblAmount");
+                Label lblQTY = (Label)row.FindControl("lblQTY");
+                Label lblReserved = (Label)row.FindControl("lblReserved");
+                Label lblCurrent = (Label)row.FindControl("lblCurrent");
+                Label lblBalance = (Label)row.FindControl("lblBalance");
+
+                idInfo = new InventoryDetailInfoNew();
+
+                idInfo.ProductCode = lblProductCode.Text;
+                idInfo.ProductName = lblProductName.Text;
+                idInfo.Amount = (lblAmount.Text != null) ? Convert.ToInt32(lblAmount.Text) : 0;
+                idInfo.QTY = (lblQTY != null) ? Convert.ToInt32(lblQTY.Text) : 0;
+                idInfo.Reserved = (lblReserved.Text != null) ? Convert.ToInt32(lblReserved.Text) : 0;
+                idInfo.Current = (lblCurrent.Text != null) ? Convert.ToInt32(lblCurrent.Text) : 0;
+                idInfo.Balance = (lblBalance.Text != null) ? Convert.ToInt32(lblBalance.Text) : 0;
+
+                lidInfo.Add(idInfo);
+            }
+
+            if (L_orderdataforDelete[0].InventoryCode == hidtab1InventorySelect.Value)
+            {
+                var filteredList = lidInfo.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        QTY = item.QTY,
+                        Reserved = item.Reserved,
+                        Current = item.Current,
+                        Balance = item.Balance
+                    };
+                }).ToList();
+
+                foreach (var od in filteredList.ToList())
+                {
+                    InventoryInfo iInfo = new InventoryInfo();
+                    List<InventoryInfo> liInfo = new List<InventoryInfo>();
+
+                    liInfo = GetInventoryDetailInfo(inventorycode, od.ProductCode);
+
+                    if (liInfo.Count > 0) // Update
+                    {
+                        string respstring = "";
+                        APIpath = APIUrl + "/api/support/UpdateInventoryDetailfromTakeOrderRetail";
+
+                        int? reserved = od.Reserved + od.Amount;
+                        int? current = liInfo[0].QTY - reserved;
+                        
+                        int? balance = liInfo[0].Balance;
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["InventoryCode"] = inventorycode;
+                            data["ProductCode"] = od.ProductCode;
+                            data["QTY"] = od.QTY.ToString();
+                            data["Reserved"] = reserved.ToString();
+                            data["Current"] = current.ToString();
+                            data["Balance"] = balance.ToString();
+                            data["UpdateBy"] = empInfo.EmpCode;
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            respstring = Encoding.UTF8.GetString(response);
+                        }
+                    }
+                    else // Insert
+                    {
+                        string respstring = "";
+                        APIpath = APIUrl + "/api/support/InsertInventoryDetailfromTakeOrderRetail";
+
+                        int? reserved = od.Amount + 0;
+                        int? current = od.Balance - liInfo[0].Reserved;
+                        int? balance = 0;
+                        
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["InventoryCode"] = inventorycode;
+                            data["ProductCode"] = od.ProductCode;
+                            data["QTY"] = od.QTY.ToString();
+                            data["Reserved"] = reserved.ToString();
+                            data["Current"] = current.ToString();
+                            data["Balance"] = balance.ToString();
+                            data["CreateBy"] = empInfo.EmpCode;
+                            data["UpdateBy"] = empInfo.EmpCode;
+                            data["FlagDelete"] = "N";
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            respstring = Encoding.UTF8.GetString(response);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Remove Reserved and reupdate current from old inventory
+                List<OrderData> lod = new List<OrderData>();
+
+                foreach (var item in L_orderdataforDelete.ToList())
+                {
+                    lod.Add(bindorderdata(item));
+                    lod.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                }
+
+                var filteredListOrderDel = lod.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+
+                        ProductCode = item.ProductCode,
+                        ProductName = item.ProductName,
+                        InventoryCode = item.InventoryCode
+                    };
+                }).ToList();
+
+                foreach (var oi in filteredListOrderDel.ToList())
+                {
+                    InventoryInfo iiInfo = new InventoryInfo();
+                    List<InventoryInfo> liiInfo = new List<InventoryInfo>();
+
+                    liiInfo = GetInventoryDetailInfo(oi.InventoryCode, oi.ProductCode);
+
+                    if (liiInfo.Count > 0) // Update
+                    {
+                        string respstring = "";
+                        APIpath = APIUrl + "/api/support/UpdateInventoryDetailfromTakeOrderRetail";
+
+                        int? reserved = liiInfo[0].Reserved - oi.Amount;
+                        int? current = liiInfo[0].QTY - reserved;
+                        int? balance = liiInfo[0].Balance;
+
+                        using (var wb = new WebClient())
+                        {
+                            var data = new NameValueCollection();
+
+                            data["InventoryCode"] = oi.InventoryCode;
+                            data["ProductCode"] = oi.ProductCode;
+                            data["QTY"] = liiInfo[0].QTY.ToString();
+                            data["Reserved"] = reserved.ToString();
+                            data["Current"] = current.ToString();
+                            data["Balance"] = balance.ToString();
+                            data["UpdateBy"] = empInfo.EmpCode;
+
+                            var response = wb.UploadValues(APIpath, "POST", data);
+
+                            respstring = Encoding.UTF8.GetString(response);
+                        }
+                    }
+                }
+
+                InsertUpdateInventoryDetail(hidtab1InventorySelect.Value, hidtab1ordercode.Value);
+            }
+        }
+        protected void InsertUpdateInventoryMovement(String inventorycode, String ordercode)
+        {
+            // Remove OrderNo in Movement from old Order Part
+            List<OrderData> lord = new List<OrderData>();
+
+            foreach (var item in L_orderdataforDelete.ToList())
+            {
+                OrderData odata = new OrderData();
+                odata = bindorderdata(item);
+
+                lord.Add(odata);
+            }
+
+            var filteredList = lord.GroupBy(e => e.ProductCode).Select(g =>
+            {
+                var item = g.First();
+                return new InventoryDetailInfoNew
+                {
+                    Amount = g.Sum(e => e.Amount),
+
+                    ProductCode = item.ProductCode,
+                    ProductName = item.ProductName,
+                    InventoryCode = item.InventoryCode
+                };
+            }).ToList();
+
+            List<InventoryInfo> linv = new List<InventoryInfo>();
+            List<InventoryMovementInfo> linmv = new List<InventoryMovementInfo>();
+
+            foreach (var od in filteredList.ToList())
+            {
+                linv = GetInventoryDetailInfo(od.InventoryCode, od.ProductCode);
+
+                if (linv.Count > 0)
+                {
+                    linmv = GetInvMovementforMoveOutTakeOrderRetail(linv[0].InventoryDetailId, ordercode);
+
+                    if (linmv.Count > 0)
+                    {
+                        foreach (var og in linmv.ToList()) 
+                        {
+                            string respstring = "";
+                            APIpath = APIUrl + "/api/support/UpdateInventoryMovementfromTakeOrderRetail";
+
+                            using (var wb = new WebClient())
+                            {
+                                var data = new NameValueCollection();
+
+                                data["OrderNo"] = "";
+                                data["InventoryMovementId"] = og.InventoryMovementId.ToString();
+                                data["UpdateBy"] = hidEmpCode.Value;
+
+                                var response = wb.UploadValues(APIpath, "POST", data);
+
+                                respstring = Encoding.UTF8.GetString(response);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Update OrderNo from Order after Edit Part
+            InsertInventoryMovement(L_orderdata1, ordercode);
+        }
+        protected void InsertInventoryMovement(List<OrderData> lorderdata, string ordercode)
+        {
+            List<OrderData> lord = new List<OrderData>();
+
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                foreach (var item in lorderdata.ToList())
+                {
+                    lord.Add(bindorderdata(item));
+                    lord.RemoveAll(s => s.LockCheckbox == "Y" && s.FlagProSetHeader == "Y"); // Remove Product Set Header Line to loop show ProductCode in Inventory
+                }
+
+                var ProductforInsList = lord.GroupBy(e => e.ProductCode).Select(g =>
+                {
+                    var item = g.First();
+                    return new InventoryDetailInfoNew
+                    {
+                        Amount = g.Sum(e => e.Amount),
+                        ProductCode = item.ProductCode
+                    };
+                }).ToList();
+
+                foreach (var od in ProductforInsList.ToList())
+                {
+                    List<InventoryDetailInfo> lvd = new List<InventoryDetailInfo>();
+                    lvd = GetInventoryDetailIDMaster(hidtab1InventorySelect.Value, od.ProductCode);
+
+                    if (lvd.Count > 0)
+                    {
+                        List<InventoryMovementInfo> limInfo = new List<InventoryMovementInfo>();
+                        limInfo = GetInventoryMovementIDForInsUpd(lvd[0].InventoryDetailId, od.Amount);
+
+                        if (limInfo.Count > 0)
+                        {
+                            foreach (var og in limInfo.ToList())
+                            {
+                                string respstring = "";
+                                APIpath = APIUrl + "/api/support/UpdateInventoryMovementfromTakeOrderRetail";
+
+                                using (var wb = new WebClient())
+                                {
+                                    var data = new NameValueCollection();
+
+                                    data["OrderNo"] = ordercode;
+                                    data["InventoryMovementId"] = og.InventoryMovementId.ToString();
+                                    data["UpdateBy"] = "0002";
+
+                                    var response = wb.UploadValues(APIpath, "POST", data);
+
+                                    respstring = Encoding.UTF8.GetString(response);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protected void InsertUpdateContactHistory(String contactstatus, String contactresult, String contactdesc, String ordercode)
+        {
+            string respstring = "";
+            string empcode = hidEmpCode.Value;
+
+            APIpath = APIUrl + "/api/support/InsertContactHis";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = CustomerCode;
+                data["ContactStatus"] = contactstatus;
+                data["ContactResult"] = contactresult;
+                data["ContactDesc"] = contactdesc;
+                data["OrderCode"] = ordercode;
+                data["Emp"] = empcode;
+                data["CreateBy"] = empcode;
+                data["FlagDelete"] = "N";
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstring = Encoding.UTF8.GetString(response);
+            }
+        }
+        protected void ddlContactStatus_SelectChanged(object sender, EventArgs e)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                hidtab1ContactStatusSelected.Value = ddlContactStatus.SelectedValue;
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2ContactStatusSelected.Value = ddlContactStatus.SelectedValue;
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3ContactStatusSelected.Value = ddlContactStatus.SelectedValue;
+            }
+        }
+        protected void ddlContactResult_SelectChanged(object sender, EventArgs e)
+        {
+            if ((hidtab.Value == "1") || (hidtab.Value == ""))
+            {
+                hidtab1ContactResultSelected.Value = ddlContactResult.SelectedValue;
+            }
+            else if (hidtab.Value == "2")
+            {
+                hidtab2ContactResultSelected.Value = ddlContactResult.SelectedValue;
+            }
+            else if (hidtab.Value == "3")
+            {
+                hidtab3ContactResultSelected.Value = ddlContactResult.SelectedValue;
+            }
+        }
+        protected void LoadCustomerNoteProfile()
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCustomerNoPagingByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["CustomerCode"] = CustomerCode;
+
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+            List<CustomerInfo> lcInfo = JsonConvert.DeserializeObject<List<CustomerInfo>>(respstr);
+            if (lcInfo.Count > 0)
+            {
+                txtNoteProfile.Text = lcInfo[0].Note;
+
+                hidtab1CustomerTaxId.Value = lcInfo[0].TaxId;
+                hidtab2CustomerTaxId.Value = lcInfo[0].TaxId;
+                hidtab3CustomerTaxId.Value = lcInfo[0].TaxId;
+
+                txtCustomerTaxID.Text = hidtab1CustomerTaxId.Value;
+            }
+        }
+     
+        protected void LoadPaymentCredit()
+        {
+
+            string respstr = "";
+            string[] Holdername;
+            APIpath = APIUrl + "/api/support/ListPaymentCreditByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["OrderCode"] = OrderCode;
+
+                var response = wb.UploadValues(APIpath, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+                 
+
+            List<paymentdataInfo> lpInfo = JsonConvert.DeserializeObject<List<paymentdataInfo>>(respstr);
+                if (lpInfo.Count > 0)
+                {
+                    if (lpInfo[0].PaymentTypeCode == "02")
+                    {
+              
+                        if (lpInfo[0].Installment == "1")
+                        {
+                            lpInfo[0].Installment = "01";
+                        }
+                        else if (lpInfo[0].Installment == "2")
+                        {
+                            lpInfo[0].Installment = "02";
+                        }
+                        else if (lpInfo[0].Installment == "3")
+                        {
+                            lpInfo[0].Installment = "03";
+                        }
+                        else if (lpInfo[0].Installment == "4")
+                        {
+                            lpInfo[0].Installment = "04";
+                        }
+                        else if (lpInfo[0].Installment == "5")
+                        {
+                            lpInfo[0].Installment = "05";
+                        }
+                        else if (lpInfo[0].Installment == "6")
+                        {
+                            lpInfo[0].Installment = "06";
+                        }
+                        else if (lpInfo[0].Installment == "7")
+                        {
+                            lpInfo[0].Installment = "07";
+                        }
+                        else if (lpInfo[0].Installment == "8")
+                        {
+                            lpInfo[0].Installment = "08";
+                        }
+                        else if (lpInfo[0].Installment == "9")
+                        {
+                            lpInfo[0].Installment = "09";
+                        }
+                        ddlPeriod.SelectedValue = lpInfo[0].Installment;
+                        txtPer_period.Text = lpInfo[0].InstallmentPrice;
+                        txtFirst_period.Text = lpInfo[0].FirstInstallment;
+                        ddlCardtype.SelectedValue = lpInfo[0].CardType;
+                        ddlCardbank.SelectedValue = lpInfo[0].CardIssuename;
+                        if (lpInfo[0].CardNo != "")
+                        {
+                            txtcardnumber01.Text = lpInfo[0].CardNo.Substring(0, 4);
+                            txtcardnumber02.Text = lpInfo[0].CardNo.Substring(4, 4);
+                            txtcardnumber03.Text = lpInfo[0].CardNo.Substring(8, 4);
+                            txtcardnumber04.Text = lpInfo[0].CardNo.Substring(12, 4);
+                        }
+                        txtcvv.Text = lpInfo[0].CVCNo;
+
+                        if (lpInfo[0].CardHolderName != "") 
+                        {
+                        Holdername = lpInfo[0].CardHolderName.Split(' ');
+                        txtFName.Text = Holdername[0];
+                        txtLName.Text = Holdername[1];
+                        }
+                        ddlmonth_expire.SelectedValue = lpInfo[0].CardExpMonth;
+                        ddlyear_expire.SelectedValue = lpInfo[0].CardExpYear;
+                        txtper_id.Text = lpInfo[0].CitizenId;
+                        txtbirthdate.Text = lpInfo[0].BirthDate;
+                        txtpaymentgateway.Text = lpInfo[0].PaymentGateway;
+                        ddlTransferBank.SelectedValue = lpInfo[0].BankCode;
+                        ddlTransferBranch.SelectedValue = lpInfo[0].BankBranch;
+                        ddlAccountName.SelectedValue = lpInfo[0].AccountName;
+                        ddlAccountType.SelectedValue = lpInfo[0].AccountType;
+                        txtAccountNumber.Text = lpInfo[0].AccountNo;
+                        txtMpayPhoneNum.Text = lpInfo[0].MpayNum;
+                        txtMpayName.Text = lpInfo[0].MpayName;
+                        txtareaAnotherPay.Text = lpInfo[0].PaymentOtherdetail;
+
+                    }
+                
+                }   
+
+            }
+        protected void gvChannel_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                {
+                    RadioButton radChannelType = (RadioButton)e.Row.FindControl("radChannelType");
+                    HiddenField hidChannelCode = (HiddenField)e.Row.FindControl("hidChannelCode");
+                    Label lblChannelName = (Label)e.Row.FindControl("lblChannelName");
+                    radChannelType.Checked = true;
+                    if (hidtab.Value == "1")
+                    {
+                        hidtab1ChannelCode_Selected.Value = hidChannelCode.Value;
+                        hidtab1ChannelName_Selected.Value = lblChannelName.Text;
+                        radChannelType.Checked = true;
+                    }
+                    if (hidtab.Value == "2")
+                    {
+                        hidtab2ChannelCode_Selected.Value = hidChannelCode.Value;
+                        radChannelType.Checked = true;
+                    }
+                    if (hidtab.Value == "3")
+                    {
+                        hidtab3ChannelCode_Selected.Value = hidChannelCode.Value;
+                        radChannelType.Checked = true;
+                    }
+                }
+            }
+        }
+        protected void gvOrderPayment_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                {
+                    RadioButton radPaymentType = (RadioButton)e.Row.FindControl("radPaymentType");
+                    HiddenField hidPaymentTypeCode = (HiddenField)e.Row.FindControl("hidPaymentTypeCode");
+                    radPaymentType.Checked = true;
+                    if (hidtab.Value == "1")
+                    {
+                        hidtab1PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                        radPaymentType.Checked = true;
+                    }
+                    if (hidtab.Value == "2")
+                    {
+                        hidtab2PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                        radPaymentType.Checked = true;
+                    }
+                    if (hidtab.Value == "3")
+                    {
+                        hidtab3PaymentType_Selected.Value = hidPaymentTypeCode.Value;
+                        radPaymentType.Checked = true;
+                    }
+                }
+            }
+        }
+        protected void gvTransport_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                {
+                    RadioButton radTransportType01 = (RadioButton)e.Row.FindControl("radTransportType01");
+                    HiddenField hidFee = (HiddenField)e.Row.FindControl("hidFee");
+                    HiddenField hidLogisticCode = (HiddenField)e.Row.FindControl("hidLogisticCode");
+                    Label lblFeeOther = (Label)e.Row.FindControl("lblFeeOther");
+                    Label lblFee = (Label)e.Row.FindControl("lblFee");
+                    radTransportType01.Checked = true;
+                    if (hidtab.Value == "1")
+                    {
+                        hidtab1TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        hidtab1transportprice.Value = hidFee.Value;
+                        lblTransportPrice.Text = hidtab1transportprice.Value;
+                        radTransportType01.Checked = true;
+
+                        if (hidtab1transportprice.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                    if (hidtab.Value == "2")
+                    {
+                        hidtab2TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        hidtab2transportprice.Value = hidFee.Value;
+                        lblTransportPrice.Text = hidtab2transportprice.Value;
+                        radTransportType01.Checked = true;
+
+                        if (hidtab2transportprice.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                    if (hidtab.Value == "3")
+                    {
+                        hidtab3TransportTypeCode_Selected.Value = hidLogisticCode.Value;
+                        hidtab3transportprice.Value = hidFee.Value;
+                        lblTransportPrice.Text = hidtab3transportprice.Value;
+                        radTransportType01.Checked = true;
+
+                        if (hidtab3transportprice.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                }
+                else if (e.Row.RowIndex > 0)
+                {
+                    HiddenField hidLogisticCode = (HiddenField)e.Row.FindControl("hidLogisticCode");
+                    Label lblFeeOther = (Label)e.Row.FindControl("lblFeeOther");
+                    Label lblFee = (Label)e.Row.FindControl("lblFee");
+
+                    if (hidtab.Value == "1")
+                    {
+                        if (hidLogisticCode.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                    else if (hidtab.Value == "2")
+                    {
+                        if (hidLogisticCode.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                    else if (hidtab.Value == "3")
+                    {
+                        if (hidLogisticCode.Value == "LOGIS01")
+                        {
+                            lblFee.Visible = false;
+                            lblFeeOther.Visible = true;
+                        }
+                        else
+                        {
+                            lblFee.Visible = true;
+                            lblFeeOther.Visible = false;
+                        }
+                    }
+                }
+            }
+        }
+        
+        #endregion
+
+        #region GoogleMaps
+
+        public static List<BranchInfo> LoadBranchList(string AreaCode)
+        {
+            string respstr = "";
+
+            string APIpath1 = APIUrl + "/api/support/ListBranchByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["CompanyCode"] = "MK";
+                data["AreaCode"] = AreaCode;
+
+
+                var response = wb.UploadValues(APIpath1, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<BranchInfo> lBranchInfo = JsonConvert.DeserializeObject<List<BranchInfo>>(respstr);
+
+            return lBranchInfo;
+
+        }
+
+        public static List<AreaInfo> LoadArea()
+        {
+            string respstr = "";
+
+            string APIpath1 = APIUrl + "/api/support/ListAreaByCriteria";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+
+                var response = wb.UploadValues(APIpath1, "POST", data);
+
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<AreaInfo> lAreaInfo = JsonConvert.DeserializeObject<List<AreaInfo>>(respstr);
+
+            return lAreaInfo;
+
+        }
+
+        public class LatLngg
+        {
+            public Double longitude { get; set; }
+            public Double latitude { get; set; }
+        }
+
+        public class LatLng
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+            public string AreaCode { get; set; }
+        }
+
+        public class MAPS
+        {
+            public string LocationName;
+            public string Latitude;
+            public string Longitude;
+        }
+
+        public static Boolean isInside(List<LatLngg> area, LatLngg location)
+        {
+
+            var x = 0;
+            var y = area.Count - 1;
+            var result = false;
+
+            while (x < area.Count)
+            {
+                if (area[x].longitude > location.longitude != area[y].longitude > location.longitude &&
+                        location.latitude < (area[y].latitude - area[x].latitude) * (location.longitude - area[x].longitude) / (area[y].longitude - area[x].longitude) + area[x].latitude)
+                {
+                    result = !result;
+                }
+                y = x++;
+            }
+            return result;
+        }
+
+        [WebMethod]
+        public static MAPS[] BindMapMarker(string AreaCode)
+        {
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            List<BranchInfo> lstBranch = LoadBranchList(AreaCode);
+            List<MAPS> lstMarkers = new List<MAPS>();
+            try
+            {
+                foreach (BranchInfo bInfo in lstBranch)
+                {
+                    MAPS objMAPS = new MAPS();
+                    objMAPS.LocationName = bInfo.BranchName;
+                    objMAPS.Latitude = bInfo.Lat;
+                    objMAPS.Longitude = bInfo.Long;
+                    lstMarkers.Add(objMAPS);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return lstMarkers.ToArray();
+        }
+
+
+
+        [WebMethod]
+        public static LatLng[] BindPolygon(string currentLat, string currentLng)
+        {
+            LatLngg currentLatlng = new LatLngg();
+            currentLatlng.latitude = Convert.ToDouble(currentLat);
+            currentLatlng.longitude = Convert.ToDouble(currentLng);
+
+            var ls = new List<LatLng>();
+
+            List<AreaInfo> LArea = LoadArea();
+
+            foreach (AreaInfo aInfo in LArea)
+            {
+                string areacode = aInfo.AreaCode;
+                string polygon = aInfo.Polygon;
+                var Polygonstr = polygon.Split(' ').ToList();
+
+                List<LatLngg> PolygonCordinate = new List<LatLngg>();
+
+                foreach (string latlng in Polygonstr)
+                {
+                    var lt = latlng.Split(',').ToList();
+                    double lat = Convert.ToDouble(lt[0]);
+                    double lng = Convert.ToDouble(lt[1]);
+
+                    PolygonCordinate.Add(new LatLngg { latitude = lat, longitude = lng });
+
+                }
+
+                if (isInside(PolygonCordinate, currentLatlng))
+                {
+                    ls.Add(new LatLng { AreaCode = areacode });
+                    foreach (LatLngg d in PolygonCordinate)
+                    {
+                        ls.Add(new LatLng { lat = d.latitude, lng = d.longitude });
+                    }
+                }
+            }
+
+            return ls.ToArray();
+        }
+
+        #endregion
+
+        // Media Plan Part
+        #region Function
+        protected List<CampaignInfo> GetCampaignMediaMasterByCriteria(String campaigncode)
+        {
+            string respstr = "";
+
+            APIpath = APIUrl + "/api/support/ListCampaignMediaNoPagingByCriteria2";
+
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+
+                data["MediaPhone"] = MediaPhone;
+                data["CampaignCode"] = campaigncode;
+                data["Active"] = "Y";
+                data["MediaPhone"] = MediaPhone;
+                data["CampaignCode"] = campaigncode;
+                data["TIME_START_Mediaplan"] = TimeStartmedia;
+                data["TIME_END_Mediaplan"] = TimeEndmedia;
+                data["MediaPlanDate"] = MediaplandateStart;
+                data["MediaPlanDateEnd"] = MediaplandateEnd;
+                data["MerchantMapCode"] = MerchantMapCode;
+                var response = wb.UploadValues(APIpath, "POST", data);
+                respstr = Encoding.UTF8.GetString(response);
+            }
+
+            List<CampaignInfo> lCampaignInfo = JsonConvert.DeserializeObject<List<CampaignInfo>>(respstr);
+            return lCampaignInfo;
+        }
+        #endregion
+
+        #region Media Binding
+        protected void CheckMediaOnAir()
+        {
+            var date = DateTime.Now;
+
+            lblCallinTime.Text = DateTime.Parse(date.Hour.ToString() + ":" + date.Minute.ToString()).ToString("HH:mm น.").ToString();
+
+            
+            String datetime = CallinDate + " " + CallinTime;
+
+            lblMediaPlanTime.Text = date.ToString("dd/MM/yyyy");
+            var datestart = Convert.ToDateTime(date.AddMinutes(-30).ToString());
+            var datesEnd = Convert.ToDateTime(date.AddMinutes(90).ToString());
+            MediaplandateStart = datestart.ToString("dd/MM/yyyy");
+            MediaplandateEnd = datesEnd.ToString("dd/MM/yyyy");
+            lblCampaignMediaStartDate.Text = DateTime.Parse(datestart.Hour.ToString() + ":" + datestart.Minute.ToString()).ToString("HH:mm น.").ToString();
+            lblCampaignMediaExpireDate.Text = DateTime.Parse(datesEnd.Hour.ToString() + ":" + datesEnd.Minute.ToString()).ToString("HH:mm น.").ToString();
+            if (Request.QueryString["MediaPhone"] == null || Request.QueryString["MediaPhone"] == "")
+            {
+                lblMobilephone.Visible = false;
+                thMediaphone.Visible = false;
+            }
+            else
+            {
+                lblMobilephone.Visible = true;
+                thMediaphone.Visible = true;
+                lblMobilephone.Text = Request.QueryString["MediaPhone"].ToString();
+            }
+            
+            TimeStartmedia = DateTime.Parse(datestart.Hour.ToString() + ":" + datestart.Minute.ToString()).ToString("HH:mm").ToString();
+            TimeEndmedia = DateTime.Parse(datesEnd.Hour.ToString() + ":" + datesEnd.Minute.ToString()).ToString("HH:mm").ToString();
+            
+        }
+        protected void BindgvCampaignMedia()
+        {
+            List<CampaignInfo> lcampaignmediaInfo = new List<CampaignInfo>();
+            lcampaignmediaInfo = GetCampaignMediaMasterByCriteria(hidCampaignMedia.Value);
+            gvCampaignMedia.DataSource = lcampaignmediaInfo;
+            gvCampaignMedia.DataBind();
+        }
+        protected void BindgvPromotionMedia(String campaigncode)
+        {
+            List<PromotionInfo> lpromotionInfo = new List<PromotionInfo>();
+            lpromotionInfo = GetCampaignPromotionMasterByCriteria(campaigncode);
+            gvPromotionMedia.DataSource = lpromotionInfo;
+            gvPromotionMedia.DataBind();
+        }
+        #endregion
+    }
+}
+    

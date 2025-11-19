@@ -1,0 +1,99 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 12/06/2018 09:08
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-001-video-player:before { content: "\f100"; }
+.flaticon-002-vending-machine:before { content: "\f101"; }
+.flaticon-003-teacher:before { content: "\f102"; }
+.flaticon-004-sponsor:before { content: "\f103"; }
+.flaticon-005-weather:before { content: "\f104"; }
+.flaticon-006-slot-machine:before { content: "\f105"; }
+.flaticon-007-publicity:before { content: "\f106"; }
+.flaticon-008-sell:before { content: "\f107"; }
+.flaticon-009-review:before { content: "\f108"; }
+.flaticon-010-rental:before { content: "\f109"; }
+.flaticon-011-graphics:before { content: "\f10a"; }
+.flaticon-012-organizer:before { content: "\f10b"; }
+.flaticon-013-online-shop:before { content: "\f10c"; }
+.flaticon-014-elearning:before { content: "\f10d"; }
+.flaticon-015-marketing:before { content: "\f10e"; }
+.flaticon-016-mobile-app:before { content: "\f10f"; }
+.flaticon-017-investment:before { content: "\f110"; }
+.flaticon-018-banking:before { content: "\f111"; }
+.flaticon-019-intellectual-property:before { content: "\f112"; }
+.flaticon-020-income:before { content: "\f113"; }
+.flaticon-021-conection:before { content: "\f114"; }
+.flaticon-022-incomes:before { content: "\f115"; }
+.flaticon-023-license:before { content: "\f116"; }
+.flaticon-024-content:before { content: "\f117"; }
+.flaticon-025-callcenter:before { content: "\f118"; }
+.flaticon-026-networking:before { content: "\f119"; }
+.flaticon-027-bond:before { content: "\f11a"; }
+.flaticon-028-blogger:before { content: "\f11b"; }
+.flaticon-029-calendar:before { content: "\f11c"; }
+.flaticon-030-affiliate:before { content: "\f11d"; }
+    
+    $font-Flaticon-001-video-player: "\f100";
+    $font-Flaticon-002-vending-machine: "\f101";
+    $font-Flaticon-003-teacher: "\f102";
+    $font-Flaticon-004-sponsor: "\f103";
+    $font-Flaticon-005-weather: "\f104";
+    $font-Flaticon-006-slot-machine: "\f105";
+    $font-Flaticon-007-publicity: "\f106";
+    $font-Flaticon-008-sell: "\f107";
+    $font-Flaticon-009-review: "\f108";
+    $font-Flaticon-010-rental: "\f109";
+    $font-Flaticon-011-graphics: "\f10a";
+    $font-Flaticon-012-organizer: "\f10b";
+    $font-Flaticon-013-online-shop: "\f10c";
+    $font-Flaticon-014-elearning: "\f10d";
+    $font-Flaticon-015-marketing: "\f10e";
+    $font-Flaticon-016-mobile-app: "\f10f";
+    $font-Flaticon-017-investment: "\f110";
+    $font-Flaticon-018-banking: "\f111";
+    $font-Flaticon-019-intellectual-property: "\f112";
+    $font-Flaticon-020-income: "\f113";
+    $font-Flaticon-021-conection: "\f114";
+    $font-Flaticon-022-incomes: "\f115";
+    $font-Flaticon-023-license: "\f116";
+    $font-Flaticon-024-content: "\f117";
+    $font-Flaticon-025-callcenter: "\f118";
+    $font-Flaticon-026-networking: "\f119";
+    $font-Flaticon-027-bond: "\f11a";
+    $font-Flaticon-028-blogger: "\f11b";
+    $font-Flaticon-029-calendar: "\f11c";
+    $font-Flaticon-030-affiliate: "\f11d";

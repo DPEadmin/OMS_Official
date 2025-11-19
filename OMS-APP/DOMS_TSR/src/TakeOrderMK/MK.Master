@@ -1,0 +1,280 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MK.master.cs" Inherits="DOMS_TSR.src.TakeOrderMK.MK" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+      
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+
+<!-- General CSS Files -->
+<link rel="stylesheet" href="assets/js/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous">
+  
+<link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/flaticon.css">
+
+<link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/ico-fonts/css/icofont.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/ion-icon/css/ionicons.min.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/material-design/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="assets/js/jquery.filer/css/jquery.filer.css">
+<link rel="stylesheet" type="text/css" href="assets/js/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+
+
+<link rel="stylesheet" href="assets/css/styleclasshelp.css">
+
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" type="text/css" href="../../assets/icon/fontnewfont/flaticon.css">
+<link rel="stylesheet" href="assets/css/tab.css">
+<link rel="stylesheet" href="assets/css/slick.min.css">
+   <link rel="stylesheet" href="assets/css/slick-theme.min.css">
+   <link rel="stylesheet" type="text/css" href="assets/css/github.min.css">
+ <%--  <link rel="stylesheet" type="text/css" href="assets/css/dist/bootstrap-clockpicker.min.css">--%>
+
+    <!-- General JS Scripts -->
+<script src="../../assets/js/jquery-3.3.1.min.js"></script> 
+<script src="../../assets/js/popper.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js" ></script>
+<script src="../../assets/js/jquery.nicescroll.min.js"></script>
+<script src="../../assets/js/moment.min.js"></script>
+<script src="../../assets/js/stisla.js"></script>
+
+<!-- upload file -->
+<script src="../../assets/js/jquery.filer/js/jquery.filer.js"></script>
+<script src="../../assets/js/filer/custom-filer.js"></script>
+<script src="../../assets/js/filer/jquery.fileuploads.init.js"></script>
+
+<!-- upload file -->
+
+
+<script src="../../assets/js/scripts.js"></script>
+<script src="../../assets/js/custom.js"></script>
+
+    <style>
+    .card-block{
+      padding:0.25rem;
+    }
+  </style>
+<!-- General JS Scripts -->
+ <script>
+    function openCity(cityName) {
+      var i;
+      var x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      document.getElementById(cityName).style.display = "block";
+    }
+  </script>
+  
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/slick.min.js"></script>
+
+  <script>
+    $('.slider-nav').slick({
+      slidesToShow: 6,
+      slidesToScroll: 3,
+
+      dots: false,
+      focusOnSelect: true
+    });
+  </script>
+  <script type="text/javascript">
+	function closeCurrentTab(){
+		var conf=confirm("Are you sure, you want to close this tab?");
+		if(conf==true){
+			close();
+		}
+	}
+</script>
+ <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/popper.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.nicescroll.min.js"></script>
+  <script src="../assets/js/moment.min.js"></script>
+  <script src="../assets/js/stisla.js"></script>
+  
+
+  <!-- upload file -->
+  <script src="../assets/js/jquery.filer/js/jquery.filer.min.js"></script>
+  <script src="../assets/js/filer/custom-filer.js"></script>
+  <script src="../assets/js/filer/jquery.fileuploads.init.js"></script>
+
+  <!-- upload file -->
+
+
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/custom.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap-clockpicker.min.js"></script>
+  <script type="text/javascript" src="assets/js/highlight.min.js"></script>
+<script type="text/javascript">
+hljs.configure({tabReplace: '    '});
+hljs.initHighlightingOnLoad();
+</script>
+
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="sidebar-mini">
+    <form id="form1" runat="server">
+        <div id="app" >
+    <div class="main-wrapper main-wrapper-1" >
+      <div class="navbar-bg" ></div>
+      <nav class="navbar navbar-expand-lg main-navbar" > 
+          <ul class="navbar-nav  form-inline mr-auto">
+              <li><a href="#" id="sidebar" data-toggle="sidebar"  class="nav-link nav-link-lg d-xl-none" ><i class="fas fa-bars"></i></a></li>
+            <!-- <li><a href="#" data-toggle="search" class="nav-link nav-link-lg "><i
+                  class="fas fa-search"></i></a> -->
+                 <li><div class="sidebar-brand ce">
+                    <img src="../../assets/img/oms_1.png" alt=""> <span class="namebrand"> Order Management System</span>
+                  </div>
+                 </li>  
+          </ul>
+           <ul class="navbar-nav navbar-right m-r-50" style="z-index:1039;" > 
+            <li>
+             <a  href="../../Default.aspx" class="dropdown-item has-icon " style="color:#ffffff;    background-color: transparent; " onclick="closeCurrentTab()" value="Close" >
+                 
+                 <i class="fas fa-sign-out-alt"></i> Logout </a>
+            </li>
+             </ul> 
+      </nav>
+      <div  class="main-sidebar ">
+        <aside id="sidebar-wrapper">
+         
+          <ul class="sidebar-menu">
+            <li class="nav-item dropdown " style="    background: #990305;
+            background: -moz-linear-gradient(top, #990305 0%, #ec1c24 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#990305), color-stop(100%,#ec1c24));
+            background: -webkit-linear-gradient(top, #990305 0%,#ec1c24 100%);
+            background: -o-linear-gradient(top, #990305 0%,#ec1c24 100%);
+            background: -ms-linear-gradient(top, #990305 0%,#ec1c24 100%);
+            background: linear-gradient(to bottom, #990305 0%,#ec1c24 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#990305', endColorstr='#ec1c24',GradientType=0 );;padding: 0px;">
+             <a href="#" data-toggle="sidebar" class=" nav-link   "
+                style=" color:rgb(226, 220, 220);  height: 40px;">
+                
+                </a> 
+            </li>
+                    <style>
+                    .badge-top-right {
+    margin-left: -10px;
+    margin-top: -25px
+
+}
+.label-icon label {
+    position: absolute;
+}
+.badge {
+    border-radius: 10px;
+    padding: 3px 7px;
+}</style>
+  
+                    <li class="active " style="padding:2px">
+                        <button id="tab-menu" style="width: 100% ;height: auto;" class="button-tab-menu">
+                        <div class="row">
+                            <div class="text-center col-sm-12 p-0 p-t-10"><i class=" text-center icofont icofont-ui-file icofont-2x"></i></div>
+                          <span class="col-sm-12  text-center p-0" style="font-size:11px">New Order</span>
+                        </div>
+                      </button>
+
+                   <!--    <asp:LinkButton style="width: 100% ;height: auto;     text-decoration: none; " Cssclass="button-tab-menu " ID="SearchOrders" runat="server" PostBackUrl="~/src/CallOrderManagement/CallOrderManagement.aspx">
+                     <div class="row"> 
+                                <div class="text-center col-sm-12 p-0 p-t-10"> <i class=" text-center icofont icofont-ui-file icofont-2x " style="margin-right:0px"></i></div>
+                              <div class="col-sm-12  text-center p-0" style="font-size:11px">Search</div>
+                            </div>  
+                 </asp:LinkButton> -->
+                     
+                      </li>
+                      <li class="active " style="padding:2px">
+                          <button style="width: 100% ;height: auto;" class="button-tab-menu">
+                          <div class="row">
+                              <div class="text-center col-sm-12 p-0 p-t-10"><i class=" text-center icofont icofont-history icofont-2x"></i></div>
+                            <span class="col-sm-12  text-center p-0" style="font-size:11px">History</span>
+                          </div>
+                        </button>
+                       
+                        </li>
+<style>
+li  a:hover{
+color:#FFF;
+}
+</style>
+                     
+                    
+
+             <li class="active " style="padding:2px">
+            
+                 <asp:LinkButton style="width: 100% ;height: auto;     text-decoration: none; " Cssclass="button-tab-menu " ID="SearchOrder" runat="server" PostBackUrl="~/src/CallOrderManagementRetail/CallOrderManagementRetail.aspx">
+                     <div class="row"> 
+                                <div class="text-center col-sm-12 p-0 p-t-10"> <i class=" text-center icofont icofont-search-alt-1 icofont-2x " style="margin-right:0px"></i></div>
+                              <div class="col-sm-12  text-center p-0" style="font-size:11px">Search</div>
+                            </div>  
+                 </asp:LinkButton>
+              
+
+                
+
+              </li>
+                   
+
+                          <li class="active " style="padding:2px">
+                              <button  style="width: 100% ;height: auto;" class="button-tab-menu">
+                              <div class="row">
+                                  <div class="text-center col-sm-12 p-0 p-t-10"><i class=" text-center icofont icofont-newspaper icofont-2x"></i></div>
+                                <span class="col-sm-12  text-center p-0" style="font-size:11px">News</span>
+                              </div>
+                            </button>
+                           
+                            </li>
+                            <li class="active " style="padding:2px">
+                                <button style="width: 100% ;height: auto;" class="button-tab-menu">
+                                <div class="row">
+                                    <div class="text-center col-sm-12 p-0 p-t-10"><i class=" text-center zmdi zmdi-notifications-none zmdi-hc-2x"></i><label class="badge badge-color badge-top-right">9</label></div>
+                                  <span class="col-sm-12  text-center p-0" style="font-size:11px">Notification </span>
+                                </div>
+                              </button>
+                             
+                              </li>
+                              <li class="active " style="padding:2px">
+                                <!--  <button  style="width: 100% ;height: auto;" class="button-tab-menu">
+                                  <div class="row">
+                                      <div class="text-center col-sm-12 p-0 p-t-10"><i class=" text-center ion-close-circled fa-2x "></i><label class="badge badge-color badge-top-right">5</label></div>
+                                    <span class="col-sm-12  text-center p-0" style="font-size:11px">Backoder</span>
+                                  </div>
+                                </button> -->
+
+                                   <asp:LinkButton style="width: 100% ;height: auto;     text-decoration: none; " Cssclass="button-tab-menu " ID="BackOrder" runat="server" PostBackUrl="~/src/CallBackOrderManagement/CallBackOrderManagement.aspx">
+                     <div class="row"> 
+                                <div class="text-center col-sm-12 p-0 p-t-10"> <i class=" text-center flaticon-cancel fa-2x " style="margin-right:0px"></i></div>
+                              <div class="col-sm-12  text-center p-0" style="font-size:11px">My BackOrder</div>
+                            </div>  
+                 </asp:LinkButton>
+                               
+                                </li>
+                    
+         
+          
+          </ul>
+
+         
+        </aside>
+      </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+       </div>
+     </div>
+    </form>
+
+    
+
+</body>
+</html>

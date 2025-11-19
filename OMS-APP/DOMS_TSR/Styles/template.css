@@ -1,0 +1,35 @@
+.header {
+    text-align: center;
+    margin: 0 auto;
+    width: 100px;
+    padding-top: 60px;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.logo {
+    font-family: "Arial";
+}
+
+.header h1 {
+    margin: 10px 0 0 0;
+}
+
+.header span {
+    opacity: 0.67;
+}
+
+.button .btn {
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.code {
+    margin-top: 20px;
+}

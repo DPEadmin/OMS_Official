@@ -1,0 +1,61 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 15/01/2019 10:31
+  	*/
+
+@font-face {
+  font-family: "Reports";
+  src: url("./Reports.eot");
+  src: url("./Reports.eot?#iefix") format("embedded-opentype"),
+       url("./Reports.woff") format("woff"),
+       url("./Reports.ttf") format("truetype"),
+       url("./Reports.svg#Reports") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Reports";
+    src: url("./Reports.svg#Reports") format("svg");
+  }
+}
+
+[class^="reports-"]:before, [class*=" reports-"]:before,
+[class^="reports-"]:after, [class*=" reports-"]:after {   
+  font-family: Reports;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   font-size: inherit;
+}
+
+.reports-002-analysis:before { content: "\f101"; }
+.reports-001-report:before { content: "\f100"; }
+.reports-003-analysis-1:before { content: "\f102"; }
+.reports-004-report-1:before { content: "\f103"; }
+.reports-005-report-2:before { content: "\f104"; }
+.reports-006-report-3:before { content: "\f105"; }
+.reports-007-report-4:before { content: "\f106"; }
+.reports-008-report-5:before { content: "\f107"; }
+.reports-009-report-6:before { content: "\f108"; }
+.reports-010-report-7:before { content: "\f109"; }
+.reports-011-report-8:before { content: "\f10a"; }
+.reports-012-report-9:before { content: "\f10b"; }
+.reports-013-report-10:before { content: "\f10c"; }
+.reports-014-report-11:before { content: "\f10d"; }
+.reports-015-report-12:before { content: "\f10e"; }
+.reports-016-report-13:before { content: "\f10f"; }
+.reports-017-resume:before { content: "\f110"; }
+.reports-018-resume-1:before { content: "\f111"; }
+.reports-019-news:before { content: "\f112"; }
+.reports-020-report-14:before { content: "\f113"; }
+.reports-021-report-15:before { content: "\f114"; }
+.reports-022-resume-2:before { content: "\f115"; }
+.reports-023-resume-3:before { content: "\f116"; }
+.reports-024-resume-4:before { content: "\f117"; }
+.reports-025-encrpyted-file:before { content: "\f118"; }

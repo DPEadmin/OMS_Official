@@ -1,0 +1,86 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 30/05/2018 08:21
+  	*/
+
+@font-face {
+  font-family: "ECommerce";
+  src: url("./ECommerce.eot");
+  src: url("./ECommerce.eot?#iefix") format("embedded-opentype"),
+       url("./ECommerce.woff") format("woff"),
+       url("./ECommerce.ttf") format("truetype"),
+       url("./ECommerce.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Ecommerce";
+    src: url("./ECommerce.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="ecommerce-"]:before, [class*=" ecommerce-"]:before,
+[class^="ecommerce-"]:after, [class*=" ecommerce-"]:after {   
+  font-family: Ecommerce;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: inherit;
+}
+
+.ecommerce-001-online-shop-2:before { content: "\f100"; }
+.ecommerce-002-phone:before { content: "\f101"; }
+.ecommerce-003-atm:before { content: "\f102"; }
+.ecommerce-004-bag-2:before { content: "\f103"; }
+.ecommerce-005-discount-1:before { content: "\f104"; }
+.ecommerce-006-location:before { content: "\f105"; }
+.ecommerce-007-warehouse:before { content: "\f106"; }
+.ecommerce-008-business:before { content: "\f107"; }
+.ecommerce-009-online-payment:before { content: "\f108"; }
+.ecommerce-010-cryptocurrency:before { content: "\f109"; }
+.ecommerce-011-planet:before { content: "\f10a"; }
+.ecommerce-012-hand-1:before { content: "\f10b"; }
+.ecommerce-013-online-shop-1:before { content: "\f10c"; }
+.ecommerce-014-shopping-list:before { content: "\f10d"; }
+.ecommerce-015-card-payment:before { content: "\f10e"; }
+.ecommerce-016-review:before { content: "\f10f"; }
+.ecommerce-017-shop-1:before { content: "\f110"; }
+.ecommerce-018-courier:before { content: "\f111"; }
+.ecommerce-019-insurance:before { content: "\f112"; }
+.ecommerce-020-boxes:before { content: "\f113"; }
+.ecommerce-021-ship:before { content: "\f114"; }
+.ecommerce-022-purse-1:before { content: "\f115"; }
+.ecommerce-023-airplane:before { content: "\f116"; }
+.ecommerce-024-transportation:before { content: "\f117"; }
+.ecommerce-025-open-box:before { content: "\f118"; }
+.ecommerce-026-free-delivery:before { content: "\f119"; }
+.ecommerce-027-pay-per-click:before { content: "\f11a"; }
+.ecommerce-028-shopping-cart:before { content: "\f11b"; }
+.ecommerce-029-call-center:before { content: "\f11c"; }
+.ecommerce-030-manager:before { content: "\f11d"; }
+.ecommerce-031-hand:before { content: "\f11e"; }
+.ecommerce-032-box-1:before { content: "\f11f"; }
+.ecommerce-033-delivery-truck:before { content: "\f120"; }
+.ecommerce-034-online-shop:before { content: "\f121"; }
+.ecommerce-035-bag-1:before { content: "\f122"; }
+.ecommerce-036-purse:before { content: "\f123"; }
+.ecommerce-037-box:before { content: "\f124"; }
+.ecommerce-038-cashbox:before { content: "\f125"; }
+.ecommerce-039-tag:before { content: "\f126"; }
+.ecommerce-040-locker:before { content: "\f127"; }
+.ecommerce-041-signboard:before { content: "\f128"; }
+.ecommerce-042-open:before { content: "\f129"; }
+.ecommerce-043-guarantee:before { content: "\f12a"; }
+.ecommerce-044-ticket:before { content: "\f12b"; }
+.ecommerce-045-discount:before { content: "\f12c"; }
+.ecommerce-046-basket:before { content: "\f12d"; }
+.ecommerce-047-bag:before { content: "\f12e"; }
+.ecommerce-048-coupon:before { content: "\f12f"; }
+.ecommerce-049-shop:before { content: "\f130"; }
+.ecommerce-050-shopping-bag:before { content: "\f131"; }

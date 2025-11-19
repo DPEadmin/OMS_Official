@@ -1,0 +1,957 @@
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\DOMS_TSR.dll.config
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\DOMS_TSR.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\DOMS_TSR.pdb
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csc.exe
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csc.exe.config
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csc.rsp
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csi.exe
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csi.exe.config
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\csi.rsp
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.AppContext.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Console.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\vbc.exe
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\vbc.exe.config
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\vbc.rsp
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Antlr3.Runtime.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Newtonsoft.Json.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Owin.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Web.Optimization.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\WebGrease.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Web.Optimization.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Newtonsoft.Json.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Antlr3.Runtime.pdb
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CoreCompileInputs.cache
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\obj\Release\DOMS_TSR.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Web.Http.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Web.Http.xml
+F:\Document_MK\Code_MK\MK_20190404_v2\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+E:\MK\DOMS_TSR\bin\DOMS_TSR.dll.config
+E:\MK\DOMS_TSR\bin\DOMS_TSR.dll
+E:\MK\DOMS_TSR\bin\DOMS_TSR.pdb
+E:\MK\DOMS_TSR\bin\roslyn\csc.exe
+E:\MK\DOMS_TSR\bin\roslyn\csc.exe.config
+E:\MK\DOMS_TSR\bin\roslyn\csc.rsp
+E:\MK\DOMS_TSR\bin\roslyn\csi.exe
+E:\MK\DOMS_TSR\bin\roslyn\csi.exe.config
+E:\MK\DOMS_TSR\bin\roslyn\csi.rsp
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+E:\MK\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\MK\DOMS_TSR\bin\roslyn\System.AppContext.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Console.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+E:\MK\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\MK\DOMS_TSR\bin\roslyn\vbc.exe
+E:\MK\DOMS_TSR\bin\roslyn\vbc.exe.config
+E:\MK\DOMS_TSR\bin\roslyn\vbc.rsp
+E:\MK\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+E:\MK\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+E:\MK\DOMS_TSR\bin\Antlr3.Runtime.dll
+E:\MK\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+E:\MK\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\MK\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.dll
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+E:\MK\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\MK\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+E:\MK\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+E:\MK\DOMS_TSR\bin\Newtonsoft.Json.dll
+E:\MK\DOMS_TSR\bin\Owin.dll
+E:\MK\DOMS_TSR\bin\System.Web.Http.dll
+E:\MK\DOMS_TSR\bin\System.Web.Optimization.dll
+E:\MK\DOMS_TSR\bin\WebGrease.dll
+E:\MK\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.xml
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\MK\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+E:\MK\DOMS_TSR\bin\System.Web.Http.xml
+E:\MK\DOMS_TSR\bin\System.Web.Optimization.xml
+E:\MK\DOMS_TSR\bin\Newtonsoft.Json.xml
+E:\MK\DOMS_TSR\bin\Antlr3.Runtime.pdb
+E:\MK\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\MK\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\MK\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+E:\MK\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+E:\MK\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CoreCompileInputs.cache
+E:\MK\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+E:\MK\DOMS_TSR\obj\Release\DOMS_TSR.dll
+E:\MK\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+E:\MK\DOMS_TSR\bin\RawPrint.dll
+E:\MK\DOMS_TSR\bin\HtmlRenderer.dll
+E:\MK\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+E:\MK\DOMS_TSR\bin\PdfSharp.Charting.dll
+E:\MK\DOMS_TSR\bin\PdfSharp.dll
+E:\MK\DOMS_TSR\bin\HtmlRenderer.pdb
+E:\MK\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+E:\MK\DOMS_TSR\bin\PdfSharp.xml
+E:\MK\DOMS_TSR\bin\PdfSharp.Charting.xml
+E:\MK\DOMS_TSR\bin\de\PdfSharp.resources.dll
+E:\MK\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+E:\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CoreCompileInputs.cache
+E:\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.dll.config
+E:\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.exe
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.exe.config
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.rsp
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.exe
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.exe.config
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.rsp
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.AppContext.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Console.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.exe
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.exe.config
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.rsp
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+E:\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Antlr3.Runtime.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\CKEditor.NET.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\DocumentFormat.OpenXml.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\EPPlus.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\itextsharp.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Newtonsoft.Json.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Extends.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Owin.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.Charting.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\RawPrint.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.IO.FileSystem.Primitives.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.IO.Packaging.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Helpers.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Http.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Mvc.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Optimization.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Razor.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Deployment.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Razor.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\WebGrease.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\DocumentFormat.OpenXml.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\EPPlus.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\itextsharp.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.Charting.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Helpers.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Http.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Mvc.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Razor.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Deployment.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Razor.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Optimization.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Newtonsoft.Json.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Antlr3.Runtime.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+E:\SaleOrderSystem_App\DOMS_TSR\bin\de\PdfSharp.resources.dll
+E:\SaleOrderSystem_App\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+E:\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+E:\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.dll
+E:\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+E:\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.dll.config
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\DOMS_TSR.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.exe
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.exe.config
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csc.rsp
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.exe
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.exe.config
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\csi.rsp
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.AppContext.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Console.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.exe
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.exe.config
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\vbc.rsp
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Antlr3.Runtime.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\CKEditor.NET.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\DocumentFormat.OpenXml.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\EPPlus.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\itextsharp.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Newtonsoft.Json.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Extends.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Owin.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.Charting.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\RawPrint.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.IO.FileSystem.Primitives.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.IO.Packaging.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Helpers.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Http.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Mvc.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Optimization.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Razor.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Deployment.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Razor.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\WebGrease.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Chart.Mvc.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\DocumentFormat.OpenXml.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\EPPlus.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\itextsharp.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\PdfSharp.Charting.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Helpers.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Http.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Mvc.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Razor.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Deployment.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.WebPages.Razor.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Web.Optimization.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Newtonsoft.Json.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Antlr3.Runtime.pdb
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\de\PdfSharp.resources.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.dll
+E:\Document_OMSOneApp\SaleOrderSystem_App\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\DOMS_TSR.dll.config
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\DOMS_TSR.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\DOMS_TSR.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csc.exe
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csc.exe.config
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csc.rsp
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csi.exe
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csi.exe.config
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\csi.rsp
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.AppContext.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Console.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\vbc.exe
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\vbc.exe.config
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\vbc.rsp
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Antlr3.Runtime.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Chart.Mvc.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\CKEditor.NET.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\EPPlus.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\HtmlRenderer.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\itextsharp.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Newtonsoft.Json.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\OfficeOpenXml.Extends.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Owin.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\PdfSharp.Charting.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\PdfSharp.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\RawPrint.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.IO.FileSystem.Primitives.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.IO.Packaging.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Helpers.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Http.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Mvc.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Optimization.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Razor.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\WebGrease.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Chart.Mvc.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Chart.Mvc.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\EPPlus.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\HtmlRenderer.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\itextsharp.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\PdfSharp.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\PdfSharp.Charting.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Helpers.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Http.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Mvc.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Razor.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Web.Optimization.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Newtonsoft.Json.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Antlr3.Runtime.pdb
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\de\PdfSharp.resources.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CoreCompileInputs.cache
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.dll
+E:\Document_OMSOneApp\Code_app\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\SqlServerTypes\x64\msvcr120.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\SqlServerTypes\x86\msvcr120.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\DOMS_TSR.dll.config
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\DOMS_TSR.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\DOMS_TSR.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csc.exe
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csc.exe.config
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csc.rsp
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csi.exe
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csi.exe.config
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\csi.rsp
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.AppContext.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Console.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\vbc.exe
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\vbc.exe.config
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\vbc.rsp
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Antlr3.Runtime.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Chart.Mvc.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\CKEditor.NET.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\EPPlus.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\GemBox.Spreadsheet.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\HtmlRenderer.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\itextsharp.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.Common.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.Design.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WebDesign.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.SqlServer.Types.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Newtonsoft.Json.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\OfficeOpenXml.Extends.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Owin.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\PdfSharp.Charting.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\PdfSharp.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\RawPrint.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.IO.FileSystem.Primitives.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.IO.Packaging.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Helpers.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Mvc.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Optimization.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Razor.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\WebGrease.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.DataVisualization.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\EnvDTE.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.Shell.Interop.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WinForms.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\stdole.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.OLE.Interop.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.MSXML.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Chart.Mvc.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Chart.Mvc.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\EPPlus.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\GemBox.Spreadsheet.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\HtmlRenderer.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\itextsharp.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\PdfSharp.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\PdfSharp.Charting.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Helpers.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Mvc.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Razor.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Optimization.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Newtonsoft.Json.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Antlr3.Runtime.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\PdfSharp.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.pdb
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.Common.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.License.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.Pdf.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.XLS.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Microsoft.mshtml.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.Common.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.License.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.Pdf.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\Spire.XLS.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Web.Http.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+D:\PP_Project\Document_OneOrder\Code\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csprojAssemblyReference.cache
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\DOMS_TSR.dll.config
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\DOMS_TSR.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\DOMS_TSR.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csc.exe
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csc.exe.config
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csc.rsp
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csi.exe
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csi.exe.config
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\csi.rsp
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.AppContext.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Collections.Immutable.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Console.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.IO.Compression.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.IO.Pipes.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Reflection.Metadata.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.AccessControl.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Claims.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.ValueTuple.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\vbc.exe
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\vbc.exe.config
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\vbc.rsp
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\roslyn\VBCSCompiler.exe.config
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Antlr3.Runtime.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\AspNet.ScriptManager.jQuery.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Chart.Mvc.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\CKEditor.NET.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\EPPlus.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\GemBox.Spreadsheet.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\HtmlRenderer.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\itextsharp.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.Common.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.Design.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WebDesign.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.SqlServer.Types.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Web.Infrastructure.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Newtonsoft.Json.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\OfficeOpenXml.Extends.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Owin.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\PdfSharp.Charting.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\PdfSharp.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\RawPrint.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.Common.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.License.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.Pdf.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.XLS.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.IO.FileSystem.Primitives.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.IO.Packaging.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Helpers.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Mvc.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Optimization.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Razor.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\WebGrease.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.DataVisualization.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\EnvDTE.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.Shell.Interop.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.ReportViewer.WinForms.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.mshtml.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\stdole.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.OLE.Interop.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.MSXML.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Chart.Mvc.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Chart.Mvc.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\DocumentFormat.OpenXml.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\EPPlus.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\GemBox.Spreadsheet.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\HtmlRenderer.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\HtmlRenderer.PdfSharp.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\itextsharp.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.Owin.Security.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\PdfSharp.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\PdfSharp.Charting.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.Common.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.License.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.Pdf.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Spire.XLS.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Helpers.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Http.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Mvc.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Razor.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.Deployment.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.WebPages.Razor.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Web.Optimization.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Newtonsoft.Json.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Antlr3.Runtime.pdb
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\System.Net.Http.Formatting.xml
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.WebDesign.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\PdfSharp.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\PdfSharp.Charting.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\de\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\fr\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\it\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ja\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ko\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\pt\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.csproj.CopyComplete
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.dll
+D:\Double P\Main Project\OMS\WebApp\DOMS_TSR\obj\Release\DOMS_TSR.pdb

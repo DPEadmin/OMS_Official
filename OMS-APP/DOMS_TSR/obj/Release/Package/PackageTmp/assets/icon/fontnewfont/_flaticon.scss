@@ -1,0 +1,92 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 28/04/2019 16:36
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-list:before { content: "\f100"; }
+.flaticon-notepad:before { content: "\f101"; }
+.flaticon-settings:before { content: "\f102"; }
+.flaticon-team:before { content: "\f103"; }
+.flaticon-campaign:before { content: "\f104"; }
+.flaticon-box:before { content: "\f105"; }
+.flaticon-truck:before { content: "\f106"; }
+.flaticon-truck-1:before { content: "\f107"; }
+.flaticon-social-media:before { content: "\f108"; }
+.flaticon-truck-2:before { content: "\f109"; }
+.flaticon-support:before { content: "\f10a"; }
+.flaticon-new:before { content: "\f10b"; }
+.flaticon-cook:before { content: "\f10c"; }
+.flaticon-error:before { content: "\f10d"; }
+.flaticon-edit:before { content: "\f10e"; }
+.flaticon-close:before { content: "\f10f"; }
+.flaticon-export:before { content: "\f110"; }
+.flaticon-commerce-and-shopping:before { content: "\f111"; }
+.flaticon-cancel:before { content: "\f112"; }
+.flaticon-basket:before { content: "\f113"; }
+.flaticon-spread:before { content: "\f114"; }
+.flaticon-cook-1:before { content: "\f115"; }
+.flaticon-food:before { content: "\f116"; }
+.flaticon-report:before { content: "\f117"; }
+.flaticon-switch:before { content: "\f118"; }
+.flaticon-dashboard:before { content: "\f119"; }
+    
+    $font-Flaticon-list: "\f100";
+    $font-Flaticon-notepad: "\f101";
+    $font-Flaticon-settings: "\f102";
+    $font-Flaticon-team: "\f103";
+    $font-Flaticon-campaign: "\f104";
+    $font-Flaticon-box: "\f105";
+    $font-Flaticon-truck: "\f106";
+    $font-Flaticon-truck-1: "\f107";
+    $font-Flaticon-social-media: "\f108";
+    $font-Flaticon-truck-2: "\f109";
+    $font-Flaticon-support: "\f10a";
+    $font-Flaticon-new: "\f10b";
+    $font-Flaticon-cook: "\f10c";
+    $font-Flaticon-error: "\f10d";
+    $font-Flaticon-edit: "\f10e";
+    $font-Flaticon-close: "\f10f";
+    $font-Flaticon-export: "\f110";
+    $font-Flaticon-commerce-and-shopping: "\f111";
+    $font-Flaticon-cancel: "\f112";
+    $font-Flaticon-basket: "\f113";
+    $font-Flaticon-spread: "\f114";
+    $font-Flaticon-cook-1: "\f115";
+    $font-Flaticon-food: "\f116";
+    $font-Flaticon-report: "\f117";
+    $font-Flaticon-switch: "\f118";
+    $font-Flaticon-dashboard: "\f119";

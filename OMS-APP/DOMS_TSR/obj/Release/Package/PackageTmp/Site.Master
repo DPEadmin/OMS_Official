@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DOMS_TSR.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <link rel="stylesheet" href="assets/js/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/ico-fonts/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/ion-icon/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/material-design/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/jquery.filer/css/jquery.filer.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styleclasshelp.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/tab.css">
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <link rel="stylesheet" href="assets/js/slick-theme.min.css">
+ 
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body style="background-image: url(/assets/img/22.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; " > 
+ 
+    <form runat="server">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                 </asp:ContentPlaceHolder>
+
+    </form>
+
+
+</body>
+</html>
+ 
+
+ <style>
+ .fgf{background-image: url(/assets/img/1034.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; ">}
+ 
+ </style>
