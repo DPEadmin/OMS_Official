@@ -87,50 +87,71 @@
       </div>
     </section>
   </div>
-  <script>
-    function hideErrorMessage(elementId) {
-      var element = document.getElementById(elementId);
-      if (element) {
-        element.style.display = 'none';
-      }
+ <script>
+     document.addEventListener('DOMContentLoaded', function () {
+         function hideErrorMessage(elementId) {
+             var element = document.getElementById(elementId);
+             if (element) {
+                 element.style.display = 'none';
+             }
+         }
+
+         function showErrorMessage(elementId) {
+             var element = document.getElementById(elementId);
+             if (element) {
+                 element.style.display = 'block';
+             }
+         }
+
+      var ddlMerchant = document.getElementById('<%= ddlMerchant.ClientID %>');
+      var txtUserName = document.getElementById('<%= txtUserName.ClientID %>');
+      var txtPassword = document.getElementById('<%= txtPassword.ClientID %>');
+      var btnSubmit = document.getElementById('<%= btnSubmit.ClientID %>');
+
+      if (ddlMerchant) {
+          ddlMerchant.addEventListener('change', function () {
+              hideErrorMessage('<%= merchantErrorMsg.ClientID %>');
+      });
     }
-  
-    function showErrorMessage(elementId) {
-      var element = document.getElementById(elementId);
-      if (element) {
-        element.style.display = 'block';
-      }
+
+    if (txtUserName) {
+      txtUserName.addEventListener('input', function () {
+        hideErrorMessage('<%= usernameErrorMsg.ClientID %>');
+      });
     }
-  
-    document.getElementById('<%= ddlMerchant.ClientID %>').addEventListener('change', function () {
-      hideErrorMessage('<%= merchantErrorMsg.ClientID %>');
-    });
-  
-    document.getElementById('<%= txtUserName.ClientID %>').addEventListener('input', function () {
-      hideErrorMessage('<%= usernameErrorMsg.ClientID %>');
-    });
-  
-    document.getElementById('<%= txtPassword.ClientID %>').addEventListener('input', function () {
-      hideErrorMessage('<%= passwordErrorMsg.ClientID %>');
-    });
-  
-    document.getElementById('btnSubmit').addEventListener('click', function (event) {
-      if (document.getElementById('<%= ddlMerchant.ClientID %>').value === '-99') {
-        showErrorMessage('<%= merchantErrorMsg.ClientID %>');
-        event.preventDefault(); // Prevent form submission
+
+    if (txtPassword) {
+      txtPassword.addEventListener('input', function () {
+        hideErrorMessage('<%= passwordErrorMsg.ClientID %>');
+      });
+    }
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener('click', function (event) {
+        let hasError = false;
+
+        if (ddlMerchant && ddlMerchant.value === '-99') {
+          showErrorMessage('<%= merchantErrorMsg.ClientID %>');
+          hasError = true;
+        }
+
+        if (txtUserName && txtUserName.value.trim() === '') {
+          showErrorMessage('<%= usernameErrorMsg.ClientID %>');
+          hasError = true;
+        }
+
+        if (txtPassword && txtPassword.value.trim() === '') {
+          showErrorMessage('<%= passwordErrorMsg.ClientID %>');
+              hasError = true;
+          }
+
+          if (hasError) {
+              event.preventDefault();
+          }
+      });
       }
-  
-      if (document.getElementById('<%= txtUserName.ClientID %>').value === '') {
-        showErrorMessage('<%= usernameErrorMsg.ClientID %>');
-        event.preventDefault(); // Prevent form submission
-      }
-  
-      if (document.getElementById('<%= txtPassword.ClientID %>').value === '') {
-        showErrorMessage('<%= passwordErrorMsg.ClientID %>');
-        event.preventDefault(); // Prevent form submission
-      }
-    });
-  </script>
+  });
+</script>
 
 
 

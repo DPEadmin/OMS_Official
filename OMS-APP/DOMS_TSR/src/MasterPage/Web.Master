@@ -47,6 +47,7 @@
 
 <!-- upload file -->
 <script src="../../assets/js/jquery.filer/js/jquery.filer.js"></script>
+<script src="../../assets/js/jquery.filer/js/jquery.filer.min.js"></script>
 <script src="../../assets/js/filer/custom-filer.js"></script>
 <script src="../../assets/js/filer/jquery.fileuploads.init.js"></script>
 
